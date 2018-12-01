@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="OTIJHB-NB-081"
+  DTS:DTSID="{6CF18C6F-53CB-4956-A633-40DB751F0F3F}"
+  DTS:CreationName="SMOServer">
+  <DTS:ObjectData>
+    <SMOServerConnectionManager
+      ConnectionString="SqlServerName=OTIJHB-NB-081;UseWindowsAuthentication=True;UserName=;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
