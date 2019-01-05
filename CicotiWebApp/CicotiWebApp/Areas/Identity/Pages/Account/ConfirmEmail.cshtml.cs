@@ -12,9 +12,9 @@ namespace CicotiWebApp.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class ConfirmEmailModel : PageModel
     {
-        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly UserManager<Microsoft.AspNetCore.Identity.IdentityUser> _userManager;
 
-        public ConfirmEmailModel(UserManager<ApplicationUser> userManager)
+        public ConfirmEmailModel(UserManager<Microsoft.AspNetCore.Identity.IdentityUser> userManager)
         {
             _userManager = userManager;
         }

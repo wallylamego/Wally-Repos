@@ -15,9 +15,5 @@ namespace CicotiWebApp.Models
         public string FirstName { get; set; }
         [Required]
         public string LastName { get; set; }
-
-        public int JobDescriptionID { get; set; }
-        
-        public JobDescription JobDescription { get; set; }
     }
 }

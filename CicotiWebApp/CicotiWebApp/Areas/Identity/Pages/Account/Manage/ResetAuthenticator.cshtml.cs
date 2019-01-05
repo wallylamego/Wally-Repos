@@ -11,13 +11,13 @@ namespace CicotiWebApp.Areas.Identity.Pages.Account.Manage
 {
     public class ResetAuthenticatorModel : PageModel
     {
-        UserManager<ApplicationUser> _userManager;
-        private readonly SignInManager<ApplicationUser> _signInManager;
+        UserManager<Microsoft.AspNetCore.Identity.IdentityUser> _userManager;
+        private readonly SignInManager<Microsoft.AspNetCore.Identity.IdentityUser> _signInManager;
         ILogger<ResetAuthenticatorModel> _logger;
 
         public ResetAuthenticatorModel(
-            UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager,
+            UserManager<Microsoft.AspNetCore.Identity.IdentityUser> userManager,
+            SignInManager<Microsoft.AspNetCore.Identity.IdentityUser> signInManager,
             ILogger<ResetAuthenticatorModel> logger)
         {
             _userManager = userManager;
