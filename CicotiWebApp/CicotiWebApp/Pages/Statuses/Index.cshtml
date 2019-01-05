@@ -27,7 +27,7 @@
             <tr>
                 <th>StatusID</th>
                 <th>Status Name</th>
-
+                <th>Sort Order</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
@@ -68,11 +68,11 @@
                     "datatype": "json"
                 },
                 "columnDefs":
-                [{
-                    /*Customer ID is not visible and is not searchable*/
-                    "targets": [0],
-                    "visible": false,
-                    "searchable": false
+                [   {
+                        /*Customer ID is not visible and is not searchable*/
+                        "targets": [0],
+                        "visible": false,
+                        "searchable": false
                     },
                     {
                         /*Status Name is visible and is not searchable*/
@@ -80,17 +80,22 @@
                         "visible": true,
                         "searchable": true
                     },
-
+                    {
+                        /*Sort Order No is visible and is not searchable*/
+                        "targets": [2],
+                        "visible": true,
+                        "searchable": true
+                    },
                     {
                         /*Edit button  is  visible and is not searchable*/
-                        "targets": [2],
+                        "targets": [3],
                         "visible": true,
                         "searchable": false,
                         "orderable": false
                     },
                     {
                         /*Delete button  is  visible and is not searchable*/
-                        "targets": [3],
+                        "targets": [4],
                         "visible": true,
                         "searchable": false,
                         "orderable": false
@@ -99,6 +104,7 @@
                 "columns": [
                     { "data": "statusID", "name": "statusID", "autoWidth": true },
                     { "data": "statusName", "name": "statusName", "autoWidth": true },
+                    { "data": "sortOrder", "name": "sortOrder", "autoWidth": true },
                     {
                         "render": function (data, type, full, meta) {
                             return "<p data-placement='top' data-toggle='tooltip' title='Edit'><button class='btn btn-primary btn-xs' data-title='Edit' data-toggle='modal' data-target='#edit' onclick='window.location.href=\"/Statuses/Edit/" + full.statusID +  "\"\'><span class='glyphicon glyphicon-pencil'></span></button></p>";
