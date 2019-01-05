@@ -7,9 +7,9 @@ namespace CicotiWebApp.Models
 {
     public class CustomerAccount
     {
-        int CustomerAccountID { get; set;}
-        string AccountNumber { get; set; }
-        string AccountDescription { get; set; }
-        string Terms { get; set; }
+        public int CustomerAccountID { get; set;}
+        public string AccountNumber { get; set; }
+        public string AccountDescription { get; set; }
+        public string Terms { get; set; }
     }
 }
