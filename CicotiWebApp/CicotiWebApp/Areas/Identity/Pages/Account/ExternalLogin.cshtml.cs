@@ -15,13 +15,13 @@ namespace CicotiWebApp.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class ExternalLoginModel : PageModel
     {
-        private readonly SignInManager<Microsoft.AspNetCore.Identity.IdentityUser> _signInManager;
-        private readonly UserManager<Microsoft.AspNetCore.Identity.IdentityUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly ILogger<ExternalLoginModel> _logger;
 
         public ExternalLoginModel(
-            SignInManager<Microsoft.AspNetCore.Identity.IdentityUser> signInManager,
-            UserManager<Microsoft.AspNetCore.Identity.IdentityUser> userManager,
+            SignInManager<ApplicationUser> signInManager,
+            UserManager<ApplicationUser> userManager,
             ILogger<ExternalLoginModel> logger)
         {
             _signInManager = signInManager;
@@ -114,7 +114,7 @@ namespace CicotiWebApp.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
-                var user = new Microsoft.AspNetCore.Identity.IdentityUser { UserName = Input.Email, Email = Input.Email };
+                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email };
                 var result = await _userManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
