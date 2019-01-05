@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 
 namespace CicotiWebApp.Areas.Identity.Pages.Account
@@ -19,6 +20,7 @@ namespace CicotiWebApp.Areas.Identity.Pages.Account
         private readonly UserManager<Microsoft.AspNetCore.Identity.IdentityUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        public SelectList RoleNameSL { get; set; }
 
         public RegisterModel(
             UserManager<Microsoft.AspNetCore.Identity.IdentityUser> userManager,
