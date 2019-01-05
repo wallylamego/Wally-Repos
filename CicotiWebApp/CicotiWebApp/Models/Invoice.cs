@@ -12,7 +12,6 @@ namespace CicotiWebApp.Models
         public DateTime InvoicePrintDate { get; set; }
         public int CustomerAccountID { get; set; }
         public CustomerAccount CustomerAccount {get;set;}
-
-        public ICollection<InvoiceStatusTrail> AuditTrail { get; set; }
+        public ICollection<InvoiceStatus> AuditTrail { get; set; }
     }
 }

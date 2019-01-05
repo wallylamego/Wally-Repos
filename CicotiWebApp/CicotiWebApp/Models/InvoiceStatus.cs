@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace CicotiWebApp.Models
 {
-    public class InvoiceStatusTrail
+    public class InvoiceStatus
     {
-        public int InvoiceStatusTrailID { get; set;}
+        public int InvoiceStatusID { get; set;}
         public int InvoiceID { get; set; }
         public int StatusID { get; set; }
         public int CreatedDate { get; set; }

@@ -17,5 +17,8 @@ namespace CicotiWebApp.Data
         public DbSet<Principle> Principle { get; set; }
         public DbSet<SalesRep> SalesRep { get; set; }
         public DbSet<Status> Status { get; set; }
+        public DbSet<CustomerAccount> Accounts { get; set; }
+        public DbSet<Invoice> Invoices { get; set; }
+        public DbSet<InvoiceStatus> InvoiceStatus { get; set;}
     }
 }

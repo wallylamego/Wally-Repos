@@ -4,14 +4,16 @@ using CicotiWebApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CicotiWebApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190105083101_MoreModelEntities")]
+    partial class MoreModelEntities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,23 +72,6 @@ namespace CicotiWebApp.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("CicotiWebApp.Models.CustomerAccount", b =>
-                {
-                    b.Property<int>("CustomerAccountID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("AccountDescription");
-
-                    b.Property<string>("AccountNumber");
-
-                    b.Property<string>("Terms");
-
-                    b.HasKey("CustomerAccountID");
-
-                    b.ToTable("Accounts");
-                });
-
             modelBuilder.Entity("CicotiWebApp.Models.Employee", b =>
                 {
                     b.Property<int>("EmployeeID")
@@ -110,51 +95,6 @@ namespace CicotiWebApp.Data.Migrations
                     b.ToTable("Employee");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("Employee");
-                });
-
-            modelBuilder.Entity("CicotiWebApp.Models.Invoice", b =>
-                {
-                    b.Property<int>("InvoiceID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CustomerAccountID");
-
-                    b.Property<DateTime>("InvoiceDate");
-
-                    b.Property<DateTime>("InvoicePrintDate");
-
-                    b.HasKey("InvoiceID");
-
-                    b.HasIndex("CustomerAccountID");
-
-                    b.ToTable("Invoices");
-                });
-
-            modelBuilder.Entity("CicotiWebApp.Models.InvoiceStatus", b =>
-                {
-                    b.Property<int>("InvoiceStatusID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CreatedDate");
-
-                    b.Property<DateTime>("CreatedUtc")
-                        .ValueGeneratedOnAddOrUpdate();
-
-                    b.Property<int>("InvoiceID");
-
-                    b.Property<int>("StatusID");
-
-                    b.Property<string>("UserID");
-
-                    b.HasKey("InvoiceStatusID");
-
-                    b.HasIndex("InvoiceID");
-
-                    b.HasIndex("UserID");
-
-                    b.ToTable("InvoiceStatus");
                 });
 
             modelBuilder.Entity("CicotiWebApp.Models.Principle", b =>
@@ -321,26 +261,6 @@ namespace CicotiWebApp.Data.Migrations
                     b.ToTable("SalesRep");
 
                     b.HasDiscriminator().HasValue("SalesRep");
-                });
-
-            modelBuilder.Entity("CicotiWebApp.Models.Invoice", b =>
-                {
-                    b.HasOne("CicotiWebApp.Models.CustomerAccount", "CustomerAccount")
-                        .WithMany()
-                        .HasForeignKey("CustomerAccountID")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("CicotiWebApp.Models.InvoiceStatus", b =>
-                {
-                    b.HasOne("CicotiWebApp.Models.Invoice")
-                        .WithMany("AuditTrail")
-                        .HasForeignKey("InvoiceID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("CicotiWebApp.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserID");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
