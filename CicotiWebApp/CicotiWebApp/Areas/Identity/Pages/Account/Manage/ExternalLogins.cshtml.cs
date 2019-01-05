@@ -11,12 +11,12 @@ namespace CicotiWebApp.Areas.Identity.Pages.Account.Manage
 {
     public class ExternalLoginsModel : PageModel
     {
-        private readonly UserManager<Microsoft.AspNetCore.Identity.IdentityUser> _userManager;
-        private readonly SignInManager<Microsoft.AspNetCore.Identity.IdentityUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
 
         public ExternalLoginsModel(
-            UserManager<Microsoft.AspNetCore.Identity.IdentityUser> userManager,
-            SignInManager<Microsoft.AspNetCore.Identity.IdentityUser> signInManager)
+            UserManager<ApplicationUser> userManager,
+            SignInManager<ApplicationUser> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;

@@ -15,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using CicotiWebApp;
 using System.IO;
 using Microsoft.AspNetCore.Authorization;
+using CicotiWebApp.Services;
 
 namespace CicotiWebApp
 {
@@ -46,7 +47,19 @@ namespace CicotiWebApp
                 .AddDefaultUI()
                 .AddDefaultTokenProviders();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            // services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1;
+               services.AddMvc()
+              .AddRazorPagesOptions(options =>
+              {
+                  options.Conventions.AuthorizeFolder("/Account/Manage");
+                  options.Conventions.AuthorizePage("/Account/Logout");
+              });
+            // Register no-op EmailSender used by account confirmation and password reset during development
+            // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=532713
+            services.AddSingleton<IEmailSender, EmailSender>();
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
         }
 
         private async Task CreateRolesAsync(IServiceProvider serviceProvider)
@@ -56,7 +69,7 @@ namespace CicotiWebApp
 
             var UserManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
 
-            string[] roleNames = { "Admin", "Manager", "Employee"};
+            string[] roleNames = { "Admin", "Manager", "Employee","Finance","WareHouse"};
             Task<IdentityResult> roleResult;
             foreach (var roleName in roleNames)
             {
@@ -114,7 +127,7 @@ namespace CicotiWebApp
         public  void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
         {
             //Create the roles
-             CreateRolesAsync(serviceProvider);
+          //   CreateRolesAsync(serviceProvider);
 
             if (env.IsDevelopment())
             {
