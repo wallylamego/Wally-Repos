@@ -12,7 +12,6 @@ namespace CicotiWebApp.Models
         public int InvoiceStatusID { get; set;}
         public int InvoiceID { get; set; }
         public int StatusID { get; set; }
-        public int CreatedDate { get; set; }
         public string UserID { get; set; }
 
         [Required, DatabaseGenerated(DatabaseGeneratedOption.Computed)]

@@ -142,7 +142,7 @@ namespace CicotiWebApp.Pages.Invoice
                 }
                 catch (DbUpdateException d)
                 {
-                    return new JsonResult("Status not removed." + d.InnerException.Message);
+                    return new JsonResult("Invoice Status not Updated." + d.InnerException.Message);
                 }
             }
             else

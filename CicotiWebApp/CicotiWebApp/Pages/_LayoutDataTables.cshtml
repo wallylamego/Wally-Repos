@@ -36,9 +36,10 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-page="/Index" class="navbar-brand">WebAppFAM</a>
+                <a asp-page="/Index" class="navbar-brand">CICOTI</a>
             </div>
             <div class="navbar-collapse collapse">
+                
                 <ul class="nav navbar-nav">
                     <li><a asp-page="/Index">Home</a></li>
                     <li><a asp-page="/About">About</a></li>
@@ -58,7 +59,7 @@
                             </ul>
                         </li>
                     }
-                    </ul>
+                </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>
         </div>
@@ -68,6 +69,7 @@
         <hr />
         <footer>
             <p>&copy; 2019 - CICOTI</p>
+            <img src="~/images/CIC_Logo.PNG" height="50" width="100" />
         </footer>
     </div>
 
