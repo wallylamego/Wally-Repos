@@ -19,19 +19,30 @@
 <h2>Invoice Listing</h2>
 
 <div>
-    <form id="InvForm" method="post"></form>
-    <div class="form-group">
-        <label asp-for="Status" class="control-label"></label>
-        <select asp-for="Status.StatusID"
-                asp-items="Model.StatusSL" class="form-control">
-            Invoice Status
-            <option value="">--Select Status--</option>
-        </select>
-        <span asp-validation-for="Status.StatusID" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <input type="submit" value="Update" class="btn btn-default" id="update"/>
-    </div>
+    <form id="InvForm" method="post">
+        <div class="form-group">
+            <label asp-for="Status" class="control-label"></label>
+            <select asp-for="Status.StatusID" id="statusID"
+                    asp-items="Model.StatusSL" class="form-control">
+                Invoice Status
+                <option value="">--Select Status--</option>
+            </select>
+            <span asp-validation-for="Status.StatusID" class="text-danger"></span>
+        </div>
+        <div class="form-group" id="divExecuteDate">
+            <label asp-for="ExecuteDate" class="control-label">Expected Collection Date</label>
+            <div class='input-group date' id='datetimepicker1'>
+                <input type="text" class="form-control" id="executeDate" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+                <span asp-validation-for="ExecuteDate" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Update" class="btn btn-default" id="update" />
+        </div>
+    </form>
 </div>
     <div id="divInvoiceTable" style="width:90%; margin:0 auto;">
         <table id="InvoiceTable" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
@@ -66,6 +77,8 @@
                         console.log("InvoiceID:" + this.value);
                         InvItem = new Object();
                         InvItem.invoiceID = this.value;
+                        InvItem.statusID = $('#statusID').val();
+                        InvItem.createdUtc = $('#executeDate').val();
                         arrInv.push(InvItem);
                         //create hidden element
                         //$(form).append(
@@ -148,7 +161,13 @@
                     }
                 ]
 
-            });//Invoice Table
+                });//Invoice Table
+             $('#datetimepicker1').datetimepicker(
+                    {
+                        format: "YYYY/MM/DD hh:mm:ss A",
+                        date: '@Model.ExecuteDate'
+                    }
+                );
         });//Document Ready end.
         function ajaxInvoiceUpdate(obj) {
             console.log("Update Invoice Status: in Insert Ajax Call: " + JSON.stringify(obj));

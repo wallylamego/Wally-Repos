@@ -8,17 +8,19 @@ using Microsoft.EntityFrameworkCore;
 using CicotiWebApp.Models;
 using CicotiWebApp;
 using Microsoft.AspNetCore.Mvc.Rendering;
-
+using Microsoft.AspNetCore.Identity;
 
 namespace CicotiWebApp.Pages.Invoice
 {
     public class IndexModel : PageModel
     {
         private readonly CicotiWebApp.Data.ApplicationDbContext _context;
-        
-        public IndexModel(CicotiWebApp.Data.ApplicationDbContext context)
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        public IndexModel(CicotiWebApp.Data.ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
             PopulateStatusSL();
         }
 
@@ -35,7 +37,9 @@ namespace CicotiWebApp.Pages.Invoice
 
         [BindProperty]
         public Status Status { get;set; }
-        
+        [BindProperty]
+        public DateTime ExecuteDate { get; set;}
+
         public async Task<JsonResult> OnPostPaging([FromForm] DataTableAjaxPostModel Model)
         {
 
@@ -110,13 +114,43 @@ namespace CicotiWebApp.Pages.Invoice
         public  void OnGetAsync()
         {
             PopulateStatusSL();
+            ExecuteDate = DateTime.Now;
         }
 
-        public async Task<JsonResult> OnPostUpdate([FromBody] List<CicotiWebApp.Models.Invoice> InvoiceListing)
+        public async Task<JsonResult> OnPostUpdate([FromBody] List<InvoiceStatus> InvoiceListing)
         {
-             int i = 10;
+            if (InvoiceListing != null && HttpContext.User.IsInRole("Admin"))
+            {
+                try
+                {
+                    var UserId = _userManager.GetUserId(HttpContext.User);
+                    CicotiWebApp.Models.Invoice InvoiceItem;
 
-            return new JsonResult("Test");
+                    //Update the Invoice Table in Database
+                    foreach (var In in InvoiceListing)
+                    {
+                        In.UserID = UserId;
+                        InvoiceItem = _context.Invoices.FirstOrDefault(i => i.InvoiceID == In.InvoiceID);
+                        InvoiceItem.StatusID = In.StatusID;
+                        _context.Attach(InvoiceItem).State = EntityState.Modified;
+                        await _context.SaveChangesAsync();
+                    }
+                    //Update the InvoiceStatus Table in the Database
+                    _context.InvoiceStatus.AddRange(InvoiceListing);
+                    await _context.SaveChangesAsync();
+                    return new JsonResult("Invoice Status successfully");
+                }
+                catch (DbUpdateException d)
+                {
+                    return new JsonResult("Status not removed." + d.InnerException.Message);
+                }
+            }
+            else
+            {
+                return new JsonResult("Status not removed.");
+            }
+        
+           
         }
     }
 }
