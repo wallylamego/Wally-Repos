@@ -4,14 +4,16 @@ using CicotiWebApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CicotiWebApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190106045139_InvoiceChanges")]
+    partial class InvoiceChanges
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -126,13 +128,13 @@ namespace CicotiWebApp.Data.Migrations
 
                     b.Property<DateTime>("InvoicePrintDate");
 
-                    b.Property<int>("StatusID");
+                    b.Property<int>("InvoiceStatusID");
 
                     b.HasKey("InvoiceID");
 
                     b.HasIndex("CustomerAccountID");
 
-                    b.HasIndex("StatusID");
+                    b.HasIndex("InvoiceStatusID");
 
                     b.ToTable("Invoices");
                 });
@@ -340,16 +342,16 @@ namespace CicotiWebApp.Data.Migrations
                         .HasForeignKey("CustomerAccountID")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("CicotiWebApp.Models.Status", "Status")
+                    b.HasOne("CicotiWebApp.Models.InvoiceStatus", "InvoiceStatus")
                         .WithMany()
-                        .HasForeignKey("StatusID")
+                        .HasForeignKey("InvoiceStatusID")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("CicotiWebApp.Models.InvoiceStatus", b =>
                 {
                     b.HasOne("CicotiWebApp.Models.Invoice")
-                        .WithMany("InvoiceStatuses")
+                        .WithMany("AuditTrail")
                         .HasForeignKey("InvoiceID")
                         .OnDelete(DeleteBehavior.Restrict);
 
