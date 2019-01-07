@@ -34,5 +34,9 @@ namespace CicotiWebApp.Models
         [MaxLength(20)]
         public string IDNumber { get; set; }
 
+        public int SubContractorID { get; set; }
+
+        public SubContractor SubContractor { get; set; }
+
     }
 }

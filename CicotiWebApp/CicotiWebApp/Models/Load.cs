@@ -11,7 +11,7 @@ namespace CicotiWebApp.Models
         public string LoadName { get; set; }
         public string LoadDate { get; set; }
         public Vehicle Vehicle { get; set; }
-          
+        public Driver Driver { get; set; }  
         public List<Invoice> Invoices { get; set; }
     }
 }
