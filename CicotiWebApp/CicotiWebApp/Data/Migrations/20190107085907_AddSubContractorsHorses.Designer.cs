@@ -4,14 +4,16 @@ using CicotiWebApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CicotiWebApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190107085907_AddSubContractorsHorses")]
+    partial class AddSubContractorsHorses
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -110,6 +112,39 @@ namespace CicotiWebApp.Data.Migrations
                     b.ToTable("Employee");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("Employee");
+                });
+
+            modelBuilder.Entity("CicotiWebApp.Models.Horse", b =>
+                {
+                    b.Property<int>("VehicleID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("FleetNo")
+                        .IsRequired()
+                        .HasMaxLength(6);
+
+                    b.Property<string>("GPSUnitNo")
+                        .HasMaxLength(20);
+
+                    b.Property<DateTime>("InsuranceExpiry");
+
+                    b.Property<DateTime>("LicenseExpiry");
+
+                    b.Property<string>("PhoneNo")
+                        .HasMaxLength(10);
+
+                    b.Property<string>("RegistrationNumber")
+                        .IsRequired()
+                        .HasMaxLength(10);
+
+                    b.Property<string>("VinNo")
+                        .IsRequired()
+                        .HasMaxLength(20);
+
+                    b.HasKey("VehicleID");
+
+                    b.ToTable("Horses");
                 });
 
             modelBuilder.Entity("CicotiWebApp.Models.Invoice", b =>
@@ -220,43 +255,6 @@ namespace CicotiWebApp.Data.Migrations
                     b.HasKey("SubContractorID");
 
                     b.ToTable("SubContractor");
-                });
-
-            modelBuilder.Entity("CicotiWebApp.Models.Vehicle", b =>
-                {
-                    b.Property<int>("VehicleID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("RegistrationNumber")
-                        .IsRequired()
-                        .HasMaxLength(10);
-
-                    b.Property<int>("SubContractorID");
-
-                    b.Property<int>("VehicleTypeID");
-
-                    b.HasKey("VehicleID");
-
-                    b.HasIndex("SubContractorID");
-
-                    b.HasIndex("VehicleTypeID");
-
-                    b.ToTable("Vehicles");
-                });
-
-            modelBuilder.Entity("CicotiWebApp.Models.VehicleType", b =>
-                {
-                    b.Property<int>("VehicleTypeID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Description")
-                        .IsRequired();
-
-                    b.HasKey("VehicleTypeID");
-
-                    b.ToTable("VehicleTypes");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -418,19 +416,6 @@ namespace CicotiWebApp.Data.Migrations
                     b.HasOne("CicotiWebApp.ApplicationUser", "User")
                         .WithMany()
                         .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Restrict);
-                });
-
-            modelBuilder.Entity("CicotiWebApp.Models.Vehicle", b =>
-                {
-                    b.HasOne("CicotiWebApp.Models.SubContractor", "SubContractor")
-                        .WithMany()
-                        .HasForeignKey("SubContractorID")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("CicotiWebApp.Models.VehicleType", "VechileType")
-                        .WithMany()
-                        .HasForeignKey("VehicleTypeID")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
