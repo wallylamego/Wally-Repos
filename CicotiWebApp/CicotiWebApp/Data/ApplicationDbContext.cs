@@ -35,5 +35,6 @@ namespace CicotiWebApp.Data
         public DbSet<SubContractor> SubContractor { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<VehicleType> VehicleTypes { get; set;}
+        public DbSet<Driver> Drivers { get; set;}
     }
 }
