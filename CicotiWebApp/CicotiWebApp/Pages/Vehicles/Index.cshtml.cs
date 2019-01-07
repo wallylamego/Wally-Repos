@@ -37,7 +37,7 @@ namespace CicotiWebApp.Pages.Vehicles
                {
                    v.VehicleID,
                    v.RegistrationNumber,
-                   v.VechileType.Description,
+                   vehicleType = v.VechileType.Description,
                    SubContractor = v.SubContractor.Name,
                }
                );

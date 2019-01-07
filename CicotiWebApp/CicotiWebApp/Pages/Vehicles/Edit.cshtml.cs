@@ -48,6 +48,8 @@ namespace CicotiWebApp.Pages.Vehicles
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
+            PopulateSubContractorSL();
+            PopulateVehicleTypeSL();
             if (id == null)
             {
                 return NotFound();

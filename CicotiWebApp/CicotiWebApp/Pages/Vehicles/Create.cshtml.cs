@@ -23,6 +23,8 @@ namespace CicotiWebApp.Pages.Vehicles
 
         public IActionResult OnGet()
         {
+            PopulateSubContractorSL();
+            PopulateVehicleTypeSL();
             return Page();
         }
 
