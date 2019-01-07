@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using CicotiWebApp.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CicotiWebApp.Pages.Vehicles
 {
@@ -27,6 +28,27 @@ namespace CicotiWebApp.Pages.Vehicles
 
         [BindProperty]
         public Vehicle Vehicle { get; set; }
+
+        public SelectList VehicleTypeSL { get; set; }
+
+        public void PopulateVehicleTypeSL(object selectedVehicleType = null)
+        {
+            var VehicleTypesQuery = from v in _context.VehicleTypes
+                              orderby v.Description
+                              select v;
+            VehicleTypeSL = new SelectList(VehicleTypesQuery.AsNoTracking(),
+                        "VehicleTypeID", "Description", selectedVehicleType);
+        }
+        public SelectList SubContractorSL { get; set; }
+
+        public void PopulateSubContractorSL(object selectedSubContractor = null)
+        {
+            var SubContractorsQuery = from s in _context.SubContractor
+                                    orderby s.Name
+                                    select s;
+            SubContractorSL = new SelectList(SubContractorsQuery.AsNoTracking(),
+                        "SubContractorID", "Name", selectedSubContractor);
+        }
 
         public async Task<IActionResult> OnPostAsync()
         {
