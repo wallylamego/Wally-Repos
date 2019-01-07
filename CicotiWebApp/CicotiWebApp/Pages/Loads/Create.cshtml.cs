@@ -7,9 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using CicotiWebApp.Models;
-using Microsoft.EntityFrameworkCore;
 
-namespace CicotiWebApp.Pages.Drivers
+namespace CicotiWebApp.Pages.Loads
 {
     [Authorize]
     public class CreateModel : PageModel
@@ -20,25 +19,14 @@ namespace CicotiWebApp.Pages.Drivers
         {
             _context = context;
         }
-        public SelectList SubContractorSL { get; set; }
-
-        public void PopulateSubContractorSL(object selectedSubContractor = null)
-        {
-            var SubContractorsQuery = from s in _context.SubContractor
-                                      orderby s.Name
-                                      select s;
-            SubContractorSL = new SelectList(SubContractorsQuery.AsNoTracking(),
-                        "SubContractorID", "Name", selectedSubContractor);
-        }
 
         public IActionResult OnGet()
         {
-            PopulateSubContractorSL();
             return Page();
         }
 
         [BindProperty]
-        public Driver Driver { get; set; }
+        public Load Load { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
         {
@@ -47,7 +35,7 @@ namespace CicotiWebApp.Pages.Drivers
                 return Page();
             }
 
-            _context.Drivers.Add(Driver);
+            _context.Loads.Add(Load);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

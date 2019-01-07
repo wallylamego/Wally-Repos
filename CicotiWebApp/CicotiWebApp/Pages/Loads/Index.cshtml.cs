@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using CicotiWebApp.Models;
+using CicotiWebApp;
 
-namespace CicotiWebApp.Pages.Drivers
+
+namespace CicotiWebApp.Pages.Loads
 {
-    [Authorize]
     public class IndexModel : PageModel
     {
         private readonly CicotiWebApp.Data.ApplicationDbContext _context;
@@ -20,49 +20,45 @@ namespace CicotiWebApp.Pages.Drivers
             _context = context;
         }
 
-        public IList<Driver> Driver { get;set; }
-
-        
-        //This get provides a list of Paged Drivers
+        public IList<Load> Loads { get;set; }
         public async Task<JsonResult> OnPostPaging([FromForm] DataTableAjaxPostModel Model)
         {
 
             int filteredResultsCount = 0;
             int totalResultsCount = 0;
 
-            DataTableAjaxPostModel.GetOrderByParameters(Model.order, Model.columns, "DriverID",
+            DataTableAjaxPostModel.GetOrderByParameters(Model.order, Model.columns, "Name",
                 out bool SortDir, out string SortBy);
 
 
             //First create the View of the new model you wish to display to the user
-            var DriverQuery = _context.Drivers
-               .Select(driv => new
+            var LoadQuery = _context.Loads
+               .Select(l => new
                {
-                   SubContractor = driv.SubContractor.Name,
-                   driv.DriverID,
-                   driv.FirstName,
-                   driv.Surname,
-                   driv.CellNumber,
-                   driv.IDNumber,
-                   driv.PDPExpiryDate,
+                   l.LoadID,
+                   l.LoadDate,
+                   l.LoadName,
+                   SubContrator = l.Driver.SubContractor.Name,
+                   RegistrationNumber = l.Vehicle.RegistrationNumber,
+                   DriverName = l.Driver.FirstName + l.Driver.Surname,
+                   LoadCreateDate = l.CreatedUtc,
+                   LoadCreatedBy = l.User.UserName
                }
                );
 
-            totalResultsCount = DriverQuery.Count();
+            totalResultsCount = LoadQuery.Count();
             filteredResultsCount = totalResultsCount;
 
             if (!string.IsNullOrEmpty(Model.search.value))
             {
-                DriverQuery = DriverQuery
+                LoadQuery = LoadQuery
                         .Where(
-                d => d.FirstName.ToLower().Contains(Model.search.value.ToLower()) ||
-                        d.Surname.ToString().ToLower().Contains(Model.search.value.ToLower()) ||
-                        d.CellNumber.ToString().ToLower().Contains(Model.search.value.ToLower()) ||
-                        d.SubContractor.ToString().ToLower().Contains(Model.search.value.ToLower()));
+                c => c.SubContrator.ToLower().Contains(Model.search.value.ToLower())
+                       );
 
-                filteredResultsCount = DriverQuery.Count();
+                filteredResultsCount = LoadQuery.Count();
             }
-            var Result = await DriverQuery
+            var Result = await LoadQuery
                         .Skip(Model.start)
                         .Take(Model.length)
                         .OrderBy(SortBy, SortDir)
@@ -79,25 +75,30 @@ namespace CicotiWebApp.Pages.Drivers
             return new JsonResult(value);
         }
 
-        public async Task<IActionResult> OnDeleteDelete([FromBody] Driver obj)
+        public async Task<IActionResult> OnDeleteDelete([FromBody] Load obj)
         {
+
             if (obj != null && HttpContext.User.IsInRole("Admin"))
             {
                 try
                 {
-                    _context.Drivers.Remove(obj);
+                    _context.Loads.Remove(obj);
                     await _context.SaveChangesAsync();
-                    return new JsonResult("Driver removed successfully");
+                    return new JsonResult("Loads removed successfully");
                 }
-                catch(DbUpdateException d)
+                catch (DbUpdateException d)
                 {
-                    return new JsonResult("Driver not removed." + d.InnerException.Message);
+                    return new JsonResult("Load not removed." + d.InnerException.Message);
                 }
             }
             else
             {
-                return new JsonResult("Driver not removed.");
+                return new JsonResult("Load not removed.");
             }
+        }
+        public async Task OnGetAsync()
+        {
+            Loads = await _context.Loads.ToListAsync();
         }
     }
 }

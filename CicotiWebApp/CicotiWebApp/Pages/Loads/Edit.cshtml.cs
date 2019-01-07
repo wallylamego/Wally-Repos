@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CicotiWebApp.Models;
 
-namespace CicotiWebApp.Pages.Drivers
+namespace CicotiWebApp.Pages.Loads
 {
     [Authorize]
     public class EditModel : PageModel
@@ -22,29 +22,18 @@ namespace CicotiWebApp.Pages.Drivers
         }
 
         [BindProperty]
-        public Driver Driver { get; set; }
-        public SelectList SubContractorSL { get; set; }
-
-        public void PopulateSubContractorSL(object selectedSubContractor = null)
-        {
-            var SubContractorsQuery = from s in _context.SubContractor
-                                      orderby s.Name
-                                      select s;
-            SubContractorSL = new SelectList(SubContractorsQuery.AsNoTracking(),
-                        "SubContractorID", "Name", selectedSubContractor);
-        }
+        public Load Load { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            PopulateSubContractorSL();
             if (id == null)
             {
                 return NotFound();
             }
 
-            Driver = await _context.Drivers.SingleOrDefaultAsync(m => m.DriverID == id);
+            Load = await _context.Loads.FirstOrDefaultAsync(m => m.LoadID== id);
 
-            if (Driver == null)
+            if (Load == null)
             {
                 return NotFound();
             }
@@ -58,7 +47,7 @@ namespace CicotiWebApp.Pages.Drivers
                 return Page();
             }
 
-            _context.Attach(Driver).State = EntityState.Modified;
+            _context.Attach(Load).State = EntityState.Modified;
 
             try
             {
@@ -66,7 +55,7 @@ namespace CicotiWebApp.Pages.Drivers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!DriverExists(Driver.DriverID))
+                if (!LoadExists(Load.LoadID))
                 {
                     return NotFound();
                 }
@@ -79,9 +68,9 @@ namespace CicotiWebApp.Pages.Drivers
             return RedirectToPage("./Index");
         }
 
-        private bool DriverExists(int id)
+        private bool LoadExists(int id)
         {
-            return _context.Drivers.Any(e => e.DriverID == id);
+            return _context.Loads.Any(e => e.LoadID == id);
         }
     }
 }
