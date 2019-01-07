@@ -76,3 +76,9 @@ C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\R
 C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\Razor\Pages\SubContractors\Create.g.cshtml.cs
 C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\Razor\Pages\SubContractors\Edit.g.cshtml.cs
 C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\Razor\Pages\SubContractors\Index.g.cshtml.cs
+C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\Razor\Pages\Vehicles\Create.g.cshtml.cs
+C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\Razor\Pages\Vehicles\Edit.g.cshtml.cs
+C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\Razor\Pages\Vehicles\Index.g.cshtml.cs
+C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\Razor\Pages\VehicleTypes\Create.g.cshtml.cs
+C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\Razor\Pages\VehicleTypes\Edit.g.cshtml.cs
+C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\Razor\Pages\VehicleTypes\Index.g.cshtml.cs
