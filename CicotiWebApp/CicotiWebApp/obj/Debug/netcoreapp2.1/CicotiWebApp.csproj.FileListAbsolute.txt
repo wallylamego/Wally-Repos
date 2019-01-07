@@ -73,3 +73,9 @@ C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\R
 C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\Razor\Pages\_ModalConfirmPartial.g.cshtml.cs
 C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\Razor\Pages\_ModalPartial.g.cshtml.cs
 C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\Razor\Pages\Invoice\Index.g.cshtml.cs
+C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\Razor\Pages\Horses\Create.g.cshtml.cs
+C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\Razor\Pages\Horses\Edit.g.cshtml.cs
+C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\Razor\Pages\Horses\Index.g.cshtml.cs
+C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\Razor\Pages\SubContractors\Create.g.cshtml.cs
+C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\Razor\Pages\SubContractors\Edit.g.cshtml.cs
+C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\Razor\Pages\SubContractors\Index.g.cshtml.cs

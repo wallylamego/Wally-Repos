@@ -80,13 +80,7 @@
                         InvItem.statusID = $('#statusID').val();
                         InvItem.createdUtc = $('#executeDate').val();
                         arrInv.push(InvItem);
-                        //create hidden element
-                        //$(form).append(
-                        //    $('<input>')
-                        //        .attr('type', 'hidden')
-                        //        .attr('name', this.name)
-                        //        .val(this.value)
-                        //);
+                       
                     }
                 });
                 for (var i = 0; i < arrInv.length; i++) {
@@ -95,6 +89,8 @@
                 }
                 ajaxInvoiceUpdate(arrInv);
             });
+
+            var id = 3;
 
             $("#InvoiceTable").on('xhr.dt', function (e, settings, json, xhr) {
             }).DataTable({
@@ -119,6 +115,10 @@
                         },
                     "type": "POST",
                     /*"contentType": "application/x-www-form-urlencoded",*/
+                    "data": function (d) {
+                       // d.search.value = $('#tripId').val();
+                        d.filterItemID = 4;
+                    },
                     "datatype": "json"
                 },
                 "columnDefs":

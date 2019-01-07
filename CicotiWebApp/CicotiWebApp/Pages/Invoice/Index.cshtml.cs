@@ -45,6 +45,7 @@ namespace CicotiWebApp.Pages.Invoice
 
             int filteredResultsCount = 0;
             int totalResultsCount = 0;
+            int Test = Model.FilterItemID;
 
             DataTableAjaxPostModel.GetOrderByParameters(Model.order, Model.columns, "invoiceNumber",
                 out bool SortDir, out string SortBy);
@@ -68,7 +69,8 @@ namespace CicotiWebApp.Pages.Invoice
             {
                 InvoiceQuery = InvoiceQuery
                         .Where(
-                i => i.InvoiceNumber.ToLower().Contains(Model.search.value.ToLower())
+                i => i.InvoiceNumber.ToLower().Contains(Model.search.value.ToLower()) ||
+                     i.StatusName.ToLower().Contains(Model.search.value.ToLower())
                        );
 
                 filteredResultsCount = InvoiceQuery.Count();

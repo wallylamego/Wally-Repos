@@ -15,6 +15,7 @@ public class DataTableAjaxPostModel
     public List<Column> columns { get; set; }
     public Search search { get; set; }
     public List<Order> order { get; set; }
+    public int FilterItemID { get; set; }
     
 
     public static string GetOrderByString(List<Order> OrderList, List<Column> ColumnList, string DefaultColumnSort)
