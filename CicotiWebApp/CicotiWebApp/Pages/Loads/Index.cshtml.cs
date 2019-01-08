@@ -27,7 +27,7 @@ namespace CicotiWebApp.Pages.Loads
             int filteredResultsCount = 0;
             int totalResultsCount = 0;
 
-            DataTableAjaxPostModel.GetOrderByParameters(Model.order, Model.columns, "Name",
+            DataTableAjaxPostModel.GetOrderByParameters(Model.order, Model.columns, "LoadName",
                 out bool SortDir, out string SortBy);
 
 
@@ -39,7 +39,7 @@ namespace CicotiWebApp.Pages.Loads
                    l.LoadDate,
                    l.LoadName,
                    SubContrator = l.Driver.SubContractor.Name,
-                   RegistrationNumber = l.Vehicle.RegistrationNumber,
+                   l.Vehicle.RegistrationNumber,
                    DriverName = l.Driver.FirstName + l.Driver.Surname,
                    LoadCreateDate = l.CreatedUtc,
                    LoadCreatedBy = l.User.UserName
