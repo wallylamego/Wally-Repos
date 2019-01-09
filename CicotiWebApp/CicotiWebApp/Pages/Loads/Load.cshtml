@@ -20,7 +20,7 @@
         <div class="card-header" id="headingOne">
             <h5 class="mb-0">
                 <button class="btn-primary" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
-                        aria-controls="collapseOne" style="background-color:darkred; border:outset; font-size:medium; border-color:white">
+                        aria-controls="collapseOne" style="background-color:darkblue; border:outset; font-size:small; border-color:white">
                     Section 1: Load Number,  LoadName,  LoadDate, Driver
                 </button>
             </h5>
@@ -136,6 +136,41 @@
 
         </div>
     </div>
+    <div class="card" id="cardSection2">
+        <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+                <button class="btn-primary" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" id="btnInvoiceSelection"
+                        aria-controls="collapseTwo" style="background-color:darkblue; border:outset; font-size:small; border-color:white">
+                    Section 2: Delivery List
+                </button>
+            </h5>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="row" id="divLoadHeaderForm">
+               
+                    <div id="InvoiceSelectionSection">
+                        <div id="divInvoiceTable" style="width:90%; margin:0 auto;">
+                            <table id="InvoiceTable" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>InvoiceID</th>
+                                        <th>Invoice Number</th>
+                                        <th>Invoice Printed Date</th>
+                                        <th>Invoice Status</th>
+                                        <th>Select</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <input type="button" value="Save" class="btn btn-default  " id="savebtnSection2" />
+                    </div>
+            </div>
+
+        </div>
+    </div>
 </div>
 
 
@@ -153,12 +188,81 @@
             $("#registrationNumber").val(decodeURIComponent(selectedVehicle.registrationNumber));
             $("#vehicleType").val(decodeURIComponent(selectedVehicle.vehicleType));
             $("#subContractor").val(decodeURIComponent(selectedVehicle.subContractor));
-
-
             $("#divVehicleInputFieldsSection").show();
-
             $("#divVehicleTable").hide();
             $('#showVehicleBtn').val("Hide Vechile");
+        }
+
+        function getInvoiceData() {
+         $("#InvoiceTable").on('xhr.dt', function (e, settings, json, xhr) {
+            }).DataTable({
+                lengthMenu: [25, 100, 150, 200],
+                "fixedHeader": {
+                    "header": true,
+                    "footer": true
+                },
+                "responsive": true,
+                "processing": true, // for show progress bar
+                "serverSide": true, // for process server side
+                "filter": true, // this is for disable filter (search box)
+                "orderMulti": false, // for disable multiple column at once
+                "ajax": {
+
+                    "url": "/Loads/Load?handler=InvoicePaging",
+                     "headers":
+                        {
+                            "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                        },
+                    "type": "POST",
+                    /*"contentType": "application/x-www-form-urlencoded",*/
+                    "data": function (d) {
+                       // d.search.value = $('#tripId').val();
+                        //This is just test
+                        d.filterItemID = 4;
+                    },
+                    "datatype": "json"
+                },
+                "columnDefs":
+                [   {
+                        /*Invoice ID is not visible and is not searchable*/
+                        "targets": [0],
+                        "visible": false,
+                        "searchable": false
+                    },
+                    {
+                        /*Invoice Number is visible and is  searchable*/
+                        "targets": [1],
+                        "visible": true,
+                        "searchable": true
+                    },
+                    {
+                        /*Invoice Printed Date No is visible and is searchable*/
+                        "targets": [2],
+                        "visible": true,
+                        "searchable": true
+                        },
+                    {
+                        /*Status is visible and is searchable*/
+                        "targets": [3],
+                        "visible": true,
+                        "searchable": true
+                    }
+
+                ],
+                "columns": [
+                    { "data": "invoiceID", "name": "invoiceID", "autoWidth": true },
+                    { "data": "invoiceNumber", "name": "invoiceNumber", "autoWidth": true },
+                    { "data": "invoicePrintDate", "name": "invoicePrintDate", "autoWidth": true },
+                    { "data": "statusName", "name": "statusName", "autoWidth": true },
+                    {
+                        'render': function (data, type, full, meta) {
+                            return '<input type="checkbox" name="id[]" value="'
+                                + $('<div/>').text(full.invoiceID).html() + '">';
+                        }
+                    }
+                ]
+
+            });//Invoice Table
         }
         
         function GetVehicleData(){
@@ -388,6 +492,14 @@
                     $('#showVehicleBtn').val("Show Vehicle");
                 }
             });
+            $('#btnInvoiceSelection').click(function () {
+                $("#divInvoiceTable").show();
+               
+                if (!$.fn.DataTable.isDataTable('#InvoiceTable')) {
+                    getInvoiceData();
+                }
+            });
+            
         });//Document Ready end.
 
     </script>

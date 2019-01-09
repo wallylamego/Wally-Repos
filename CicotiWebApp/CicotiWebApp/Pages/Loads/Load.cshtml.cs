@@ -51,8 +51,9 @@ namespace CicotiWebApp.Pages.Loads
                    i.InvoiceNumber,
                    i.InvoicePrintDate,
                    StatusName = i.Status.Name,
+                   i.StatusID
                }
-               );
+               ).Where(i=> i.StatusID == 3);
 
             totalResultsCount = InvoiceQuery.Count();
             filteredResultsCount = totalResultsCount;
