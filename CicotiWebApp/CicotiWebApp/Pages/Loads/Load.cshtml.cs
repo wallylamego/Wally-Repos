@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using CicotiWebApp.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace CicotiWebApp.Pages.Loads
 {
@@ -15,10 +16,12 @@ namespace CicotiWebApp.Pages.Loads
     public class LoadModel : PageModel
     {
         private readonly CicotiWebApp.Data.ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public LoadModel(CicotiWebApp.Data.ApplicationDbContext context)
+        public LoadModel(CicotiWebApp.Data.ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         
@@ -31,7 +34,60 @@ namespace CicotiWebApp.Pages.Loads
         [BindProperty]
         public Load Load { get; set; }
 
-        //get a list of invoices
+        #region Paging
+        //get a list of invoices which have been selected for loading
+        public async Task<JsonResult> OnPostInvoiceSelectedPaging([FromForm] DataTableAjaxPostModel Model)
+        {
+            int filteredResultsCount = 0;
+            int totalResultsCount = 0;
+
+            DataTableAjaxPostModel.GetOrderByParameters(Model.order, Model.columns, "invoiceNumber",
+                out bool SortDir, out string SortBy);
+
+
+            //First create the View of the new model you wish to display to the user
+            var InvoiceQuery = _context.Invoices
+               .Select(i => new
+               {
+                   i.InvoiceID,
+                   i.InvoiceNumber,
+                   i.InvoicePrintDate,
+                   StatusName = i.Status.Name,
+                   i.LoadID
+               }
+               ).Where(i => i.LoadID == Model.LoadID);
+
+            totalResultsCount = InvoiceQuery.Count();
+            filteredResultsCount = totalResultsCount;
+
+            if (!string.IsNullOrEmpty(Model.search.value))
+            {
+                InvoiceQuery = InvoiceQuery
+                        .Where(
+                i => i.InvoiceNumber.ToLower().Contains(Model.search.value.ToLower()) ||
+                     i.StatusName.ToLower().Contains(Model.search.value.ToLower())
+                       );
+
+                filteredResultsCount = InvoiceQuery.Count();
+            }
+            var Result = await InvoiceQuery
+                        .Skip(Model.start)
+                        .Take(Model.length)
+                        .OrderBy(SortBy, SortDir)
+                        .ToListAsync();
+
+            var value = new
+            {
+                // this is what datatables wants sending back
+                draw = Model.draw,
+                recordsTotal = totalResultsCount,
+                recordsFiltered = filteredResultsCount,
+                data = Result
+            };
+            return new JsonResult(value);
+        }
+
+        //get a list of Available invoices for Loading
         public async Task<JsonResult> OnPostInvoicePaging([FromForm] DataTableAjaxPostModel Model)
         {
 
@@ -187,6 +243,93 @@ namespace CicotiWebApp.Pages.Loads
             };
             return new JsonResult(value);
         }
+
+        #endregion Paging
+        public async Task<JsonResult> OnPostUpdate([FromBody] List<InvoiceStatus> InvoiceListing)
+        {
+            if (InvoiceListing != null && HttpContext.User.IsInRole("Admin"))
+            {
+                try
+                {
+                    var UserId = _userManager.GetUserId(HttpContext.User);
+                    CicotiWebApp.Models.Invoice InvoiceItem;
+
+                    //Update the Invoice Table in Database
+                    foreach (var In in InvoiceListing)
+                    {
+                        In.UserID = UserId;
+                        InvoiceItem = _context.Invoices.FirstOrDefault(i => i.InvoiceID == In.InvoiceID);
+                        //Update to WH: Loading Schedule.
+                        InvoiceItem.StatusID = 5;
+                        //Add the Current Load Id to the Invoice
+                        InvoiceItem.LoadID = In.LoadID;
+                        _context.Attach(InvoiceItem).State = EntityState.Modified;
+                        await _context.SaveChangesAsync();
+                    }
+                    //Update the InvoiceStatus Table in the Database
+                    _context.InvoiceStatus.AddRange(InvoiceListing);
+                    await _context.SaveChangesAsync();
+                    return new JsonResult("Invoice Status successfully");
+                }
+                catch (DbUpdateException d)
+                {
+                    return new JsonResult("Invoice Status not Updated." + d.InnerException.Message);
+                }
+            }
+            else
+            {
+                return new JsonResult("Load not removed.");
+            }
+        }
+
+
+        #region UpdateLoads
+        //Updates the existing Load Header
+        public async Task<IActionResult> OnPutUpdateLoad([FromBody] Load obj)
+        {
+            try
+            {
+                _context.Attach(obj).State = EntityState.Modified;
+                await _context.SaveChangesAsync();
+                return new JsonResult(obj);
+            }
+            catch (DbUpdateException d)
+            {
+                return new JsonResult("Load Changes not saved." + d.InnerException.Message);
+            }
+        }
+
+        //Inserts a new Load with Headers
+        public async Task<IActionResult> OnPostInsertLoad([FromBody] Load obj)
+        {
+
+            if (obj != null)
+            {
+                try
+                {
+                    obj.UserID = _userManager.GetUserId(HttpContext.User);
+                    _context.Add(obj);
+                    await _context.SaveChangesAsync();
+                    int id = obj.LoadID; // Yes it's here
+                    obj.User = await _userManager.GetUserAsync(HttpContext.User);
+                    return new JsonResult(obj);
+                }
+                catch (DbUpdateException d)
+                {
+                    return new JsonResult("Load Not Added." + d.InnerException.Message);
+                }
+            }
+
+            else
+            {
+                return new JsonResult("Insert Destination was null");
+            }
+
+        }
+        #endregion UploadLoads
+
+
+
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)

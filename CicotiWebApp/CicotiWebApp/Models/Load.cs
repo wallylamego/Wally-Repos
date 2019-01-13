@@ -25,6 +25,5 @@ namespace CicotiWebApp.Models
         public ApplicationUser User { get; set; }
         public Vehicle Vehicle { get; set; }
 
-        public List<LoadLine> LoadLines { get; set; }
     }
 }

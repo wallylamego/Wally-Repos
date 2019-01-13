@@ -34,8 +34,18 @@
                     <input type="hidden" asp-for="Load.DriverID" id="driverID" />
                     <div class="form-group" id="divLoadName">
                         <label class="control-label">Load Name</label>
-                        <input asp-for="Load.LoadName" id="tripCode" class="form-control" />
+                        <input asp-for="Load.LoadName" id="loadName" class="form-control" />
                         <span asp-validation-for="Load.LoadName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" id="divLoadDateTime">
+                        <label asp-for="Load.LoadDate" class="control-label">Loading Date</label>
+                        <div class='input-group date' id='datetimepicker1'>
+                            <input type="text" class="form-control" id="loadDate" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                            <span asp-validation-for="Load.LoadDate" class="text-danger"></span>
+                        </div>
                     </div>
                     <div class="form-group" id="divCreatedBy">
                         <label id="createdByLabel" class="control-label">Created By</label>
@@ -141,32 +151,67 @@
             <h5 class="mb-0">
                 <button class="btn-primary" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" id="btnInvoiceSelection"
                         aria-controls="collapseTwo" style="background-color:darkblue; border:outset; font-size:small; border-color:white">
-                    Section 2: Delivery List
+                    Section 2: Invoices Available for Delivery
                 </button>
             </h5>
         </div>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-            <div class="row" id="divLoadHeaderForm">
-               
-                    <div id="InvoiceSelectionSection">
-                        <div id="divInvoiceTable" style="width:90%; margin:0 auto;">
-                            <table id="InvoiceTable" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
-                                <thead>
-                                    <tr>
-                                        <th>InvoiceID</th>
-                                        <th>Invoice Number</th>
-                                        <th>Invoice Printed Date</th>
-                                        <th>Invoice Status</th>
-                                        <th>Select</th>
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
+            <div class="row" id="divInvoiceSelectionSection">
+
+                <div id="InvoiceSelectionSection">
+                    <div id="divInvoiceTable" style="width:90%; margin:0 auto;">
+                        <table id="InvoiceTable" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>InvoiceID</th>
+                                    <th>Invoice Number</th>
+                                    <th>Invoice Printed Date</th>
+                                    <th>Invoice Status</th>
+                                    <th>Select</th>
+                                </tr>
+                            </thead>
+                        </table>
                     </div>
-                    <br />
-                    <div class="form-group">
-                        <input type="button" value="Save" class="btn btn-default  " id="savebtnSection2" />
+                </div>
+                <br />
+                <div class="form-group">
+                    <input type="button" value="Save" class="btn btn-default  " id="savebtnSection2" />
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="card" id="cardSection3">
+        <div class="card-header" id="headingThree">
+            <h5 class="mb-0">
+                <button class="btn-primary" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" id="btnInvoiceSelected"
+                        aria-controls="collapseThree" style="background-color:darkblue; border:outset; font-size:small; border-color:white">
+                    Section 3: Delivery List
+                </button>
+            </h5>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+            <div class="row" id="divInvoicesSelected">
+
+                <div id="InvoiceSelectedSection">
+                    <div id="divInvoiceSelectedTable" style="width:90%; margin:0 auto;">
+                        <table id="InvoiceSelectedTable" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>InvoiceID</th>
+                                    <th>Invoice Number</th>
+                                    <th>Invoice Printed Date</th>
+                                    <th>Invoice Status</th>
+                                    <th>Select</th>
+                                </tr>
+                            </thead>
+                        </table>
                     </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <input type="button" value="Save" class="btn btn-default  " id="savebtnSection3" />
+                </div>
             </div>
 
         </div>
@@ -180,7 +225,7 @@
 
 @section Scripts {
     <script type="text/javascript">
-
+        var LoadToSave = {};
         function updateVehicleInputFields(data) {
             var selectedVehicle = {};
             selectedVehicle = JSON.parse(data);
@@ -192,11 +237,84 @@
             $("#divVehicleTable").hide();
             $('#showVehicleBtn').val("Hide Vechile");
         }
+         function getSelectedInvoiceData() {
+         $("#InvoiceSelectedTable").on('xhr.dt', function (e, settings, json, xhr) {
+            }).DataTable({
+                lengthMenu: [10,25, 100, 150, 200],
+                "fixedHeader": {
+                    "header": true,
+                    "footer": true
+                },
+                "responsive": true,
+                "processing": true, // for show progress bar
+                "serverSide": true, // for process server side
+                "filter": true, // this is for disable filter (search box)
+                "orderMulti": false, // for disable multiple column at once
+                "ajax": {
+
+                    "url": "/Loads/Load?handler=InvoiceSelectedPaging",
+                     "headers":
+                        {
+                            "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                        },
+                    "type": "POST",
+                    /*"contentType": "application/x-www-form-urlencoded",*/
+                    "data": function (d) {
+                       // d.search.value = $('#tripId').val();
+                        //This is just test
+                        d.loadID = $('#loadID').val() ;
+                    },
+                    "datatype": "json"
+                },
+                "columnDefs":
+                [   {
+                        /*Invoice ID is not visible and is not searchable*/
+                        "targets": [0],
+                        "visible": false,
+                        "searchable": false
+                    },
+                    {
+                        /*Invoice Number is visible and is  searchable*/
+                        "targets": [1],
+                        "visible": true,
+                        "searchable": true
+                    },
+                    {
+                        /*Invoice Printed Date No is visible and is searchable*/
+                        "targets": [2],
+                        "visible": true,
+                        "searchable": true
+                        },
+                    {
+                        /*Status is visible and is searchable*/
+                        "targets": [3],
+                        "visible": true,
+                        "searchable": true
+                    }
+
+                ],
+                "columns": [
+                    { "data": "invoiceID", "name": "invoiceID", "autoWidth": true },
+                    { "data": "invoiceNumber", "name": "invoiceNumber", "autoWidth": true },
+                    { "data": "invoicePrintDate", "name": "invoicePrintDate", "autoWidth": true },
+                    { "data": "statusName", "name": "statusName", "autoWidth": true },
+                    {
+                        'render': function (data, type, full, meta) {
+                            return '<input type="checkbox" name="id[]" value="'
+                                + $('<div/>').text(full.invoiceID).html() + '">';
+                        }
+                    }
+                ]
+
+            });//Selected Invoice Table
+        }
+
+
 
         function getInvoiceData() {
          $("#InvoiceTable").on('xhr.dt', function (e, settings, json, xhr) {
             }).DataTable({
-                lengthMenu: [25, 100, 150, 200],
+                lengthMenu: [10,25, 100, 150, 200],
                 "fixedHeader": {
                     "header": true,
                     "footer": true
@@ -262,7 +380,7 @@
                     }
                 ]
 
-            });//Invoice Table
+            });//Available Invoice Table
         }
         
         function GetVehicleData(){
@@ -433,8 +551,154 @@
 
             });//Drivers Table
         }//getVehicleData
+
+        function ajaxInvoiceUpdate(obj) {
+            console.log("Update Invoice Status: in Insert Ajax Call: " + JSON.stringify(obj));
+            $.ajax({
+                type: "POST",
+                url: "/Loads/Load?handler=Update",
+                    headers:
+                        {
+                            "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                        },
+                    contentType: "application/json",
+                    dataType: "json",
+                    data: JSON.stringify(obj),
+                    success: function (data) {
+                        console.log(data);
+                        $("#modalHeader").text("Invoice Status Processing Status");
+                        $("#modalMessage").text(" Invoice Status was inserted.");
+                        $("#myModal").modal("show");
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        $("#modalHeader").text("Invoice Status Processing Status");
+                        $("#modalMessage").text("Invoice Status Not Processed Not Updated.");
+                        $("#myModal").modal("show");
+                    }
+                });//ajax update
+        }
+
+        function ajaxLoadUpdate(obj) {
+            console.log("ajaxLoadUpdate Function runs: " + JSON.stringify(obj));
+            $.ajax({
+                type: "PUT",
+                url: "/Loads/Load?handler=UpdateLoad",
+
+                headers:
+                {
+                    "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                },
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify(obj),
+                success: function (data) {
+                    console.log(data);
+                    console.log("Load Data successfully returned from DataBase");
+                    $("#modalHeader").text("Load Section 1 Processing Status");
+                    $("#modalMessage").text($("#loadID").val() + " was updated.");
+                    $("#myModal").modal("show");
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+
+                        $("#modalHeader").text("Load Processing Status");
+                        $("#modalMessage").text("Load was not updated.");
+                        $("#myModal").modal("show");
+                    }
+                });//ajax Update Section 1
+        }
+        function ajaxLoadInsert(obj) {
+            console.log("Load Section 1: in Insert Ajax Call: " + JSON.stringify(obj));
+            $.ajax({
+                type: "POST",
+                url: "/Loads/Load?handler=InsertLoad",
+                    headers:
+                        {
+                            "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                        },
+                    contentType: "application/json",
+                    dataType: "json",
+                    data: JSON.stringify(obj),
+                    success: function (data) {
+                        console.log(data);
+                        $("#loadID").val(data.loadID);
+                        $("#createdBy").val(data.user.userName);
+                        $("#createdBy").show();
+                        $("#createdByLabel").show();
+
+                        $("#createdDate").val(moment(data.createdUtc).format("YYYY-MM-DDTHH:mm"));
+                        $("#createdDate").show();
+                        $("#createdDateLabel").show();
+                        //format: "YYYY/MM/DD hh:mm:ss A",
+                        console.log("Hiden Load Id:" + $("#loadID").val());
+                       
+                        $("#modalHeader").text("Load Processing Status");
+                        $("#modalMessage").text(data.loadID + " was inserted.");
+                        $("#myModal").modal("show");
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        $("#modalHeader").text("Load Processing Status");
+                        $("#modalMessage").text("Load Data Not Updated.");
+                        $("#myModal").modal("show");
+                    }
+                });//ajax insert
+        }
+
+
+
         $(document).ready(function ()
         {
+            $('#savebtnSection1').click(function () {
+                LoadToSave.loadName = $('#loadName').val();
+                LoadtoSave.loadDate = $('#loadDate').val();
+                LoadToSave.vehicleID = $('#vehicleID').val();
+                LoadToSave.driverID = $('#driverID').val();
+
+                if ($('#loadID').val().length > 0 && $('#loadID').val() > 0) {
+                    LoadToSave.loadID = $('#loadID').val();
+                    ajaxLoadUpdate(LoadToSave);
+                }
+                else {
+                    ajaxLoadInsert(LoadToSave);
+                }
+            });
+
+            $('#savebtnSection2').click(function () {
+                var arrInv = [];
+                var InvItem = new Object();
+
+                $('input[type="checkbox"]').each(function () {
+                    //if checkbox is checked
+                    if (this.checked) {
+                        console.log("InvoiceID:" + this.value);
+                        InvItem = new Object();
+                        InvItem.invoiceID = this.value;
+                        InvItem.loadID = $('#loadID').val();
+                      //  InvItem.statusID = $('#statusID').val();
+                      //  InvItem.createdUtc = $('#executeDate').val();
+                        arrInv.push(InvItem);
+                    }
+                });
+                //for (var i = 0; i < arrInv.length; i++) {
+                //    console.log("Item in Array: " + i);
+                //    console.log(arrInv[i].invoiceID);
+                //}
+                ajaxInvoiceUpdate(arrInv);
+                //redraw the available Invoice paging table
+                if (!$.fn.DataTable.isDataTable('#InvoiceTable')) {
+                    getInvoiceData();
+
+                }
+                else {
+                    var oTable = $('#FuelTable').DataTable();
+                    oTable.draw()
+                }
+
+
+                //update the selected items paging table
+            });
+
+
+            
             //hide the driver table and the driver capture fields when the form starts up
             $("#divDriverTable").hide();
             $("#divDriverInputFieldsSection").hide();
@@ -499,7 +763,19 @@
                     getInvoiceData();
                 }
             });
-            
+            $('#btnInvoiceSelected').click(function () {
+                $("#divInvoiceSelectedTable").show();
+
+                if (!$.fn.DataTable.isDataTable('#InvoiceSelectedTable')) {
+                    getSelectedInvoiceData();
+                }
+            });
+           $('#datetimepicker1').datetimepicker(
+                    {
+                        format: "YYYY/MM/DD hh:mm:ss A",
+                        date: '@Model.Load.LoadDate'
+                    }
+                ); 
         });//Document Ready end.
 
     </script>

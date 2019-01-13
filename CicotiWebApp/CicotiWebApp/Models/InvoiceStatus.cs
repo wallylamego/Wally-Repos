@@ -14,6 +14,8 @@ namespace CicotiWebApp.Models
         public int StatusID { get; set; }
         public string UserID { get; set; }
 
+        public int ? LoadID { get; set; }
+
         [Required, DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime CreatedUtc { get; set; }
 
@@ -21,5 +23,6 @@ namespace CicotiWebApp.Models
 
        // public Invoice Invoice { get; set; }
         public Status Status { get; set; }
+        public Load Load { get; set; }
     }
 }

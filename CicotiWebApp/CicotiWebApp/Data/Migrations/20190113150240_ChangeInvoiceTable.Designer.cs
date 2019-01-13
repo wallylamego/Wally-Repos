@@ -4,14 +4,16 @@ using CicotiWebApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CicotiWebApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190113150240_ChangeInvoiceTable")]
+    partial class ChangeInvoiceTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -184,8 +186,6 @@ namespace CicotiWebApp.Data.Migrations
 
                     b.Property<int>("InvoiceID");
 
-                    b.Property<int?>("LoadID");
-
                     b.Property<int>("StatusID");
 
                     b.Property<string>("UserID");
@@ -193,8 +193,6 @@ namespace CicotiWebApp.Data.Migrations
                     b.HasKey("InvoiceStatusID");
 
                     b.HasIndex("InvoiceID");
-
-                    b.HasIndex("LoadID");
 
                     b.HasIndex("StatusID");
 
@@ -491,11 +489,6 @@ namespace CicotiWebApp.Data.Migrations
                     b.HasOne("CicotiWebApp.Models.Invoice")
                         .WithMany("InvoiceStatuses")
                         .HasForeignKey("InvoiceID")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("CicotiWebApp.Models.Load", "Load")
-                        .WithMany()
-                        .HasForeignKey("LoadID")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("CicotiWebApp.Models.Status", "Status")
