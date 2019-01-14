@@ -26,8 +26,15 @@ namespace CicotiWebApp.Pages.Loads
 
         
 
-        public IActionResult OnGet()
+        public async Task<IActionResult> OnGetAsync(int? LoadID)
         {
+            Load = new Load { };
+
+            if (LoadID != null)
+            {
+                Load = await _context.Loads.SingleOrDefaultAsync(m => m.LoadID == LoadID);
+            }
+
             return Page();
         }
 
@@ -247,7 +254,7 @@ namespace CicotiWebApp.Pages.Loads
         #endregion Paging
         public async Task<JsonResult> OnPostUpdate([FromBody] List<InvoiceStatus> InvoiceListing)
         {
-            if (InvoiceListing != null && HttpContext.User.IsInRole("Admin"))
+            if (InvoiceListing != null)
             {
                 try
                 {
@@ -261,6 +268,7 @@ namespace CicotiWebApp.Pages.Loads
                         InvoiceItem = _context.Invoices.FirstOrDefault(i => i.InvoiceID == In.InvoiceID);
                         //Update to WH: Loading Schedule.
                         InvoiceItem.StatusID = 5;
+                        In.StatusID = 5;
                         //Add the Current Load Id to the Invoice
                         InvoiceItem.LoadID = In.LoadID;
                         _context.Attach(InvoiceItem).State = EntityState.Modified;
@@ -329,6 +337,46 @@ namespace CicotiWebApp.Pages.Loads
         #endregion UploadLoads
 
 
+        public async Task<IActionResult> OnPostRemoveInvoiceItems([FromBody] List<InvoiceStatus> InvoiceListing)
+        {
+            if (InvoiceListing != null)
+            {
+                try
+                {
+                    var UserId = _userManager.GetUserId(HttpContext.User);
+                    CicotiWebApp.Models.Invoice InvoiceItem;
+
+                    //Update the Invoice Table in Database
+                    foreach (var In in InvoiceListing)
+                    {
+                        In.UserID = UserId;
+                        InvoiceItem = _context.Invoices.FirstOrDefault(i => i.InvoiceID == In.InvoiceID);
+                        //Update to WH: Received.
+                        InvoiceItem.StatusID = 3;
+                        In.StatusID = 3;
+                        //Remove the Current Load Id From the Invoice. Set to Null. As this invoice will be assigned
+                        //to another load
+                        InvoiceItem.LoadID =  null;
+                        In.LoadID = null;
+                        _context.Attach(InvoiceItem).State = EntityState.Modified;
+                        await _context.SaveChangesAsync();
+                    }
+                    //Update the InvoiceStatus Table in the Database
+                    _context.InvoiceStatus.AddRange(InvoiceListing);
+                    await _context.SaveChangesAsync();
+                    return new JsonResult("Invoice Status Updated successfully");
+                }
+                catch (DbUpdateException d)
+                {
+                    return new JsonResult("Invoice Status not Updated." + d.InnerException.Message);
+                }
+            }
+            else
+            {
+                return new JsonResult("Load not removed.");
+            }
+
+        }
 
         public async Task<IActionResult> OnPostAsync()
         {
