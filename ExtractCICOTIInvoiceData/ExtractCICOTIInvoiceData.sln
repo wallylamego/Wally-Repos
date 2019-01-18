@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "ExtractCICOTIInvoiceData", "ExtractCICOTIInvoiceData\ExtractCICOTIInvoiceData.dtproj", "{A37CCED3-9E4F-41CD-81A4-45EC334FC231}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A37CCED3-9E4F-41CD-81A4-45EC334FC231}.Development|Default.ActiveCfg = Development
+		{A37CCED3-9E4F-41CD-81A4-45EC334FC231}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0F56F39B-6937-45E7-BBBD-273006164AD1}
+	EndGlobalSection
+EndGlobal

@@ -1,4 +1,4 @@
-﻿@page  "{id?}"
+﻿@page  "{LoadID?}"
 @model CicotiWebApp.Pages.Loads.LoadModel
 
 @{
@@ -63,7 +63,7 @@
                                 <input type="button" value="Find Driver." class="btn btn-default" id="findDriverBtn" />
                             </span>
                             <span class="input-group-btn">
-                                <input type="button" value="Show Driver." class="btn btn-default" id="showDriverBtn" />
+                                <input type="button" value="Show Driver" class="btn btn-default" id="showDriverBtn" />
                             </span>
                         </div>
                         <br />
@@ -102,10 +102,10 @@
                     <div id="VehicleSection">
                         <div class="input-group" id="divVehicleBtns">
                             <span class="input-group-btn">
-                                <input type="button" value="Find Vehicle." class="btn btn-default" id="findVehicleBtn" />
+                                <input type="button" value="Find Vehicle" class="btn btn-default" id="findVehicleBtn" />
                             </span>
                             <span class="input-group-btn">
-                                <input type="button" value="Show Vehicle." class="btn btn-default" id="showVehicleBtn" />
+                                <input type="button" value="Show Vehicle" class="btn btn-default" id="showVehicleBtn" />
                             </span>
                         </div>
                         <br />
@@ -204,7 +204,7 @@
                                     <th>Invoice Number</th>
                                     <th>Invoice Printed Date</th>
                                     <th>Invoice Status</th>
-                                    <th>Select</th>
+                                    <th>Delete</th>
                                 </tr>
                             </thead>
                         </table>
@@ -212,10 +212,30 @@
                 </div>
                 <br />
                 <div class="form-group">
-                    <input type="button" value="Save" class="btn btn-default  " id="savebtnSection3" />
+                    <input type="button" value="Delete" class="btn btn-default  " id="savebtnSection3" />
                 </div>
             </div>
 
+        </div>
+        <div id="divLoadHTMLTable"></div>
+    </div>
+    <div class="card" id="cardSection4">
+        <div class="card-header" id="headingFour">
+            <h5 class="mb-0">
+                <button class="btn-primary" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" id="btnPrintLoadDetails"
+                        aria-controls="collapseFour" style="background-color:darkblue; border:outset; font-size:small; border-color:white">
+                    Section 4: Print Load Details
+                </button>
+            </h5>
+        </div>
+        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+            <div class="row" id="divLoadDetails">
+                <br />
+                <div id="divLoadHTMLTable"></div>
+                <div class="form-group">
+                    <input type="button" value="Print" class="btn btn-default  " id="printBtnLoad" />
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -231,6 +251,52 @@
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script type="text/javascript">
         var LoadToSave = {};
+
+        function createHTMLLoadTable() {
+            $("#loadHTMLTable").remove();
+            var result = "<table border=1 id='LoadHTMLTable'>";
+            result += "<tr>";
+            result += "<td>Load Name: </td><td>  " + $('#loadName').val() + "</td>";
+            result += "</tr>";
+            result += "<tr>";
+            result += "<td>Load Date: </td><td> " + $('#loadDate').val() + "</td>";
+            result += "</tr>";
+            result += "<tr>";
+            result += "<td>Driver : </td><td> " + $('#driverFirstName').val() + " " + $('#driverSurname').val() + "</td>";
+            result += "</tr>";
+            result += "<tr>";
+            result += "<td>Registration Number : </td><td> " + $('#registrationNumber').val() + "</td>";
+            result += "</tr>";
+            result += "<tr>";
+            result += "<td>Vehicle Type :</td><td>  " + $('#vehicleType').val() + "</td>";
+            result += "</tr>";
+            result += "<tr>";
+            result += "<td>SubContractor : </td><td> " + $('#subContractor').val() + "</td>";
+            result += "</tr>";
+            result += "<tr>";
+            result += "<td>Delivery Listing</td>";
+            result += "</tr>";
+            result += "<tr><td><b>Invoice No<b></td><td><b>Invoice Date<b></td></tr>"
+            $('#InvoiceSelectedTable').find('tr').each(function () {
+                result += "<tr><td>";
+                result += $(this).find("td:eq(0)").text();
+                result += "</td><td>";
+                result += $(this).find("td:eq(1)").text();
+                result += "</td><tr>";
+                //result += "<tr>"
+                //result += (this).innerHTML;
+                //result += "</tr>"
+            });
+            
+            result += "</table>";
+
+            $("#divLoadHTMLTable").append(result);
+
+            //document.body.innerHTML = result;
+
+        }
+
+
 
         function updateVehicleInputFields(data) {
             var selectedVehicle = {};
@@ -724,6 +790,7 @@
                     var oTable = $('#InvoiceTable').DataTable();
                     oTable.draw()
                 }
+                //update the selected items paging table
                 if (!$.fn.DataTable.isDataTable('#InvoiceSelectedTable')) {
                     getSelectedInvoiceData();
                 }
@@ -731,7 +798,7 @@
                     var oTable = $('#InvoiceSelectedTable').DataTable();
                     oTable.draw()
                 }
-
+                createHTMLLoadTable();
                 //update the selected items paging table
             });
 
@@ -769,8 +836,8 @@
                     var oTable = $('#InvoiceSelectedTable').DataTable();
                     oTable.draw()
                 }
-
                 //update the selected items paging table
+                createHTMLLoadTable();
             });
 
 

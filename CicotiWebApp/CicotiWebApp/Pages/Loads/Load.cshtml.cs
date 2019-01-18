@@ -32,7 +32,12 @@ namespace CicotiWebApp.Pages.Loads
 
             if (LoadID != null)
             {
-                Load = await _context.Loads.SingleOrDefaultAsync(m => m.LoadID == LoadID);
+                Load = await _context.Loads
+                    .Include(v=>v.Vehicle)
+                    .Include(s=>s.Vehicle.SubContractor)
+                    .Include(v=>v.Vehicle.VechileType)
+                    .Include(d=>d.Driver)
+                    .SingleOrDefaultAsync(m => m.LoadID == LoadID);
             }
 
             return Page();
