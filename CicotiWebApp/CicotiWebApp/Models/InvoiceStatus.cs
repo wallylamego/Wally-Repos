@@ -21,7 +21,7 @@ namespace CicotiWebApp.Models
 
         public ApplicationUser User { get; set; }
 
-       // public Invoice Invoice { get; set; }
+        public Invoice Invoice { get; set; }
         public Status Status { get; set; }
         public Load Load { get; set; }
     }

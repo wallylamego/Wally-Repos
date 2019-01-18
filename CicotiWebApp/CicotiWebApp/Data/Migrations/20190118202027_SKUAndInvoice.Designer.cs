@@ -4,14 +4,16 @@ using CicotiWebApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CicotiWebApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190118202027_SKUAndInvoice")]
+    partial class SKUAndInvoice
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -248,29 +250,6 @@ namespace CicotiWebApp.Data.Migrations
                     b.HasKey("PrincipleID");
 
                     b.ToTable("Principle");
-                });
-
-            modelBuilder.Entity("CicotiWebApp.Models.SKU", b =>
-                {
-                    b.Property<int>("SKUID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Code");
-
-                    b.Property<double>("CubicMetrePerPallet");
-
-                    b.Property<double>("CubicMetrePerUnit");
-
-                    b.Property<string>("Description");
-
-                    b.Property<double>("UnitsPerPallets");
-
-                    b.Property<double>("WeightPerUnit");
-
-                    b.HasKey("SKUID");
-
-                    b.ToTable("SKUs");
                 });
 
             modelBuilder.Entity("CicotiWebApp.Models.Status", b =>

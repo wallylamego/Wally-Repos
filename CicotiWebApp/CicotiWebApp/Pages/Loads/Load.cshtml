@@ -14,7 +14,8 @@
 }
 
 <br />
-<h4>Load</h4>
+<br />
+<h4>Load Details</h4>
 
 <hr />
 <div id="accordion">
@@ -217,7 +218,7 @@
             </div>
 
         </div>
-        <div id="divLoadHTMLTable"></div>
+       
     </div>
     <div class="card" id="cardSection4">
         <div class="card-header" id="headingFour">
@@ -232,8 +233,9 @@
             <div class="row" id="divLoadDetails">
                 <br />
                 <div id="divLoadHTMLTable"></div>
+                <br />
                 <div class="form-group">
-                    <input type="button" value="Print" class="btn btn-default  " id="printBtnLoad" />
+                    <input type="button" value="Print" class="btn btn-default  " id="btnPrintLoad" />
                 </div>
             </div>
         </div>
@@ -254,7 +256,8 @@
 
         function createHTMLLoadTable() {
             $("#loadHTMLTable").remove();
-            var result = "<table border=1 id='LoadHTMLTable'>";
+            console.log("Just after remove:");
+            var result = "<table border='1' cellpadding='3' id='loadHTMLTable'>";
             result += "<tr>";
             result += "<td>Load Name: </td><td>  " + $('#loadName').val() + "</td>";
             result += "</tr>";
@@ -337,6 +340,9 @@
                         d.loadID = $('#loadID').val() ;
                     },
                     "datatype": "json"
+                    //success: function () {
+                    //    createHTMLLoadTable();
+                    //}
                 },
                 "columnDefs":
                 [   {
@@ -838,6 +844,21 @@
                 }
                 //update the selected items paging table
                 createHTMLLoadTable();
+            });
+
+            $('#btnPrintLoadDetails').click(function () {
+                if (!$.fn.DataTable.isDataTable('#InvoiceSelectedTable')) {
+                    getSelectedInvoiceData();
+
+                }
+                createHTMLLoadTable();
+            });
+            $('#btnPrintLoad').click(function () {
+                var divToPrint = document.getElementById("loadHTMLTable");
+                newWin = window.open("");
+                newWin.document.write(divToPrint.outerHTML);
+                newWin.print();
+                newWin.close();
             });
 
 
