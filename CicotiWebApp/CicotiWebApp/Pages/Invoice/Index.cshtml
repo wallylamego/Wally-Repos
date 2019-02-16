@@ -188,19 +188,7 @@
                     data: JSON.stringify(obj),
                     success: function (data) {
                         console.log(data);
-                       // $("#tripId").val(data.tripID);
-                      //  $("#createdBy").val(data.user.userName);
-                      //  $("#createdBy").show();
-                      //  $("#createdByLabel").show();
-
-                      //  $("#createdDate").val(moment(data.createdUtc).format("YYYY-MM-DDTHH:mm"));
-                      //  $("#createdDate").show();
-                     //   $("#createdDateLabel").show();
-                        //format: "YYYY/MM/DD hh:mm:ss A",
-                      //  console.log("Hidden Trip Id:" + $("#tripId").val());
-                       
                         $("#modalHeader").text("Invoice Status Processing Status");
-                     //   $("#modalMessage").text(data.tripID + " was inserted.");
                         $("#modalMessage").text(" Invoice Status was inserted.");
                         $("#myModal").modal("show");
                     },

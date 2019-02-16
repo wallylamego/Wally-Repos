@@ -38,5 +38,6 @@ namespace CicotiWebApp.Data
         public DbSet<Driver> Drivers { get; set;}
         public DbSet<Load> Loads { get; set; }
         public DbSet<SKU> SKUs { get; set;}
+        public DbSet<InvoiceStatusRole> InvoiceStatusRoles { get; set; }
     }
 }

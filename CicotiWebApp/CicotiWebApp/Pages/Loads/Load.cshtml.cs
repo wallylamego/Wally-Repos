@@ -17,15 +17,31 @@ namespace CicotiWebApp.Pages.Loads
     {
         private readonly CicotiWebApp.Data.ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
+        private  WorkFlowRule _workFlowRule;
+
 
         public LoadModel(CicotiWebApp.Data.ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
             _userManager = userManager;
+            _workFlowRule = new WorkFlowRule( _context, _userManager);
         }
 
-        
+        public void PopulateStatusSL(object selectedStatus = null)
+        {
+            var StatusQuery = from c in _context.Status
+                              orderby c.SortOrder
+                              select c;
+            StatusSL = new SelectList(StatusQuery.AsNoTracking(),
+                        "StatusID", "Name", selectedStatus);
+        }
+        public SelectList StatusSL { get; set; }
 
+        [BindProperty]
+        public Status Status { get; set; }
+        [BindProperty]
+        public DateTime ExecuteDate { get; set; }
+        
         public async Task<IActionResult> OnGetAsync(int? LoadID)
         {
             Load = new Load { };
@@ -341,6 +357,48 @@ namespace CicotiWebApp.Pages.Loads
         }
         #endregion UploadLoads
 
+        public async Task<JsonResult> OnPostInvoiceUpdate([FromBody] Load load)
+        {
+            ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User);
+            if (load != null && await _workFlowRule.WorkFlowRuleRole(5, user))
+            {
+                try
+                {
+                   
+                    Load loadToUpdate = _context.Loads.FirstOrDefault(l => l.LoadID == load.LoadID);
+
+                    List<InvoiceStatus> InvStatus = new List<InvoiceStatus>();
+                    InvoiceStatus invStatusItem = new InvoiceStatus();
+                    //Update the Invoice Table in Database
+                    foreach (var In in loadToUpdate.Invoices)
+                    {
+                        invStatusItem = new InvoiceStatus();
+                        invStatusItem.Invoice = In;
+                        invStatusItem.Load = loadToUpdate;
+                        //StatusID = 5 means dispatched
+                        invStatusItem.StatusID = 5;
+                        invStatusItem.UserID = user.Id;
+                      //  invStatusItem.CreatedUtc = 
+                      //  InvoiceItem = _context.Invoices.FirstOrDefault(i => i.InvoiceID == In.InvoiceID);
+                    //    InvoiceItem.StatusID = In.StatusID;
+                    //    _context.Attach(InvoiceItem).State = EntityState.Modified;
+                      //  await _context.SaveChangesAsync();
+                    }
+                    //Update the InvoiceStatus Table in the Database
+                  //  _context.InvoiceStatus.AddRange(InvoiceListing);
+                    await _context.SaveChangesAsync();
+                    return new JsonResult("Invoice Status successfully");
+                }
+                catch (DbUpdateException d)
+                {
+                    return new JsonResult("Invoice Status not Updated." + d.InnerException.Message);
+                }
+            }
+            else
+            {
+                return new JsonResult("Status not changed.");
+            }
+        }
 
         public async Task<IActionResult> OnPostRemoveInvoiceItems([FromBody] List<InvoiceStatus> InvoiceListing)
         {

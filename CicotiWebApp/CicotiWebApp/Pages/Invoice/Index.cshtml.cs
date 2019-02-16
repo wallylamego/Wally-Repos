@@ -16,23 +16,26 @@ namespace CicotiWebApp.Pages.Invoice
     {
         private readonly CicotiWebApp.Data.ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
+        private WorkFlowRule workFlowRule;
 
-        public IndexModel(CicotiWebApp.Data.ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+        public  IndexModel(CicotiWebApp.Data.ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
             _userManager = userManager;
-            PopulateStatusSL();
+            workFlowRule = new WorkFlowRule(_context, _userManager);
         }
 
         public SelectList StatusSL { get; set; }
 
-        public void PopulateStatusSL(object selectedStatus = null)
+        public async Task PopulateStatusSLAsync(object selectedStatus = null)
         {
-            var StatusQuery = from c in _context.Status
-                               orderby c.SortOrder
-                               select c;
-            StatusSL = new SelectList(StatusQuery.AsNoTracking(),
-                        "StatusID", "Name", selectedStatus);
+            
+            StatusSL = await workFlowRule.getAuthorisedStatusAsync(HttpContext);
+            //var StatusQuery = from c in _context.Status
+            //                   orderby c.SortOrder
+            //                   select c;
+            //StatusSL = new SelectList(StatusQuery.AsNoTracking(),
+            //            "StatusID", "Name", selectedStatus);
         }
 
         [BindProperty]
@@ -113,10 +116,11 @@ namespace CicotiWebApp.Pages.Invoice
                 return new JsonResult("Status not removed.");
             }
         }
-        public  void OnGetAsync()
+        public async Task<IActionResult>  OnGetAsync()
         {
-            PopulateStatusSL();
+            await PopulateStatusSLAsync();
             ExecuteDate = DateTime.Now;
+            return Page();
         }
 
         public async Task<JsonResult> OnPostUpdate([FromBody] List<InvoiceStatus> InvoiceListing)
