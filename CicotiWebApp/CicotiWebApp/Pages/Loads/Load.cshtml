@@ -728,12 +728,12 @@
                     data: JSON.stringify(obj),
                     success: function (data) {
                         console.log(data);
-                        $("#modalHeader").text("Invoice Status Processing Status");
-                        $("#modalMessage").text(" Invoice Status was inserted.");
+                        $("#modalHeader").text("Invoice Status Processing");
+                        $("#modalMessage").text(data);
                         $("#myModal").modal("show");
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
-                        $("#modalHeader").text("Invoice Status Processing Status");
+                        $("#modalHeader").text("Invoice Status Processing");
                         $("#modalMessage").text("Invoice Status Not Processed Not Updated.");
                         $("#myModal").modal("show");
                     }
@@ -753,12 +753,12 @@
                     data: JSON.stringify(obj),
                     success: function (data) {
                         console.log(data);
-                        $("#modalHeader").text("Invoice Status Processing Status");
-                        $("#modalMessage").text(" Invoice Status was inserted.");
+                        $("#modalHeader").text("Invoice Processing Status");
+                        $("#modalMessage").text(data);
                         $("#myModal").modal("show");
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
-                        $("#modalHeader").text("Invoice Status Processing Status");
+                        $("#modalHeader").text("Invoice Processing Status");
                         $("#modalMessage").text("Invoice Status Not Processed Not Updated.");
                         $("#myModal").modal("show");
                     }
@@ -888,15 +888,10 @@
                         InvItem = new Object();
                         InvItem.invoiceID = this.value;
                         InvItem.loadID = $('#loadID').val();
-                      //  InvItem.statusID = $('#statusID').val();
-                      //  InvItem.createdUtc = $('#executeDate').val();
                         arrInv.push(InvItem);
                     }
                 });
-                //for (var i = 0; i < arrInv.length; i++) {
-                //    console.log("Item in Array: " + i);
-                //    console.log(arrInv[i].invoiceID);
-                //}
+                
                 ajaxInvoiceUpdate(arrInv);
                 //redraw the available Invoice paging table
                 if (!$.fn.DataTable.isDataTable('#InvoiceTable')) {

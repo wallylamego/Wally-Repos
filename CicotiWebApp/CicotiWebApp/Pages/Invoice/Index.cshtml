@@ -16,10 +16,23 @@
     Layout = "~/Pages/_LayoutDataTables.cshtml";
 }
 
-<h2>Invoice Listing</h2>
+<h2>Invoice Delivery Listing</h2>
 
-<div>
-    <form id="InvForm" method="post">
+    <div id="divInvoiceTable" style="width:90%; margin:0 auto;">
+        <table id="InvoiceTable" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>InvoiceID</th>
+                    <th>Invoice Number</th>
+                    <th>Invoice Printed Date</th>
+                    <th>Invoice Status</th>
+                    <th>Update</th>
+                    <th>Select</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+    <div id="divInvoiceProcess">
         <div class="form-group">
             <label asp-for="Status" class="control-label"></label>
             <select asp-for="Status.StatusID" id="statusID"
@@ -42,23 +55,7 @@
         <div class="form-group">
             <input type="submit" value="Update" class="btn btn-default" id="update" />
         </div>
-    </form>
-</div>
-    <div id="divInvoiceTable" style="width:90%; margin:0 auto;">
-        <table id="InvoiceTable" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
-            <thead>
-                <tr>
-                    <th>InvoiceID</th>
-                    <th>Invoice Number</th>
-                    <th>Invoice Printed Date</th>
-                    <th>Invoice Status</th>
-                    <th>Update</th>
-                    <th>Select</th>
-                </tr>
-            </thead>
-        </table>
     </div>
-
     @await Html.PartialAsync("_ModalPartial")
 
     @section Scripts {
@@ -88,6 +85,7 @@
                     console.log(arrInv[i].invoiceID);
                 }
                 ajaxInvoiceUpdate(arrInv);
+                
             });
 
             var id = 3;
@@ -177,7 +175,7 @@
         function ajaxInvoiceUpdate(obj) {
             console.log("Update Invoice Status: in Insert Ajax Call: " + JSON.stringify(obj));
             $.ajax({
-                type: "POST",
+                type: "PUT",
                 url: "/Invoice/Index?handler=Update",
                     headers:
                         {
@@ -188,13 +186,21 @@
                     data: JSON.stringify(obj),
                     success: function (data) {
                         console.log(data);
-                        $("#modalHeader").text("Invoice Status Processing Status");
-                        $("#modalMessage").text(" Invoice Status was inserted.");
+                        //redraw the available Invoice paging table
+                        if (!$.fn.DataTable.isDataTable('#InvoiceTable')) {
+                            getInvoiceData();
+                        }
+                        else {
+                            var oTable = $('#InvoiceTable').DataTable();
+                            oTable.draw()
+                        }
+                        $("#modalHeader").text("Invoice Processing Status");
+                        $("#modalMessage").text(data);
                         $("#myModal").modal("show");
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
-                        $("#modalHeader").text("Invoice Status Processing Status");
-                        $("#modalMessage").text("Invoice Status Not Processed Not Updated.");
+                        $("#modalHeader").text("Invoice Processing Status");
+                        $("#modalMessage").text(data);
                         $("#myModal").modal("show");
                     }
                 });//ajax update

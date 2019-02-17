@@ -30,8 +30,9 @@ namespace CicotiWebApp
 
         //check if roles can process that new status
         //pass in a user and the process he wishes to update to
-        public async Task<Boolean> WorkFlowRuleRole(int InvoiceStatusID,ApplicationUser user)
+        public async Task<Boolean> WorkFlowRuleRole(int InvoiceStatusID,HttpContext httpContext)
         {
+            ApplicationUser user = await _userManager.GetUserAsync(httpContext.User);
             var UserRoles = await _userManager.GetRolesAsync(user);
             var RolesList = _context.Roles.ToList();
 
@@ -60,7 +61,7 @@ namespace CicotiWebApp
 
         //check if sequence follows or if sequence goes into reverse
         //status 1 followed up status 2 followed by status 3 e.t.c
-        private Boolean WorFlowRuleSequence(int NewInvoiceStatusID, int CurrentInvoiceStatusID)
+        public Boolean WorFlowRuleSequence(int NewInvoiceStatusID, int CurrentInvoiceStatusID)
         {
             Status NewInvoiceStatus = _context.Status.FirstOrDefault(sn => sn.StatusID == NewInvoiceStatusID);
             Status CurrentInvoiceStatus = _context.Status.FirstOrDefault(sn => sn.StatusID == CurrentInvoiceStatusID);
@@ -78,7 +79,7 @@ namespace CicotiWebApp
         {
             // await WorFlowRuleSequence(NewInvoiceStatusID, CurrentInvoiceStatusID)
             ApplicationUser user = await _userManager.GetUserAsync(httpContext.User);
-            if (await WorkFlowRuleRole(NewInvoiceStatusID, user) &&
+            if (await WorkFlowRuleRole(NewInvoiceStatusID, httpContext) &&
                 WorFlowRuleSequence(NewInvoiceStatusID, CurrentInvoiceStatusID))
             {
                 return true;

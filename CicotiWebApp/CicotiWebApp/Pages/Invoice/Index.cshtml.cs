@@ -29,13 +29,7 @@ namespace CicotiWebApp.Pages.Invoice
 
         public async Task PopulateStatusSLAsync(object selectedStatus = null)
         {
-            
             StatusSL = await workFlowRule.getAuthorisedStatusAsync(HttpContext);
-            //var StatusQuery = from c in _context.Status
-            //                   orderby c.SortOrder
-            //                   select c;
-            //StatusSL = new SelectList(StatusQuery.AsNoTracking(),
-            //            "StatusID", "Name", selectedStatus);
         }
 
         [BindProperty]
@@ -52,6 +46,9 @@ namespace CicotiWebApp.Pages.Invoice
 
             DataTableAjaxPostModel.GetOrderByParameters(Model.order, Model.columns, "invoiceNumber",
                 out bool SortDir, out string SortBy);
+
+            await PopulateStatusSLAsync();
+            ExecuteDate = DateTime.Now;
 
 
             //First create the View of the new model you wish to display to the user
@@ -123,38 +120,45 @@ namespace CicotiWebApp.Pages.Invoice
             return Page();
         }
 
-        public async Task<JsonResult> OnPostUpdate([FromBody] List<InvoiceStatus> InvoiceListing)
+        public async Task<JsonResult> OnPutUpdate([FromBody] List<InvoiceStatus> InvoiceListing)
         {
-            if (InvoiceListing != null && HttpContext.User.IsInRole("Admin"))
-            {
-                try
+            int NewInvoiceStatusID = 0;
+            if (InvoiceListing != null && InvoiceListing.Count() > 0)
+                NewInvoiceStatusID = InvoiceListing.First().StatusID;
+                //First Check if this user can update the Invoice to this Status
+                if( await workFlowRule.WorkFlowRuleRole(NewInvoiceStatusID, HttpContext ))
                 {
-                    var UserId = _userManager.GetUserId(HttpContext.User);
-                    CicotiWebApp.Models.Invoice InvoiceItem;
-
-                    //Update the Invoice Table in Database
-                    foreach (var In in InvoiceListing)
+                    try
                     {
-                        In.UserID = UserId;
-                        InvoiceItem = _context.Invoices.FirstOrDefault(i => i.InvoiceID == In.InvoiceID);
-                        InvoiceItem.StatusID = In.StatusID;
-                        _context.Attach(InvoiceItem).State = EntityState.Modified;
-                        await _context.SaveChangesAsync();
+                        var UserId = _userManager.GetUserId(HttpContext.User);
+                        CicotiWebApp.Models.Invoice InvoiceItem;
+
+                        //Update the Invoice Table in Database
+                        foreach (var In in InvoiceListing)
+                        {
+                            InvoiceItem = _context.Invoices.FirstOrDefault(i => i.InvoiceID == In.InvoiceID);
+                            if (workFlowRule.WorFlowRuleSequence(In.StatusID, InvoiceItem.StatusID))
+                                {
+                                    In.UserID = UserId;
+                                    InvoiceItem.StatusID = In.StatusID;
+                                    _context.Attach(InvoiceItem).State = EntityState.Modified;
+                                    _context.Add(In);
+                                    await _context.SaveChangesAsync();
+                                }
+                            }
+                        
+                        return new JsonResult("Invoice Status successfully");
+                        
                     }
-                    //Update the InvoiceStatus Table in the Database
-                    _context.InvoiceStatus.AddRange(InvoiceListing);
-                    await _context.SaveChangesAsync();
-                    return new JsonResult("Invoice Status successfully");
+                    catch (DbUpdateException d)
+                    {
+                        return new JsonResult("Invoice Status not Updated." + d.InnerException.Message);
+                    }
                 }
-                catch (DbUpdateException d)
+                else
                 {
-                    return new JsonResult("Invoice Status not Updated." + d.InnerException.Message);
+                    return new JsonResult("Invoice Status not Updated. You may not have rights to update to this Invoice Status.");
                 }
-            }
-            else
-            {
-                return new JsonResult("Status not removed.");
-            }
         
            
         }

@@ -273,9 +273,58 @@ namespace CicotiWebApp.Pages.Loads
         }
 
         #endregion Paging
+       
+        #region UpdateLoads
+        //Updates the existing Load Header
+        public async Task<IActionResult> OnPutUpdateLoad([FromBody] Load obj)
+        {
+            try
+            {
+                _context.Attach(obj).State = EntityState.Modified;
+                await _context.SaveChangesAsync();
+                return new JsonResult(obj);
+            }
+            catch (DbUpdateException d)
+            {
+                return new JsonResult("Load Changes not saved." + d.InnerException.Message);
+            }
+        }
+
+        //Inserts a new Load with a Load Headers
+        public async Task<IActionResult> OnPostInsertLoad([FromBody] Load obj)
+        {
+            if (obj != null)
+            {
+                try
+                {
+                    obj.UserID = _userManager.GetUserId(HttpContext.User);
+                    _context.Add(obj);
+                    await _context.SaveChangesAsync();
+                    int id = obj.LoadID; // Yes it's here
+                    obj.User = await _userManager.GetUserAsync(HttpContext.User);
+                    return new JsonResult(obj);
+                }
+                catch (DbUpdateException d)
+                {
+                    return new JsonResult("Load Not Added." + d.InnerException.Message);
+                }
+            }
+
+            else
+            {
+                return new JsonResult("Insert Destination was null");
+            }
+
+        }
+        #endregion UploadLoads
+
+        #region Update the Status of the Invoices Items to on Load Schedule
+
+        //Add New Invoices to the Load Schedule
         public async Task<JsonResult> OnPostUpdate([FromBody] List<InvoiceStatus> InvoiceListing)
         {
-            if (InvoiceListing != null)
+            //Check if user can update this status to : Load Schedule
+            if (InvoiceListing != null && await _workFlowRule.WorkFlowRuleRole(5, HttpContext))
             {
                 try
                 {
@@ -307,102 +356,13 @@ namespace CicotiWebApp.Pages.Loads
             }
             else
             {
-                return new JsonResult("Load not removed.");
+                return new JsonResult("Invoices not removed OR you do not have access to this functionality.");
             }
         }
-
-
-        #region UpdateLoads
-        //Updates the existing Load Header
-        public async Task<IActionResult> OnPutUpdateLoad([FromBody] Load obj)
-        {
-            try
-            {
-                _context.Attach(obj).State = EntityState.Modified;
-                await _context.SaveChangesAsync();
-                return new JsonResult(obj);
-            }
-            catch (DbUpdateException d)
-            {
-                return new JsonResult("Load Changes not saved." + d.InnerException.Message);
-            }
-        }
-
-        //Inserts a new Load with Headers
-        public async Task<IActionResult> OnPostInsertLoad([FromBody] Load obj)
-        {
-
-            if (obj != null)
-            {
-                try
-                {
-                    obj.UserID = _userManager.GetUserId(HttpContext.User);
-                    _context.Add(obj);
-                    await _context.SaveChangesAsync();
-                    int id = obj.LoadID; // Yes it's here
-                    obj.User = await _userManager.GetUserAsync(HttpContext.User);
-                    return new JsonResult(obj);
-                }
-                catch (DbUpdateException d)
-                {
-                    return new JsonResult("Load Not Added." + d.InnerException.Message);
-                }
-            }
-
-            else
-            {
-                return new JsonResult("Insert Destination was null");
-            }
-
-        }
-        #endregion UploadLoads
-
-        public async Task<JsonResult> OnPostInvoiceUpdate([FromBody] Load load)
-        {
-            ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User);
-            if (load != null && await _workFlowRule.WorkFlowRuleRole(5, user))
-            {
-                try
-                {
-                   
-                    Load loadToUpdate = _context.Loads.FirstOrDefault(l => l.LoadID == load.LoadID);
-
-                    List<InvoiceStatus> InvStatus = new List<InvoiceStatus>();
-                    InvoiceStatus invStatusItem = new InvoiceStatus();
-                    //Update the Invoice Table in Database
-                    foreach (var In in loadToUpdate.Invoices)
-                    {
-                        invStatusItem = new InvoiceStatus();
-                        invStatusItem.Invoice = In;
-                        invStatusItem.Load = loadToUpdate;
-                        //StatusID = 5 means dispatched
-                        invStatusItem.StatusID = 5;
-                        invStatusItem.UserID = user.Id;
-                      //  invStatusItem.CreatedUtc = 
-                      //  InvoiceItem = _context.Invoices.FirstOrDefault(i => i.InvoiceID == In.InvoiceID);
-                    //    InvoiceItem.StatusID = In.StatusID;
-                    //    _context.Attach(InvoiceItem).State = EntityState.Modified;
-                      //  await _context.SaveChangesAsync();
-                    }
-                    //Update the InvoiceStatus Table in the Database
-                  //  _context.InvoiceStatus.AddRange(InvoiceListing);
-                    await _context.SaveChangesAsync();
-                    return new JsonResult("Invoice Status successfully");
-                }
-                catch (DbUpdateException d)
-                {
-                    return new JsonResult("Invoice Status not Updated." + d.InnerException.Message);
-                }
-            }
-            else
-            {
-                return new JsonResult("Status not changed.");
-            }
-        }
-
+        //Delete Existing Invoices from the Load Schedule
         public async Task<IActionResult> OnPostRemoveInvoiceItems([FromBody] List<InvoiceStatus> InvoiceListing)
         {
-            if (InvoiceListing != null)
+            if (InvoiceListing != null && await _workFlowRule.WorkFlowRuleRole(5, HttpContext))
             {
                 try
                 {
@@ -415,8 +375,8 @@ namespace CicotiWebApp.Pages.Loads
                         In.UserID = UserId;
                         InvoiceItem = _context.Invoices.FirstOrDefault(i => i.InvoiceID == In.InvoiceID);
                         //Update to WH: Received.
-                        InvoiceItem.StatusID = 3;
-                        In.StatusID = 3;
+                        InvoiceItem.StatusID = 4;
+                        In.StatusID = 4;
                         //Remove the Current Load Id From the Invoice. Set to Null. As this invoice will be assigned
                         //to another load
                         InvoiceItem.LoadID =  null;
@@ -436,22 +396,12 @@ namespace CicotiWebApp.Pages.Loads
             }
             else
             {
-                return new JsonResult("Load not removed.");
+                return new JsonResult("Invoices not removed OR you do not have access to this functionality.");
             }
 
         }
-
-        public async Task<IActionResult> OnPostAsync()
-        {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
-            _context.Loads.Add(Load);
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
-        }
+        
+        #endregion
+        
     }
 }
