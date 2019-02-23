@@ -94,13 +94,13 @@ namespace CicotiWebApp
         {
             SelectList StatusSL;
 
-            List < Status> StatusList = new List<Status>();
+            List <Status> StatusList = new List<Status>();
             ApplicationUser user = await _userManager.GetUserAsync(httpContext.User);
 
             var UserRoles = await _userManager.GetRolesAsync(user);
             var RolesList = _context.Roles.ToList();
 
-            List<Status> UserStatusList = new List<Status>();
+            List<SKU> UserStatusList = new List<SKU>();
 
             string userRoleId;
             foreach (string RoleName in UserRoles)

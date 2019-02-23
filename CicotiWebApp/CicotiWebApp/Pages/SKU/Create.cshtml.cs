@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using CicotiWebApp.Models;
 
-namespace CicotiWebApp.Pages.Statuses
+namespace CicotiWebApp.Pages.SKU
 {
     [Authorize]
     public class CreateModel : PageModel
@@ -26,7 +26,7 @@ namespace CicotiWebApp.Pages.Statuses
         }
 
         [BindProperty]
-        public Status  Status { get; set; }
+        public CicotiWebApp.Models.SKU SKU { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
         {
@@ -35,7 +35,7 @@ namespace CicotiWebApp.Pages.Statuses
                 return Page();
             }
 
-            _context.Status.Add((Status)Status);
+            _context.SKUs.Add(SKU);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

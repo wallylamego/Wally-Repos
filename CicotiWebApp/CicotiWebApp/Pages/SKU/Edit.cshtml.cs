@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CicotiWebApp.Models;
 
-namespace CicotiWebApp.Pages.Statuses
+namespace CicotiWebApp.Pages.SKU
 {
     [Authorize]
     public class EditModel : PageModel
@@ -22,7 +22,7 @@ namespace CicotiWebApp.Pages.Statuses
         }
 
         [BindProperty]
-        public Status Status { get; set; }
+        public CicotiWebApp.Models.SKU SKU { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -31,9 +31,9 @@ namespace CicotiWebApp.Pages.Statuses
                 return NotFound();
             }
 
-            Status = await _context.Status.FirstOrDefaultAsync(m => m.StatusID == id);
+            SKU = await _context.SKUs.FirstOrDefaultAsync(m => m.SKUID == id);
 
-            if (Status == null)
+            if (SKU == null)
             {
                 return NotFound();
             }
@@ -47,7 +47,7 @@ namespace CicotiWebApp.Pages.Statuses
                 return Page();
             }
 
-            _context.Attach((Status)Status).State = EntityState.Modified;
+            _context.Attach((CicotiWebApp.Models.SKU)SKU).State = EntityState.Modified;
 
             try
             {
@@ -55,7 +55,7 @@ namespace CicotiWebApp.Pages.Statuses
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!StatusExists(Status.StatusID))
+                if (!SKUExists(SKU.SKUID))
                 {
                     return NotFound();
                 }
@@ -68,9 +68,9 @@ namespace CicotiWebApp.Pages.Statuses
             return RedirectToPage("./Index");
         }
 
-        private bool StatusExists(int id)
+        private bool SKUExists(int id)
         {
-            return _context.Status.Any(e => e.StatusID == id);
+            return _context.SKUs.Any(e => e.SKUID == id);
         }
     }
 }
