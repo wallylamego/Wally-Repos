@@ -6,6 +6,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\Migrations\20190223160406_MakeModelEmployee.cs" />
+    <Compile Remove="Data\Migrations\20190223160406_MakeModelEmployee.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190223160551_MakeModelEmployee.cs" />
+    <Compile Remove="Data\Migrations\20190223160551_MakeModelEmployee.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190223162125_MakeModelEmployee.cs" />
+    <Compile Remove="Data\Migrations\20190223162125_MakeModelEmployee.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190223165225_MakeModelEmployee.cs" />
+    <Compile Remove="Data\Migrations\20190223165225_MakeModelEmployee.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190223165832_MakeModelEmployee.cs" />
+    <Compile Remove="Data\Migrations\20190223165832_MakeModelEmployee.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190223170609_MakeModelEmployee.cs" />
+    <Compile Remove="Data\Migrations\20190223170609_MakeModelEmployee.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190223170910_MakeModelEmployee.cs" />
+    <Compile Remove="Data\Migrations\20190223170910_MakeModelEmployee.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190223171415_MakeModelEmployee.cs" />
+    <Compile Remove="Data\Migrations\20190223171415_MakeModelEmployee.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.4">
@@ -17,6 +36,11 @@
 
   <ItemGroup>
     <Folder Include="Areas\Identity\Services\" />
+    <Folder Include="Pages\Employee\CostCentre\" />
+    <Folder Include="Pages\Employee\JobDescription\" />
+    <Folder Include="Pages\Branch\" />
+    <Folder Include="Pages\Vehicles\Make\" />
+    <Folder Include="Pages\Vehicles\Model\" />
   </ItemGroup>
 
   <ItemGroup>
