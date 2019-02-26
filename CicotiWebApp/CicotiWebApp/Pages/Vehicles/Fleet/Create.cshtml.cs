@@ -89,7 +89,8 @@ namespace CicotiWebApp.Pages.Vehicles.Fleet
             }
 
             Vehicle.RegNumberABB = Vehicle.RegNumberABB.ToString().Replace(" ", "").Trim();
-            Vehicle.VehiclePurposeID = 2;
+            //Set the Sub Contractor to 2
+            Vehicle.SubContractorID = 2;
             _context.Vehicles.Add(Vehicle);
             await _context.SaveChangesAsync();
 
