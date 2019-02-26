@@ -22,6 +22,8 @@
     <Compile Remove="Data\Migrations\20190223170910_MakeModelEmployee.Designer.cs" />
     <Compile Remove="Data\Migrations\20190223171415_MakeModelEmployee.cs" />
     <Compile Remove="Data\Migrations\20190223171415_MakeModelEmployee.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190225054407_MakeModelSize.cs" />
+    <Compile Remove="Data\Migrations\20190225054407_MakeModelSize.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,14 +38,37 @@
 
   <ItemGroup>
     <Folder Include="Areas\Identity\Services\" />
-    <Folder Include="Pages\Employee\CostCentre\" />
-    <Folder Include="Pages\Employee\JobDescription\" />
     <Folder Include="Pages\Branch\" />
-    <Folder Include="Pages\Vehicles\Make\" />
-    <Folder Include="Pages\Vehicles\Model\" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="Pages\Employee\CostCentre\Create.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\Employee\CostCentre\Edit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\Employee\CostCentre\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\Employee\Department\Create.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\Employee\Department\Edit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\Employee\Department\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\Employee\JobDescription\Create.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\Employee\JobDescription\Edit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\Employee\JobDescription\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Pages\Invoice\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
@@ -75,6 +100,24 @@
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Pages\Vehicles\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\Vehicles\Make\Create.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\Vehicles\Make\Edit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\Vehicles\Make\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\Vehicles\Model\Create.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\Vehicles\Model\Edit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\Vehicles\Model\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Pages\VehicleTypes\Create.cshtml">

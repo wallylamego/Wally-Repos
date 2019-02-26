@@ -121,9 +121,6 @@ namespace CicotiWebApp.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("CreatedUtc")
-                        .ValueGeneratedOnAddOrUpdate();
-
                     b.Property<string>("DepartmentName")
                         .IsRequired()
                         .HasMaxLength(50);
@@ -163,6 +160,19 @@ namespace CicotiWebApp.Data.Migrations
                     b.HasIndex("SubContractorID");
 
                     b.ToTable("Drivers");
+                });
+
+            modelBuilder.Entity("CicotiWebApp.Models.DriveType", b =>
+                {
+                    b.Property<int>("DriveTypeID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description");
+
+                    b.HasKey("DriveTypeID");
+
+                    b.ToTable("DriveTypes");
                 });
 
             modelBuilder.Entity("CicotiWebApp.Models.Employee", b =>
@@ -218,6 +228,19 @@ namespace CicotiWebApp.Data.Migrations
                     b.ToTable("Employee");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("Employee");
+                });
+
+            modelBuilder.Entity("CicotiWebApp.Models.FuelType", b =>
+                {
+                    b.Property<int>("FuelTypeID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description");
+
+                    b.HasKey("FuelTypeID");
+
+                    b.ToTable("FuelTypes");
                 });
 
             modelBuilder.Entity("CicotiWebApp.Models.Invoice", b =>
@@ -347,9 +370,6 @@ namespace CicotiWebApp.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("CreatedUtc")
-                        .ValueGeneratedOnAddOrUpdate();
-
                     b.Property<string>("MakeName")
                         .IsRequired()
                         .HasMaxLength(50);
@@ -365,16 +385,27 @@ namespace CicotiWebApp.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("CreatedUtc")
-                        .ValueGeneratedOnAddOrUpdate();
+                    b.Property<int?>("DriveTypeID");
+
+                    b.Property<int?>("FuelTypeID");
+
+                    b.Property<int?>("MakeID");
 
                     b.Property<string>("ModelName")
                         .IsRequired()
                         .HasMaxLength(50);
 
+                    b.Property<int?>("NoOfWheels");
+
                     b.HasKey("ModelID");
 
-                    b.ToTable("Model");
+                    b.HasIndex("DriveTypeID");
+
+                    b.HasIndex("FuelTypeID");
+
+                    b.HasIndex("MakeID");
+
+                    b.ToTable("Models");
                 });
 
             modelBuilder.Entity("CicotiWebApp.Models.Principle", b =>
@@ -749,6 +780,24 @@ namespace CicotiWebApp.Data.Migrations
                     b.HasOne("CicotiWebApp.Models.Vehicle", "Vehicle")
                         .WithMany()
                         .HasForeignKey("VehicleID")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("CicotiWebApp.Models.Model", b =>
+                {
+                    b.HasOne("CicotiWebApp.Models.DriveType", "DriveType")
+                        .WithMany()
+                        .HasForeignKey("DriveTypeID")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("CicotiWebApp.Models.FuelType", "FuelType")
+                        .WithMany()
+                        .HasForeignKey("FuelTypeID")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("CicotiWebApp.Models.Make", "Make")
+                        .WithMany()
+                        .HasForeignKey("MakeID")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 

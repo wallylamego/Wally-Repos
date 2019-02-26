@@ -30,7 +30,9 @@ namespace CicotiWebApp.Data
         public DbSet<CostCentre> CostCentre { get; set; }
         public DbSet<Branch> Branch { get; set; }
         public DbSet<Make> Make { get; set; }
-        public DbSet<Model> Model { get; set; }
+        public DbSet<Model> Models { get; set; }
+        public DbSet<DriveType> DriveTypes { get; set; }
+        public DbSet<FuelType> FuelTypes { get; set; }
         public DbSet<Department> Department { get; set; }
         public DbSet<Principle> Principle { get; set; }
         public DbSet<SalesRep> SalesRep { get; set; }

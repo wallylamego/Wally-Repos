@@ -7,14 +7,13 @@ using System.Threading.Tasks;
 
 namespace CicotiWebApp.Models
 {
-    public class Department
+    public class Make
     {
-        public int DepartmentID { get; set; }
+        public int MakeID { get; set; }
         [Required]
         [MaxLength(50)]
-        public string DepartmentName { get; set; }
+        public string MakeName { get; set; }
        
-        [Required, DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        public DateTime CreatedUtc { get; set; }
+        
     }
 }

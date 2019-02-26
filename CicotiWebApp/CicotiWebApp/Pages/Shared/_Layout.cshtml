@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - CicotiWebApp</title>
 
-    <environment include="Development">
+    <environment ="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
     </environment>
@@ -30,21 +30,45 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                   
+
                     <li><a asp-page="/Index">Home</a></li>
                     <li><a asp-page="/About">About</a></li>
                     <li><a asp-page="/Contact">Contact</a></li>
+                    @*HR Section*@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li>
-                            <a class="dropdown-toggle" data-toggle="dropdown" asp-page="/Admin">Admin<span class="caret"></span></a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" asp-page="/Employee/Department/Index">HR<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a asp-page="/Employee/Department/Index">Department</a></li>
+                                <li><a asp-page="/Employee/CostCentre/Index">Cost Centre</a></li>
+                                <li><a asp-page="/Employee/JobDescription/Index">Job Description</a></li>
+                            </ul>
+                        </li>
+                    }
+                    @*Fleet Section*@
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>
+                            <a class="dropdown-toggle" data-toggle="dropdown" asp-page="/Vehicles/Index">Fleet<span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a asp-page="/SubContractors/Index">SubContractors</a></li>
+                                <li><a asp-page="/Vehicles/Make/Index">Make</a></li>
+                                <li><a asp-page="/Vehicles/Model/Index">Model</a></li>
                                 <li><a asp-page="/Vehicles/Index">Vehicles</a></li>
                                 <li><a asp-page="/VehicleTypes/Index">Vehicle Types</a></li>
+                                <li><a asp-page="/Drivers/Index">Drivers</a></li>
+                            </ul>
+                        </li>
+                    }
+                    @*Delivery Update Section*@
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>
+                            <a class="dropdown-toggle" data-toggle="dropdown" asp-page="/Admin">Logistics<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
                                 <li><a asp-page="/Statuses/Index">Status</a></li>
                                 <li><a asp-page="/SKU/Index">SKUs</a></li>
-                                <li><a asp-page="/Drivers/Index">Drivers</a></li>
                                 <li><a asp-page="/Invoice/Index">Update Delivery Status</a></li>
                                 <li><a asp-page="/Loads/Index">Load Maintenance</a></li>
                             </ul>
@@ -67,7 +91,7 @@
         </footer>
     </div>
 
-    <environment include="Development">
+    <environment ="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>

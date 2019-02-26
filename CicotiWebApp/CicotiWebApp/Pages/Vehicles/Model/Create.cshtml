@@ -1,0 +1,66 @@
+﻿@page
+@model CicotiWebApp.Pages.Vehicles.Model.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Pages/_LayoutDataTables.cshtml";
+}
+
+<h2>Create</h2>
+
+<h4>Model</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Model.MakeID" class="control-label">Make</label>
+                <select asp-for="Model.MakeID" id="statusID"
+                        asp-items="Model.MakeSL" class="form-control">
+                    <option value="">--Select Make--</option>
+                </select>
+                <span asp-validation-for="Model.MakeID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Model.ModelName" class="control-label"></label>
+                <input asp-for="Model.ModelName" class="form-control" />
+                <span asp-validation-for="Model.ModelName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Model.FuelTypeID" class="control-label">Fuel</label>
+                <select asp-for="Model.FuelTypeID" id="statusID"
+                        asp-items="Model.FuelTypeSL" class="form-control">
+                    Make
+                    <option value="">--Select Fuel Type--</option>
+                </select>
+                <span asp-validation-for="Model.FuelTypeID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Model.DriveType" class="control-label">Drive Type</label>
+                <select asp-for="Model.DriveTypeID" id="driveTypeID"
+                        asp-items="Model.DriveTypeSL" class="form-control">
+                    Make
+                    <option value="">--Select Drive Type--</option>
+                </select>
+                <span asp-validation-for="Model.DriveTypeID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Model.NoOfWheels" class="control-label"></label>
+                <input asp-for="Model.NoOfWheels" class="form-control" />
+                <span asp-validation-for="Model.NoOfWheels" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
