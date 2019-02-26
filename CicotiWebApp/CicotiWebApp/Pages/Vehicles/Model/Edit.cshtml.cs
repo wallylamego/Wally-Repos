@@ -27,6 +27,7 @@ namespace CicotiWebApp.Pages.Vehicles.Model
         public SelectList FuelTypeSL { get; set; }
         public SelectList DriveTypeSL { get; set; }
         public SelectList MakeSL { get; set; }
+        public SelectList VehicleTypeSL { get; set; }
 
         public void PopulatFuelTypeSL(object selectedFuelType = null)
         {
@@ -52,7 +53,14 @@ namespace CicotiWebApp.Pages.Vehicles.Model
             MakeSL = new SelectList(MakeQuery.AsNoTracking(),
                         "MakeID", "MakeName", selectedMake);
         }
-
+        public void PopulateVehicleTypeSL(object selectedVehicleType = null)
+        {
+            var VehicleTypeQuery = from d in _context.VehicleTypes
+                                   orderby d.Description
+                                   select d;
+            VehicleTypeSL = new SelectList(VehicleTypeQuery.AsNoTracking(),
+                        "VehicleTypeID", "Description", selectedVehicleType);
+        }
 
 
         public async Task<IActionResult> OnGetAsync(int? id)
@@ -71,6 +79,7 @@ namespace CicotiWebApp.Pages.Vehicles.Model
             PopulateDriveTypeSL();
             PopulateMakeSL();
             PopulatFuelTypeSL();
+            PopulateVehicleTypeSL();
             return Page();
         }
 

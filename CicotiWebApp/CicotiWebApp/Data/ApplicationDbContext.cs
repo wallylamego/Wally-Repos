@@ -42,6 +42,7 @@ namespace CicotiWebApp.Data
         public DbSet<InvoiceStatus> InvoiceStatus { get; set;}
         public DbSet<SubContractor> SubContractor { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
+        public DbSet<VehiclePurpose> VehiclePurpose { get; set; }
         public DbSet<VehicleType> VehicleTypes { get; set;}
         public DbSet<Driver> Drivers { get; set;}
         public DbSet<Load> Loads { get; set; }

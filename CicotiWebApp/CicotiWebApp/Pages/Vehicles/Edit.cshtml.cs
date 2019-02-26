@@ -70,7 +70,9 @@ namespace CicotiWebApp.Pages.Vehicles
             {
                 return Page();
             }
-
+            Vehicle.RegNumberABB = Vehicle.RegNumberABB.ToString().Replace(" ", "").Trim();
+            //set this as a delivery vehicle
+            Vehicle.VehiclePurposeID = 2;
             _context.Attach(Vehicle).State = EntityState.Modified;
 
             try

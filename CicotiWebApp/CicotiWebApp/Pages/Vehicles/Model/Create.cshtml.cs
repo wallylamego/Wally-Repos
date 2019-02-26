@@ -64,6 +64,7 @@ namespace CicotiWebApp.Pages.Vehicles.Model
             PopulateDriveTypeSL();
             PopulatFuelTypeSL();
             PopulateMakeSL();
+            PopulateVehicleTypeSL();
             return Page();
         }
 

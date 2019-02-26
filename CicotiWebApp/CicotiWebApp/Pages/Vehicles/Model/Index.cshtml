@@ -30,6 +30,7 @@
                 <th>Model Name</th>
                 <th>Fuel Type</th>
                 <th>Drive Type</th>
+                <th>Tonnage</th>
                 <th>Wheels</th>
                 <th>Edit</th>
                 <th>Delete</th>
@@ -106,22 +107,29 @@
                         "orderable": true
                     },
                     {
-                        /*No of Wheels is visible and is searchable*/
+                        /*Tonnage is visible and is searchable*/
                         "targets": [5],
                         "visible": true,
                         "searchable": true,
                         "orderable": true
                     },
                     {
-                        /*Edit button  is  visible and is not searchable*/
+                        /*No of Wheels is visible and is searchable*/
                         "targets": [6],
+                        "visible": true,
+                        "searchable": true,
+                        "orderable": true
+                    },
+                    {
+                        /*Edit button  is  visible and is not searchable*/
+                        "targets": [7],
                         "visible": true,
                         "searchable": false,
                         "orderable": false
                     },
                     {
                         /*Delete button  is  visible and is not searchable*/
-                        "targets": [7],
+                        "targets": [8],
                         "visible": true,
                         "searchable": false,
                         "orderable": false
@@ -133,6 +141,7 @@
                     { "data": "modelName", "name": "modelName", "autoWidth": true },
                     { "data": "fuelType", "name": "fuelType", "autoWidth": true },
                     { "data": "driveType", "name": "driveType", "autoWidth": true },
+                    { "data": "tonnage", "name": "tonnage", "autoWidth": true },
                     { "data": "wheels", "name": "wheels", "autoWidth": true },
                     {
                         "render": function (data, type, full, meta) {
@@ -143,7 +152,7 @@
                         "data": null, render: function (data, type, row)
                         {
                             return '<p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" onclick=DeleteData("' + row.id + '")><span class="glyphicon glyphicon-trash"></span></button></p>';
-                       }
+                        }
                     }
                 ]
 

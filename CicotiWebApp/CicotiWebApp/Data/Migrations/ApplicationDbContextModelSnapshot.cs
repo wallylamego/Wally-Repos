@@ -508,23 +508,29 @@ namespace CicotiWebApp.Data.Migrations
 
                     b.Property<double>("AcquistionCost");
 
-                    b.Property<int>("BranchID");
+                    b.Property<int?>("BranchID");
 
-                    b.Property<int>("CostCentreID");
+                    b.Property<int?>("CostCentreID");
 
                     b.Property<double>("DepreciationMonths");
 
+                    b.Property<int?>("EmployeeID");
+
                     b.Property<string>("FixedAssetsNumber");
 
-                    b.Property<int>("MakeID");
+                    b.Property<int?>("MakeID");
 
-                    b.Property<int>("ModelID");
+                    b.Property<int?>("ModelID");
+
+                    b.Property<string>("RegNumberABB");
 
                     b.Property<string>("RegistrationNumber")
                         .IsRequired()
                         .HasMaxLength(10);
 
-                    b.Property<int>("SubContractorID");
+                    b.Property<int?>("SubContractorID");
+
+                    b.Property<int?>("VehiclePurposeID");
 
                     b.Property<int>("VehicleTypeID");
 
@@ -534,15 +540,32 @@ namespace CicotiWebApp.Data.Migrations
 
                     b.HasIndex("CostCentreID");
 
+                    b.HasIndex("EmployeeID");
+
                     b.HasIndex("MakeID");
 
                     b.HasIndex("ModelID");
 
                     b.HasIndex("SubContractorID");
 
+                    b.HasIndex("VehiclePurposeID");
+
                     b.HasIndex("VehicleTypeID");
 
                     b.ToTable("Vehicles");
+                });
+
+            modelBuilder.Entity("CicotiWebApp.Models.VehiclePurpose", b =>
+                {
+                    b.Property<int>("VehiclePurposeID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description");
+
+                    b.HasKey("VehiclePurposeID");
+
+                    b.ToTable("VehiclePurpose");
                 });
 
             modelBuilder.Entity("CicotiWebApp.Models.VehicleType", b =>
@@ -822,6 +845,11 @@ namespace CicotiWebApp.Data.Migrations
                         .HasForeignKey("CostCentreID")
                         .OnDelete(DeleteBehavior.Restrict);
 
+                    b.HasOne("CicotiWebApp.Models.Employee", "Employee")
+                        .WithMany()
+                        .HasForeignKey("EmployeeID")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("CicotiWebApp.Models.Make", "Make")
                         .WithMany()
                         .HasForeignKey("MakeID")
@@ -835,6 +863,11 @@ namespace CicotiWebApp.Data.Migrations
                     b.HasOne("CicotiWebApp.Models.SubContractor", "SubContractor")
                         .WithMany()
                         .HasForeignKey("SubContractorID")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("CicotiWebApp.Models.VehiclePurpose", "VehiclePurpose")
+                        .WithMany()
+                        .HasForeignKey("VehiclePurposeID")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("CicotiWebApp.Models.VehicleType", "VechileType")

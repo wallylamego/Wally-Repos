@@ -99,6 +99,15 @@
     <Content Update="Pages\Vehicles\Edit.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Pages\Vehicles\Fleet\Create.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\Vehicles\Fleet\Edit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\Vehicles\Fleet\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Pages\Vehicles\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

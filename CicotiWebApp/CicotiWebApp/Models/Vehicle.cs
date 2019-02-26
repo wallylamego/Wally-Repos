@@ -11,21 +11,27 @@ namespace CicotiWebApp.Models
         [Key]
         public int VehicleID { get; set; }
         public int VehicleTypeID { get; set; }
-        public int SubContractorID { get; set; }
-        public int MakeID { get; set; }
-        public int ModelID { get; set; }
-        public int CostCentreID { get; set; }
-        public int BranchID { get; set; }
+        public int ? SubContractorID { get; set; }
+        public int ? VehiclePurposeID { get; set; }
+        public int ? MakeID { get; set; }
+        public int ? ModelID { get; set; }
+        public int ? CostCentreID { get; set; }
+        public int ? BranchID { get; set; }
         public string FixedAssetsNumber { get; set; }
         public DateTime AcquisitionDate { get; set; }
         public Double AcquistionCost { get; set; }
         public Double DepreciationMonths { get; set; }
         
+        public int ? EmployeeID { get; set; }
+
         [Required]
         [MaxLength(10)]
         [Display(Name = "Registration Number")]
         public string RegistrationNumber { get; set; }
+        public string RegNumberABB { get; set; }
         public VehicleType VechileType { get; set; }
+        public VehiclePurpose VehiclePurpose { get; set; }
+        public Employee Employee { get; set; }
         public SubContractor SubContractor { get; set; }
         public CostCentre CostCentre { get; set; }
         public Branch Branch { get; set; }

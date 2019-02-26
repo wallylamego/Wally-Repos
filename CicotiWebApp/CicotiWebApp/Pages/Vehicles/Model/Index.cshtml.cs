@@ -39,7 +39,8 @@ namespace CicotiWebApp.Pages.Vehicles.Model
             var ModelQuery = _context.Models.
                 Include(f=>f.FuelType).
                 Include(d=>d.DriveType).
-                Include(m=>m.Make)
+                Include(m=>m.Make).
+                Include(v=>v.VehicleType)
                 .Select(m => new
                {
                    Id = m.ModelID,
@@ -47,6 +48,7 @@ namespace CicotiWebApp.Pages.Vehicles.Model
                    FuelType = m.FuelType.Description,
                    DriveType = m.DriveType.Description,
                    Make = m.Make.MakeName,
+                   Tonnage = m.VehicleType.Description,
                    Wheels = m.NoOfWheels
                 }
                );

@@ -46,16 +46,16 @@
                 <span asp-validation-for="Model.DriveTypeID" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Model" class="control-label">Drive Type</label>
-                <select asp-for="Model.DriveTypeID" id="driveTypeID"
-                        asp-items="Model.DriveTypeSL" class="form-control">
+                <label asp-for="Model.VehicleType" class="control-label">Tonnage</label>
+                <select asp-for="Model.VehicleTypeID" id="driveTypeID"
+                        asp-items="Model.VehicleTypeSL" class="form-control">
                     Make
-                    <option value="">--Select Drive Type--</option>
+                    <option value="">--Select Vehicle Type--</option>
                 </select>
-                <span asp-validation-for="Model.DriveTypeID" class="text-danger"></span>
+                <span asp-validation-for="Model.VehicleTypeID" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Model.NoOfWheels" class="control-label"></label>
+                <label asp-for="Model.NoOfWheels" class="control-label">No of Wheels</label>
                 <input asp-for="Model.NoOfWheels" class="form-control" />
                 <span asp-validation-for="Model.NoOfWheels" class="text-danger"></span>
             </div>
