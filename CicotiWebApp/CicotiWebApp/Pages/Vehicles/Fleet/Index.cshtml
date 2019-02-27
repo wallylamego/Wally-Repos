@@ -9,7 +9,7 @@
         return Xsrf.GetAndStoreTokens(Model.HttpContext).RequestToken;
     }
 }
-@model CicotiWebApp.Pages.Vehicles.IndexModel
+@model CicotiWebApp.Pages.Vehicles.Fleet.IndexModel
 
 @{
     ViewData["Title"] = "Index";
@@ -27,7 +27,7 @@
             <tr>
                 <th>VehicleID</th>
                 <th>Vehicle Purpose</th>
-                <th>Branch</th>
+                @*<th>Branch</th>
                 <th>Cost Centre</th>
                 <th>Employee</th>
                 <th>Registration Number</th>
@@ -39,9 +39,9 @@
                 <th>Fixed Assets Number</th>
                 <th>Acquisition Date</th>
                 <th>Acquisition Cost</th>
-                <th>Depreciation Months</th>
-                <th>Edit</th>
-                <th>Delete</th>
+                <th>Depreciation Months</th>*@
+                @*<th>Edit</th>
+                <th>Delete</th>*@
             </tr>
         </thead>
     </table>
@@ -69,8 +69,7 @@
                 "filter": true, // this is for disable filter (search box)
                 "orderMulti": false, // for disable multiple column at once
                 "ajax": {
-
-                    "url": "/Fleet/Index?handler=Paging",
+                    "url": "/Vehicles/Fleet/Index?handler=FleetPaging",
                      "headers":
                         {
                             "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
@@ -91,127 +90,129 @@
                         "targets": [1],
                         "visible": true,
                         "searchable": true
-                    },
-                    {
-                        /*Branch  is visible and is searchable*/
-                        "targets": [2],
-                        "visible": true,
-                        "searchable": true
-                    },
-                    {
-                        /*Cost Centre  is visible and is searchable*/
-                        "targets": [3],
-                        "visible": true,
-                        "searchable": true
-                    },
-                    {
-                        /*Employee   is visible and is searchable*/
-                        "targets": [4],
-                        "visible": true,
-                        "searchable": true
-                    },
-                    {
-                        /*Registration Number is visible and is searchable*/
-                        "targets": [5],
-                        "visible": true,
-                        "searchable": true
-                    },
-                    {
-                        /*Make  is visible and is searchable*/
-                        "targets": [6],
-                        "visible": true,
-                        "searchable": true
-                    },
-                    {
-                        /*Model is visible and is searchable*/
-                        "targets": [7],
-                        "visible": true,
-                        "searchable": true
-                    },
-                    {
-                        /*Fuel Type is visible and is searchable*/
-                        "targets": [8],
-                        "visible": true,
-                        "searchable": true
-                    },
-                    {
-                    /*Drive Type is visible and is searchable*/
-                    "targets": [9],
-                    "visible": true,
-                    "searchable": true
-                    },
-                    {
-                        /*Tonnage is visible and is searchable*/
-                        "targets": [10],
-                        "visible": true,
-                        "searchable": true
-                    },
-                    {
-                        /*Fixed Assets Register is visible and is searchable*/
-                        "targets": [11],
-                        "visible": true,
-                        "searchable": true
-                    },
-                    {
-                        /*Acquistion Date is visible and is searchable*/
-                        "targets": [12],
-                        "visible": true,
-                        "searchable": true
-                    },
-                    {
-                        /*Acquistion Cost is visible and is searchable*/
-                        "targets": [13],
-                        "visible": true,
-                        "searchable": true
-                    },
-                    {
-                        /*Depreciation Months is visible and is searchable*/
-                        "targets": [14],
-                        "visible": true,
-                        "searchable": true
-                    },
-                    {
-                        /*Edit button  is  visible and is not searchable*/
-                        "targets": [15],
-                        "visible": true,
-                        "searchable": false,
-                        "orderable": false
-                    },
-                    {
-                        /*Delete button  is  visible and is not searchable*/
-                        "targets": [16],
-                        "visible": true,
-                        "searchable": false,
-                        "orderable": false
-                    }
+                        }
+                        //,
+                    //{
+                    //    /*Branch  is visible and is searchable*/
+                    //    "targets": [2],
+                    //    "visible": true,
+                    //    "searchable": true
+                    //},
+                    //{
+                    //    /*Cost Centre  is visible and is searchable*/
+                    //    "targets": [3],
+                    //    "visible": true,
+                    //    "searchable": true
+                    //},
+                    //{
+                    //    /*Employee   is visible and is searchable*/
+                    //    "targets": [4],
+                    //    "visible": true,
+                    //    "searchable": true
+                    //},
+                    //{
+                    //    /*Registration Number is visible and is searchable*/
+                    //    "targets": [5],
+                    //    "visible": true,
+                    //    "searchable": true
+                    //},
+                    //{
+                    //    /*Make  is visible and is searchable*/
+                    //    "targets": [6],
+                    //    "visible": true,
+                    //    "searchable": true
+                    //},
+                    //{
+                    //    /*Model is visible and is searchable*/
+                    //    "targets": [7],
+                    //    "visible": true,
+                    //    "searchable": true
+                    //},
+                    //{
+                    //    /*Fuel Type is visible and is searchable*/
+                    //    "targets": [8],
+                    //    "visible": true,
+                    //    "searchable": true
+                    //},
+                    //{
+                    //    /*Drive Type is visible and is searchable*/
+                    //    "targets": [9],
+                    //    "visible": true,
+                    //    "searchable": true
+                    //},
+                    //{
+                    //    /*Tonnage is visible and is searchable*/
+                    //    "targets": [10],
+                    //    "visible": true,
+                    //    "searchable": true
+                    //},
+                    //{
+                    //    /*Fixed Assets Register is visible and is searchable*/
+                    //    "targets": [11],
+                    //    "visible": true,
+                    //    "searchable": true
+                    //},
+                    //{
+                    //    /*Acquistion Date is visible and is searchable*/
+                    //    "targets": [12],
+                    //    "visible": true,
+                    //    "searchable": true
+                    //},
+                    //{
+                    //    /*Acquistion Cost is visible and is searchable*/
+                    //    "targets": [13],
+                    //    "visible": true,
+                    //    "searchable": true
+                    //},
+                    //{
+                    //    /*Depreciation Months is visible and is searchable*/
+                    //    "targets": [14],
+                    //    "visible": true,
+                    //    "searchable": true
+                    //    }
+                        //,
+                    //{
+                    //    /*Edit button  is  visible and is not searchable*/
+                    //    "targets": [15],
+                    //    "visible": true,
+                    //    "searchable": false,
+                    //    "orderable": false
+                    //},
+                    //{
+                    //    /*Delete button  is  visible and is not searchable*/
+                    //    "targets": [16],
+                    //    "visible": true,
+                    //    "searchable": false,
+                    //    "orderable": false
+                    //}
                 ],
                 "columns": [
                     { "data": "vehicleID", "name": "vehicleID", "autoWidth": true },
-                    { "data": "vehiclePurpose", "name": "vehiclePurpose", "autoWidth": true },
-                    { "data": "branch", "name": "branch", "autoWidth": true },
-                    { "data": "costCentre", "name": "costCentre", "autoWidth": true },
-                    { "data": "employee", "name": "employee", "autoWidth": true },
-                    { "data": "registrationNumber", "name": "registrationNumber", "autoWidth": true },
-                    { "data": "make", "name": "make", "autoWidth": true },
-                    { "data": "model", "name": "model", "autoWidth": true },
-                    { "data": "fuelType", "name": "fuelType", "autoWidth": true },
-                    { "data": "driveType", "name": "driveType", "autoWidth": true },
-                    { "data": "tonnage", "name": "tonnage", "autoWidth": true },
-                    { "data": "fixedAssetsNumber", "name": "fixedAssetsNumber", "autoWidth": true },
-                    { "data": "acquisitionDate", "name": "acquisitionDate", "autoWidth": true },
-                    { "data": "acquisitionCost", "name": "acquisitionCost", "autoWidth": true },
-                    { "data": "depreciationMonths", "name": "depreciationMonths", "autoWidth": true },
-                    {
-                        "render": function (data, type, full, meta) {
-                            return "<p data-placement='top' data-toggle='tooltip' title='Edit'><button class='btn btn-primary btn-xs' data-title='Edit' data-toggle='modal' data-target='#edit' onclick='window.location.href=\"/Vehicles/Edit/" + full.vehicleID +  "\"\'><span class='glyphicon glyphicon-pencil'></span></button></p>";
-                        }
-                    },
-                    {
-                        "data": null, render: function (data, type, row)
-                        {
-                            return '<p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" onclick=DeleteData("' + row.vehicleID + '")><span class="glyphicon glyphicon-trash"></span></button></p>';
-                       }
-                    }
+                    { "data": "purpose", "name": "purpose", "autoWidth": true }
+                    //,{ "data": "branch", "name": "branch", "autoWidth": true },
+                    //{ "data": "costCentre", "name": "costCentre", "autoWidth": true },
+                    //{ "data": "employee", "name": "employee", "autoWidth": true },
+                    //{ "data": "registrationNumber", "name": "registrationNumber", "autoWidth": true },
+                    //{ "data": "make", "name": "make", "autoWidth": true },
+                    //{ "data": "model", "name": "model", "autoWidth": true },
+                    //{ "data": "fuelType", "name": "fuelType", "autoWidth": true },
+                    //{ "data": "driveType", "name": "driveType", "autoWidth": true },
+                    //{ "data": "tonnage", "name": "tonnage", "autoWidth": true },
+                    //{ "data": "fixedAssetsNumber", "name": "fixedAssetsNumber", "autoWidth": true },
+                    //{ "data": "acquisitionDate", "name": "acquisitionDate", "autoWidth": true },
+                    //{ "data": "acquisitionCost", "name": "acquisitionCost", "autoWidth": true },
+                    //{ "data": "depreciationMonths", "name": "depreciationMonths", "autoWidth": true }
+                    //,{
+                    //    "render": function (data, type, full, meta) {
+                    //        return "<p data-placement='top' data-toggle='tooltip' title='Edit'><button class='btn btn-primary btn-xs' data-title='Edit' data-toggle='modal' data-target='#edit' onclick='window.location.href=\"/Vehicles/Fleet/Edit/" + full.vehicleID +  "\"\'><span class='glyphicon glyphicon-pencil'></span></button></p>";
+                    //    }
+                    //},
+                    //{
+                    //    "data": null, render: function (data, type, row)
+                    //    {
+                    //        return '<p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" onclick=DeleteData("' + row.vehicleID + '")><span class="glyphicon glyphicon-trash"></span></button></p>';
+                    //   }
+                    //}
                 ]
 
             });//Fleet Table

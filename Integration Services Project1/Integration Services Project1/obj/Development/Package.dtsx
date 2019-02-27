@@ -1,0 +1,2314 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/27/2019 1:52:24 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="OTIJHB-NB-081"
+  DTS:CreatorName="OTI\WallyF"
+  DTS:DTSID="{67EB8FB0-BB1D-418E-B059-9320B9CD79F0}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.0900.30"
+  DTS:LocaleID="7177"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{FED2506C-C164-45B0-9D17-BCB5A489E0D5}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{A6547BFD-70E5-455A-B6AF-6A68A8260B5A}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="7177"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\wallyf\Desktop\SalesImport.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="14"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ActualQuantity"
+              DTS:DTSID="{9AB0B1DA-CAFD-4CC4-A760-9A31F98CAE34}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="14"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ActualSalesValue"
+              DTS:DTSID="{3CB92B1C-2500-45D7-B8D2-3A2A67CCEA78}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Code"
+              DTS:DTSID="{68C1778B-CCDD-478A-AE77-9F8D02BB460D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="14"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Cost"
+              DTS:DTSID="{6FC8282A-EAD2-457F-9449-DF6067068E89}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="150"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ItemDescription"
+              DTS:DTSID="{FDC4C2BA-807F-4C63-B39F-5FCCB3624A3C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="14"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Profit"
+              DTS:DTSID="{F94A77F0-D37B-4B8B-9B3C-4194E5F64908}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ProfitPerc"
+              DTS:DTSID="{CB7BBD92-464F-4E39-B9F3-BD750F38E1CB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Reference"
+              DTS:DTSID="{E55E1D96-FDE6-4AB1-817F-5FA74F758B30}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="7"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TxDate"
+              DTS:DTSID="{0A3B6524-9E54-4389-A906-CCA3DDFF1C1D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="itemgroup"
+              DTS:DTSID="{C5E5D85F-40EB-404A-9CFC-820CA26E40FA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Branch"
+              DTS:DTSID="{A9A35B44-5DE9-4FCA-BB9A-641C6A41C0D7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Warehousecode"
+              DTS:DTSID="{F9FDC0F9-027B-425D-8DF1-4E02D345C151}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="WarehouseName"
+              DTS:DTSID="{4CD3BC2C-C9F7-4D4A-8DF9-44F57B192656}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Account"
+              DTS:DTSID="{CBCA08F4-093A-425F-BB0F-41715F0E6CC7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="150"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Name"
+              DTS:DTSID="{B987B93B-C4F6-4DA7-81C3-4CA64D99CA96}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ulARType"
+              DTS:DTSID="{82BBAEE4-95D0-4F7E-825E-7AADA8727ED5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="AreaCode"
+              DTS:DTSID="{D169072B-061D-49F4-A666-F115D364C88B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="AreaDescription"
+              DTS:DTSID="{39756D6D-F5F2-49C5-AB30-93DEAA3071FC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ClientGroup"
+              DTS:DTSID="{4DA8321E-5B6F-4391-88FB-BD305DD1D95C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ClientGroupName"
+              DTS:DTSID="{54C44A59-92E7-4AAB-9026-A9167764D053}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="RepCode"
+              DTS:DTSID="{33CECEC7-EFE7-4B86-A2B8-F3E1F0C3BA20}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="RepName"
+              DTS:DTSID="{E56B560B-1A00-4CE1-AC71-E872266C0A4C}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[OTIJHB-NB-081\SQLEXPRESS.CICOTIDW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C5F123DE-59CE-4394-BC86-6EFDC11865C8}"
+      DTS:ObjectName="OTIJHB-NB-081\SQLEXPRESS.CICOTIDW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=OTIJHB-NB-081\SQLEXPRESS;Initial Catalog=CICOTIDW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Import Sales Data"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{8460D41C-77BE-42D1-B1A2-35C91F07B027}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Import Sales Data"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Import Sales Data\Add Month"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Add Month"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Import Sales Data\Add Month.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import Sales Data\Add Month.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Import Sales Data\Add Month.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Sales Data\Add Month.Outputs[Derived Column Output].Columns[Month]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Import Sales Data\Add Month.Outputs[Derived Column Output].Columns[Month]"
+                      name="Month"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">2</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">2</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Import Sales Data\Add Month.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Import Sales Data\Add Month.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Sales Data\Add Month.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Sales Data\Add Month.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Sales Data\Add Month.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Sales Data\Add Month.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import Sales Data\Add Week Number"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Add Week Number"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Import Sales Data\Add Week Number.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import Sales Data\Add Week Number.Inputs[Derived Column Input].Columns[TxDate]"
+                      cachedDataType="date"
+                      cachedName="TxDate"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[TxDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import Sales Data\Add Week Number.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Import Sales Data\Add Week Number.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Sales Data\Add Week Number.Outputs[Derived Column Output].Columns[WeekNum]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Import Sales Data\Add Week Number.Outputs[Derived Column Output].Columns[WeekNum]"
+                      name="WeekNum"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[DATEPART]("week",#{Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[TxDate]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">DATEPART("week",TxDate)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Import Sales Data\Add Week Number.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Import Sales Data\Add Week Number.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Sales Data\Add Week Number.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Sales Data\Add Week Number.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Sales Data\Add Week Number.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Sales Data\Add Week Number.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import Sales Data\Add Year Date"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Add Year Date"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Import Sales Data\Add Year Date.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import Sales Data\Add Year Date.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Import Sales Data\Add Year Date.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Sales Data\Add Year Date.Outputs[Derived Column Output].Columns[YearMonth]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Import Sales Data\Add Year Date.Outputs[Derived Column Output].Columns[YearMonth]"
+                      name="YearMonth"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">201902</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">201902</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Import Sales Data\Add Year Date.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Import Sales Data\Add Year Date.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Sales Data\Add Year Date.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Sales Data\Add Year Date.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Sales Data\Add Year Date.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Sales Data\Add Year Date.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import Sales Data\LookUp Branch"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LookUp Branch"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[LookUpBranch]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[LookUpBranch]) [refTable]
+where [refTable].[PastelBranch] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="PastelBranch" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Branch" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Region" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[Branch]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import Sales Data\LookUp Branch.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[OTIJHB-NB-081\SQLEXPRESS.CICOTIDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[OTIJHB-NB-081\SQLEXPRESS.CICOTIDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Import Sales Data\LookUp Branch.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import Sales Data\LookUp Branch.Inputs[Lookup Input].Columns[Branch]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Branch"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[Branch]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">PastelBranch</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Branch</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import Sales Data\LookUp Branch.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Import Sales Data\LookUp Branch.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Sales Data\LookUp Branch.Outputs[Lookup Match Output].Columns[Region]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="50"
+                      lineageId="Package\Import Sales Data\LookUp Branch.Outputs[Lookup Match Output].Columns[Region]"
+                      name="Region"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Region</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Import Sales Data\LookUp Branch.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Import Sales Data\LookUp Branch.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Import Sales Data\LookUp Branch.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Import Sales Data\LookUp Branch.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Sales Data\LookUp Branch.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Sales Data\LookUp Branch.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Sales Data\LookUp Branch.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Sales Data\LookUp Branch.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import Sales Data\LookUp Principal"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LookUp Principal"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[LookUpPrincipal]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[LookUpPrincipal]) [refTable]
+where [refTable].[Pastel Principle] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Pastel Principle" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DataBase  Item Group" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Silo" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Status" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[itemgroup]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import Sales Data\LookUp Principal.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[OTIJHB-NB-081\SQLEXPRESS.CICOTIDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[OTIJHB-NB-081\SQLEXPRESS.CICOTIDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Import Sales Data\LookUp Principal.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import Sales Data\LookUp Principal.Inputs[Lookup Input].Columns[DataBase  Item Group]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="itemgroup"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[itemgroup]"
+                      name="DataBase  Item Group"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Pastel Principle</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">DataBase  Item Group</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import Sales Data\LookUp Principal.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Import Sales Data\LookUp Principal.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Sales Data\LookUp Principal.Outputs[Lookup Match Output].Columns[Silo]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="50"
+                      lineageId="Package\Import Sales Data\LookUp Principal.Outputs[Lookup Match Output].Columns[Silo]"
+                      name="Silo"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Silo</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Sales Data\LookUp Principal.Outputs[Lookup Match Output].Columns[Status]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="50"
+                      lineageId="Package\Import Sales Data\LookUp Principal.Outputs[Lookup Match Output].Columns[Status]"
+                      name="Status"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Status</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Import Sales Data\LookUp Principal.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Import Sales Data\LookUp Principal.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Import Sales Data\LookUp Principal.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Import Sales Data\LookUp Principal.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Sales Data\LookUp Principal.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Sales Data\LookUp Principal.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Sales Data\LookUp Principal.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Sales Data\LookUp Principal.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import Sales Data\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Sales]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import Sales Data\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[OTIJHB-NB-081\SQLEXPRESS.CICOTIDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[OTIJHB-NB-081\SQLEXPRESS.CICOTIDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ActualQuantity]"
+                      cachedDataType="decimal"
+                      cachedName="ActualQuantity"
+                      externalMetadataColumnId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ActualQuantity]"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[ActualQuantity]" />
+                    <inputColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ActualSalesValue]"
+                      cachedDataType="decimal"
+                      cachedName="ActualSalesValue"
+                      externalMetadataColumnId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ActualSalesValue]"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[ActualSalesValue]" />
+                    <inputColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Code"
+                      externalMetadataColumnId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Code]"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[Code]" />
+                    <inputColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Cost]"
+                      cachedDataType="decimal"
+                      cachedName="Cost"
+                      externalMetadataColumnId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Cost]"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[Cost]" />
+                    <inputColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ItemDescription]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="150"
+                      cachedName="ItemDescription"
+                      externalMetadataColumnId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ItemDescription]"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[ItemDescription]" />
+                    <inputColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Profit]"
+                      cachedDataType="decimal"
+                      cachedName="Profit"
+                      externalMetadataColumnId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Profit]"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[Profit]" />
+                    <inputColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ProfitPerc]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ProfitPerc"
+                      externalMetadataColumnId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProfitPerc]"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[ProfitPerc]" />
+                    <inputColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Reference]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Reference"
+                      externalMetadataColumnId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Reference]"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[Reference]" />
+                    <inputColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TxDate]"
+                      cachedDataType="date"
+                      cachedName="TxDate"
+                      externalMetadataColumnId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TxDate]"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[TxDate]" />
+                    <inputColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Branch]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Branch"
+                      externalMetadataColumnId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Branch]"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[Branch]" />
+                    <inputColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Warehousecode]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Warehousecode"
+                      externalMetadataColumnId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Warehousecode]"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[Warehousecode]" />
+                    <inputColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[WarehouseName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="WarehouseName"
+                      externalMetadataColumnId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WarehouseName]"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[WarehouseName]" />
+                    <inputColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Account]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Account"
+                      externalMetadataColumnId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Account]"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[Account]" />
+                    <inputColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="150"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ulARType]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ulARType"
+                      externalMetadataColumnId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ulARType]"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[ulARType]" />
+                    <inputColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AreaCode]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="AreaCode"
+                      externalMetadataColumnId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AreaCode]"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[AreaCode]" />
+                    <inputColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AreaDescription]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="AreaDescription"
+                      externalMetadataColumnId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AreaDescription]"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[AreaDescription]" />
+                    <inputColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ClientGroup]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ClientGroup"
+                      externalMetadataColumnId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ClientGroup]"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[ClientGroup]" />
+                    <inputColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ClientGroupName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ClientGroupName"
+                      externalMetadataColumnId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ClientGroupName]"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[ClientGroupName]" />
+                    <inputColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[RepCode]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="RepCode"
+                      externalMetadataColumnId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RepCode]"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[RepCode]" />
+                    <inputColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[RepName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="RepName"
+                      externalMetadataColumnId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RepName]"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[RepName]" />
+                    <inputColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Region]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Region"
+                      externalMetadataColumnId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Region]"
+                      lineageId="Package\Import Sales Data\LookUp Branch.Outputs[Lookup Match Output].Columns[Region]" />
+                    <inputColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Silo]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Silo"
+                      externalMetadataColumnId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SILO]"
+                      lineageId="Package\Import Sales Data\LookUp Principal.Outputs[Lookup Match Output].Columns[Silo]" />
+                    <inputColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Status]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Status"
+                      externalMetadataColumnId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Status]"
+                      lineageId="Package\Import Sales Data\LookUp Principal.Outputs[Lookup Match Output].Columns[Status]" />
+                    <inputColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[WeekNum]"
+                      cachedDataType="i4"
+                      cachedName="WeekNum"
+                      externalMetadataColumnId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WeekNum]"
+                      lineageId="Package\Import Sales Data\Add Week Number.Outputs[Derived Column Output].Columns[WeekNum]" />
+                    <inputColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[YearMonth]"
+                      cachedDataType="i4"
+                      cachedName="YearMonth"
+                      externalMetadataColumnId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[YearMonth]"
+                      lineageId="Package\Import Sales Data\Add Year Date.Outputs[Derived Column Output].Columns[YearMonth]" />
+                    <inputColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Month]"
+                      cachedDataType="i4"
+                      cachedName="Month"
+                      externalMetadataColumnId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Month]"
+                      lineageId="Package\Import Sales Data\Add Month.Outputs[Derived Column Output].Columns[Month]" />
+                    <inputColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[itemgroup]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="itemgroup"
+                      externalMetadataColumnId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[itemgroup]"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[itemgroup]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ActualQuantity]"
+                      dataType="numeric"
+                      name="ActualQuantity"
+                      precision="28" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ActualSalesValue]"
+                      dataType="numeric"
+                      name="ActualSalesValue"
+                      precision="28" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Code" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Cost]"
+                      dataType="numeric"
+                      name="Cost"
+                      precision="28" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ItemDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="ItemDescription" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Profit]"
+                      dataType="numeric"
+                      name="Profit"
+                      precision="28" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProfitPerc]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ProfitPerc" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Reference]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Reference" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TxDate]"
+                      dataType="dbTimeStamp"
+                      name="TxDate" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SILO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SILO" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Status]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Status" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[itemgroup]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="itemgroup" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Branch]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Branch" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Region]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Region" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Warehousecode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Warehousecode" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WarehouseName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="WarehouseName" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Account]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Account" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ulARType]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ulARType" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AreaCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="AreaCode" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AreaDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="AreaDescription" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ClientGroup]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ClientGroup" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ClientGroupName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ClientGroupName" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RepCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="RepCode" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RepName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="RepName" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WeekNum]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="WeekNum" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[YearMonth]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="YearMonth" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Month]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Month" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import Sales Data\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Sales Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Sales Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Sales Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import Sales Data\Sales Data"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="7177"
+              name="Sales Data"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import Sales Data\Sales Data.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[ActualQuantity]"
+                      dataType="decimal"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[ActualQuantity]"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[ActualQuantity]"
+                      name="ActualQuantity"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[ActualSalesValue]"
+                      dataType="decimal"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[ActualSalesValue]"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[ActualSalesValue]"
+                      name="ActualSalesValue"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[Code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[Code]"
+                      length="50"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[Code]"
+                      name="Code"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[Cost]"
+                      dataType="decimal"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[Cost]"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[Cost]"
+                      name="Cost"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[ItemDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[ItemDescription]"
+                      length="150"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[ItemDescription]"
+                      name="ItemDescription"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[Profit]"
+                      dataType="decimal"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[Profit]"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[Profit]"
+                      name="Profit"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[ProfitPerc]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[ProfitPerc]"
+                      length="50"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[ProfitPerc]"
+                      name="ProfitPerc"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[Reference]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[Reference]"
+                      length="50"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[Reference]"
+                      name="Reference"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[TxDate]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[TxDate]"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[TxDate]"
+                      name="TxDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[itemgroup]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[itemgroup]"
+                      length="50"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[itemgroup]"
+                      name="itemgroup"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[Branch]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[Branch]"
+                      length="50"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[Branch]"
+                      name="Branch"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[Warehousecode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[Warehousecode]"
+                      length="50"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[Warehousecode]"
+                      name="Warehousecode"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[WarehouseName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[WarehouseName]"
+                      length="50"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[WarehouseName]"
+                      name="WarehouseName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[Account]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[Account]"
+                      length="50"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[Account]"
+                      name="Account"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[Name]"
+                      length="150"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[ulARType]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[ulARType]"
+                      length="50"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[ulARType]"
+                      name="ulARType"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[AreaCode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[AreaCode]"
+                      length="50"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[AreaCode]"
+                      name="AreaCode"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[AreaDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[AreaDescription]"
+                      length="50"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[AreaDescription]"
+                      name="AreaDescription"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[ClientGroup]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[ClientGroup]"
+                      length="50"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[ClientGroup]"
+                      name="ClientGroup"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[ClientGroupName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[ClientGroupName]"
+                      length="50"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[ClientGroupName]"
+                      name="ClientGroupName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[RepCode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[RepCode]"
+                      length="50"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[RepCode]"
+                      name="RepCode"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[RepName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[RepName]"
+                      length="50"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].Columns[RepName]"
+                      name="RepName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[ActualQuantity]"
+                      dataType="decimal"
+                      name="ActualQuantity" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[ActualSalesValue]"
+                      dataType="decimal"
+                      name="ActualSalesValue" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Code" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[Cost]"
+                      dataType="decimal"
+                      name="Cost" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[ItemDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      name="ItemDescription" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[Profit]"
+                      dataType="decimal"
+                      name="Profit" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[ProfitPerc]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ProfitPerc" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[Reference]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Reference" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[TxDate]"
+                      dataType="date"
+                      name="TxDate" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[itemgroup]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="itemgroup" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[Branch]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Branch" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[Warehousecode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Warehousecode" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[WarehouseName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="WarehouseName" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[Account]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Account" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[ulARType]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ulARType" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[AreaCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="AreaCode" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[AreaDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="AreaDescription" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[ClientGroup]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ClientGroup" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[ClientGroupName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ClientGroupName" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[RepCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="RepCode" />
+                    <externalMetadataColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output].ExternalColumns[RepName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="RepName" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Import Sales Data.Paths[Derived Column Output]"
+              endId="Package\Import Sales Data\Add Year Date.Inputs[Derived Column Input]"
+              name="Derived Column Output"
+              startId="Package\Import Sales Data\Add Week Number.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Import Sales Data.Paths[Derived Column Output1]"
+              endId="Package\Import Sales Data\Add Month.Inputs[Derived Column Input]"
+              name="Derived Column Output"
+              startId="Package\Import Sales Data\Add Year Date.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Import Sales Data.Paths[Derived Column Output2]"
+              endId="Package\Import Sales Data\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Import Sales Data\Add Month.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Import Sales Data.Paths[Flat File Source Output]"
+              endId="Package\Import Sales Data\LookUp Branch.Inputs[Lookup Input]"
+              name="Flat File Source Output"
+              startId="Package\Import Sales Data\Sales Data.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Import Sales Data.Paths[Lookup Match Output]"
+              endId="Package\Import Sales Data\LookUp Principal.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Import Sales Data\LookUp Branch.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Import Sales Data.Paths[Lookup Match Output1]"
+              endId="Package\Import Sales Data\Add Week Number.Inputs[Derived Column Input]"
+              name="Lookup Match Output"
+              startId="Package\Import Sales Data\LookUp Principal.Outputs[Lookup Match Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="164,42"
+          Id="Package\Import Sales Data"
+          TopLeft="94.5,43.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Import Sales Data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="128.5,42"
+          Id="Package\Import Sales Data\Sales Data"
+          TopLeft="41.5,27.5" />
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Import Sales Data\LookUp Branch"
+          TopLeft="229.5,97.5" />
+        <EdgeLayout
+          Id="Package\Import Sales Data.Paths[Flat File Source Output]"
+          TopLeft="105.75,69.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="198.75,28"
+              Start="0,0"
+              End="198.75,20.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10"
+                    Point2="0,14"
+                    Point3="4,14" />
+                  <mssgle:LineSegment
+                    End="194.75,14" />
+                  <mssgle:CubicBezierSegment
+                    Point1="194.75,14"
+                    Point2="198.75,14"
+                    Point3="198.75,18" />
+                  <mssgle:LineSegment
+                    End="198.75,20.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Import Sales Data\LookUp Principal"
+          TopLeft="403.5,108" />
+        <EdgeLayout
+          Id="Package\Import Sales Data.Paths[Lookup Match Output]"
+          TopLeft="379.5,118.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="24,10.5"
+              Start="0,0"
+              End="16.5,10.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="8,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="8,0"
+                    Point2="12,0"
+                    Point3="12,4" />
+                  <mssgle:LineSegment
+                    End="12,6.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="12,6.5"
+                    Point2="12,10.5"
+                    Point3="16,10.5" />
+                  <mssgle:LineSegment
+                    End="16.5,10.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-36.19138671875,-17.609375,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="167.5,42"
+          Id="Package\Import Sales Data\Add Week Number"
+          TopLeft="441,186.5" />
+        <EdgeLayout
+          Id="Package\Import Sales Data.Paths[Lookup Match Output1]"
+          TopLeft="482,150">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="42.75,36.5"
+              Start="0,0"
+              End="42.75,29">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.25"
+                    Point2="0,18.25"
+                    Point3="4,18.25" />
+                  <mssgle:LineSegment
+                    End="38.75,18.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="38.75,18.25"
+                    Point2="42.75,18.25"
+                    Point3="42.75,22.25" />
+                  <mssgle:LineSegment
+                    End="42.75,29" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-26.81638671875,23.25,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="147,42"
+          Id="Package\Import Sales Data\Add Year Date"
+          TopLeft="455.5,256" />
+        <EdgeLayout
+          Id="Package\Import Sales Data.Paths[Derived Column Output]"
+          TopLeft="526.875,228.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,27.5"
+              Start="0,0"
+              End="0,20">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Import Sales Data\Add Month"
+          TopLeft="324,327.5" />
+        <EdgeLayout
+          Id="Package\Import Sales Data.Paths[Derived Column Output1]"
+          TopLeft="529,298">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-140,29.5"
+              Start="0,0"
+              End="-140,22">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.75"
+                    Point2="0,14.75"
+                    Point3="-4,14.75" />
+                  <mssgle:LineSegment
+                    End="-136,14.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-136,14.75"
+                    Point2="-140,14.75"
+                    Point3="-140,18.75" />
+                  <mssgle:LineSegment
+                    End="-140,22" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Import Sales Data\OLE DB Destination"
+          TopLeft="258,400.5" />
+        <EdgeLayout
+          Id="Package\Import Sales Data.Paths[Derived Column Output2]"
+          TopLeft="389,369.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-45.5,31"
+              Start="0,0"
+              End="-45.5,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.5"
+                    Point2="0,15.5"
+                    Point3="-4,15.5" />
+                  <mssgle:LineSegment
+                    End="-41.5,15.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-41.5,15.5"
+                    Point2="-45.5,15.5"
+                    Point3="-45.5,19.5" />
+                  <mssgle:LineSegment
+                    End="-45.5,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import Sales Data\LookUp Branch">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[LookUpBranch]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import Sales Data\LookUp Principal">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[LookUpPrincipal]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import Sales Data\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

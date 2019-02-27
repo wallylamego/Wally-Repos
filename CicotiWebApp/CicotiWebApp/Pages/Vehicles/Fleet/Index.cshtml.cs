@@ -21,7 +21,7 @@ namespace CicotiWebApp.Pages.Vehicles.Fleet
         }
 
         public IList<Vehicle> Vehicles { get;set; }
-        public async Task<JsonResult> OnPostPaging([FromForm] DataTableAjaxPostModel Model)
+        public async Task<JsonResult> OnPostFleetPaging([FromForm] DataTableAjaxPostModel Model)
         {
 
             int filteredResultsCount = 0;
@@ -39,11 +39,11 @@ namespace CicotiWebApp.Pages.Vehicles.Fleet
                 .Include(c=>c.CostCentre)
                 .Include(e=>e.Employee)
                 .Include(vp=>vp.VehiclePurpose)
-               .Where(v=>v.SubContractor.SubContractorID ==2)
+               .Where(v=>v.SubContractor.SubContractorID == 2)
                .Select(v => new
                {
                    v.VehicleID,
-                   VehiclePurpose = v.VehiclePurpose.Description,
+                   purpose = v.VehiclePurpose.Description,
                    Branch = v.Branch.BranchName,
                    CostCentre = v.CostCentre.CostCentreName,
                    Employee = v.Employee.FirstName + " " + v.Employee.LastName,
