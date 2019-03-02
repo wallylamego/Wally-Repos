@@ -21,6 +21,11 @@ namespace CicotiWebApp.Pages.Vehicles.Fleet
         }
 
         public IList<Vehicle> Vehicles { get;set; }
+
+        
+
+
+
         public async Task<JsonResult> OnPostFleetPaging([FromForm] DataTableAjaxPostModel Model)
         {
 
@@ -30,8 +35,6 @@ namespace CicotiWebApp.Pages.Vehicles.Fleet
             DataTableAjaxPostModel.GetOrderByParameters(Model.order, Model.columns, "VehicleID",
                 out bool SortDir, out string SortBy);
 
-
-            //First create the View of the new model you wish to display to the user
             var VehicleQuery = _context.Vehicles
                 .Include(m=>m.Model)
                 .Include(m=>m.Make)
@@ -46,9 +49,9 @@ namespace CicotiWebApp.Pages.Vehicles.Fleet
                    purpose = v.VehiclePurpose.Description,
                    Branch = v.Branch.BranchName,
                    CostCentre = v.CostCentre.CostCentreName,
-                   Employee = v.Employee.FirstName + " " + v.Employee.LastName,
+                   Employee = v.Employee.FirstName,
                    v.RegistrationNumber,
-                   Make = v.Make.MakeName,
+                   Make = v.Model.Make.MakeName,
                    Model = v.Model.ModelName,
                    FuelType = v.Model.FuelType.Description,
                    DriveType = v.Model.DriveType.Description,
@@ -62,7 +65,7 @@ namespace CicotiWebApp.Pages.Vehicles.Fleet
 
             totalResultsCount = VehicleQuery.Count();
             filteredResultsCount = totalResultsCount;
-
+            
             if (!string.IsNullOrEmpty(Model.search.value))
             {
                 VehicleQuery = VehicleQuery

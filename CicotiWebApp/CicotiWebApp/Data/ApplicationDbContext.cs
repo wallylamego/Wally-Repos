@@ -25,7 +25,7 @@ namespace CicotiWebApp.Data
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
         }
-        public DbSet<Employee> Employee { get; set; }
+        //public DbSet<Employee> Employee { get; set; }
         public DbSet<JobDescription> JobDescription { get; set; }
         public DbSet<CostCentre> CostCentre { get; set; }
         public DbSet<Branch> Branch { get; set; }
@@ -35,7 +35,7 @@ namespace CicotiWebApp.Data
         public DbSet<FuelType> FuelTypes { get; set; }
         public DbSet<Department> Department { get; set; }
         public DbSet<Principle> Principle { get; set; }
-        public DbSet<SalesRep> SalesRep { get; set; }
+        public DbSet<Employee> Employees { get; set; }
         public DbSet<Status> Status { get; set; }
         public DbSet<CustomerAccount> Accounts { get; set; }
         public DbSet<Invoice> Invoices { get; set; }

@@ -189,21 +189,15 @@ namespace CicotiWebApp.Data.Migrations
 
                     b.Property<int>("DepartmentID");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired();
-
-                    b.Property<string>("EmployeeNo")
-                        .IsRequired();
+                    b.Property<string>("EmployeeNo");
 
                     b.Property<DateTime>("EndDate");
 
-                    b.Property<string>("FirstName")
-                        .IsRequired();
+                    b.Property<string>("FirstName");
 
                     b.Property<int>("JobDescriptionID");
 
-                    b.Property<string>("LastName")
-                        .IsRequired();
+                    b.Property<string>("LastName");
 
                     b.Property<string>("PastelRepCode");
 
@@ -225,9 +219,7 @@ namespace CicotiWebApp.Data.Migrations
 
                     b.HasIndex("JobDescriptionID");
 
-                    b.ToTable("Employee");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("Employee");
+                    b.ToTable("Employees");
                 });
 
             modelBuilder.Entity("CicotiWebApp.Models.FuelType", b =>
@@ -694,17 +686,6 @@ namespace CicotiWebApp.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("CicotiWebApp.Models.SalesRep", b =>
-                {
-                    b.HasBaseType("CicotiWebApp.Models.Employee");
-
-                    b.Property<int>("SalesRepID");
-
-                    b.ToTable("SalesRep");
-
-                    b.HasDiscriminator().HasValue("SalesRep");
                 });
 
             modelBuilder.Entity("CicotiWebApp.Models.Driver", b =>

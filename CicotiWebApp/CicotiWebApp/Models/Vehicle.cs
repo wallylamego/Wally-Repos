@@ -24,13 +24,14 @@ namespace CicotiWebApp.Models
         
         public int ? EmployeeID { get; set; }
 
+
         [Required]
         [MaxLength(10)]
         [Display(Name = "Registration Number")]
         public string RegistrationNumber { get; set; }
         public string RegNumberABB { get; set; }
-        public VehicleType VechileType { get; set; }
         public VehiclePurpose VehiclePurpose { get; set; }
+        public VehicleType VechileType { get; set; }
         public Employee Employee { get; set; }
         public SubContractor SubContractor { get; set; }
         public CostCentre CostCentre { get; set; }

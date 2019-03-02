@@ -21,15 +21,6 @@ namespace CicotiWebApp.Pages.Vehicles.Fleet
             _context = context;
         }
 
-        public IActionResult OnGet()
-        {
-            PopulateSubContractorSL();
-            PopulateVehicleTypeSL();
-            PopulateBranchTypeSL();
-            PopulateCostCentreSL();
-            return Page();
-        }
-
         [BindProperty]
         public Vehicle Vehicle { get; set; }
 
@@ -72,6 +63,26 @@ namespace CicotiWebApp.Pages.Vehicles.Fleet
         }
         public SelectList SubContractorSL { get; set; }
 
+        public async Task<IActionResult> OnGetAsync(int? VehicleID)
+        {
+            Vehicle = new Vehicle { };
+            PopulateSubContractorSL();
+            PopulateVehicleTypeSL();
+            PopulateBranchTypeSL();
+            PopulateCostCentreSL();
+            PopulateVehiclePurposeSL();
+
+            if (VehicleID != null)
+            {
+                Vehicle = await _context.Vehicles
+                    .Include(v => v.Branch)
+                    .Include(c => c.CostCentre)
+                    .Include(e => e.Employee)
+                    .Include(m => m.Model)
+                    .SingleOrDefaultAsync(m => m.VehicleID == VehicleID);
+            }
+            return Page();
+        }
         public void PopulateSubContractorSL(object selectedSubContractor = null)
         {
             var SubContractorsQuery = from s in _context.SubContractor
@@ -81,20 +92,52 @@ namespace CicotiWebApp.Pages.Vehicles.Fleet
                         "SubContractorID", "Name", selectedSubContractor);
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        #region Vehicles
+        //Updates the existing Vehicle
+        public async Task<IActionResult> OnPutUpdateVehicle([FromBody] Vehicle obj)
         {
-            if (!ModelState.IsValid)
+
+            try
             {
-                return Page();
+                obj.RegNumberABB = obj.RegistrationNumber.ToString().Replace(" ", "").Trim();
+                obj.SubContractorID = 2;
+                _context.Attach(obj).State = EntityState.Modified;
+                await _context.SaveChangesAsync();
+                return new JsonResult(obj);
+            }
+            catch (DbUpdateException d)
+            {
+                return new JsonResult("Vehicle Changes not saved." + d.InnerException.Message);
+            }
+        }
+
+        //Inserts a new Vehicle with details
+        public async Task<IActionResult> OnPostInsertVehicle([FromBody] Vehicle obj)
+        {
+            if (obj != null)
+            {
+                try
+                {
+                    obj.RegNumberABB = obj.RegistrationNumber.ToString().Replace(" ", "").Trim();
+                    obj.SubContractorID = 2;
+                    _context.Add(obj);
+                    await _context.SaveChangesAsync();
+                    int id = obj.VehicleID; // Yes it's here
+                    return new JsonResult(obj);
+                }
+                catch (DbUpdateException d)
+                {
+                    return new JsonResult("Vehicle Not Added." + d.InnerException.Message);
+                }
             }
 
-            Vehicle.RegNumberABB = Vehicle.RegNumberABB.ToString().Replace(" ", "").Trim();
-            //Set the Sub Contractor to 2
-            Vehicle.SubContractorID = 2;
-            _context.Vehicles.Add(Vehicle);
-            await _context.SaveChangesAsync();
+            else
+            {
+                return new JsonResult("Insert Destination was null");
+            }
 
-            return RedirectToPage("./Index");
         }
+        #endregion UploadLoads
+
     }
 }

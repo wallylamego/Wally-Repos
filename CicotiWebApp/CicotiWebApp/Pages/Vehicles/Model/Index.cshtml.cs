@@ -44,6 +44,7 @@ namespace CicotiWebApp.Pages.Vehicles.Model
                 .Select(m => new
                {
                    Id = m.ModelID,
+                   m.VehicleTypeID,
                    m.ModelName,
                    FuelType = m.FuelType.Description,
                    DriveType = m.DriveType.Description,
