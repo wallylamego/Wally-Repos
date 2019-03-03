@@ -61,8 +61,8 @@
             <div id="divModelInputFieldsSection" class="well-sm" style="background-color:lightgray">
                 <div class="form-group" id="divMake">
                     <label class="control-label">Make</label>
-                    <input asp-for="Vehicle.Model.Make" id="make" class="form-control" />
-                    <span asp-validation-for="Vehicle.Model.Make" class="text-danger"></span>
+                    <input asp-for="Vehicle.Model.Make.MakeName" id="make" class="form-control" />
+                    <span asp-validation-for="Vehicle.Model.Make.MakeName" class="text-danger"></span>
                 </div>
                 <div class="form-group" id="divModel">
                     <label class="control-label">Model</label>
@@ -71,8 +71,8 @@
                 </div>
                 <div class="form-group" id="divFuelType">
                     <label class="control-label">Fuel Type</label>
-                    <input asp-for="Vehicle.Model.FuelType" id="fuelType" class="form-control" />
-                    <span asp-validation-for="Vehicle.Model.FuelType" class="text-danger"></span>
+                    <input asp-for="Vehicle.Model.FuelType.Description" id="fuelType" class="form-control" />
+                    <span asp-validation-for="Vehicle.Model.FuelType.Description" class="text-danger"></span>
                 </div>
                 <div class="form-group" id="divDriveType">
                     <label class="control-label">Drive Type</label>
@@ -103,6 +103,7 @@
                 </table>
             </div>
         </div>
+        <br />
         <div id="EmployeeSection">
             <div class="input-group" id="divEmployeeBtns">
                 <span class="input-group-btn">

@@ -36,6 +36,7 @@ namespace CicotiWebApp.Pages.Employee
                 .Include(m=>m.JobDescription)
                 .Include(b=>b.Branch)
                 .Include(c=>c.CostCentre)
+                .Include(r=> r.ReportsTo)
                .Select(e => new
                {
                    e.EmployeeID,
@@ -46,6 +47,7 @@ namespace CicotiWebApp.Pages.Employee
                    Branch = e.Branch.BranchName,
                    CostCentre = e.CostCentre.CostCentreName,
                    e.ReportsToID,
+                   ReportTo = e.ReportsTo.FirstName + " " + e.ReportsTo.LastName,
                    e.StartDate
                }
                );

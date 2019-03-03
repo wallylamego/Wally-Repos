@@ -203,7 +203,7 @@ namespace CicotiWebApp.Data.Migrations
 
                     b.Property<string>("PastelRepName");
 
-                    b.Property<int>("ReportsToID");
+                    b.Property<int?>("ReportsToID");
 
                     b.Property<int>("SaleRepID");
 
@@ -218,6 +218,8 @@ namespace CicotiWebApp.Data.Migrations
                     b.HasIndex("DepartmentID");
 
                     b.HasIndex("JobDescriptionID");
+
+                    b.HasIndex("ReportsToID");
 
                     b.ToTable("Employees");
                 });
@@ -716,6 +718,11 @@ namespace CicotiWebApp.Data.Migrations
                     b.HasOne("CicotiWebApp.Models.JobDescription", "JobDescription")
                         .WithMany()
                         .HasForeignKey("JobDescriptionID")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("CicotiWebApp.Models.Employee", "ReportsTo")
+                        .WithMany()
+                        .HasForeignKey("ReportsToID")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 

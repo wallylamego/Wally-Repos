@@ -134,10 +134,12 @@
     <script type="text/javascript">
         var employeeToSave = {};
         function updateReportsToInputFields(data) {
-            var selectedModel = {};
-            selectedModel = JSON.parse(data);
-            $("#reportsToID").val(selectedModel.employeeID);
-            $("#reportsToName").val(decodeURIComponent(selectedModel.name));
+            var selectedEmployee = {};
+            selectedEmployee = JSON.parse(data);
+            console.log(selectedEmployee.employeeID);
+            $("#reportsToID").val(selectedEmployee.reportsToID);
+            $("#reportsToName").val(decodeURIComponent(selectedEmployee.name));
+            $("#divReportsToInputFieldsSection").show();
             $("#divReportsToTable").hide();
             $('#showReportsToBtn').val("Hide Reports To");
         }
@@ -233,9 +235,10 @@
                     { "data": "costCentre", "name": "costCentre", "autoWidth": true },
                     {
                         "render": function (data, type, full, meta) {
-                            var selectedModel = {};
-                            selectedModel.reportsToID = full.employeeID;
-                            return "<p data-placement='top' data-toggle='tooltip' title='Select'><button id='btnModel' class='btn btn-primary btn-xs' data-title='Select' data-toggle='modal' data-target='#edit' onclick=updateModelInputFields('" + JSON.stringify(selectedModel) + "')><span class='glyphicon glyphicon-pencil'></span></button></p>";
+                            var selectedEmployee = {};
+                            selectedEmployee.reportsToID = full.employeeID;
+                            selectedEmployee.name = encodeURIComponent(full.name);
+                            return "<p data-placement='top' data-toggle='tooltip' title='Select'><button id='btnModel' class='btn btn-primary btn-xs' data-title='Select' data-toggle='modal' data-target='#edit' onclick=updateReportsToInputFields('" + JSON.stringify(selectedEmployee) + "')><span class='glyphicon glyphicon-pencil'></span></button></p>";
                         }
                     }
                 ]
@@ -322,7 +325,7 @@
 
 
 
-        //hide the Model table and the Model capture fields when the form starts up
+        //hide the Reports To table and the Reports To capture fields when the form starts up
         $("#divReportsToTable").hide();
         $("#divReportsToInputFieldsSection").hide();
         $("#reportsToName").prop("disabled", true);

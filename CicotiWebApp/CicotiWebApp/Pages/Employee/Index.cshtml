@@ -29,6 +29,7 @@
                 <th>Employee No</th>
                 <th>Name</th>
                 <th>Job Description</th>
+                <th>Reports To</th>
                 <th>Department</th>
                 <th>Cost Centre</th>
                 <th>Branch</th>
@@ -98,8 +99,14 @@
                         "searchable": true
                     },
                     {
-                        /*Department  is visible and is searchable*/
+                        /*Reports To  is visible and is searchable*/
                         "targets": [4],
+                        "visible": true,
+                        "searchable": true
+                    },
+                    {
+                        /*Department  is visible and is searchable*/
+                        "targets": [5],
                         "visible": true,
                         "searchable": true
                     },
@@ -141,6 +148,7 @@
                     { "data": "employeeNo", "name": "employeeNo", "autoWidth": true },
                     { "data": "name", "name": "name", "autoWidth": true },
                     { "data": "jobDescription", "name": "jobDescription", "autoWidth": true },
+                    { "data": "reportTo", "name": "reportTo", "autoWidth": true },
                     { "data": "department", "name": "department", "autoWidth": true },
                     { "data": "costCentre", "name": "costCentre", "autoWidth": true },
                     { "data": "branch", "name": "branch", "autoWidth": true },
