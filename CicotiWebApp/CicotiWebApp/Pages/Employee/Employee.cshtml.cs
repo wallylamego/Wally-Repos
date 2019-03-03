@@ -101,7 +101,7 @@ namespace CicotiWebApp.Pages.Employee
         }
 
         //Inserts a new Employee with details
-        public async Task<IActionResult> OnPostInsertVehicle([FromBody] Models.Employee obj)
+        public async Task<IActionResult> OnPostInsertEmployee([FromBody] Models.Employee obj)
         {
             if (obj != null)
             {

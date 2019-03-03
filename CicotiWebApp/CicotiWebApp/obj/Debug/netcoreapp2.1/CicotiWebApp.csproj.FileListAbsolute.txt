@@ -109,3 +109,4 @@ C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\R
 C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\Razor\Pages\Vehicles\Fleet\Index.g.cshtml.cs
 C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\Razor\Pages\Vehicles\Fleet\Fleet.g.cshtml.cs
 C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\Razor\Pages\Employee\Index.g.cshtml.cs
+C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\Razor\Pages\Employee\Employee.g.cshtml.cs

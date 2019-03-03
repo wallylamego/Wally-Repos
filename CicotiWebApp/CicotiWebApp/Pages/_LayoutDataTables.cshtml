@@ -49,8 +49,9 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li>
-                            <a class="dropdown-toggle" data-toggle="dropdown" asp-page="/Employee/Department/Index">HR<span class="caret"></span></a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" asp-page="/Employee/Index">HR<span class="caret"></span></a>
                             <ul class="dropdown-menu">
+                                <li><a asp-page="/Employee/Index">Employee Listing</a></li>
                                 <li><a asp-page="/Employee/Department/Index">Department</a></li>
                                 <li><a asp-page="/Employee/CostCentre/Index">Cost Centre</a></li>
                                 <li><a asp-page="/Employee/JobDescription/Index">Job Description</a></li>
@@ -77,7 +78,7 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li>
-                            <a class="dropdown-toggle" data-toggle="dropdown" asp-page="/Admin">Logistics<span class="caret"></span></a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" asp-page="/Admin">Deliveries<span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a asp-page="/Statuses/Index">Status</a></li>
                                 <li><a asp-page="/SKU/Index">SKUs</a></li>
@@ -86,6 +87,7 @@
                             </ul>
                         </li>
                     }
+
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>

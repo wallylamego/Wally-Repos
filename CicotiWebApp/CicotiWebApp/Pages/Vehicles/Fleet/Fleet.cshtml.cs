@@ -78,7 +78,13 @@ namespace CicotiWebApp.Pages.Vehicles.Fleet
                     .Include(v => v.Branch)
                     .Include(c => c.CostCentre)
                     .Include(e => e.Employee)
+                    .Include(e => e.Employee.Branch)
+                    .Include(e=> e.Employee.JobDescription)
                     .Include(m => m.Model)
+                    .Include(m => m.Model.Make)
+                    .Include(m => m.Model.VehicleType)
+                    .Include(m => m.Model.FuelType)
+                    .Include(m => m.Model.DriveType)
                     .SingleOrDefaultAsync(m => m.VehicleID == VehicleID);
             }
             return Page();
@@ -96,7 +102,6 @@ namespace CicotiWebApp.Pages.Vehicles.Fleet
         //Updates the existing Vehicle
         public async Task<IActionResult> OnPutUpdateVehicle([FromBody] Vehicle obj)
         {
-
             try
             {
                 obj.RegNumberABB = obj.RegistrationNumber.ToString().Replace(" ", "").Trim();
@@ -110,6 +115,66 @@ namespace CicotiWebApp.Pages.Vehicles.Fleet
                 return new JsonResult("Vehicle Changes not saved." + d.InnerException.Message);
             }
         }
+        public async Task<JsonResult> OnPostEmployeePaging([FromForm] DataTableAjaxPostModel Model)
+        {
+
+            int filteredResultsCount = 0;
+            int totalResultsCount = 0;
+
+            DataTableAjaxPostModel.GetOrderByParameters(Model.order, Model.columns, "EmployeeID",
+                out bool SortDir, out string SortBy);
+
+            var EmployeeQuery = _context.Employees
+                .Include(m => m.Department)
+                .Include(m => m.JobDescription)
+                .Include(b => b.Branch)
+                .Include(c => c.CostCentre)
+               .Select(e => new
+               {
+                   e.EmployeeID,
+                   e.EmployeeNo,
+                   JobDescription = e.JobDescription.Description,
+                   e.FirstName,
+                   e.LastName,
+                   e.Branch.BranchName,
+               }
+               );
+
+            totalResultsCount = EmployeeQuery.Count();
+            filteredResultsCount = totalResultsCount;
+
+            if (!string.IsNullOrEmpty(Model.search.value))
+            {
+                EmployeeQuery = EmployeeQuery
+                        .Where(
+                v => v.FirstName.ToLower().Contains(Model.search.value.ToLower()) ||
+                     v.LastName.ToLower().Contains(Model.search.value.ToLower()) ||
+                     v.EmployeeNo.ToLower().Contains(Model.search.value.ToLower()) ||
+                     v.BranchName.ToLower().Contains(Model.search.value.ToLower()) ||
+                     v.JobDescription.ToLower().Contains(Model.search.value.ToLower())
+                      );
+
+                filteredResultsCount = EmployeeQuery.Count();
+            }
+            var Result = await EmployeeQuery
+                        .Skip(Model.start)
+                        .Take(Model.length)
+                        .OrderBy(SortBy, SortDir)
+                        .ToListAsync();
+
+            var value = new
+            {
+                // this is what datatables wants sending back
+                draw = Model.draw,
+                recordsTotal = totalResultsCount,
+                recordsFiltered = filteredResultsCount,
+                data = Result
+            };
+            return new JsonResult(value);
+        }
+
+
+
 
         //Inserts a new Vehicle with details
         public async Task<IActionResult> OnPostInsertVehicle([FromBody] Vehicle obj)

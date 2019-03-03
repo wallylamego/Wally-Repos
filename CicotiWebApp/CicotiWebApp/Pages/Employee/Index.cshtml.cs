@@ -84,30 +84,30 @@ namespace CicotiWebApp.Pages.Employee
             return new JsonResult(value);
         }
 
-        public async Task<IActionResult> OnDeleteDelete([FromBody] Vehicle obj)
+        public async Task<IActionResult> OnDeleteDelete([FromBody] Models.Employee obj)
         {
 
             if (obj != null && HttpContext.User.IsInRole("Admin"))
             {
                 try
                 {
-                    _context.Vehicles.Remove(obj);
+                    _context.Employees.Remove(obj);
                     await _context.SaveChangesAsync();
-                    return new JsonResult("Vehicle removed successfully");
+                    return new JsonResult("Emloyee removed successfully");
                 }
                 catch (DbUpdateException d)
                 {
-                    return new JsonResult("Vehicle not removed." + d.InnerException.Message);
+                    return new JsonResult("Employee not removed." + d.InnerException.Message);
                 }
             }
             else
             {
-                return new JsonResult("Vehicle not removed.");
+                return new JsonResult("Employee not removed.");
             }
         }
         public async Task OnGetAsync()
         {
-            Vehicles = await _context.Vehicles.ToListAsync();
+            Employees = await _context.Employees.ToListAsync();
         }
     }
 }

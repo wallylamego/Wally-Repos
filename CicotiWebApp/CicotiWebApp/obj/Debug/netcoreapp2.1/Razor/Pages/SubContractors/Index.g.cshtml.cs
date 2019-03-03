@@ -75,7 +75,7 @@ using CicotiWebApp.Data;
             WriteLiteral("\r\n<h2>Sub Contractor Listing</h2>\r\n\r\n<p>\r\n    ");
             EndContext();
             BeginContext(448, 35, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ef82bc2476b249cd81e59ba9049c7cb6", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8edd0c54d7ba4fabac795ac8a9e8a6bf", async() => {
                 BeginContext(469, 10, true);
                 WriteLiteral("Create New");
                 EndContext();

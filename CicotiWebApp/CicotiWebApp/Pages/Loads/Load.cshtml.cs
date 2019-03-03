@@ -181,6 +181,7 @@ namespace CicotiWebApp.Pages.Loads
 
             //First create the View of the new model you wish to display to the user
             var VehicleQuery = _context.Vehicles
+               .Where(v=>v.VehiclePurposeID == 2)
                .Select(v => new
                {
                    v.VehicleID,

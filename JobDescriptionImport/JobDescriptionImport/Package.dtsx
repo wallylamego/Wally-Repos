@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/3/2019 9:12:13 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="OTIJHB-NB-081"
+  DTS:CreatorName="OTI\WallyF"
+  DTS:DTSID="{E6977611-6FFA-473D-9BC9-978ABD2E93A2}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.0900.30"
+  DTS:LocaleID="7177"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionGUID="{E0F64497-C0B6-438E-9E81-C9B6B45FA9CD}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables />
+</DTS:Executable>

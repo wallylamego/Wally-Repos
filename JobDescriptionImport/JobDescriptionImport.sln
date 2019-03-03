@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "JobDescriptionImport", "JobDescriptionImport\JobDescriptionImport.dtproj", "{EBB6462F-7D92-4EAC-893E-609BFE5D799C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EBB6462F-7D92-4EAC-893E-609BFE5D799C}.Development|Default.ActiveCfg = Development
+		{EBB6462F-7D92-4EAC-893E-609BFE5D799C}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {55AAFF25-744B-4418-946E-99D3D9450FF2}
+	EndGlobalSection
+EndGlobal
