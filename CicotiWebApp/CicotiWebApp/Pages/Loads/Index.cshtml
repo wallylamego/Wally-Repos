@@ -28,6 +28,7 @@
                 <th>LoadID</th>
                 <th>Load Date</th>
                 <th>Load Name</th>
+                <th>Status</th>
                 <th>SubContractor</th>
                 <th>Driver</th>
                 <th>Load Create Date</th>
@@ -91,39 +92,45 @@
                         "searchable": true
                     },
                     {
-                        /*subContrator is  visible and is  searchable*/
+                        /*LoadStatus is  visible and is  searchable*/
                         "targets": [3],
                         "visible": true,
                         "searchable": true
                     },
                     {
-                        /*Driver Name is  visible and is  searchable*/
+                        /*subContrator is  visible and is  searchable*/
                         "targets": [4],
                         "visible": true,
                         "searchable": true
                     },
                     {
-                        /*Load Create Date Name is  visible and is  searchable*/
+                        /*Driver Name is  visible and is  searchable*/
                         "targets": [5],
                         "visible": true,
                         "searchable": true
                     },
                     {
-                        /*Load Create By is  visible and is  searchable*/
+                        /*Load Create Date Name is  visible and is  searchable*/
                         "targets": [6],
                         "visible": true,
                         "searchable": true
                     },
                     {
-                        /*Edit button  is  visible and is  searchable*/
+                        /*Load Create By is  visible and is  searchable*/
                         "targets": [7],
+                        "visible": true,
+                        "searchable": true
+                    },
+                    {
+                        /*Edit button  is  visible and is  searchable*/
+                        "targets": [8],
                         "visible": true,
                         "searchable": false,
                         "orderable": false
                     },
                     {
                         /*Delete button  is  visible and is not searchable*/
-                        "targets": [8],
+                        "targets": [9],
                         "visible": true,
                         "searchable": false,
                         "orderable": false
@@ -133,6 +140,7 @@
                     { "data": "loadID", "name": "loadID", "autoWidth": true },
                     { "data": "loadDate", "name": "loadDate", "autoWidth": true },
                     { "data": "loadName", "name": "loadName", "autoWidth": true },
+                    { "data": "loadStatus", "name": "loadStatus", "autoWidth": true },
                     { "data": "subContrator", "name": "subContrator", "autoWidth": true },
                     { "data": "driverName", "name": "driverName", "autoWidth": true },
                     { "data": "loadCreateDate", "name": "loadCreateDate", "autoWidth": true },

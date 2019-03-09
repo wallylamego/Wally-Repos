@@ -46,7 +46,13 @@ namespace CicotiWebApp.Data
         public DbSet<VehicleType> VehicleTypes { get; set;}
         public DbSet<Driver> Drivers { get; set;}
         public DbSet<Load> Loads { get; set; }
+        public DbSet<LoadStatus> LoadStatus { get; set; }
+        public DbSet<Location> Locations { get; set; }
         public DbSet<SKU> SKUs { get; set;}
         public DbSet<InvoiceStatusRole> InvoiceStatusRoles { get; set; }
+
+        public DbSet<Destination> Destinations { get; set; }
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<Province> Provinces { get; set; }
     }
 }

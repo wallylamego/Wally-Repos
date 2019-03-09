@@ -23,8 +23,8 @@
         <div class="card-header" id="headingOne">
             <h5 class="mb-0">
                 <button class="btn-primary" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
-                        aria-controls="collapseOne" style="background-color:darkblue; border:outset; font-size:small; border-color:white">
-                    Section 1: Load Number,  LoadName,  LoadDate, Driver
+                        aria-controls="collapseOne" >
+                    Section 1: LoadName, LoadDate, Driver, Vehicle
                 </button>
             </h5>
         </div>
@@ -35,6 +35,15 @@
                     <input type="hidden" asp-for="Load.LoadID" id="loadID" />
                     <input type="hidden" asp-for="Load.VehicleID" id="vehicleID" />
                     <input type="hidden" asp-for="Load.DriverID" id="driverID" />
+                    <input type="hidden" asp-for="Load.DestinationID" id="destinationID" />
+                    <div id="divLoadStatusID" class="form-group">
+                        <label asp-for="Load.LoadStatusID" class="control-label">Load Status</label>
+                        <select asp-for="Load.LoadStatusID" id="loadStatusID"
+                                asp-items="Model.LoadStatusSL" class="form-control">
+                            <option value="">--Select Load Status--</option>
+                        </select>
+                        <span asp-validation-for="Load.LoadStatusID" class="text-danger"></span>
+                    </div>
                     <div class="form-group" id="divLoadName">
                         <label class="control-label">Load Name</label>
                         <input asp-for="Load.LoadName" id="loadName" class="form-control" />
@@ -67,6 +76,7 @@
                                 <input type="button" value="Show Driver" class="btn btn-default" id="showDriverBtn" />
                             </span>
                         </div>
+
                         <br />
                         <div id="divDriverInputFieldsSection" class="well-sm" style="background-color:lightgray">
                             <div class="form-group" id="divDriverFirstName">
@@ -142,6 +152,43 @@
                         </div>
                     </div>
                     <br />
+                    <div id="DestinationSection">
+                        <div class="input-group" id="divDestBtns">
+                            <span class="input-group-btn">
+                                <input type="button" value="Find Dest." class="btn btn-default" id="findDestinationBtn" />
+                            </span>
+                            <span class="input-group-btn">
+                                <input type="button" value="Show Dest." class="btn btn-default" id="showDestinationBtn" />
+                            </span>
+                        </div>
+                        <br />
+
+                        <div id="divDestinationInputFieldsSection" class="well-sm" style="background-color:lightgray">
+
+                            <div class="form-group" id="divFromLocation">
+                                <label class="control-label">From: Country:Province:Location</label>
+                                <input asp-for="Load.Destination.StartLocation.LocationName" id="startLocationName" class="form-control" />
+                                <span asp-validation-for="Load.Destination.StartLocation.LocationName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group" id="divToLocation">
+                                <label class="control-label">To: Country:Province:Location</label>
+                                <input asp-for="Load.Destination.EndLocation.LocationName" id="endLocationName" class="form-control" />
+                                <span asp-validation-for="Load.Destination.EndLocation.LocationName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group" id="divDistance">
+                                <label asp-for="Load.Destination.Distance" class="control-label"></label>
+                                <input asp-for="Load.Destination.Distance" id="distance" class="form-control" />
+                                <span asp-validation-for="Load.Destination.Distance" class="text-danger"></span>
+                            </div>
+                            <div class="form-check" id="divChkBox">
+                                <input type="checkbox" class="form-check-input" id="revDestChkBox">
+                                <label class="form-check-label" for="revDestChkBox">Reverse Dest.</label>
+                            </div>
+                        </div>
+                        <div id="divDestinationTableSection">
+                            @{await Html.RenderPartialAsync("_DestinationPartial");}
+                        </div>
+                    </div>
                     <div class="form-group">
                         <input type="button" value="Save" class="btn btn-default  " id="savebtnSection1" />
                     </div>
@@ -153,9 +200,11 @@
         <div class="card-header" id="headingTwo">
             <h5 class="mb-0">
                 <button class="btn-primary" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" id="btnInvoiceSelection"
-                        aria-controls="collapseTwo" style="background-color:darkblue; border:outset; font-size:small; border-color:white">
+                        aria-controls="collapseTwo">
                     Section 2: Invoices Available for Delivery
                 </button>
+                <br />
+                
             </h5>
         </div>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
@@ -178,8 +227,25 @@
                 </div>
                 <br />
                 <div class="form-group">
-                    <input type="button" value="Save" class="btn btn-default  " id="savebtnSection2" />
+                    @*  <input type="button" value="Save" class="btn btn-default" id="savebtnSection2" />*@
+                    <button type="button" class="btn btn-primary" id="savebtnSection2">Save</button>
+                    <button type="button" class="btn btn-primary" id="refreshInvoices">Refresh List</button>
                 </div>
+                @*<div class="form-group">
+                    <button class='btn btn-danger' />
+                </div>*@
+                @*<button class='btn btn-primary btn-xs' data-title='Edit'
+                        data-toggle='modal' data-target='#edit' id="refreshInvoices">
+                    <span class='glyphicon glyphicon-refresh'></span>
+                </button>*@
+                @*<button class='btn btn-primary btn-xs' data-title='Edit'
+                        data-toggle='modal' data-target='#edit' id="saveInvoices">
+                    <span class='glyphicon glyphicon-floppy-save'></span>
+                </button>
+                <button class='btn btn-primary' data-title='Edit' value="Refreh"
+                        data-toggle='modal' data-target='#edit' id="saveInvoices">
+                    <span class='glyphicon glyphicon-floppy-save'></span>*@
+                @*</button>*@
             </div>
 
         </div>
@@ -188,8 +254,9 @@
         <div class="card-header" id="headingThree">
             <h5 class="mb-0">
                 <button class="btn-primary" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" id="btnInvoiceSelected"
-                        aria-controls="collapseThree" style="background-color:darkblue; border:outset; font-size:small; border-color:white">
-                    Section 3: Delivery List
+                        aria-controls="collapseThree">
+                     @*   style="background-color:darkblue; border:outset; font-size:small; border-color:white">*@
+                    Section 3: Invoice Delivery List
                 </button>
             </h5>
         </div>
@@ -213,10 +280,11 @@
                 </div>
                 <br />
                 <div class="form-group">
-                    <input type="button" value="Delete" class="btn btn-default  " id="savebtnSection3" />
+                    @*  <input type="button" value="Save" class="btn btn-default" id="savebtnSection2" />*@
+                    <button type="button" class="btn btn-default " id="savebtnSection3">Delete</button>
+                    <button type="button" class="btn btn-default" id="refreshSelectedInvoices">Refresh List</button>
                 </div>
             </div>
-
         </div>
 
     </div>
@@ -224,7 +292,7 @@
         <div class="card-header" id="headingFour">
             <h5 class="mb-0">
                 <button class="btn-primary" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" id="btnPrintLoadDetails"
-                        aria-controls="collapseFour" style="background-color:darkblue; border:outset; font-size:small; border-color:white">
+                        aria-controls="collapseFour">
                     Section 4: Print Load Details
                 </button>
             </h5>
@@ -254,6 +322,22 @@
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script type="text/javascript">
         var LoadToSave = {};
+        function updateDestinationInputFields(data) {
+
+            var selectedDestination = {};
+            selectedDestination = JSON.parse(data);
+            $("#destinationID").val(selectedDestination.destinationID);
+            $("#startLocationName").val(decodeURIComponent(selectedDestination.startLocationName));
+            $("#endLocationName").val(decodeURIComponent(selectedDestination.endLocationName));
+            $("#distance").val(decodeURIComponent(selectedDestination.distance));
+            $("#startLocationName").prop("disabled", true);
+            $("#endLocationName").prop("disabled", true);
+            $("#distance").prop("disabled", true);
+            $("#divDestinationInputFieldsSection").show();
+
+            $("#divDestinationTableSection").hide();
+            $('#showDestinationBtn').val("Hide Dest.");
+        }
 
         function createHTMLLoadTable() {
             $("#loadHTMLTable").remove();
@@ -287,20 +371,11 @@
                 result += "</td><td>";
                 result += $(this).find("td:eq(1)").text();
                 result += "</td><tr>";
-                //result += "<tr>"
-                //result += (this).innerHTML;
-                //result += "</tr>"
+                
             });
-            
             result += "</table>";
-
             $("#divLoadHTMLTable").append(result);
-
-            //document.body.innerHTML = result;
-
         }
-
-
 
         function updateVehicleInputFields(data) {
             var selectedVehicle = {};
@@ -313,10 +388,85 @@
             $("#divVehicleTable").hide();
             $('#showVehicleBtn').val("Hide Vechile");
         }
+        function GetDestinationData() {
+
+            $("#DestinationTable").on('xhr.dt', function (e, settings, json, xhr) {
+            }).DataTable({
+                "fixedHeader": {
+                    "header": true,
+                    "footer": true
+                },
+                "responsive": true,
+                "processing": true, // for show progress bar
+                "serverSide": true, // for process server side
+                "filter": true, // this is for disable filter (search box)
+                "orderMulti": false, // for disable multiple column at once
+                "ajax": {
+
+                    "url": "/Destinations/Destination?handler=Paging",
+                    "headers":
+                    {
+                        "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                    },
+                    "type": "POST",
+                    "datatype": "json"
+                },
+                "columnDefs":
+                    [{
+                        /*Destination ID is not visible and is not searchable*/
+                        "targets": [0],
+                        "visible": false,
+                        "searchable": false
+                    },
+                    {
+                        /*StartLocationID is not visible and is not searchable*/
+                        "targets": [1],
+                        "visible": false,
+                        "searchable": false
+                    },
+                    {
+                        /*EndLocationID is not visible and is not searchable*/
+                        "targets": [2],
+                        "visible": false,
+                        "searchable": false
+                    },
+                    {
+                        /*Select button  is  visible and is not searchable*/
+                        "targets": [6],
+                        "visible": true,
+                        "searchable": false,
+                        "orderable": false
+                    }
+                    ],
+                "columns": [
+                    { "data": "destinationID", "name": "destinationID", "autoWidth": true },
+                    { "data": "startLocationID", "name": "startLocationID", "autoWidth": true },
+                    { "data": "endLocationID", "name": "endLocationID", "autoWidth": true },
+                    { "data": "startLocationName", "name": "startLocationName", "autoWidth": true },
+                    { "data": "endLocationName", "name": "endLocationName", "autoWidth": true },
+                    { "data": "distance", "name": "distance", "autoWidth": true },
+                    //Select Data
+                    {
+                        "render": function (data, type, full, meta) {
+                            var selectedDestination = {};
+                            selectedDestination.destinationID = full.destinationID;
+                            selectedDestination.startLocationID = full.startLocationID;
+                            selectedDestination.endLocationID = full.endLocationID;
+                            selectedDestination.startLocationName = encodeURIComponent(full.startLocationName);
+                            selectedDestination.endLocationName = encodeURIComponent(full.endLocationName);
+                            selectedDestination.distance = encodeURIComponent(full.distance);
+                            return "<p data-placement='top' data-toggle='tooltip' title='Select'><button id='btnDest' class='btn btn-primary btn-xs' data-title='Select' data-toggle='modal' data-target='#edit' onclick=updateDestinationInputFields('" + JSON.stringify(selectedDestination) + "')><span class='glyphicon glyphicon-pencil'></span></button></p>";
+                        }
+                    },
+                ]
+            });
+        }
+
+
          function getSelectedInvoiceData() {
          $("#InvoiceSelectedTable").on('xhr.dt', function (e, settings, json, xhr) {
             }).DataTable({
-                lengthMenu: [10,25, 100, 150, 200],
+                lengthMenu: [5,10,25, 100, 150, 200],
                 "fixedHeader": {
                     "header": true,
                     "footer": true
@@ -393,7 +543,7 @@
         function getInvoiceData() {
          $("#InvoiceTable").on('xhr.dt', function (e, settings, json, xhr) {
             }).DataTable({
-                lengthMenu: [10,25, 100, 150, 200],
+                lengthMenu: [5,10,25, 100, 150, 200],
                 "fixedHeader": {
                     "header": true,
                     "footer": true
@@ -655,7 +805,8 @@
                         $("#myModal").modal("show");
                     }
                 });//ajax update
-        }
+            }
+
          function ajaxInvoiceDelete(obj) {
             console.log("Delete Invoice Status: in Insert Ajax Call: " + JSON.stringify(obj));
             $.ajax({
@@ -681,8 +832,6 @@
                     }
                 });//ajax update
         }
-
-
 
         function ajaxLoadUpdate(obj) {
             console.log("ajaxLoadUpdate Function runs: " + JSON.stringify(obj));
@@ -779,11 +928,25 @@
 
         $(document).ready(function ()
         {
+            //hide the destination table and  capture fields when the form starts up
+            $("#divDestinationTableSection").hide();
+            $("#divDestinationInputFieldsSection").hide();
+            
+            //Save the Load Header Details
             $('#savebtnSection1').click(function () {
                 LoadToSave.loadName = $('#loadName').val();
                 LoadToSave.loadDate = $('#loadDate').val();
                 LoadToSave.vehicleID = $('#vehicleID').val();
                 LoadToSave.driverID = $('#driverID').val();
+                LoadToSave.loadStatusID = $('#loadStatusID').val();
+                LoadToSave.destinationID = $('#destinationID').val();
+                LoadToSave.reverseDestinationID = $('#revDestChkBox:checked').val() ? true : false;
+                if ($('#destinationID').val().length == 0) {
+                    $("#modalHeader").text("Load Processing Status");
+                    $("#modalMessage").text("Load Not Updated: Please select a Destination.");
+                    $("#myModal").modal("show");
+                    return;
+                }
 
                 if ($('#loadID').val().length > 0 && $('#loadID').val() > 0) {
                     LoadToSave.loadID = $('#loadID').val();
@@ -794,6 +957,28 @@
                 }
             });
 
+            //Refresh the Available Invoices Section
+            $('#refreshInvoices').click(function () {
+                 if (!$.fn.DataTable.isDataTable('#InvoiceTable')) {
+                    getInvoiceData();
+                }
+                else {
+                    var oTable = $('#InvoiceTable').DataTable();
+                     oTable.draw();
+                }
+            });
+            //Refresh the Selected Invoices Section
+            $('#refreshSelectedInvoices').click(function () {
+                if (!$.fn.DataTable.isDataTable('#InvoiceSelectedTable')) {
+                    getSelectedInvoiceData();
+                }
+                else {
+                    var oTable = $('#InvoiceSelectedTable').DataTable();
+                    oTable.draw();
+                }
+            });
+
+            //Save the Invoices Selected for Delivery Section
             $('#savebtnSection2').click(function () {
                 var arrInv = [];
                 var InvItem = new Object();
@@ -810,27 +995,12 @@
                 });
                 
                 ajaxInvoiceUpdate(arrInv);
-                //redraw the available Invoice paging table
-                if (!$.fn.DataTable.isDataTable('#InvoiceTable')) {
-                    getInvoiceData();
-                }
-                else {
-                    var oTable = $('#InvoiceTable').DataTable();
-                    oTable.draw()
-                }
-                //update the selected items paging table
-                if (!$.fn.DataTable.isDataTable('#InvoiceSelectedTable')) {
-                    getSelectedInvoiceData();
-                }
-                else {
-                    var oTable = $('#InvoiceSelectedTable').DataTable();
-                    oTable.draw()
-                }
+                
                 createHTMLLoadTable();
                 //update the selected items paging table
             });
 
-
+            //Save the Invoices which have been Deleted from the Delivery Section
             $('#savebtnSection3').click(function () {
                 var arrInv = [];
                 var InvItem = new Object();
@@ -850,20 +1020,8 @@
                 });
                 ajaxInvoiceDelete(arrInv);
                 //redraw the available Invoice paging table
-                if (!$.fn.DataTable.isDataTable('#InvoiceTable')) {
-                    getInvoiceData();
-                }
-                else {
-                    var oTable = $('#InvoiceTable').DataTable();
-                    oTable.draw()
-                }
-                if (!$.fn.DataTable.isDataTable('#InvoiceSelectedTable')) {
-                    getSelectedInvoiceData();
-                }
-                else {
-                    var oTable = $('#InvoiceSelectedTable').DataTable();
-                    oTable.draw()
-                }
+                
+               
                 //update the selected items paging table
                 createHTMLLoadTable();
             });
@@ -905,6 +1063,15 @@
             $("#createdBy").prop("disabled", true);
             $("#createdDate").prop("disabled", true);
 
+            //Find Destination
+            $('#findDestinationBtn').click(function () {
+                $("#divDestinationTableSection").show();
+                $('#divDestinationInputFieldsSection').hide();
+                if (!$.fn.DataTable.isDataTable('#DestinationTable')) {
+                    GetDestinationData();
+                }
+            });
+
             //Find Driver
             $('#findDriverBtn').click(function () {
                 $("#divDriverTable").show();
@@ -913,6 +1080,26 @@
                     GetDriverData();
                 }
             });
+            //Reverse Destination Start and End Boxes
+            $('#revDestChkBox').click(function () {
+                var temp = $("#startLocationName").val();
+                $("#startLocationName").val($("#endLocationName").val());
+                $("#endLocationName").val(temp);
+            });
+            //Show and Hide Destination
+            $('#showDestinationBtn').click(function () {
+                if ($('#showDestinationBtn').val() == "Show Dest.") {
+                    $("#divDestinationTableSection").hide();
+                    $('#divDestinationInputFieldsSection').show();
+                    $('#showDestinationBtn').val("Hide Dest.");
+                }
+                else {
+                    $("#divDestinationTableSection").hide();
+                    $('#divDestinationInputFieldsSection').hide();
+                    $('#showDestinationBtn').val("Show Dest.");
+                }
+            });
+
             //Show and Hide Driver Button
             $('#showDriverBtn').click(function () {
                 if ($('#showDriverBtn').val() == "Show Driver") {

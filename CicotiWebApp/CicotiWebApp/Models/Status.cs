@@ -14,6 +14,8 @@ namespace CicotiWebApp.Models
         [MaxLength(50)]
         public string Name { get; set; }
         
+        public double HrsInStatus { get; set; }
+
         [Required]
         public int SortOrder { get; set;}
 

@@ -25,6 +25,11 @@
                 <span asp-validation-for="Status.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Status.HrsInStatus" class="control-label"></label>
+                <input asp-for="Status.HrsInStatus" class="form-control" />
+                <span asp-validation-for="Status.HrsInStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </form>

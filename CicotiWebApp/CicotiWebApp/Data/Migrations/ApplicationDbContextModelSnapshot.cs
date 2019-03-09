@@ -98,6 +98,21 @@ namespace CicotiWebApp.Data.Migrations
                     b.ToTable("CostCentre");
                 });
 
+            modelBuilder.Entity("CicotiWebApp.Models.Country", b =>
+                {
+                    b.Property<int>("CountryID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CountryName")
+                        .IsRequired()
+                        .HasMaxLength(40);
+
+                    b.HasKey("CountryID");
+
+                    b.ToTable("Countries");
+                });
+
             modelBuilder.Entity("CicotiWebApp.Models.CustomerAccount", b =>
                 {
                     b.Property<int>("CustomerAccountID")
@@ -128,6 +143,27 @@ namespace CicotiWebApp.Data.Migrations
                     b.HasKey("DepartmentID");
 
                     b.ToTable("Department");
+                });
+
+            modelBuilder.Entity("CicotiWebApp.Models.Destination", b =>
+                {
+                    b.Property<int>("DestinationID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<double>("Distance");
+
+                    b.Property<int>("EndLocationID");
+
+                    b.Property<int>("StartLocationID");
+
+                    b.HasKey("DestinationID");
+
+                    b.HasIndex("EndLocationID");
+
+                    b.HasIndex("StartLocationID");
+
+                    b.ToTable("Destinations");
                 });
 
             modelBuilder.Entity("CicotiWebApp.Models.Driver", b =>
@@ -337,11 +373,17 @@ namespace CicotiWebApp.Data.Migrations
                     b.Property<DateTime>("CreatedUtc")
                         .ValueGeneratedOnAddOrUpdate();
 
+                    b.Property<int?>("DestinationID");
+
                     b.Property<int>("DriverID");
 
                     b.Property<string>("LoadDate");
 
                     b.Property<string>("LoadName");
+
+                    b.Property<int?>("LoadStatusID");
+
+                    b.Property<bool>("ReverseDestinationID");
 
                     b.Property<string>("UserID");
 
@@ -349,13 +391,51 @@ namespace CicotiWebApp.Data.Migrations
 
                     b.HasKey("LoadID");
 
+                    b.HasIndex("DestinationID");
+
                     b.HasIndex("DriverID");
+
+                    b.HasIndex("LoadStatusID");
 
                     b.HasIndex("UserID");
 
                     b.HasIndex("VehicleID");
 
                     b.ToTable("Loads");
+                });
+
+            modelBuilder.Entity("CicotiWebApp.Models.LoadStatus", b =>
+                {
+                    b.Property<int>("LoadStatusID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description");
+
+                    b.HasKey("LoadStatusID");
+
+                    b.ToTable("LoadStatus");
+                });
+
+            modelBuilder.Entity("CicotiWebApp.Models.Location", b =>
+                {
+                    b.Property<int>("LocationID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<double>("GPSCoordinates");
+
+                    b.Property<string>("LocationName")
+                        .IsRequired()
+                        .HasMaxLength(50);
+
+                    b.Property<int>("ProvinceID");
+
+                    b.HasKey("LocationID");
+
+                    b.HasIndex("ProvinceID");
+
+                    b.ToTable("Locations");
                 });
 
             modelBuilder.Entity("CicotiWebApp.Models.Make", b =>
@@ -423,6 +503,25 @@ namespace CicotiWebApp.Data.Migrations
                     b.ToTable("Principle");
                 });
 
+            modelBuilder.Entity("CicotiWebApp.Models.Province", b =>
+                {
+                    b.Property<int>("ProvinceID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CountryID");
+
+                    b.Property<string>("ProvinceName")
+                        .IsRequired()
+                        .HasMaxLength(40);
+
+                    b.HasKey("ProvinceID");
+
+                    b.HasIndex("CountryID");
+
+                    b.ToTable("Provinces");
+                });
+
             modelBuilder.Entity("CicotiWebApp.Models.SKU", b =>
                 {
                     b.Property<int>("SKUID")
@@ -458,6 +557,8 @@ namespace CicotiWebApp.Data.Migrations
 
                     b.Property<DateTime>("CreatedUtc")
                         .ValueGeneratedOnAddOrUpdate();
+
+                    b.Property<double>("HrsInStatus");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -690,6 +791,19 @@ namespace CicotiWebApp.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("CicotiWebApp.Models.Destination", b =>
+                {
+                    b.HasOne("CicotiWebApp.Models.Location", "EndLocation")
+                        .WithMany()
+                        .HasForeignKey("EndLocationID")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("CicotiWebApp.Models.Location", "StartLocation")
+                        .WithMany()
+                        .HasForeignKey("StartLocationID")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
             modelBuilder.Entity("CicotiWebApp.Models.Driver", b =>
                 {
                     b.HasOne("CicotiWebApp.Models.SubContractor", "SubContractor")
@@ -782,9 +896,19 @@ namespace CicotiWebApp.Data.Migrations
 
             modelBuilder.Entity("CicotiWebApp.Models.Load", b =>
                 {
+                    b.HasOne("CicotiWebApp.Models.Destination", "Destination")
+                        .WithMany()
+                        .HasForeignKey("DestinationID")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("CicotiWebApp.Models.Driver", "Driver")
                         .WithMany()
                         .HasForeignKey("DriverID")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("CicotiWebApp.Models.LoadStatus", "LoadStatus")
+                        .WithMany()
+                        .HasForeignKey("LoadStatusID")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("CicotiWebApp.ApplicationUser", "User")
@@ -795,6 +919,14 @@ namespace CicotiWebApp.Data.Migrations
                     b.HasOne("CicotiWebApp.Models.Vehicle", "Vehicle")
                         .WithMany()
                         .HasForeignKey("VehicleID")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("CicotiWebApp.Models.Location", b =>
+                {
+                    b.HasOne("CicotiWebApp.Models.Province", "Province")
+                        .WithMany()
+                        .HasForeignKey("ProvinceID")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
@@ -818,6 +950,14 @@ namespace CicotiWebApp.Data.Migrations
                     b.HasOne("CicotiWebApp.Models.VehicleType", "VehicleType")
                         .WithMany()
                         .HasForeignKey("VehicleTypeID")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("CicotiWebApp.Models.Province", b =>
+                {
+                    b.HasOne("CicotiWebApp.Models.Country", "Country")
+                        .WithMany()
+                        .HasForeignKey("CountryID")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 

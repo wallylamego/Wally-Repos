@@ -35,7 +35,16 @@ namespace CicotiWebApp.Pages.Loads
             StatusSL = new SelectList(StatusQuery.AsNoTracking(),
                         "StatusID", "Name", selectedStatus);
         }
+        public void PopulateLoadStatusSL(object selectedLoadStatus = null)
+        {
+            var LoadStatusQuery = from c in _context.LoadStatus
+                              orderby c.Description
+                              select c;
+            LoadStatusSL = new SelectList(LoadStatusQuery.AsNoTracking(),
+                        "LoadStatusID", "Description", selectedLoadStatus);
+        }
         public SelectList StatusSL { get; set; }
+        public SelectList LoadStatusSL { get; set; }
 
         [BindProperty]
         public Status Status { get; set; }
@@ -45,7 +54,7 @@ namespace CicotiWebApp.Pages.Loads
         public async Task<IActionResult> OnGetAsync(int? LoadID)
         {
             Load = new Load { };
-
+            PopulateLoadStatusSL();
             if (LoadID != null)
             {
                 Load = await _context.Loads

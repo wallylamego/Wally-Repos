@@ -37,7 +37,8 @@ namespace CicotiWebApp.Pages.Statuses
                {
                    s.StatusID,
                    StatusName = s.Name,
-                   s.SortOrder
+                   s.SortOrder,
+                   s.HrsInStatus
                }
                );
 

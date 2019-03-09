@@ -33,11 +33,13 @@ namespace CicotiWebApp.Pages.Loads
 
             //First create the View of the new model you wish to display to the user
             var LoadQuery = _context.Loads
+                .Include(s=>s.LoadStatus)
                .Select(l => new
                {
                    l.LoadID,
                    l.LoadDate,
                    l.LoadName,
+                   LoadStatus= l.LoadStatus.Description,
                    SubContrator = l.Driver.SubContractor.Name,
                    l.Vehicle.RegistrationNumber,
                    DriverName = l.Driver.FirstName + l.Driver.Surname,

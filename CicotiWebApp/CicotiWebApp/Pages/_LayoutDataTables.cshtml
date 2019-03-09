@@ -58,6 +58,19 @@
                             </ul>
                         </li>
                     }
+                    @*Locations Section*@
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>
+                            <a class="dropdown-toggle" data-toggle="dropdown" asp-page="/Destinations/Destination">Destination<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a asp-page="/Countries/Index">Country</a></li>
+                                <li><a asp-page="/Provinces/Index">Province</a></li>
+                                <li><a asp-page="/Destinations/Destination">Destination</a></li>
+                                <li><a asp-page="/Locations/LocationModel">Location</a></li>
+                            </ul>
+                        </li>
+                    }
                     @*Fleet Section*@
                     @if (User.Identity.IsAuthenticated)
                     {
@@ -80,7 +93,7 @@
                         <li>
                             <a class="dropdown-toggle" data-toggle="dropdown" asp-page="/Admin">Deliveries<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a asp-page="/Statuses/Index">Status</a></li>
+                                <li><a asp-page="/Statuses/Index">Delivery Status</a></li>
                                 <li><a asp-page="/SKU/Index">SKUs</a></li>
                                 <li><a asp-page="/Invoice/Index">Update Delivery Status</a></li>
                                 <li><a asp-page="/Loads/Index">Load Maintenance</a></li>
