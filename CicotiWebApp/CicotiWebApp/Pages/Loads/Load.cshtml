@@ -16,7 +16,7 @@
 <br />
 <br />
 <h4>Load Details</h4>
-
+<div id="loader"></div>
 <hr />
 <div id="accordion">
     <div class="card" id="cardSection1">
@@ -52,7 +52,7 @@
                     <div class="form-group" id="divLoadDateTime">
                         <label asp-for="Load.LoadDate" class="control-label">Loading Date</label>
                         <div class='input-group date' id='datetimepicker1'>
-                            <input type="text" class="form-control" id="loadDate" />
+                            <input asp-for="Load.LoadDate" type="text" class="form-control" id="loadDate" />
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
@@ -109,7 +109,7 @@
                             </table>
                         </div>
                     </div>
-                    <br />
+                    <p></p>
                     <div id="VehicleSection">
                         <div class="input-group" id="divVehicleBtns">
                             <span class="input-group-btn">
@@ -119,7 +119,7 @@
                                 <input type="button" value="Show Vehicle" class="btn btn-default" id="showVehicleBtn" />
                             </span>
                         </div>
-                        <br />
+                        <p></p>
                         <div id="divVehicleInputFieldsSection" class="well-sm" style="background-color:lightgray">
                             <div class="form-group" id="divSubContractor">
                                 <label class="control-label">SubContractor</label>
@@ -262,7 +262,6 @@
         </div>
         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
             <div class="row" id="divInvoicesSelected">
-
                 <div id="InvoiceSelectedSection">
                     <div id="divInvoiceSelectedTable" style="width:90%; margin:0 auto;">
                         <table id="InvoiceSelectedTable" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
@@ -276,14 +275,13 @@
                                 </tr>
                             </thead>
                         </table>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-default " id="savebtnSection3">Delete</button>
+                            <button type="button" class="btn btn-default" id="refreshSelectedInvoices">Refresh List</button>
+                        </div>
                     </div>
                 </div>
                 <br />
-                <div class="form-group">
-                    @*  <input type="button" value="Save" class="btn btn-default" id="savebtnSection2" />*@
-                    <button type="button" class="btn btn-default " id="savebtnSection3">Delete</button>
-                    <button type="button" class="btn btn-default" id="refreshSelectedInvoices">Refresh List</button>
-                </div>
             </div>
         </div>
 
@@ -296,15 +294,21 @@
                     Section 4: Print Load Details
                 </button>
             </h5>
+            
         </div>
         <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
-            <div class="row" id="divLoadDetails">
-                <br />
-                <div id="divLoadHTMLTable"></div>
-                <br />
-                <div class="form-group">
-                    <input type="button" value="Print" class="btn btn-default  " id="btnPrintLoad" />
-                </div>
+            <div style="width:90%; margin:0 auto;">
+                    <div class="form-group">
+                        <button type="button" class="btn btn-default" id="createLoadTable">Create Load Table</button>
+                    </div>
+                    <div id="divLoadDetails">
+                        <br />
+                        <div class="=row" id="divLoadHTMLTable"></div>
+                        <br />
+                        <div class="form-group">
+                            <input type="button" value="Print" class="btn btn-default  " id="btnPrintLoad" />
+                        </div>
+                    </div>
             </div>
         </div>
     </div>
@@ -399,7 +403,7 @@
                 "responsive": true,
                 "processing": true, // for show progress bar
                 "serverSide": true, // for process server side
-                "filter": true, // this is for disable filter (search box)
+                "filter": true, // this is for disable filter (search box)aa
                 "orderMulti": false, // for disable multiple column at once
                 "ajax": {
 
@@ -541,7 +545,7 @@
 
 
         function getInvoiceData() {
-         $("#InvoiceTable").on('xhr.dt', function (e, settings, json, xhr) {
+        return $("#InvoiceTable").on('xhr.dt', function (e, settings, json, xhr) {
             }).DataTable({
                 lengthMenu: [5,10,25, 100, 150, 200],
                 "fixedHeader": {
@@ -783,7 +787,7 @@
 
         function ajaxInvoiceUpdate(obj) {
             console.log("Update Invoice Status: in Insert Ajax Call: " + JSON.stringify(obj));
-            $.ajax({
+           return $.ajax({
                 type: "POST",
                 url: "/Loads/Load?handler=Update",
                     headers:
@@ -809,7 +813,7 @@
 
          function ajaxInvoiceDelete(obj) {
             console.log("Delete Invoice Status: in Insert Ajax Call: " + JSON.stringify(obj));
-            $.ajax({
+           return $.ajax({
                 type: "POST",
                 url: "/Loads/Load?handler=RemoveInvoiceItems",
                     headers:
@@ -850,7 +854,7 @@
                     console.log(data);
                     console.log("Load Data successfully returned from DataBase");
                     $("#modalHeader").text("Load Section 1 Processing Status");
-                    $("#modalMessage").text($("#loadID").val() + " was updated.");
+                    $("#modalMessage").text(data);
                     $("#myModal").modal("show");
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
@@ -928,6 +932,8 @@
 
         $(document).ready(function ()
         {
+            //hide the loader
+            $("#loader").hide();
             //hide the destination table and  capture fields when the form starts up
             $("#divDestinationTableSection").hide();
             $("#divDestinationInputFieldsSection").hide();
@@ -950,10 +956,20 @@
 
                 if ($('#loadID').val().length > 0 && $('#loadID').val() > 0) {
                     LoadToSave.loadID = $('#loadID').val();
-                    ajaxLoadUpdate(LoadToSave);
+                    $(window).scrollTop(0);
+                    $('#loadID').show();
+                    $.when(ajaxLoadUpdate(LoadToSave)).done(function (a1) {
+                        $('#loadID').hide();
+                    });
+                    //ajaxLoadUpdate(LoadToSave);
                 }
                 else {
-                    ajaxLoadInsert(LoadToSave);
+                    $(window).scrollTop(0);
+                    $('#loadID').show();
+                    $.when(ajaxLoadInsert(LoadToSave)).done(function (a1) {
+                        $('#loadID').hide();
+                    });
+                  //  ajaxLoadInsert(LoadToSave);
                 }
             });
 
@@ -993,8 +1009,26 @@
                         arrInv.push(InvItem);
                     }
                 });
-                
-                ajaxInvoiceUpdate(arrInv);
+                $(window).scrollTop(0);
+                $('#loadID').show();
+                $.when(ajaxInvoiceUpdate(arrInv)).done(function (a1) {
+                    if (!$.fn.DataTable.isDataTable('#InvoiceTable')) {
+                        getInvoiceData();
+                    }
+                    else {
+                        var oTable = $('#InvoiceTable').DataTable();
+                        oTable.draw();
+                    }
+                    if (!$.fn.DataTable.isDataTable('#InvoiceSelectedTable')) {
+                        getSelectedInvoiceData();
+                    }
+                    else {
+                        var oTable = $('#InvoiceSelectedTable').DataTable();
+                        oTable.draw();
+                    }
+                    $('#loadID').hide();
+                });
+                //ajaxInvoiceUpdate(arrInv);
                 
                 createHTMLLoadTable();
                 //update the selected items paging table
@@ -1006,19 +1040,36 @@
                 var InvItem = new Object();
 
                 $('#divInvoiceSelectedTable').find(':checkbox').each(function () {
-               // $('input[type="checkbox"]').each(function () {
                     //if checkbox is checked
                     if (this.checked) {
                         console.log("InvoiceID:" + this.value);
                         InvItem = new Object();
                         InvItem.invoiceID = this.value;
                         InvItem.loadID = $('#loadID').val();
-                        //  InvItem.statusID = $('#statusID').val();
-                        //  InvItem.createdUtc = $('#executeDate').val();
                         arrInv.push(InvItem);
                     }
                 });
-                ajaxInvoiceDelete(arrInv);
+                $.when(ajaxInvoiceDelete(arrInv)).done(function (a1) {
+                    if (!$.fn.DataTable.isDataTable('#InvoiceSelectedTable')) {
+                        getSelectedInvoiceData();
+                    }
+                    else {
+                        console.log("In Invoice Selected Redraw");
+                        var oTable = $('#InvoiceSelectedTable').DataTable();
+                        oTable.draw();
+                    }
+                    if (!$.fn.DataTable.isDataTable('#InvoiceTable')) {
+                        getInvoiceData();
+                    }
+                    else {
+                        var oTable = $('#InvoiceTable').DataTable();
+                        oTable.draw();
+                    }
+                   
+                });
+
+
+              //  ajaxInvoiceDelete(arrInv);
                 //redraw the available Invoice paging table
                 
                
@@ -1026,12 +1077,24 @@
                 createHTMLLoadTable();
             });
 
+            $('#createLoadTable').click(function () {
+                
+                //$.when(ajaxInvoiceDelete(arrInv)).done(function (a1) {
+                   
+
+                //});
+
+
+                //update the selected items paging table
+                createHTMLLoadTable();
+            });
+
             $('#btnPrintLoadDetails').click(function () {
                 if (!$.fn.DataTable.isDataTable('#InvoiceSelectedTable')) {
                     getSelectedInvoiceData();
-
                 }
-                createHTMLLoadTable();
+                $("#loadHTMLTable").remove();
+              //  createHTMLLoadTable();
             });
             $('#btnPrintLoad').click(function () {
                 var divToPrint = document.getElementById("loadHTMLTable");
@@ -1043,7 +1106,7 @@
              $('#datetimepicker1').datetimepicker(
                     {
                         format: "YYYY/MM/DD hh:mm:ss A",
-                        date: '@Model.ExecuteDate'
+                       // date: '@Model.ExecuteDate'
                     }
                 );
             //hide the driver table and the driver capture fields when the form starts up

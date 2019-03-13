@@ -54,5 +54,8 @@ namespace CicotiWebApp.Data
         public DbSet<Destination> Destinations { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<Province> Provinces { get; set; }
+
+        public DbSet<VehicleComment> VehicleComments { get; set; }
+        public DbSet<VehicleStatus> VehicleStatus { get; set; }
     }
 }

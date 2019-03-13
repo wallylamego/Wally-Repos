@@ -18,7 +18,8 @@ public class DataTableAjaxPostModel
     public int FilterItemID { get; set; }
     public int LoadID { get; set; }
     public int InvoiceID { get; set; }
-    
+    public string DeliveryStatus { get; set; }
+    public string LoadStatus { get; set; }
 
     public static string GetOrderByString(List<Order> OrderList, List<Column> ColumnList, string DefaultColumnSort)
         {

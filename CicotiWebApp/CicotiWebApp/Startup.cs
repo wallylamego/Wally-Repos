@@ -56,7 +56,7 @@ namespace CicotiWebApp
 
             var UserManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
 
-            string[] roleNames = { "Admin", "Manager", "Employee"};
+            string[] roleNames = { "Admin", "Manager", "Employee","Fleet","HR","Warehouse"};
             Task<IdentityResult> roleResult;
             foreach (var roleName in roleNames)
             {

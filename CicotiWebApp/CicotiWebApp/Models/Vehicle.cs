@@ -17,6 +17,13 @@ namespace CicotiWebApp.Models
         public int ? ModelID { get; set; }
         public int ? CostCentreID { get; set; }
         public int ? BranchID { get; set; }
+
+        public double? PayloadHeight { get; set; }
+        public double? PayloadWidth { get; set; }
+        public double? PayloadLength { get; set; }
+        public double? PayloadCubicMetres { get; set; }
+
+
         public string FixedAssetsNumber { get; set; }
         public DateTime AcquisitionDate { get; set; }
         public Double AcquistionCost { get; set; }

@@ -617,6 +617,14 @@ namespace CicotiWebApp.Data.Migrations
 
                     b.Property<int?>("ModelID");
 
+                    b.Property<double?>("PayloadCubicMetres");
+
+                    b.Property<double?>("PayloadHeight");
+
+                    b.Property<double?>("PayloadLength");
+
+                    b.Property<double?>("PayloadWidth");
+
                     b.Property<string>("RegNumberABB");
 
                     b.Property<string>("RegistrationNumber")
@@ -650,6 +658,30 @@ namespace CicotiWebApp.Data.Migrations
                     b.ToTable("Vehicles");
                 });
 
+            modelBuilder.Entity("CicotiWebApp.Models.VehicleComment", b =>
+                {
+                    b.Property<int>("VehicleCommentID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Comment");
+
+                    b.Property<DateTime>("CreatedUtc")
+                        .ValueGeneratedOnAddOrUpdate();
+
+                    b.Property<string>("UserID");
+
+                    b.Property<int>("VehicleID");
+
+                    b.HasKey("VehicleCommentID");
+
+                    b.HasIndex("UserID");
+
+                    b.HasIndex("VehicleID");
+
+                    b.ToTable("VehicleComments");
+                });
+
             modelBuilder.Entity("CicotiWebApp.Models.VehiclePurpose", b =>
                 {
                     b.Property<int>("VehiclePurposeID")
@@ -661,6 +693,19 @@ namespace CicotiWebApp.Data.Migrations
                     b.HasKey("VehiclePurposeID");
 
                     b.ToTable("VehiclePurpose");
+                });
+
+            modelBuilder.Entity("CicotiWebApp.Models.VehicleStatus", b =>
+                {
+                    b.Property<int>("VehicleStatusID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description");
+
+                    b.HasKey("VehicleStatusID");
+
+                    b.ToTable("VehicleStatus");
                 });
 
             modelBuilder.Entity("CicotiWebApp.Models.VehicleType", b =>
@@ -1001,6 +1046,19 @@ namespace CicotiWebApp.Data.Migrations
                     b.HasOne("CicotiWebApp.Models.VehicleType", "VechileType")
                         .WithMany()
                         .HasForeignKey("VehicleTypeID")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("CicotiWebApp.Models.VehicleComment", b =>
+                {
+                    b.HasOne("CicotiWebApp.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("CicotiWebApp.Models.Vehicle", "Vehicle")
+                        .WithMany()
+                        .HasForeignKey("VehicleID")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 

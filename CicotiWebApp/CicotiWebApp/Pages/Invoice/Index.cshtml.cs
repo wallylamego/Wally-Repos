@@ -52,6 +52,8 @@ namespace CicotiWebApp.Pages.Invoice
 
 
             //First create the View of the new model you wish to display to the user
+           
+           
             var InvoiceQuery = _context.Invoices
                .Select(i => new
                {
@@ -59,8 +61,16 @@ namespace CicotiWebApp.Pages.Invoice
                    i.InvoiceNumber,
                    i.InvoicePrintDate,
                    StatusName = i.Status.Name,
+                   i.StatusID
                }
                );
+
+            //Filter out all the Non Delivered Invoices
+            //Those which do not have a status of POD or Cancelled
+            if (Model.DeliveryStatus.ToUpper().Contains("DELIVERED"))
+                {
+                    InvoiceQuery = InvoiceQuery.Where(i => i.StatusID != 8).Where(i => i.StatusID != 10);
+                }
 
             totalResultsCount = InvoiceQuery.Count();
             filteredResultsCount = totalResultsCount;

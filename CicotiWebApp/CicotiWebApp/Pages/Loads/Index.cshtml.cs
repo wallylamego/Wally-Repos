@@ -34,6 +34,8 @@ namespace CicotiWebApp.Pages.Loads
             //First create the View of the new model you wish to display to the user
             var LoadQuery = _context.Loads
                 .Include(s=>s.LoadStatus)
+                .Include(d=>d.Destination.StartLocation)
+                .Include(d=>d.Destination.EndLocation)
                .Select(l => new
                {
                    l.LoadID,
@@ -42,11 +44,19 @@ namespace CicotiWebApp.Pages.Loads
                    LoadStatus= l.LoadStatus.Description,
                    SubContrator = l.Driver.SubContractor.Name,
                    l.Vehicle.RegistrationNumber,
+                   Destination = l.Destination.EndLocation.LocationName + " : " +
+                                    l.Destination.StartLocation.LocationName,
                    DriverName = l.Driver.FirstName + l.Driver.Surname,
                    LoadCreateDate = l.CreatedUtc,
-                   LoadCreatedBy = l.User.UserName
+                   LoadCreatedBy = l.User.UserName,
+                   l.LoadStatusID
                }
                );
+
+            if (Model.LoadStatus.ToUpper().Contains("INCOMPLETE"))
+            {
+                LoadQuery = LoadQuery.Where(l => l.LoadStatusID == 1);
+            }
 
             totalResultsCount = LoadQuery.Count();
             filteredResultsCount = totalResultsCount;
@@ -55,7 +65,11 @@ namespace CicotiWebApp.Pages.Loads
             {
                 LoadQuery = LoadQuery
                         .Where(
-                c => c.SubContrator.ToLower().Contains(Model.search.value.ToLower())
+                c => c.SubContrator.ToLower().Contains(Model.search.value.ToLower()) ||
+                     c.DriverName.ToLower().Contains(Model.search.value.ToLower()) ||
+                     c.Destination.ToLower().Contains(Model.search.value.ToLower()) ||
+                     c.RegistrationNumber.ToLower().Contains(Model.search.value.ToLower()) ||
+                     c.LoadStatus.ToLower().Contains(Model.search.value.ToLower())
                        );
 
                 filteredResultsCount = LoadQuery.Count();

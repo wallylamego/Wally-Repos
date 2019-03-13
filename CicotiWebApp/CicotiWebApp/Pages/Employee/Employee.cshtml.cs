@@ -87,26 +87,29 @@ namespace CicotiWebApp.Pages.Employee
         //Updates the existing Vehicle
         public async Task<IActionResult> OnPutUpdateEmployee([FromBody] Models.Employee obj)
         {
-
-            try
-            {
-                _context.Attach(obj).State = EntityState.Modified;
-                await _context.SaveChangesAsync();
-                return new JsonResult(obj);
+            if (obj != null && (HttpContext.User.IsInRole("Admin") || HttpContext.User.IsInRole("HR")))
+                {
+                try
+                {
+                    _context.Attach(obj).State = EntityState.Modified;
+                    await _context.SaveChangesAsync();
+                    return new JsonResult(obj);
+                }
+                catch (DbUpdateException d)
+                {
+                    return new JsonResult("Employee Changes not saved." + d.InnerException.Message);
+                }
             }
-            catch (DbUpdateException d)
-            {
-                return new JsonResult("Employee Changes not saved." + d.InnerException.Message);
-            }
+            return new JsonResult("Employee Changes not saved.");
         }
 
         //Inserts a new Employee with details
         public async Task<IActionResult> OnPostInsertEmployee([FromBody] Models.Employee obj)
         {
-            if (obj != null)
+            if (obj != null && (HttpContext.User.IsInRole("Admin") || HttpContext.User.IsInRole("HR"))) 
             {
                 try
-                {
+                { 
                     _context.Add(obj);
                     await _context.SaveChangesAsync();
                     int id = obj.EmployeeID; // Yes it's here

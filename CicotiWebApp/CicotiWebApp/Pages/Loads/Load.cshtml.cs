@@ -290,8 +290,32 @@ namespace CicotiWebApp.Pages.Loads
         {
             try
             {
+                //  Load currentLoad = _context.Loads.FirstOrDefault(l => l.LoadID == obj.LoadID);
+                // Load currentLoad;
+
+
+                //check if all Invoices have a POD Status before the Load can be changed to Status Complete
+                //if any invoice does not have an Invoice Status of POD then the Load Cannot be marked as Complete
+                if (obj.LoadStatusID == 2)
+                {
+                    if (!CheckInvoiceStatus(obj))
+                    {
+                        //Reset the Load Status to Incomplete if it fails the Invoice POD Test;
+                        obj.LoadStatusID = 1;
+                        return new JsonResult("Load not saved as Complete as there are still invoices which do not have a POD.");
+                    }
+                }
+
                 _context.Attach(obj).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
+
+                //if the Status of the Load has been changed to Cancelled and the previous
+                //status was not cancelled then revert all the invoices to their previous status
+                if (obj.LoadStatusID == 3)
+                {
+                    await CancelLoad(obj.LoadID);
+                }
+
                 return new JsonResult(obj);
             }
             catch (DbUpdateException d)
@@ -307,7 +331,11 @@ namespace CicotiWebApp.Pages.Loads
             {
                 try
                 {
+                    //for a new Load the Load Status is always set as Incomplete
+                    obj.LoadStatusID = 1;
+
                     obj.UserID = _userManager.GetUserId(HttpContext.User);
+                    obj.CreatedUtc = DateTime.Now;
                     _context.Add(obj);
                     await _context.SaveChangesAsync();
                     int id = obj.LoadID; // Yes it's here
@@ -322,7 +350,7 @@ namespace CicotiWebApp.Pages.Loads
 
             else
             {
-                return new JsonResult("Insert Destination was null");
+                return new JsonResult("Insert Load was null");
             }
 
         }
@@ -410,8 +438,76 @@ namespace CicotiWebApp.Pages.Loads
             }
 
         }
-        
+
         #endregion
-        
+        //This procedure is executed if the load status is changed to Cancelled
+        //All the invoices are set to their previous Invoice Status which is WH: Received
+        private async Task<IActionResult> CancelLoad(int LoadID)
+        {
+            if (await _workFlowRule.WorkFlowRuleRole(5, HttpContext))
+            {
+                try
+                {
+                    var UserId = _userManager.GetUserId(HttpContext.User);
+                    CicotiWebApp.Models.InvoiceStatus InvoiceStatusItem;
+
+                    List<CicotiWebApp.Models.Invoice> InvoiceListing =
+                        _context.Invoices.Where(l => l.LoadID == LoadID).ToList();
+                    List<InvoiceStatus> InvoiceStatusListing = new List<InvoiceStatus>();
+
+
+                    //Update the Invoice Table in Database
+                    foreach (var In in InvoiceListing)
+                    {
+                        InvoiceStatusItem = new InvoiceStatus();
+                        InvoiceStatusItem.UserID = UserId;
+                        InvoiceStatusItem.LoadID = LoadID;
+                        //Update to WH: Received.
+                        InvoiceStatusItem.StatusID = 4;
+                        InvoiceStatusItem.CreatedUtc = DateTime.Now;
+                        InvoiceStatusItem.InvoiceID = In.InvoiceID;
+                        InvoiceStatusListing.Add(InvoiceStatusItem);
+                        
+                        //Update The InvoiceStatus to WH: Received.
+                        In.StatusID = 4;
+                        //Remove the Current Load Id From the Invoice. Set to Null. As this invoice will be assigned
+                        //to another load
+                        In.LoadID = null;
+                        _context.Attach(In).State = EntityState.Modified;
+                        await _context.SaveChangesAsync();
+                    }
+                    //Update the InvoiceStatus Table in the Database
+                    _context.InvoiceStatus.AddRange(InvoiceStatusListing);
+                    await _context.SaveChangesAsync();
+                    return new JsonResult("Invoice Status Updated successfully");
+                }
+                catch (DbUpdateException d)
+                {
+                    return new JsonResult("Invoice Status not Updated." + d.InnerException.Message);
+                }
+            }
+            else
+            {
+                return new JsonResult("Invoices not removed OR you do not have access to this functionality.");
+            }
+
+        }
+
+        //Before a load can be considered as completed every Invoice must have a POD
+        //otherwise the load will not be considered to be completed.
+        private Boolean CheckInvoiceStatus(Load Load)
+        {
+            //First Retrieve all the invoices associated with a load
+            List<CicotiWebApp.Models.Invoice> InvoiceList = _context.Invoices.Where(i => i.LoadID == Load.LoadID).ToList();
+            
+            foreach(CicotiWebApp.Models.Invoice Inv in InvoiceList)
+            {
+                if (Inv.StatusID != 8)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 }

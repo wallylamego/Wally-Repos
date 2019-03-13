@@ -46,7 +46,7 @@
                     <li><a asp-page="/About">About</a></li>
                     <li><a asp-page="/Contact">Contact</a></li>
                     @*HR Section*@
-                    @if (User.Identity.IsAuthenticated)
+                    @if (User.Identity.IsAuthenticated && (User.IsInRole("HR") || User.IsInRole("Admin")))
                     {
                         <li>
                             <a class="dropdown-toggle" data-toggle="dropdown" asp-page="/Employee/Index">HR<span class="caret"></span></a>

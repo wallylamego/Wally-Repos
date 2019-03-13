@@ -52,6 +52,16 @@
                 <span asp-validation-for="Employee.StartDate" class="text-danger"></span>
             </div>
         </div>
+        <div class="form-group" id="divEndDate">
+            <label asp-for="Employee.EndDate" class="control-label">End Date</label>
+            <div class='input-group date' id='datetimepicker1'>
+                <input asp-for="Employee.EndDate" class="form-control" type="text" id="startDate" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+                <span asp-validation-for="Employee.EndDate" class="text-danger"></span>
+            </div>
+        </div>
         <div id="divJobDescription" class="form-group">
             <label asp-for="Employee.JobDescription" class="control-label">Job Description</label>
             <select asp-for="Employee.JobDescriptionID" id="jobDescriptionID"
