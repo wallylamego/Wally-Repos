@@ -5,16 +5,18 @@ using System.Threading.Tasks;
 
 namespace CicotiWebApp.SQLViews
 {
-    public class DeliveryStatsDetail
+    public class VwDeliveryStatusDetail
     {
-        public DateTime InvoiceDate { get; set; }
-        public DateTime InvoicePrintDate { get; set; }
-        public int CustomerAccountID{get;set;}
-        public string InvoiceNumber { get; set; }
-        public string StatusName { get; set; }
-        public DateTime LastStatusDate { get; set; }
-        public Double ExpiryTime { get; set; }
-        public Double TargetExpiryTime { get; set; }
-        public string SLAStatus { get; set; }
+        public int InvoiceID { get; private set; }
+        public string InvoiceNumber { get; private set; }
+        public DateTime InvoiceDate { get; private set; }
+        public DateTime InvoicePrintDate { get; private set; }
+        public int CustomerAccountID{get; private set; }
+        public string StatusName { get; private set; }
+        public DateTime LastStatusDate { get; private set; }
+        public int ExpiryTime { get; private set; }
+        public Double TargetExpiryTime { get; private set; }
+        public string SLAStatus { get; private set; }
+        public int StatusID { get; private set; }
     }
 }

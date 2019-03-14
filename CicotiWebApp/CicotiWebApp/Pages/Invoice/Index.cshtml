@@ -52,12 +52,14 @@
             <input type="text" class="form-control" id="executeDate" />
             <span class="input-group-addon">
                 <span class="glyphicon glyphicon-calendar"></span>
-            </span>
+                </span>
+
             <span asp-validation-for="ExecuteDate" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group">
         <input type="submit" value="Update" class="btn btn-default" id="update" />
+        <input type="submit" value="Update" class="btn-danger" id="update" />
     </div>
 </div>
 @await Html.PartialAsync("_ModalPartial")

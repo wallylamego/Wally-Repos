@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using CicotiWebApp.Models;
+using CicotiWebApp.SQLViews;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -57,5 +58,7 @@ namespace CicotiWebApp.Data
 
         public DbSet<VehicleComment> VehicleComments { get; set; }
         public DbSet<VehicleStatus> VehicleStatus { get; set; }
+
+        public DbQuery<VwDeliveryStatusDetail> VwDeliveryStatusDetails { get; set; }
     }
 }
