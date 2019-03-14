@@ -75,7 +75,7 @@ using CicotiWebApp.Data;
             WriteLiteral("\r\n<h2>Own Fleet</h2>\r\n\r\n<p>\r\n    ");
             EndContext();
             BeginContext(435, 30, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7378dbcd6dd043a2a52fcbde46dda824", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e7b699f5ff1e45899180b7b61c5329c8", async() => {
                 BeginContext(455, 6, true);
                 WriteLiteral("Create");
                 EndContext();
