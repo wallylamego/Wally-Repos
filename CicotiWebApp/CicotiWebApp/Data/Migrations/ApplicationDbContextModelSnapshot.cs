@@ -176,6 +176,8 @@ namespace CicotiWebApp.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(15);
 
+                    b.Property<int?>("EmployeeID");
+
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasMaxLength(30);
@@ -192,6 +194,8 @@ namespace CicotiWebApp.Data.Migrations
                         .HasMaxLength(30);
 
                     b.HasKey("DriverID");
+
+                    b.HasIndex("EmployeeID");
 
                     b.HasIndex("SubContractorID");
 
@@ -613,8 +617,6 @@ namespace CicotiWebApp.Data.Migrations
 
                     b.Property<string>("FixedAssetsNumber");
 
-                    b.Property<int?>("MakeID");
-
                     b.Property<int?>("ModelID");
 
                     b.Property<double?>("PayloadCubicMetres");
@@ -635,7 +637,11 @@ namespace CicotiWebApp.Data.Migrations
 
                     b.Property<int?>("VehiclePurposeID");
 
+                    b.Property<int?>("VehicleStatusID");
+
                     b.Property<int>("VehicleTypeID");
+
+                    b.Property<double>("litresPerHundredKms");
 
                     b.HasKey("VehicleID");
 
@@ -645,13 +651,13 @@ namespace CicotiWebApp.Data.Migrations
 
                     b.HasIndex("EmployeeID");
 
-                    b.HasIndex("MakeID");
-
                     b.HasIndex("ModelID");
 
                     b.HasIndex("SubContractorID");
 
                     b.HasIndex("VehiclePurposeID");
+
+                    b.HasIndex("VehicleStatusID");
 
                     b.HasIndex("VehicleTypeID");
 
@@ -851,6 +857,11 @@ namespace CicotiWebApp.Data.Migrations
 
             modelBuilder.Entity("CicotiWebApp.Models.Driver", b =>
                 {
+                    b.HasOne("CicotiWebApp.Models.Employee", "Employee")
+                        .WithMany()
+                        .HasForeignKey("EmployeeID")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("CicotiWebApp.Models.SubContractor", "SubContractor")
                         .WithMany()
                         .HasForeignKey("SubContractorID")
@@ -1023,11 +1034,6 @@ namespace CicotiWebApp.Data.Migrations
                         .HasForeignKey("EmployeeID")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("CicotiWebApp.Models.Make", "Make")
-                        .WithMany()
-                        .HasForeignKey("MakeID")
-                        .OnDelete(DeleteBehavior.Restrict);
-
                     b.HasOne("CicotiWebApp.Models.Model", "Model")
                         .WithMany()
                         .HasForeignKey("ModelID")
@@ -1041,6 +1047,11 @@ namespace CicotiWebApp.Data.Migrations
                     b.HasOne("CicotiWebApp.Models.VehiclePurpose", "VehiclePurpose")
                         .WithMany()
                         .HasForeignKey("VehiclePurposeID")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("CicotiWebApp.Models.VehicleStatus", "VehicleStatus")
+                        .WithMany()
+                        .HasForeignKey("VehicleStatusID")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("CicotiWebApp.Models.VehicleType", "VechileType")

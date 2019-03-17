@@ -1,0 +1,333 @@
+﻿@page  "{DriverID?}"
+
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+@functions{
+    public string GetAntiXsrfRequestToken()
+    {
+        return Xsrf.GetAndStoreTokens(Model.HttpContext).RequestToken;
+    }
+}
+@model CicotiWebApp.Pages.Drivers.DriverModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Pages/_LayoutDataTables.cshtml";
+}
+
+<h4>Add Edit Driver</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <input type="hidden" asp-for="Driver.EmployeeID" id="employeeID" />
+        <input type="hidden" asp-for="Driver.DriverID" id="driverID" />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Driver.SubContractor.Name" class="control-label"></label>
+            <select asp-for="Driver.SubContractorID" id="subContractorID"
+                    asp-items="Model.SubContractorSL" class="form-control">
+                Invoice Status
+                <option value="">--Select SubContractor--</option>
+            </select>
+            <span asp-validation-for="Driver.SubContractorID" class="text-danger"></span>
+        </div>
+        <div id="EmployeeSection">
+            <div class="input-group" id="divEmployeeBtns">
+                <span class="input-group-btn">
+                    <input type="button" value="Find Employee." class="btn btn-default" id="findEmployeeBtn" />
+                </span>
+                @*<span class="input-group-btn">
+                        <input type="button" value="Show Employee" class="btn btn-default" id="showEmployeeBtn" />
+                    </span>*@
+            </div>
+            <br />
+
+            <div id="divEmployeeTable" style="width:90%; margin:0 auto;">
+                <table id="EmployeeTable" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>EmployeeID</th>
+                            <th>Employee Number</th>
+                            <th>Name</th>
+                            <th>Job Description</th>
+                            <th>Department</th>
+                            <th>Branch</th>
+                            <th>Cost Centre</th>
+                            <th>Select</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Driver.FirstName" class="control-label"></label>
+            <input asp-for="Driver.FirstName" class="form-control" id="firstName" />
+            <span asp-validation-for="Driver.FirstName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Driver.Surname" class="control-label"></label>
+            <input asp-for="Driver.Surname" class="form-control" id="surname" />
+            <span asp-validation-for="Driver.Surname" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Driver.CellNumber" class="control-label"></label>
+            <input asp-for="Driver.CellNumber" class="form-control" id="cellNumber" />
+            <span asp-validation-for="Driver.CellNumber" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Driver.PDPExpiryDate" class="control-label"></label>
+            <input asp-for="Driver.PDPExpiryDate" class="form-control" id="pdpExpiryDate" />
+            <span asp-validation-for="Driver.PDPExpiryDate" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Driver.IDNumber" class="control-label"></label>
+            <input asp-for="Driver.IDNumber" class="form-control" />
+            <span asp-validation-for="Driver.IDNumber" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-default" id="savebtn" />
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ModalPartial")
+    @await Html.PartialAsync("_ModalConfirmPartial")
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script type="text/javascript">
+        var driverToSave = {};
+        function updateEmployeeInputFields(data) {
+            var selectedEmployee = {};
+            selectedEmployee = JSON.parse(data);
+            console.log(selectedEmployee.employeeID);
+            $("#employeeID").val(selectedEmployee.EmployeeID);
+            $("#firstName").val(decodeURIComponent(selectedEmployee.name));
+            $("#surname").val(decodeURIComponent(selectedEmployee.name));
+          //  $("#divEmployeeInputFieldsSection").show();
+            $("#divEmployeeTable").hide();
+        //    $('#showEmployeeBtn').val("Hide Employee Details");
+        }
+
+        function GetEmployeeData() {
+             $("#EmployeeTable").on('xhr.dt', function (e, settings, json, xhr) {
+            }).DataTable({
+                lengthMenu: [25, 100, 150, 200],
+                dom: '<lfB<t>ip>',
+                buttons: ['excel', 'copy', 'csv', 'pdf', 'print'],
+                "fixedHeader": {
+                    "header": true,
+                    "footer": true
+                },
+                "responsive": true,
+                "processing": true, // for show progress bar
+                "serverSide": true, // for process server side
+                "filter": true, // this is for disable filter (search box)
+                "orderMulti": false, // for disable multiple column at once
+                "ajax": {
+
+                    "url": "/Employee/Index?handler=Paging",
+                     "headers":
+                        {
+                            "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                        },
+                    "type": "POST",
+                    /*"contentType": "application/x-www-form-urlencoded",*/
+                    "datatype": "json"
+                },
+                "columnDefs":
+                [   {
+                        /*Employee ID is not visible and is not searchable*/
+                        "targets": [0],
+                        "visible": false,
+                        "searchable": true
+                    },
+                    {
+                        /*Reports To Employee No is visible and is searchable*/
+                        "targets": [1],
+                        "visible": false,
+                        "searchable": true
+                    },
+                    {
+                        /*Name is visible and is not searchable*/
+                        "targets": [2],
+                        "visible": true,
+                        "searchable": true,
+                        "orderable": true
+                    },
+                    {
+                        /*Job Description is visible and is not searchable*/
+                        "targets": [3],
+                        "visible": true,
+                        "searchable": true,
+                        "orderable": true
+                    },
+                    {
+                        /*Department is visible and is not searchable*/
+                        "targets": [4],
+                        "visible": true,
+                        "searchable": true,
+                        "orderable": true
+                    },
+                    {
+                        /*Branch  is visible and is not searchable*/
+                        "targets": [5],
+                        "visible": true,
+                        "searchable": true,
+                        "orderable": true
+                    },
+                    {
+                        /*Cost Centre is visible and is not searchable*/
+                        "targets": [6],
+                        "visible": true,
+                        "searchable": true,
+                        "orderable": true
+                    },
+                    {
+                        /*Select button  is  visible and is not searchable*/
+                        "targets": [7],
+                        "visible": true,
+                        "searchable": false,
+                        "orderable": false
+                    }
+                ],
+                "columns": [
+                    { "data": "employeeID", "name": "employeeID", "autoWidth": true },
+                    { "data": "employeeNo", "name": "employeeNo", "autoWidth": true },
+                    { "data": "name", "name": "make", "autoWidth": true },
+                    { "data": "jobDescription", "name": "jobDescription", "autoWidth": true },
+                    { "data": "department", "name": "department", "autoWidth": true },
+                    { "data": "branch", "name": "branch", "autoWidth": true },
+                    { "data": "costCentre", "name": "costCentre", "autoWidth": true },
+                    {
+                        "render": function (data, type, full, meta) {
+                            var selectedEmployee = {};
+                            selectedEmployee.EmployeeID = full.employeeID;
+                            selectedEmployee.name = encodeURIComponent(full.name);
+                            return "<p data-placement='top' data-toggle='tooltip' title='Select'><button id='btnModel' class='btn btn-primary btn-xs' data-title='Select' data-toggle='modal' data-target='#edit' onclick=updateEmployeeInputFields('" + JSON.stringify(selectedEmployee) + "')><span class='glyphicon glyphicon-pencil'></span></button></p>";
+                        }
+                    }
+                ]
+            });//Employee Table
+        }
+
+        function ajaxDriverUpdate(obj) {
+        console.log("ajaxDriverUpdate Function runs: " + JSON.stringify(obj));
+            $.ajax({
+                type: "PUT",
+                url: "/Drivers/Driver?handler=UpdateDriver",
+
+                headers:
+                {
+                    "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                },
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify(obj),
+                success: function (data) {
+                    console.log(data);
+                    console.log("Driver Data successfully returned from DataBase");
+                    $("#modalHeader").text("Driver Processing Status");
+                    $("#modalMessage").text($("#driverID").val() + " was updated.");
+                    $("#myModal").modal("show");
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+
+                        $("#modalHeader").text("Driver Processing Status");
+                        $("#modalMessage").text("Driver was not updated.");
+                        $("#myModal").modal("show");
+                    }
+                });//ajax Update Section 1
+        }
+
+        function ajaxDriverInsert(obj) {
+            console.log("Driver: in Insert Ajax Call: " + JSON.stringify(obj));
+            $.ajax({
+                type: "POST",
+                url: "/Drivers/Driver?handler=InsertDriver",
+                    headers:
+                        {
+                            "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                        },
+                    contentType: "application/json",
+                    dataType: "json",
+                    data: JSON.stringify(obj),
+                    success: function (data) {
+                        $("#modalHeader").text("Driver Processing Status");
+                        $("#modalMessage").text(data.driverID + " was inserted.");
+                        $("#myModal").modal("show");
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        $("#modalHeader").text("Driver Processing Status");
+                        $("#modalMessage").text("Driver Data Not Updated.");
+                        $("#myModal").modal("show");
+                    }
+                });//ajax insert
+        }
+
+        $(document).ready(function () {
+            $('#savebtn').click(function () {
+                driverToSave.driverID = $('#driverID').val();
+                driverToSave.subContractorID = $('#subContractorID').val();
+                driverToSave.employeeID = $('#employeeID').val();
+                driverToSave.firstName = $('#firstName').val();
+                driverToSave.surname = $('#surname').val();
+                driverToSave.lastName = $('#lastName').val();
+                if ($('#cellNumber').val().length > 0) {
+                    driverToSave.cellNumber = $('#cellNumber').val();
+                }
+                else {
+                    driverToSave.cellNumber = '0';
+                }
+
+                driverToSave.pdpExpiryDate = $('#pdpExpiryDate').val();
+
+                driverToSave.idNumber = $('#idNumber').val();
+
+                if ($('#driverID').val().length > 0 && $('#driverID').val() > 0) {
+                    ajaxDriverUpdate(driverToSave);
+                }
+                else {
+                    ajaxDriverInsert(driverToSave);
+                }
+            });
+
+            //hide the Reports To table and the Reports To capture fields when the form starts up
+            $("#divEmployeeTable").hide();
+          //  $("#divEmployeeInputFieldsSection").hide();
+          //  $("#EmployeeName").prop("disabled", true);
+
+
+            //Find Model
+            $('#findEmployeeBtn').click(function () {
+                $("#divEmployeeTable").show();
+                //$('#divEmployeeInputFieldsSection').hide();
+                if (!$.fn.DataTable.isDataTable('#EmployeeTable')) {
+                    GetEmployeeData();
+                }
+            });
+            //Show and Hide Model Button
+            //$('#showEmployeeBtn').click(function () {
+            //    if ($('#showEmployeeBtn').val() == "Show Employee Details") {
+            //        $("#divEmployeeTable").hide();
+            //        $('#divEmployeeInputFieldsSection').show();
+            //        $('#showEmployeeBtn').val("Hide Employee Details");
+            //    }
+            //    else {
+            //        $("#divEmployeeTable").hide();
+            //        $('#divEmployeeInputFieldsSection').hide();
+            //        $('#showEmployeeBtn').val("Show Employee Details");
+            //    }
+            //});
+
+   });//Document Ready end.
+
+    </script>
+
+}

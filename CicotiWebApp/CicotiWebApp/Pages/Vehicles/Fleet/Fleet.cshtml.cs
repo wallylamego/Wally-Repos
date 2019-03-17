@@ -202,7 +202,37 @@ namespace CicotiWebApp.Pages.Vehicles.Fleet
             }
 
         }
-        #endregion UploadLoads
+        public async Task<IActionResult> OnDeleteDelete([FromBody] Vehicle obj)
+        {
+
+            if (obj != null && HttpContext.User.IsInRole("Admin") || HttpContext.User.IsInRole("Fleet"))
+            {
+                try
+                {
+                    _context.Vehicles.Remove(obj);
+                    await _context.SaveChangesAsync();
+                    return new JsonResult("Vehicles removed successfully");
+                }
+                catch (DbUpdateException d)
+                {
+                    return new JsonResult("Vehicles not removed." + d.InnerException.Message);
+                }
+            }
+            else
+            {
+                return new JsonResult("Vehicles not removed.");
+            }
+        }
+
+
+
+
+
+        #endregion UpdateFleet
+
+
+
+
 
     }
 }

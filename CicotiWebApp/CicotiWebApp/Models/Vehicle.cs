@@ -13,16 +13,16 @@ namespace CicotiWebApp.Models
         public int VehicleTypeID { get; set; }
         public int ? SubContractorID { get; set; }
         public int ? VehiclePurposeID { get; set; }
-        public int ? MakeID { get; set; }
         public int ? ModelID { get; set; }
         public int ? CostCentreID { get; set; }
         public int ? BranchID { get; set; }
+        public int ? VehicleStatusID { get; set;}
 
         public double? PayloadHeight { get; set; }
         public double? PayloadWidth { get; set; }
         public double? PayloadLength { get; set; }
         public double? PayloadCubicMetres { get; set; }
-
+        public double litresPerHundredKms { get; set; }
 
         public string FixedAssetsNumber { get; set; }
         public DateTime AcquisitionDate { get; set; }
@@ -44,6 +44,6 @@ namespace CicotiWebApp.Models
         public CostCentre CostCentre { get; set; }
         public Branch Branch { get; set; }
         public Model Model { get; set; }
-        public Make Make {get;set;}
+        public VehicleStatus VehicleStatus { get; set; }
     }
 }

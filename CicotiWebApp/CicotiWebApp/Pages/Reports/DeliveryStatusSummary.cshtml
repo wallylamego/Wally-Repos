@@ -1,0 +1,130 @@
+﻿@page
+@{
+    Layout = "_LayoutDataTables";
+}
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+@functions{
+    public string GetAntiXsrfRequestToken()
+    {
+        return Xsrf.GetAndStoreTokens(Model.HttpContext).RequestToken;
+    }
+}
+@model CicotiWebApp.Pages.Reports.DeliveryStatusSummaryModel
+
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/_LayoutDataTables.cshtml";
+}
+
+<h2>Delivery Status: Summary Statistics</h2>
+
+<div id="divInvoiceTable" style="width:90%; margin:0 auto;">
+    <table id="InvoiceTable" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Year Month</th>
+                <th>Outside Deliveries</th>
+                <th>Total Deliveries</th>
+                <th> % Outside</th>
+                <th> % Inside</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+@await Html.PartialAsync("_ModalPartial")
+
+@section Scripts {
+
+    <script type="text/javascript">
+        $(document).ready(function ()
+        {
+            $("#InvoiceTable").on('xhr.dt', function (e, settings, json, xhr) {
+            }).DataTable({
+                lengthMenu: [25, 100, 150, 200],
+                "dom": '<"top"lBfp><"top"i>rt<><"clear">',
+                buttons: ['excel', 'copy', 'csv', 'pdf', 'print'],
+                "fixedHeader": {
+                    "header": true,
+                    "footer": true
+                },
+                "responsive": true,
+                "processing": true, // for show progress bar
+                "serverSide": true, // for process server side
+                "filter": true, // this is for disable filter (search box)
+                "orderMulti": false, // for disable multiple column at once
+                "ajax": {
+
+                    "url": "/Reports/DeliveryStatusSummary?handler=Paging",
+                     "headers":
+                        {
+                            "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                        },
+                    "type": "POST",
+                    "data": function (d) {
+                       
+                    },
+                    "datatype": "json"
+                },
+                "columnDefs":
+                    [
+                        {
+                            /*YearMonth is not visible and is not searchable*/
+                            "targets": [0],
+                            "visible": true,
+                            "searchable": true
+                        },
+                        {
+                        /*OutsideSlaDeliveries is not visible and is not searchable*/
+                        "targets": [1],
+                        "visible": true,
+                        "searchable": true
+                    },
+                    {
+                        /*Total Deliveries is visible and is  searchable*/
+                        "targets": [2],
+                        "visible": true,
+                        "searchable": true
+                    },
+                    {
+                        /*PercentageOutside No is visible and is searchable*/
+                        "targets": [3],
+                        "visible": true,
+                        "searchable": true
+                    },
+                    {
+                        /*PercentageInside is visible and is searchable*/
+                        "targets": [4],
+                        "visible": true,
+                        "searchable": true
+                    },
+                ],
+                "columns": [
+                    { "data": "yearMonth", "name": "yearMonth", "autoWidth": true },
+                    { "data": "outsideSlaDeliveries", "name": "outsideSlaDeliveries", "autoWidth": true },
+                    { "data": "totalDeliveries", "name": "totalDeliveries", "autoWidth": true },
+                    { "data": "percentageOutside", "name": "percentageOutside", "autoWidth": true },
+                    { "data": "percentageInside", "name": "percentageInside", "autoWidth": true },
+                    //{
+                    //    data: "percentageOutside",
+                    //    render: function (data, type, row) {
+                    //        return data;
+                    //       // return data.concat("%");
+                    //      //  return moment(data).format("DD-MM-YYYY HH:mm");
+                    //    }
+                    //},
+                    //{
+                    //    data: "percentageInside",
+                    //    render: function (data, type, row) {
+                    //        return data;
+                    //     //   return data.concat("%");
+                    //    }
+                    //}
+                    ]
+                });//Delivery Status Table
+
+        });//Document Ready end.
+
+    </script>
+}

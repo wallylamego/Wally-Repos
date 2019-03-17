@@ -82,7 +82,6 @@ C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\R
 C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\Razor\Pages\VehicleTypes\Create.g.cshtml.cs
 C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\Razor\Pages\VehicleTypes\Edit.g.cshtml.cs
 C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\Razor\Pages\VehicleTypes\Index.g.cshtml.cs
-C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\Razor\Pages\Drivers\Create.g.cshtml.cs
 C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\Razor\Pages\Drivers\Edit.g.cshtml.cs
 C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\Razor\Pages\Drivers\Index.g.cshtml.cs
 C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\Razor\Pages\Loads\Index.g.cshtml.cs
@@ -123,3 +122,5 @@ C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\R
 C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\Razor\Pages\Provinces\Index.g.cshtml.cs
 C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\Razor\Pages\_DestinationPartial.g.cshtml.cs
 C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\Razor\Pages\Reports\DeliveryStatus.g.cshtml.cs
+C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\Razor\Pages\Reports\DeliveryStatusSummary.g.cshtml.cs
+C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\Razor\Pages\Drivers\Driver.g.cshtml.cs

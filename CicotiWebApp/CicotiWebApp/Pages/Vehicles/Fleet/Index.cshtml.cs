@@ -37,7 +37,6 @@ namespace CicotiWebApp.Pages.Vehicles.Fleet
 
             var VehicleQuery = _context.Vehicles
                 .Include(m=>m.Model)
-                .Include(m=>m.Make)
                 .Include(b=>b.Branch)
                 .Include(c=>c.CostCentre)
                 .Include(e=>e.Employee)

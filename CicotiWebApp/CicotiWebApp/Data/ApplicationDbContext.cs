@@ -60,5 +60,6 @@ namespace CicotiWebApp.Data
         public DbSet<VehicleStatus> VehicleStatus { get; set; }
 
         public DbQuery<VwDeliveryStatusDetail> VwDeliveryStatusDetails { get; set; }
+        public DbQuery<VwDeliveryStatsSummary> VwDeliveryStatusSummaryPerMonth_2 { get; set; }
     }
 }

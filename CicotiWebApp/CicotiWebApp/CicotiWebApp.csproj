@@ -89,6 +89,9 @@
     <Content Update="Pages\Loads\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Pages\Reports\DeliveryStatusSummary.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Pages\Reports\DeliveryStatus.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

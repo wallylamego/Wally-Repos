@@ -35,7 +35,9 @@ namespace CicotiWebApp.Models
         public string IDNumber { get; set; }
 
         public int SubContractorID { get; set; }
+        public int ? EmployeeID { get; set; }
 
+        public Employee Employee { get; set; }
         public SubContractor SubContractor { get; set; }
 
     }
