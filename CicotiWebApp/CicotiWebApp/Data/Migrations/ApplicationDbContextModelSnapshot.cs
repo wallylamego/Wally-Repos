@@ -70,6 +70,48 @@ namespace CicotiWebApp.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("CicotiWebApp.Models.ActCostAccount", b =>
+                {
+                    b.Property<int>("ActCostAccountID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AccountNo");
+
+                    b.Property<int>("ActCostCategoryID");
+
+                    b.Property<int>("BranchID");
+
+                    b.Property<string>("Description");
+
+                    b.HasKey("ActCostAccountID");
+
+                    b.HasIndex("ActCostCategoryID");
+
+                    b.HasIndex("BranchID");
+
+                    b.ToTable("ActCostAccount");
+                });
+
+            modelBuilder.Entity("CicotiWebApp.Models.ActCostAccountBalance", b =>
+                {
+                    b.Property<int>("ActCostAccountBalanceID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AccountID");
+
+                    b.Property<double>("Movement");
+
+                    b.Property<int>("PeriodID");
+
+                    b.Property<double>("YTD");
+
+                    b.HasKey("ActCostAccountBalanceID");
+
+                    b.ToTable("ActCostAccountBalance");
+                });
+
             modelBuilder.Entity("CicotiWebApp.Models.ActCostAllocationSplit", b =>
                 {
                     b.Property<int>("ActCostAllocationSplitID")
@@ -87,6 +129,21 @@ namespace CicotiWebApp.Data.Migrations
                     b.HasIndex("SiloID");
 
                     b.ToTable("ActCostAllocationSplits");
+                });
+
+            modelBuilder.Entity("CicotiWebApp.Models.ActCostCategory", b =>
+                {
+                    b.Property<int>("ActCostCategoryID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description");
+
+                    b.Property<int>("SortOrder");
+
+                    b.HasKey("ActCostCategoryID");
+
+                    b.ToTable("ActCostCategory");
                 });
 
             modelBuilder.Entity("CicotiWebApp.Models.ActCostDriver", b =>
@@ -107,6 +164,8 @@ namespace CicotiWebApp.Data.Migrations
                     b.Property<int>("ActCostPeriodID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("MthlyDate");
 
                     b.Property<string>("Period");
 
@@ -146,6 +205,25 @@ namespace CicotiWebApp.Data.Migrations
                     b.HasIndex("SiloID");
 
                     b.ToTable("ActCostSiloAllocations");
+                });
+
+            modelBuilder.Entity("CicotiWebApp.Models.ActCostSubCategory", b =>
+                {
+                    b.Property<int>("ActCostSubCategoryID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ActCostCategoryID");
+
+                    b.Property<string>("Description");
+
+                    b.Property<int>("SortOrder");
+
+                    b.HasKey("ActCostSubCategoryID");
+
+                    b.HasIndex("ActCostCategoryID");
+
+                    b.ToTable("ActSubCostCategory");
                 });
 
             modelBuilder.Entity("CicotiWebApp.Models.ActCostTransaction", b =>
@@ -1041,6 +1119,19 @@ namespace CicotiWebApp.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("CicotiWebApp.Models.ActCostAccount", b =>
+                {
+                    b.HasOne("CicotiWebApp.Models.ActCostCategory", "ActCostCategory")
+                        .WithMany()
+                        .HasForeignKey("ActCostCategoryID")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("CicotiWebApp.Models.Branch", "Branch")
+                        .WithMany()
+                        .HasForeignKey("BranchID")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
             modelBuilder.Entity("CicotiWebApp.Models.ActCostAllocationSplit", b =>
                 {
                     b.HasOne("CicotiWebApp.Models.Silo", "Silo")
@@ -1069,6 +1160,14 @@ namespace CicotiWebApp.Data.Migrations
                     b.HasOne("CicotiWebApp.Models.Silo", "Silo")
                         .WithMany()
                         .HasForeignKey("SiloID")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("CicotiWebApp.Models.ActCostSubCategory", b =>
+                {
+                    b.HasOne("CicotiWebApp.Models.ActCostCategory", "ActCostCategory")
+                        .WithMany()
+                        .HasForeignKey("ActCostCategoryID")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 

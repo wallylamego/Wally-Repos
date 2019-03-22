@@ -9,5 +9,6 @@ namespace CicotiWebApp.Models
     {
         public int ActCostPeriodID { get; set; }
         public string Period { get; set; }
+        public DateTime MthlyDate { get; set; }
     }
 }
