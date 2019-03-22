@@ -1,0 +1,13 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace CicotiWebApp.Models
+{
+    public class ActCostDriver
+    {
+        public int ActCostDriverID { get; set; }
+        public string Description { get; set; }
+    }
+}

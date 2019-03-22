@@ -11,16 +11,277 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{FED2506C-C164-45B0-9D17-BCB5A489E0D5}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{DB13D68A-084C-43A3-A9B3-D1C08A6AAB8A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:refId="Package.ConnectionManagers[CICOTIDW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C5F123DE-59CE-4394-BC86-6EFDC11865C8}"
+      DTS:ObjectName="CICOTIDW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=OTIJHB-NB-081\SQLEXPRESS;Initial Catalog=CICOTIDW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[OTIJHB-NB-081\SQLEXPRESS.CICOTIDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{CD59EF0E-CAB4-4D5A-9047-06DD662DFF52}"
+      DTS:ObjectName="OTIJHB-NB-081\SQLEXPRESS.CICOTIDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=OTIJHB-NB-081\SQLEXPRESS;Initial Catalog=CICOTIDB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[PayrollImportFile]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{602C2B16-EC26-40B7-AE51-3706B136B5F0}"
+      DTS:ObjectName="PayrollImportFile">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="7177"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\wallyf\Desktop\Cicoti\Payroll\PayrollImport.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="2"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ActCostPeriodID"
+              DTS:DTSID="{4D2D5EC7-F8AB-41F4-B22B-BC5812DF4B29}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Employee Code"
+              DTS:DTSID="{4563774C-6110-4592-B95E-835F0AA32BCD}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Surname"
+              DTS:DTSID="{A2CB22DF-1E71-4D09-9E02-5B7F95207935}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Full Names"
+              DTS:DTSID="{AC2D459C-A005-488E-86A4-8FE1319CD7DF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Second Name"
+              DTS:DTSID="{3809BE5E-F825-49A2-BA6F-66FA3036A7D2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="7"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Termination Date"
+              DTS:DTSID="{030850C0-2D65-4A3F-A700-1266F2B6E18D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Branch"
+              DTS:DTSID="{5FB97252-04BC-41DC-A4F6-F0D0013F2163}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="4"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ED-Basic Salary"
+              DTS:DTSID="{B82089C4-F12F-426D-AB36-EEB01890C11D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="4"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ED-Faltas"
+              DTS:DTSID="{550DFA52-EF43-4FF0-8B33-3CC73733AE4C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="4"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ED-Overtime"
+              DTS:DTSID="{17EA471E-181A-46A6-9619-47E97D17A79B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="4"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ED-Car Allowanc"
+              DTS:DTSID="{2B0E8839-E01B-4350-87C4-66B7E2A3D425}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="4"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ED-Telephone Subsi"
+              DTS:DTSID="{401C86DE-A5C4-48AA-85E5-E809F98A9486}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="4"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ED-Commission"
+              DTS:DTSID="{A4005C27-7ABD-4CBA-8539-C78ACAD0E1F0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="4"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ED-Transport Sibsi"
+              DTS:DTSID="{3B72823C-7871-4C55-9C76-E937AA29D927}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="4"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ED-Other"
+              DTS:DTSID="{94CC892A-F030-433B-B137-A9A658049B97}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="4"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ED-Fuel Allowance "
+              DTS:DTSID="{C7776372-BB1E-4C35-A3BC-B827B2902AC7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="4"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ED-Incentive"
+              DTS:DTSID="{AFAC985E-9492-4097-820C-0905F83B6270}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="4"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DD-Tax"
+              DTS:DTSID="{FA1AEE2A-911B-4DD3-8C89-210021A0A98A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="4"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DD-INSS"
+              DTS:DTSID="{48748A25-52B5-4606-A9E8-B67B3EEA22F2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="4"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DD-Medical Aid"
+              DTS:DTSID="{CCC517B4-F448-406F-9FE4-83841CCCAB7E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="4"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DD-Telephone"
+              DTS:DTSID="{20C8A432-5D7B-4B1F-B950-82A94015DB32}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="4"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DD-Shortages"
+              DTS:DTSID="{A68EFF77-C43C-4FFB-9DDF-74AD68B26922}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="4"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DD-Advance"
+              DTS:DTSID="{429EAF8C-24C7-4755-B9AD-CCD208830C3F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="4"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CC-INSS"
+              DTS:DTSID="{9BDD5745-A3B4-43F2-9668-24BCBE10C7B2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="4"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Total Earnings"
+              DTS:DTSID="{F9101D3C-4DAA-4F38-B7F0-0C40184651CD}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="4"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Total Deductions"
+              DTS:DTSID="{54F00850-4F4C-41F3-8CB4-95CB0299EA7E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="4"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Nett Pay"
+              DTS:DTSID="{45A3C8F4-618C-40E5-9C32-F0A2AB30191E}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SalesImportTextFile]"
       DTS:CreationName="FLATFILE"
       DTS:DTSID="{A6547BFD-70E5-455A-B6AF-6A68A8260B5A}"
-      DTS:ObjectName="Flat File Connection Manager">
+      DTS:ObjectName="SalesImportTextFile">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:Format="Delimited"
@@ -229,19 +490,1160 @@
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[OTIJHB-NB-081\SQLEXPRESS.CICOTIDW]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{C5F123DE-59CE-4394-BC86-6EFDC11865C8}"
-      DTS:ObjectName="OTIJHB-NB-081\SQLEXPRESS.CICOTIDW">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=OTIJHB-NB-081\SQLEXPRESS;Initial Catalog=CICOTIDW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Import Payroll Data"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{94B44D02-8D89-4CE6-9BDF-27B33B5A80D3}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Import Payroll Data"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Import Payroll Data\Flat File Source"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="7177"
+              name="Flat File Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import Payroll Data\Flat File Source.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PayrollImportFile]"
+                  connectionManagerRefId="Package.ConnectionManagers[PayrollImportFile]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[ActCostPeriodID]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ActCostPeriodID]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[ActCostPeriodID]"
+                      name="ActCostPeriodID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[Employee Code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Employee Code]"
+                      length="50"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[Employee Code]"
+                      name="Employee Code"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[Surname]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Surname]"
+                      length="50"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[Surname]"
+                      name="Surname"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[Full Names]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Full Names]"
+                      length="50"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[Full Names]"
+                      name="Full Names"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[Second Name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Second Name]"
+                      length="50"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[Second Name]"
+                      name="Second Name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[Termination Date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Termination Date]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[Termination Date]"
+                      name="Termination Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[Branch]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Branch]"
+                      length="50"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[Branch]"
+                      name="Branch"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[ED-Basic Salary]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ED-Basic Salary]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[ED-Basic Salary]"
+                      name="ED-Basic Salary"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[ED-Faltas]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ED-Faltas]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[ED-Faltas]"
+                      name="ED-Faltas"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[ED-Overtime]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ED-Overtime]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[ED-Overtime]"
+                      name="ED-Overtime"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[ED-Car Allowanc]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ED-Car Allowanc]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[ED-Car Allowanc]"
+                      name="ED-Car Allowanc"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[ED-Telephone Subsi]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ED-Telephone Subsi]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[ED-Telephone Subsi]"
+                      name="ED-Telephone Subsi"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[ED-Commission]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ED-Commission]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[ED-Commission]"
+                      name="ED-Commission"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[ED-Transport Sibsi]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ED-Transport Sibsi]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[ED-Transport Sibsi]"
+                      name="ED-Transport Sibsi"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[ED-Other]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ED-Other]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[ED-Other]"
+                      name="ED-Other"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[ED-Fuel Allowance ]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ED-Fuel Allowance ]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[ED-Fuel Allowance ]"
+                      name="ED-Fuel Allowance "
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[ED-Incentive]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ED-Incentive]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[ED-Incentive]"
+                      name="ED-Incentive"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[DD-Tax]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[DD-Tax]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[DD-Tax]"
+                      name="DD-Tax"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[DD-INSS]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[DD-INSS]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[DD-INSS]"
+                      name="DD-INSS"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[DD-Medical Aid]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[DD-Medical Aid]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[DD-Medical Aid]"
+                      name="DD-Medical Aid"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[DD-Telephone]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[DD-Telephone]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[DD-Telephone]"
+                      name="DD-Telephone"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[DD-Shortages]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[DD-Shortages]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[DD-Shortages]"
+                      name="DD-Shortages"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[DD-Advance]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[DD-Advance]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[DD-Advance]"
+                      name="DD-Advance"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[CC-INSS]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[CC-INSS]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[CC-INSS]"
+                      name="CC-INSS"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[Total Earnings]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Total Earnings]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[Total Earnings]"
+                      name="Total Earnings"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[Total Deductions]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Total Deductions]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[Total Deductions]"
+                      name="Total Deductions"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[Nett Pay]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Nett Pay]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[Nett Pay]"
+                      name="Nett Pay"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ActCostPeriodID]"
+                      dataType="i2"
+                      name="ActCostPeriodID" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Employee Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Employee Code" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Surname]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Surname" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Full Names]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Full Names" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Second Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Second Name" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Termination Date]"
+                      dataType="date"
+                      name="Termination Date" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Branch]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Branch" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ED-Basic Salary]"
+                      dataType="r4"
+                      name="ED-Basic Salary" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ED-Faltas]"
+                      dataType="r4"
+                      name="ED-Faltas" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ED-Overtime]"
+                      dataType="r4"
+                      name="ED-Overtime" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ED-Car Allowanc]"
+                      dataType="r4"
+                      name="ED-Car Allowanc" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ED-Telephone Subsi]"
+                      dataType="r4"
+                      name="ED-Telephone Subsi" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ED-Commission]"
+                      dataType="r4"
+                      name="ED-Commission" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ED-Transport Sibsi]"
+                      dataType="r4"
+                      name="ED-Transport Sibsi" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ED-Other]"
+                      dataType="r4"
+                      name="ED-Other" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ED-Fuel Allowance ]"
+                      dataType="r4"
+                      name="ED-Fuel Allowance " />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ED-Incentive]"
+                      dataType="r4"
+                      name="ED-Incentive" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[DD-Tax]"
+                      dataType="r4"
+                      name="DD-Tax" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[DD-INSS]"
+                      dataType="r4"
+                      name="DD-INSS" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[DD-Medical Aid]"
+                      dataType="r4"
+                      name="DD-Medical Aid" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[DD-Telephone]"
+                      dataType="r4"
+                      name="DD-Telephone" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[DD-Shortages]"
+                      dataType="r4"
+                      name="DD-Shortages" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[DD-Advance]"
+                      dataType="r4"
+                      name="DD-Advance" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[CC-INSS]"
+                      dataType="r4"
+                      name="CC-INSS" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Total Earnings]"
+                      dataType="r4"
+                      name="Total Earnings" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Total Deductions]"
+                      dataType="r4"
+                      name="Total Deductions" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Nett Pay]"
+                      dataType="r4"
+                      name="Nett Pay" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import Payroll Data\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[ActCostPayRoll]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import Payroll Data\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[OTIJHB-NB-081\SQLEXPRESS.CICOTIDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[OTIJHB-NB-081\SQLEXPRESS.CICOTIDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ActCostPeriodID]"
+                      cachedDataType="i2"
+                      cachedName="ActCostPeriodID"
+                      externalMetadataColumnId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ActCostPeriodID]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[ActCostPeriodID]" />
+                    <inputColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Employee Code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Employee Code"
+                      externalMetadataColumnId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Employee Code]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[Employee Code]" />
+                    <inputColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Surname]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Surname"
+                      externalMetadataColumnId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Surname]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[Surname]" />
+                    <inputColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Full Names]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Full Names"
+                      externalMetadataColumnId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Full Names]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[Full Names]" />
+                    <inputColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Second Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Second Name"
+                      externalMetadataColumnId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Second Name]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[Second Name]" />
+                    <inputColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Termination Date]"
+                      cachedDataType="date"
+                      cachedName="Termination Date"
+                      externalMetadataColumnId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Termination Date]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[Termination Date]" />
+                    <inputColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Branch]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Branch"
+                      externalMetadataColumnId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Branch]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[Branch]" />
+                    <inputColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ED-Basic Salary]"
+                      cachedDataType="r4"
+                      cachedName="ED-Basic Salary"
+                      externalMetadataColumnId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ED-Basic Salary]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[ED-Basic Salary]" />
+                    <inputColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ED-Faltas]"
+                      cachedDataType="r4"
+                      cachedName="ED-Faltas"
+                      externalMetadataColumnId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ED-Faltas]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[ED-Faltas]" />
+                    <inputColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ED-Overtime]"
+                      cachedDataType="r4"
+                      cachedName="ED-Overtime"
+                      externalMetadataColumnId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ED-Overtime]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[ED-Overtime]" />
+                    <inputColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ED-Car Allowanc]"
+                      cachedDataType="r4"
+                      cachedName="ED-Car Allowanc"
+                      externalMetadataColumnId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ED-Car Allowanc]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[ED-Car Allowanc]" />
+                    <inputColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ED-Telephone Subsi]"
+                      cachedDataType="r4"
+                      cachedName="ED-Telephone Subsi"
+                      externalMetadataColumnId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ED-Telephone Subsi]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[ED-Telephone Subsi]" />
+                    <inputColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ED-Commission]"
+                      cachedDataType="r4"
+                      cachedName="ED-Commission"
+                      externalMetadataColumnId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ED-Commission]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[ED-Commission]" />
+                    <inputColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ED-Transport Sibsi]"
+                      cachedDataType="r4"
+                      cachedName="ED-Transport Sibsi"
+                      externalMetadataColumnId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ED-Transport Sibsi]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[ED-Transport Sibsi]" />
+                    <inputColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ED-Other]"
+                      cachedDataType="r4"
+                      cachedName="ED-Other"
+                      externalMetadataColumnId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ED-Other]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[ED-Other]" />
+                    <inputColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ED-Fuel Allowance ]"
+                      cachedDataType="r4"
+                      cachedName="ED-Fuel Allowance "
+                      externalMetadataColumnId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ED-Fuel Allowance ]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[ED-Fuel Allowance ]" />
+                    <inputColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ED-Incentive]"
+                      cachedDataType="r4"
+                      cachedName="ED-Incentive"
+                      externalMetadataColumnId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ED-Incentive]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[ED-Incentive]" />
+                    <inputColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DD-Tax]"
+                      cachedDataType="r4"
+                      cachedName="DD-Tax"
+                      externalMetadataColumnId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DD-Tax]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[DD-Tax]" />
+                    <inputColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DD-INSS]"
+                      cachedDataType="r4"
+                      cachedName="DD-INSS"
+                      externalMetadataColumnId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DD-INSS]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[DD-INSS]" />
+                    <inputColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DD-Medical Aid]"
+                      cachedDataType="r4"
+                      cachedName="DD-Medical Aid"
+                      externalMetadataColumnId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DD-Medical Aid]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[DD-Medical Aid]" />
+                    <inputColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DD-Telephone]"
+                      cachedDataType="r4"
+                      cachedName="DD-Telephone"
+                      externalMetadataColumnId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DD-Telephone]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[DD-Telephone]" />
+                    <inputColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DD-Shortages]"
+                      cachedDataType="r4"
+                      cachedName="DD-Shortages"
+                      externalMetadataColumnId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DD-Shortages]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[DD-Shortages]" />
+                    <inputColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DD-Advance]"
+                      cachedDataType="r4"
+                      cachedName="DD-Advance"
+                      externalMetadataColumnId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DD-Advance]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[DD-Advance]" />
+                    <inputColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CC-INSS]"
+                      cachedDataType="r4"
+                      cachedName="CC-INSS"
+                      externalMetadataColumnId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CC-INSS]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[CC-INSS]" />
+                    <inputColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Total Earnings]"
+                      cachedDataType="r4"
+                      cachedName="Total Earnings"
+                      externalMetadataColumnId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Total Earnings]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[Total Earnings]" />
+                    <inputColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Total Deductions]"
+                      cachedDataType="r4"
+                      cachedName="Total Deductions"
+                      externalMetadataColumnId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Total Deductions]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[Total Deductions]" />
+                    <inputColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Nett Pay]"
+                      cachedDataType="r4"
+                      cachedName="Nett Pay"
+                      externalMetadataColumnId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nett Pay]"
+                      lineageId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output].Columns[Nett Pay]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ActCostPeriodID]"
+                      dataType="i2"
+                      name="ActCostPeriodID" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Employee Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Employee Code" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Surname]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Surname" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Full Names]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Full Names" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Second Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Second Name" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Termination Date]"
+                      dataType="dbTimeStamp"
+                      name="Termination Date" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Branch]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Branch" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ED-Basic Salary]"
+                      dataType="r4"
+                      name="ED-Basic Salary" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ED-Faltas]"
+                      dataType="r4"
+                      name="ED-Faltas" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ED-Overtime]"
+                      dataType="r4"
+                      name="ED-Overtime" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ED-Car Allowanc]"
+                      dataType="r4"
+                      name="ED-Car Allowanc" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ED-Telephone Subsi]"
+                      dataType="r4"
+                      name="ED-Telephone Subsi" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ED-Commission]"
+                      dataType="r4"
+                      name="ED-Commission" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ED-Transport Sibsi]"
+                      dataType="r4"
+                      name="ED-Transport Sibsi" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ED-Other]"
+                      dataType="r4"
+                      name="ED-Other" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ED-Fuel Allowance ]"
+                      dataType="r4"
+                      name="ED-Fuel Allowance " />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ED-Incentive]"
+                      dataType="r4"
+                      name="ED-Incentive" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DD-Tax]"
+                      dataType="r4"
+                      name="DD-Tax" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DD-INSS]"
+                      dataType="r4"
+                      name="DD-INSS" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DD-Medical Aid]"
+                      dataType="r4"
+                      name="DD-Medical Aid" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DD-Telephone]"
+                      dataType="r4"
+                      name="DD-Telephone" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DD-Shortages]"
+                      dataType="r4"
+                      name="DD-Shortages" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DD-Advance]"
+                      dataType="r4"
+                      name="DD-Advance" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CC-INSS]"
+                      dataType="r4"
+                      name="CC-INSS" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Total Earnings]"
+                      dataType="r4"
+                      name="Total Earnings" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Total Deductions]"
+                      dataType="r4"
+                      name="Total Deductions" />
+                    <externalMetadataColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nett Pay]"
+                      dataType="r4"
+                      name="Nett Pay" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import Payroll Data\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Payroll Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Payroll Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Payroll Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Import Payroll Data.Paths[Flat File Source Output]"
+              endId="Package\Import Payroll Data\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Flat File Source Output"
+              startId="Package\Import Payroll Data\Flat File Source.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Import Sales Data"
       DTS:CreationName="Microsoft.Pipeline"
@@ -552,8 +1954,8 @@ where [refTable].[PastelBranch] = ?</property>
               <connections>
                 <connection
                   refId="Package\Import Sales Data\LookUp Branch.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[OTIJHB-NB-081\SQLEXPRESS.CICOTIDW]"
-                  connectionManagerRefId="Package.ConnectionManagers[OTIJHB-NB-081\SQLEXPRESS.CICOTIDW]"
+                  connectionManagerID="Package.ConnectionManagers[CICOTIDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[CICOTIDW]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -717,8 +2119,8 @@ where [refTable].[Pastel Principle] = ?</property>
               <connections>
                 <connection
                   refId="Package\Import Sales Data\LookUp Principal.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[OTIJHB-NB-081\SQLEXPRESS.CICOTIDW]"
-                  connectionManagerRefId="Package.ConnectionManagers[OTIJHB-NB-081\SQLEXPRESS.CICOTIDW]"
+                  connectionManagerID="Package.ConnectionManagers[CICOTIDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[CICOTIDW]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -888,8 +2290,8 @@ where [refTable].[Pastel Principle] = ?</property>
               <connections>
                 <connection
                   refId="Package\Import Sales Data\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[OTIJHB-NB-081\SQLEXPRESS.CICOTIDW]"
-                  connectionManagerRefId="Package.ConnectionManagers[OTIJHB-NB-081\SQLEXPRESS.CICOTIDW]"
+                  connectionManagerID="Package.ConnectionManagers[CICOTIDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[CICOTIDW]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1324,8 +2726,8 @@ where [refTable].[Pastel Principle] = ?</property>
               <connections>
                 <connection
                   refId="Package\Import Sales Data\Sales Data.Connections[FlatFileConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
-                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
+                  connectionManagerID="Package.ConnectionManagers[SalesImportTextFile]"
+                  connectionManagerRefId="Package.ConnectionManagers[SalesImportTextFile]"
                   name="FlatFileConnection" />
               </connections>
               <outputs>
@@ -2015,7 +3417,11 @@ where [refTable].[Pastel Principle] = ?</property>
         <NodeLayout
           Size="164,42"
           Id="Package\Import Sales Data"
-          TopLeft="94.5,43.5" />
+          TopLeft="11.5,22.25" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Import Payroll Data"
+          TopLeft="15.5,70" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -2252,12 +3658,25 @@ where [refTable].[Pastel Principle] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\Import Sales Data\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Import Sales Data\LookUp Branch">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2267,7 +3686,7 @@ where [refTable].[Pastel Principle] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2280,7 +3699,7 @@ where [refTable].[Pastel Principle] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2290,15 +3709,65 @@ where [refTable].[Pastel Principle] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Import Payroll Data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Import Payroll Data\Flat File Source"
+          TopLeft="57.5,0" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Import Payroll Data\OLE DB Destination"
+          TopLeft="122,76.75" />
+        <EdgeLayout
+          Id="Package\Import Payroll Data.Paths[Flat File Source Output]"
+          TopLeft="133,42">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="74.5,34.75"
+              Start="0,0"
+              End="74.5,27.25">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.375" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.375"
+                    Point2="0,17.375"
+                    Point3="4,17.375" />
+                  <mssgle:LineSegment
+                    End="70.5,17.375" />
+                  <mssgle:CubicBezierSegment
+                    Point1="70.5,17.375"
+                    Point2="74.5,17.375"
+                    Point3="74.5,21.375" />
+                  <mssgle:LineSegment
+                    End="74.5,27.25" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Import Sales Data\OLE DB Destination">
+    design-time-name="Package\Import Payroll Data\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

@@ -9,13 +9,16 @@ namespace CicotiWebApp.Models
     public class SKU
     {
         public int SKUID { get; set; }
+
+        public int ? PrincipleID {get; set;}
+
         [DisplayName("Stock Code Per ERP System")]
         public string Code { get; set; }
         public string Description { get; set; }
+
         [DisplayName("UOM")]
-        public string UOM { get; set; }
-        [DisplayName("UOM Conversion Factor")]
-        public string UOMConversionFactor { get; set; }
+        public int? UOMID { get; set; }
+
         [DisplayName("Units Per Pallet")]
         public double UnitsPerPallets { get; set; }
         [DisplayName("Cubic Metres Per Pallet")]
@@ -24,5 +27,8 @@ namespace CicotiWebApp.Models
         public double CubicMetrePerUnit { get; set; }
         [DisplayName("Weight in Kgs Per Unit")]
         public double WeightPerUnit { get; set; }
+
+        public Principle Principle { get; set; }
+        public UOM UOM { get; set; }
     }
 }

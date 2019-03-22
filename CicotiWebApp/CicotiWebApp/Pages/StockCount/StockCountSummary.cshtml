@@ -1,0 +1,191 @@
+﻿@page
+@{
+    Layout = "_LayoutDataTables";
+}
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+@functions{
+    public string GetAntiXsrfRequestToken()
+    {
+        return Xsrf.GetAndStoreTokens(Model.HttpContext).RequestToken;
+    }
+}
+@model CicotiWebApp.Pages.StockCount.StockCountSummaryModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/_LayoutDataTables.cshtml";
+}
+
+<br />
+<h2>Stock Count Summary Report</h2>
+
+<p>
+    <a asp-page="FindSKU">Back to SKU Listing</a>
+</p>
+
+<div id="divStockCountTable" style="width:90%; margin:0 auto;">
+    <table id="StockCountTable" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th>No of Counts</th>
+                <th>Code</th>
+                <th>Description</th>
+                <th>Qty</th>
+                <th>Quality</th>
+                <th>UOM</th>
+                <th>Principal</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+
+@await Html.PartialAsync("_ModalPartial")
+
+@section Scripts {
+    @await Html.PartialAsync("_ModalPartial")
+    @await Html.PartialAsync("_ModalConfirmPartial")
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script type="text/javascript">
+        $(document).ready(function ()
+        {
+
+            $("#StockCountTable").on('xhr.dt', function (e, settings, json, xhr) {
+            }).DataTable({
+                lengthMenu: [10,25, 100, 150, 200],
+                dom: '<lfB<t>ip>',
+                buttons: ['excel', 'copy', 'csv', 'pdf', 'print'],
+                "fixedHeader": {
+                    "header": true,
+                    "footer": true
+                },
+                "responsive": true,
+                "processing": true, // for show progress bar
+                "serverSide": true, // for process server side
+                "filter": true, // this is for disable filter (search box)
+                "orderMulti": false, // for disable multiple column at once
+                "ajax": {
+        
+                    "url": "/StockCount/StockCountSummary?handler=Paging",
+                     "headers":
+                        {
+                            "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                        },
+                    "type": "POST",
+                    /*"contentType": "application/x-www-form-urlencoded",*/
+                    "datatype": "json"
+                },
+                "columnDefs":
+                [   {
+                        /*No of Counts is visible and is searchable*/
+                        "targets": [0],
+                        "visible": true,
+                        "searchable": true
+                    },
+                    {
+                        /*SKU Code is visible and is not searchable*/
+                        "targets": [1],
+                        "visible": true,
+                        "searchable": true,
+                        "orderable": true
+                    },
+                    {
+                        /*SKU Description is visible and is not searchable*/
+                        "targets": [2],
+                        "visible": true,
+                        "searchable": true,
+                        "orderable": true
+                    },
+                    {
+                        /*Qty*/
+                        "targets": [3],
+                        "visible": true,
+                        "searchable": true,
+                        "orderable": true
+                    },
+                    {
+                        /*Quality*/
+                        "targets": [4],
+                        "visible": true,
+                        "searchable": true,
+                        "orderable": true
+                    },
+                    {
+                        /*UOM*/
+                        "targets": [5],
+                        "visible": true,
+                        "searchable": true,
+                        "orderable": true
+                    },
+                    {
+                        /*Principle  is  visible and is not searchable*/
+                        "targets": [6],
+                        "visible": true,
+                        "searchable": true,
+                        "orderable": false
+                    }
+                ],
+                "columns": [
+                    { "data": "noOfCounts", "name": "noOfCounts", "autoWidth": true },
+                    { "data": "code", "name": "code", "autoWidth": true },
+                    { "data": "description", "name": "description", "autoWidth": true },
+                    { "data": "qty", "name": "qty", "autoWidth": true },
+                    { "data": "quality", "name": "quality", "autoWidth": true },
+                    { "data": "uom", "name": "uom", "autoWidth": true },
+                    { "data": "principleName", "name": "principleName", "autoWidth": true }
+                ]
+                });//Stock Count Table
+        });//Document Ready end.
+
+        function DeleteData(stockCountItemID)
+     {
+            if (confirm("Are you sure you want to delete this stock count item ...?"))
+            {
+                console.log("stockCode to be deleted is: " + stockCountItemID)
+                Delete(stockCountItemID);
+            }
+            else
+            {
+                return false;
+            }
+     }
+
+        function Delete(stockCountItemID)
+        {
+            console.log("Before Ajax Call:" + "Stock Count ID is: " + stockCountItemID)
+            var obj = {};
+            obj.StockCountItemID = stockCountItemID;
+
+
+            $.ajax({
+                type: "DELETE",
+                url: '/StockCount/StockCountListing?handler=Delete',
+                headers:
+                    {
+                        "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                    },
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify(obj),
+                success: function (msg) {
+                    oTable = $('#StockCountTable').DataTable();
+                        oTable.draw();
+                        $("#msg").html(msg);
+                        $("#modalHeader").text("Stock Count Processing");
+                        $("#modalMessage").text(msg);
+                        $("#myModal").modal("show");
+                    },
+                    error: function () {
+                        $("#msg").html("Error while making Ajax call!");
+                        $("#modalHeader").text("StockCount Processing");
+                        $("#modalMessage").text(msg);
+                        $("#myModal").modal("show");
+                    }
+                });//ajax
+
+        }
+        
+     
+    </script>
+}

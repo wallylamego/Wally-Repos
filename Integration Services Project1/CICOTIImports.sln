@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "Integration Services Project1", "Integration Services Project1\Integration Services Project1.dtproj", "{B809518A-EE32-4ADE-942F-D46E24C78645}"
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "Integration Services Project1", "Integration Services Project1\CicotiImports.dtproj", "{B809518A-EE32-4ADE-942F-D46E24C78645}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

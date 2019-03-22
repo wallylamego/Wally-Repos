@@ -25,6 +25,10 @@ namespace CicotiWebApp.Models
         public int JobDescriptionID { get; set; }
         public int DepartmentID { get; set; }
         public int CostCentreID { get; set; }
+        public int ? ActCostAllocationSplitID { get; set; }
+
+        [ForeignKey(nameof(ActCostSiloAllocation))]
+        public int ? ActCostSiloAllocationID { get; set; }
 
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
@@ -36,5 +40,7 @@ namespace CicotiWebApp.Models
         public Department Department { get; set; }
         public CostCentre CostCentre { get; set; }
         public Branch Branch { get; set; }
-}
+        public ActCostAllocationSplit ActCostAllocationSplit { get; set; }
+        public ActCostSiloAllocation ActCostSiloAllocation { get; set; }
+    }
 }

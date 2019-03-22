@@ -13,5 +13,7 @@ namespace CicotiWebApp.Models
         public String PrincipalName { get; set; }
         [Required]
         public String PastelName{ get; set; }
+        public int? SiloID { get; set; }
+        public Silo Silo { get; set; }
     }
 }

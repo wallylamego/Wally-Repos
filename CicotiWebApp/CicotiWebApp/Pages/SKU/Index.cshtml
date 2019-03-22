@@ -33,7 +33,6 @@
                 <th>Cubic Metre Per Unit</th>
                 <th>Weight Per Unit</th>
                 <th>UOM</th>
-                <th>UOM Conversion Factor</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
@@ -130,22 +129,15 @@
                         "orderable": true
                     },
                     {
-                        /*UOM Conversion Factor is visible and is not searchable*/
-                        "targets": [8],
-                        "visible": true,
-                        "searchable": true,
-                        "orderable": true
-                    },
-                    {
                         /*Edit button  is  visible and is not searchable*/
-                        "targets": [9],
+                        "targets": [8],
                         "visible": true,
                         "searchable": false,
                         "orderable": false
                     },
                     {
                         /*Delete button  is  visible and is not searchable*/
-                        "targets": [10],
+                        "targets": [9],
                         "visible": true,
                         "searchable": false,
                         "orderable": false
@@ -160,7 +152,6 @@
                     { "data": "cubicMetrePerUnit", "name": "cubicMetrePerUnit", "autoWidth": true },
                     { "data": "weightPerUnit", "name": "weightPerUnit", "autoWidth": true },
                     { "data": "uom", "name": "uom", "autoWidth": true },
-                    { "data": "uomConversionFactor", "name": "uomConversionFactor", "autoWidth": true },
                     {
                         "render": function (data, type, full, meta) {
                             return "<p data-placement='top' data-toggle='tooltip' title='Edit'><button class='btn btn-primary btn-xs' data-title='Edit' data-toggle='modal' data-target='#edit' onclick='window.location.href=\"/SKU/Edit/" + full.id + "\"\'><span class='glyphicon glyphicon-pencil'></span></button></p>";

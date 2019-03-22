@@ -7,6 +7,7 @@ namespace CicotiWebApp.SQLViews
 {
     public class VwDeliveryStatusDetail
     {
+        
         public int InvoiceID { get; private set; }
         public string InvoiceNumber { get; private set; }
         public DateTime InvoiceDate { get; private set; }

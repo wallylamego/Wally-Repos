@@ -104,6 +104,15 @@
     <Content Update="Pages\SKU\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Pages\StockCount\StockCountSummary.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\StockCount\StockCountListing.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\StockCount\FindSKU.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Pages\Vehicles\Create.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

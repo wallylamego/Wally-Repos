@@ -36,6 +36,7 @@ namespace CicotiWebApp.Data
         public DbSet<FuelType> FuelTypes { get; set; }
         public DbSet<Department> Department { get; set; }
         public DbSet<Principle> Principle { get; set; }
+        public DbSet<Silo> Silo { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Status> Status { get; set; }
         public DbSet<CustomerAccount> Accounts { get; set; }
@@ -59,7 +60,18 @@ namespace CicotiWebApp.Data
         public DbSet<VehicleComment> VehicleComments { get; set; }
         public DbSet<VehicleStatus> VehicleStatus { get; set; }
 
+        public DbSet<UOM> UOM { get; set; }
+        public DbSet<StockCountItem> StockCountItems { get; set; }
+        public DbSet<StockQuality> StockQuality { get; set; }
+
+        public DbSet<ActCostAllocationSplit> ActCostAllocationSplits { get; set; }
+        public DbSet<ActCostDriver> ActCostDrivers { get; set; }
+        public DbSet<ActCostPeriod> ActCostPeriods { get; set; }
+        public DbSet<ActCostTransaction> ActCostTransactions { get; set; }
+        public DbSet<ActCostSiloAllocation> ActCostSiloAllocations { get; set; }
+
         public DbQuery<VwDeliveryStatusDetail> VwDeliveryStatusDetails { get; set; }
         public DbQuery<VwDeliveryStatsSummary> VwDeliveryStatusSummaryPerMonth_2 { get; set; }
+        public DbQuery<VwStockCountSummary> VwStockCountSummary { get; set; }
     }
 }

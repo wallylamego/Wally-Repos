@@ -60,7 +60,7 @@
                     }
                     @*Locations Section*@
                     @if (User.Identity.IsAuthenticated && (User.IsInRole("WareHouse") || User.IsInRole("Fleet")
-                        || User.IsInRole("Admin")))
+                       || User.IsInRole("Admin")))
                     {
                         <li>
                             <a class="dropdown-toggle" data-toggle="dropdown" asp-page="/Destinations/Destination">Destination<span class="caret"></span></a>
@@ -74,7 +74,7 @@
                     }
                     @*Fleet Section*@
                     @if (User.Identity.IsAuthenticated && (User.IsInRole("WareHouse") || User.IsInRole("Fleet")
-                        || User.IsInRole("Admin")))
+                       || User.IsInRole("Admin")))
                     {
                         <li>
                             <a class="dropdown-toggle" data-toggle="dropdown" asp-page="/Vehicles/Index">Fleet<span class="caret"></span></a>
@@ -91,7 +91,7 @@
                     }
                     @*Delivery Update Section*@
                     @if (User.Identity.IsAuthenticated && (User.IsInRole("WareHouse") || User.IsInRole("Fleet")
-                        || User.IsInRole("Admin")) && (User.IsInRole("Finance")))
+                    || User.IsInRole("Admin") || User.IsInRole("Finance")))
                     {
                         <li>
                             <a class="dropdown-toggle" data-toggle="dropdown" asp-page="/Admin">Deliveries<span class="caret"></span></a>
@@ -100,6 +100,7 @@
                                 <li><a asp-page="/SKU/Index">SKUs</a></li>
                                 <li><a asp-page="/Invoice/Index">Update Delivery Status</a></li>
                                 <li><a asp-page="/Loads/Index">Load Maintenance</a></li>
+                                <li><a asp-page="/StockCount/FindSKU">Add Stock Count Item</a></li>
                             </ul>
                         </li>
                     }

@@ -42,8 +42,7 @@ namespace CicotiWebApp.Pages.SKU
                    s.CubicMetrePerPallet,
                    s.CubicMetrePerUnit,
                    s.WeightPerUnit,                   
-                   s.UOM,
-                   s.UOMConversionFactor
+                   s.UOM
                 }
                );
 
