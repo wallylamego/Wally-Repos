@@ -73,6 +73,9 @@ namespace CicotiWebApp.Data
         public DbSet<ActCostAccountBalance> ActCostAccountBalance { get; set;}
         public DbSet<ActCostCategory> ActCostCategory { get; set; }
         public DbSet<ActCostSubCategory> ActSubCostCategory { get; set; }
+        public DbSet<ActCostBalanceAllocation> ActCostBalanceAllocation { get; set; }
+        public DbSet<FuelPrice> FuelPrice { get; set; }
+        public DbSet<VehicleKm> VehicleKms { get; set;}
 
 
         public DbQuery<VwDeliveryStatusDetail> VwDeliveryStatusDetails { get; set; }

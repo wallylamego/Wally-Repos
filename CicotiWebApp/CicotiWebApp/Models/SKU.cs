@@ -27,7 +27,7 @@ namespace CicotiWebApp.Models
         public double CubicMetrePerUnit { get; set; }
         [DisplayName("Weight in Kgs Per Unit")]
         public double WeightPerUnit { get; set; }
-
+        public String Comments { get; set; }
         public Principle Principle { get; set; }
         public UOM UOM { get; set; }
     }

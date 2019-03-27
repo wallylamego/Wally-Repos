@@ -30,7 +30,7 @@ namespace CicotiWebApp.Models
         public Double DepreciationMonths { get; set; }
         
         public int ? EmployeeID { get; set; }
-
+        public int ? ActCostAllocationSplitID { get; set; }
 
         [Required]
         [MaxLength(10)]
@@ -45,5 +45,7 @@ namespace CicotiWebApp.Models
         public Branch Branch { get; set; }
         public Model Model { get; set; }
         public VehicleStatus VehicleStatus { get; set; }
+
+        public ActCostAllocationSplit ActCostAllocationSplit { get; set; }
     }
 }

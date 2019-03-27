@@ -24,6 +24,10 @@
     <Compile Remove="Data\Migrations\20190223171415_MakeModelEmployee.Designer.cs" />
     <Compile Remove="Data\Migrations\20190225054407_MakeModelSize.cs" />
     <Compile Remove="Data\Migrations\20190225054407_MakeModelSize.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190323073921_ActCostAccountV.cs" />
+    <Compile Remove="Data\Migrations\20190323073921_ActCostAccountV.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190323075904_ActCostAccountVI.cs" />
+    <Compile Remove="Data\Migrations\20190323075904_ActCostAccountVI.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
