@@ -11,8 +11,8 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="MonthlyStockImport"
   DTS:PackageType="5"
-  DTS:VersionBuild="19"
-  DTS:VersionGUID="{B6B6CFD6-4DD6-48B3-B84A-B3B957961347}">
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{1197F8C3-FC0F-4F91-9776-B508B3073D78}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1949,7 +1949,7 @@ where [refTable].[Code] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -1959,7 +1959,7 @@ where [refTable].[Code] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

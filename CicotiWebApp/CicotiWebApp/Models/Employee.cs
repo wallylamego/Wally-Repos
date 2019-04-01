@@ -17,7 +17,6 @@ namespace CicotiWebApp.Models
         public int ? ReportsToID { get; set; }
         // you can remove the attribute
         [ForeignKey(nameof(ReportsToID))]
-
         public  Employee ReportsTo { get; set; }
 
         public int BranchID { get; set; }

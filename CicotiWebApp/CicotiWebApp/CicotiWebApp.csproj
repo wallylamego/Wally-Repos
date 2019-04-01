@@ -48,6 +48,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="Pages\ABC\MonthlyUpdates.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Pages\Employee\CostCentre\Create.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

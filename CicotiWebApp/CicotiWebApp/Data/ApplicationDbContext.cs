@@ -74,10 +74,18 @@ namespace CicotiWebApp.Data
         public DbSet<ActCostCategory> ActCostCategory { get; set; }
         public DbSet<ActCostSubCategory> ActSubCostCategory { get; set; }
         public DbSet<ActCostBalanceAllocation> ActCostBalanceAllocation { get; set; }
+        public DbSet<ActCostInsuranceType> ActCostInsuranceType { get; set; }
+        public DbSet<ActCostCashCollectionCost> ActCostCashCollectionCost { get; set; }
+        public DbSet<ActCostAccountPerPrinciple> ActCostAccountPerPrinciple { get; set; }
+        public DbSet<ActCostAccountType> ActCostAccountType { get; set; }
+
+
         public DbSet<FuelPrice> FuelPrice { get; set; }
         public DbSet<VehicleKm> VehicleKms { get; set;}
 
-
+        public DbSet<Currency> Currency { get; set; }
+        public DbSet<ExchangeRate> ExchangeRates { get; set; }
+        public DbSet<InterCompany> InterCompany { get; set; }
         public DbQuery<VwDeliveryStatusDetail> VwDeliveryStatusDetails { get; set; }
         public DbQuery<VwDeliveryStatsSummary> VwDeliveryStatusSummaryPerMonth_2 { get; set; }
         public DbQuery<VwStockCountSummary> VwStockCountSummary { get; set; }

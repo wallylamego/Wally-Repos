@@ -11,8 +11,8 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="MonthlyStockImport"
   DTS:PackageType="5"
-  DTS:VersionBuild="18"
-  DTS:VersionGUID="{E801B856-F7F9-4001-8877-57B504D5A3F3}">
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{1197F8C3-FC0F-4F91-9776-B508B3073D78}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1409,7 +1409,7 @@ where [refTable].[Code] = ?</property>
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[ActCostStockOnHand]</property>
+                  name="OpenRowset">[dbo].[ActCostStockOnHand]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -1486,12 +1486,6 @@ where [refTable].[Code] = ?</property>
                       externalMetadataColumnId="Package\ImportStockData\Stock Table.Inputs[OLE DB Destination Input].ExternalColumns[UnitCost]"
                       lineageId="Package\ImportStockData\Flat File Source.Outputs[Flat File Source Output].Columns[UnitCost]" />
                     <inputColumn
-                      refId="Package\ImportStockData\Stock Table.Inputs[OLE DB Destination Input].Columns[ Value]"
-                      cachedDataType="r4"
-                      cachedName=" Value"
-                      externalMetadataColumnId="Package\ImportStockData\Stock Table.Inputs[OLE DB Destination Input].ExternalColumns[ Value]"
-                      lineageId="Package\ImportStockData\Flat File Source.Outputs[Flat File Source Output].Columns[ Value]" />
-                    <inputColumn
                       refId="Package\ImportStockData\Stock Table.Inputs[OLE DB Destination Input].Columns[BranchID]"
                       cachedDataType="i4"
                       cachedName="BranchID"
@@ -1515,6 +1509,12 @@ where [refTable].[Code] = ?</property>
                       cachedName="PrincipleID"
                       externalMetadataColumnId="Package\ImportStockData\Stock Table.Inputs[OLE DB Destination Input].ExternalColumns[PrincipleID]"
                       lineageId="Package\ImportStockData\Look Up Principle ID.Outputs[Lookup Match Output].Columns[PrincipleID]" />
+                    <inputColumn
+                      refId="Package\ImportStockData\Stock Table.Inputs[OLE DB Destination Input].Columns[ Value]"
+                      cachedDataType="r4"
+                      cachedName=" Value"
+                      externalMetadataColumnId="Package\ImportStockData\Stock Table.Inputs[OLE DB Destination Input].ExternalColumns[Value]"
+                      lineageId="Package\ImportStockData\Flat File Source.Outputs[Flat File Source Output].Columns[ Value]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1533,10 +1533,6 @@ where [refTable].[Code] = ?</property>
                       dataType="r4"
                       name="UnitCost" />
                     <externalMetadataColumn
-                      refId="Package\ImportStockData\Stock Table.Inputs[OLE DB Destination Input].ExternalColumns[ Value]"
-                      dataType="r4"
-                      name=" Value" />
-                    <externalMetadataColumn
                       refId="Package\ImportStockData\Stock Table.Inputs[OLE DB Destination Input].ExternalColumns[BranchID]"
                       dataType="i4"
                       name="BranchID" />
@@ -1552,6 +1548,10 @@ where [refTable].[Code] = ?</property>
                       refId="Package\ImportStockData\Stock Table.Inputs[OLE DB Destination Input].ExternalColumns[PrincipleID]"
                       dataType="i4"
                       name="PrincipleID" />
+                    <externalMetadataColumn
+                      refId="Package\ImportStockData\Stock Table.Inputs[OLE DB Destination Input].ExternalColumns[Value]"
+                      dataType="r4"
+                      name="Value" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1949,7 +1949,7 @@ where [refTable].[Code] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -1959,7 +1959,7 @@ where [refTable].[Code] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

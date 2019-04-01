@@ -126,3 +126,4 @@ C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\R
 C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\Razor\Pages\StockCount\FindSKU.g.cshtml.cs
 C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\Razor\Pages\StockCount\StockCountListing.g.cshtml.cs
 C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\Razor\Pages\StockCount\StockCountSummary.g.cshtml.cs
+C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Debug\netcoreapp2.1\Razor\Pages\ABC\MonthlyUpdates.g.cshtml.cs

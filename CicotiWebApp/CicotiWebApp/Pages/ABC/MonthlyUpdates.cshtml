@@ -1,0 +1,84 @@
+﻿@page
+@{
+    Layout = "_LayoutDataTables";
+}
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+@functions{
+    public string GetAntiXsrfRequestToken()
+    {
+        return Xsrf.GetAndStoreTokens(Model.HttpContext).RequestToken;
+    }
+}
+@model WebAppFAM.Pages.ABC.IndexModel
+
+@{
+    ViewData["Title"] = "ABC";
+}
+
+<h2>ABC Maintenance</h2>
+
+<p>
+    <a asp-page="Create">Run Procedures</a>
+</p>
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="form-group">
+    <label asp-for="ActCostPeriod.Period" class="control-label"></label>
+    <input asp-for="ActCostPeriod.Period" class="form-control" id="period" />
+    <span asp-validation-for="ActCostPeriod.Period" class="text-danger"></span>
+</div>
+<div>
+    <h4>Update the Cost Allocation for a specific period</h4>
+    <div class="form-group">
+        <input type="submit" value="Run" class="btn btn-default" id="runAllocatedCosts" />
+    </div>
+</div>
+
+
+@await Html.PartialAsync("_ModalPartial")
+@await Html.PartialAsync("_ModalConfirmPartial")
+
+@section Scripts {
+
+    <script type="text/javascript">
+        $(document).ready(function ()
+        {
+            $("#runAllocatedCosts").click(function () {
+                allocateCosts();
+            });
+
+        });//Document Ready end.
+
+        function allocateCosts()
+        {
+            console.log("Allocate Costs function");
+            var obj = {};
+            obj.Period = $("#period").val();
+            console.log(JSON.stringify(obj));
+            console.log(obj.Period);
+
+            $.ajax({
+                type: "POST",
+                url: '/ABC/MonthlyUpdates?handler=AllocateCosts',
+                headers:
+                    {
+                        "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                    },
+                contentType: "application/json",
+                dataType: "json",
+               // data: $("#period").val(),
+                data: JSON.stringify(obj),
+                success: function (msg) {
+                        $("#modalHeader").text("Allocate Costs Processing Status");
+                        $("#modalMessage").text(msg);
+                        $("#myModal").modal("show");
+                    },
+                    error: function () {
+                        $("#modalHeader").text("Allocate Costs Processing Status");
+                        $("#modalMessage").text(msg);
+                        $("#myModal").modal("show");
+                    }
+                });//ajax
+        }
+
+    </script>
+}
