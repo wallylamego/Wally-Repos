@@ -11,8 +11,8 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="MonthlyStockImport"
   DTS:PackageType="5"
-  DTS:VersionBuild="20"
-  DTS:VersionGUID="{1197F8C3-FC0F-4F91-9776-B508B3073D78}">
+  DTS:VersionBuild="34"
+  DTS:VersionGUID="{6AC2970D-7E33-4AB4-B0DC-6165F5852053}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -266,7 +266,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Branch"
-              DTS:DTSID="{8B2A961D-1B17-4E05-B8C4-2769A2F09D73}"
+              DTS:DTSID="{1FD95BB6-52B5-48F5-B2F5-6B79C31151A1}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -275,16 +275,16 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="code"
-              DTS:DTSID="{D71B0CDA-3D6D-48D0-ADB1-74DA43BCB900}"
+              DTS:DTSID="{0FDA493B-C5D7-476B-941A-EAE94EC0D316}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="50"
+              DTS:MaximumWidth="100"
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Item Description_1"
-              DTS:DTSID="{09D00E0B-951A-471B-BE38-A6134BAFADCE}"
+              DTS:DTSID="{EDB47F78-2959-4299-AF23-0D21F7EEE6D9}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -293,7 +293,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="StockGroup"
-              DTS:DTSID="{C192C945-8EA8-449E-9607-5D802A65FF3A}"
+              DTS:DTSID="{80A56FE8-5F7D-4F43-9C89-BDE5D8239510}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -302,7 +302,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="BranchWarehouse"
-              DTS:DTSID="{621C1B6B-0902-4D24-A59D-D1DC2B7C1BF6}"
+              DTS:DTSID="{D4B22220-430B-43B3-A882-CAD56892A9B6}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -310,7 +310,7 @@
               DTS:DataType="4"
               DTS:TextQualified="True"
               DTS:ObjectName="QtyOnHand"
-              DTS:DTSID="{8195D695-DC72-41F5-A81F-829D4BB47F5F}"
+              DTS:DTSID="{681541E9-97CB-44D0-9A7A-FC2D358AF67A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -318,7 +318,7 @@
               DTS:DataType="4"
               DTS:TextQualified="True"
               DTS:ObjectName="UnitCost"
-              DTS:DTSID="{00660600-AC77-4F0D-8618-26E538D3FBE0}"
+              DTS:DTSID="{817F8965-1A64-41BD-97DC-4822C2F72D15}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -326,7 +326,7 @@
               DTS:DataType="4"
               DTS:TextQualified="True"
               DTS:ObjectName=" Value"
-              DTS:DTSID="{9E10A543-26E4-4600-AF33-ED47C220B546}"
+              DTS:DTSID="{5AB5DC02-E86E-4211-A55C-4F053123E3D5}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -531,7 +531,7 @@
                       refId="Package\ImportStockData\Flat File Destination.Inputs[Flat File Destination Input].Columns[Item Description_1]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="100"
                       cachedName="Item Description_1"
                       externalMetadataColumnId="Package\ImportStockData\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Item Description_1]"
                       lineageId="Package\ImportStockData\Flat File Source.Outputs[Flat File Source Output].Columns[Item Description_1]" />
@@ -725,7 +725,7 @@
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\ImportStockData\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Item Description_1]"
-                      length="50"
+                      length="100"
                       lineageId="Package\ImportStockData\Flat File Source.Outputs[Flat File Source Output].Columns[Item Description_1]"
                       name="Item Description_1"
                       truncationRowDisposition="FailComponent">
@@ -860,7 +860,7 @@
                       refId="Package\ImportStockData\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Item Description_1]"
                       codePage="1252"
                       dataType="str"
-                      length="50"
+                      length="100"
                       name="Item Description_1" />
                     <externalMetadataColumn
                       refId="Package\ImportStockData\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[StockGroup]"
@@ -1976,6 +1976,29 @@ where [refTable].[Code] = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ImportStockData\LookUp BranchID">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Branch]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

@@ -26,6 +26,34 @@
     <input asp-for="ActCostPeriod.Period" class="form-control" id="period" />
     <span asp-validation-for="ActCostPeriod.Period" class="text-danger"></span>
 </div>
+<div id="divAccAllocationToPeriod">
+    <h4>Update the Account Allocation Per Principle</h4>
+    <h5>This is the P4P Account and the Goodwill Account</h5>
+    <div class="form-group">
+        <input type="submit" value="Run" class="btn btn-default" id="runAccPrinciple" />
+    </div>
+</div>
+<div id="divCashCollectionCostPerDepot">
+    <h4>Update the Cash Collection Cost Per Depot</h4>
+    <h5>This account allocates Bank Charges and Depot Insurance Costs</h5>
+    <div class="form-group">
+        <input type="submit" value="Run" class="btn btn-default" id="runCashCollection" />
+    </div>
+</div>
+<div id="divInsuranceCostPerDriver">
+    <h4>Update the Insurance Cost Per Period</h4>
+    <h5>Allocate Insurance Costs</h5>
+    <div class="form-group">
+        <input type="submit" value="Run" class="btn btn-default" id="runInsuranceCosts" />
+    </div>
+</div>
+<div id="divSpecificEmployeeAllocationPerSilo">
+    <h4>Update the Employee Allocation Per Silo</h4>
+    <h5>Allocate Employees to SILOS</h5>
+    <div class="form-group">
+        <input type="submit" value="Run" class="btn btn-default" id="runAllocateSilo" />
+    </div>
+</div>
 <div>
     <h4>Update the Cost Allocation for a specific period</h4>
     <div class="form-group">

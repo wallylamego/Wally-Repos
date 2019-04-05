@@ -70,7 +70,8 @@ namespace CicotiWebApp.Pages.Vehicles.Fleet
                 VehicleQuery = VehicleQuery
                         .Where(
                 v => v.RegistrationNumber.ToLower().Contains(Model.search.value.ToLower()) ||
-                     v.CostCentre.ToLower().Contains(Model.search.value.ToLower()) ||
+                    v.Branch.ToLower().Contains(Model.search.value.ToLower()) ||
+                    v.CostCentre.ToLower().Contains(Model.search.value.ToLower()) ||
                      v.Employee.ToLower().Contains(Model.search.value.ToLower()) ||
                      v.FixedAssetsNumber.ToLower().Contains(Model.search.value.ToLower()) ||
                      v.FuelType.ToLower().Contains(Model.search.value.ToLower()) ||

@@ -11,8 +11,8 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="PayrolImport"
   DTS:PackageType="5"
-  DTS:VersionBuild="7"
-  DTS:VersionGUID="{ECAACBAF-AC63-4B10-B500-84B8921A8ECC}">
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{FAC2AE5C-3910-4731-A1D2-F4D8F84AF1C2}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1541,13 +1541,13 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="171,42"
-          Id="Package\Import Payroll Data"
-          TopLeft="64.5,198.25" />
-        <NodeLayout
           Size="171.5,42"
           Id="Package\GetActCostPeriodID"
           TopLeft="61.6666666666667,126.583333333333" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Import Payroll Data"
+          TopLeft="64.5,198.25" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="148.708333333333,168.583333333333">
@@ -1579,10 +1579,6 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="176.5,42"
-          Id="Package\Import Payroll Data\AcctCostPayrollTable"
-          TopLeft="137.5,209" />
-        <NodeLayout
           Size="151,42"
           Id="Package\Import Payroll Data\Flat File Source"
           TopLeft="57.5,0" />
@@ -1590,40 +1586,10 @@
           Size="176.5,42"
           Id="Package\Import Payroll Data\Add ActCostPeriodID"
           TopLeft="61.5,77.75" />
-        <EdgeLayout
-          Id="Package\Import Payroll Data.Paths[Flat File Source Output]"
-          TopLeft="133,42">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="16.75,35.75"
-              Start="0,0"
-              End="16.75,28.25">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,13.875" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,13.875"
-                    Point2="0,17.875"
-                    Point3="4,17.875" />
-                  <mssgle:LineSegment
-                    End="12.75,17.875" />
-                  <mssgle:CubicBezierSegment
-                    Point1="12.75,17.875"
-                    Point2="16.75,17.875"
-                    Point3="16.75,21.875" />
-                  <mssgle:LineSegment
-                    End="16.75,28.25" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="176.5,42"
+          Id="Package\Import Payroll Data\AcctCostPayrollTable"
+          TopLeft="137.5,209" />
         <EdgeLayout
           Id="Package\Import Payroll Data.Paths[Derived Column Output]"
           TopLeft="149.75,119.75">
@@ -1650,6 +1616,40 @@
                     Point3="76,48.625" />
                   <mssgle:LineSegment
                     End="76,81.75" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import Payroll Data.Paths[Flat File Source Output]"
+          TopLeft="133,42">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="16.75,35.75"
+              Start="0,0"
+              End="16.75,28.25">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.875" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.875"
+                    Point2="0,17.875"
+                    Point3="4,17.875" />
+                  <mssgle:LineSegment
+                    End="12.75,17.875" />
+                  <mssgle:CubicBezierSegment
+                    Point1="12.75,17.875"
+                    Point2="16.75,17.875"
+                    Point3="16.75,21.875" />
+                  <mssgle:LineSegment
+                    End="16.75,28.25" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

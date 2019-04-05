@@ -2,28 +2,48 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>CicotiImports</Name>
-    <LastWriteTime>2019-04-01T03:33:54.3072158Z</LastWriteTime>
+    <LastWriteTime>2019-04-03T15:24:12.2443912Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>Package.dtsx</Name>
-      <LastWriteTime>2019-03-26T14:04:03.3804278Z</LastWriteTime>
+      <LastWriteTime>2019-04-03T08:37:26.5547683Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>MonthlyStockImport.dtsx</Name>
-      <LastWriteTime>2019-03-28T19:40:37.7942164Z</LastWriteTime>
+      <LastWriteTime>2019-04-01T21:00:30.0013957Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>PayrolImport.dtsx</Name>
-      <LastWriteTime>2019-03-28T19:45:18.1188764Z</LastWriteTime>
+      <LastWriteTime>2019-04-02T05:44:11.0496513Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>DebtorsImport.dtsx</Name>
       <LastWriteTime>2019-04-01T04:36:00.8950508Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>SalesImport.dtsx</Name>
+      <LastWriteTime>2019-04-02T15:49:52.7940985Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>NewPayrolImport.dtsx</Name>
+      <LastWriteTime>2019-04-02T18:06:59.0988093Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>ImportAccountBalances.dtsx</Name>
+      <LastWriteTime>2019-04-03T09:27:43.8592358Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>ImportOtherIncome.dtsx</Name>
+      <LastWriteTime>2019-04-03T15:33:38.0690468Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

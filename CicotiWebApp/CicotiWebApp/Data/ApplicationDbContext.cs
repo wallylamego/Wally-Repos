@@ -51,6 +51,7 @@ namespace CicotiWebApp.Data
         public DbSet<LoadStatus> LoadStatus { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<SKU> SKUs { get; set;}
+        
         public DbSet<InvoiceStatusRole> InvoiceStatusRoles { get; set; }
 
         public DbSet<Destination> Destinations { get; set; }
@@ -78,7 +79,12 @@ namespace CicotiWebApp.Data
         public DbSet<ActCostCashCollectionCost> ActCostCashCollectionCost { get; set; }
         public DbSet<ActCostAccountPerPrinciple> ActCostAccountPerPrinciple { get; set; }
         public DbSet<ActCostAccountType> ActCostAccountType { get; set; }
-
+        public DbSet<ActCostPrincipleBalance> ActCostPrincipleBalance { get; set; }
+        public DbSet<ActCostPayrollField> ActCostPayrollFields { get; set; }
+        public DbSet<ActCostAccountAmtPrinciple> ActCostAccountAmtPrinciple { get; set; }
+        public DbSet<ActCostInvestmentType> ActCostInvestmentType { get; set; }
+        public DbSet<ActCostInvestment> ActCostInvestment { get; set; }
+        public DbSet<ActCostFixedAssetAccount> ActCostFixedAssetAccount { get; set; }
 
         public DbSet<FuelPrice> FuelPrice { get; set; }
         public DbSet<VehicleKm> VehicleKms { get; set;}
