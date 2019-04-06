@@ -1552,7 +1552,7 @@ namespace CicotiWebApp.Data.Migrations
 
             modelBuilder.Entity("CicotiWebApp.Models.ActCostAccountAmtPrinciple", b =>
                 {
-                    b.HasOne("CicotiWebApp.Models.ActCostAccount", "GetActCostAccount")
+                    b.HasOne("CicotiWebApp.Models.ActCostAccount", "ActCostAccount")
                         .WithMany()
                         .HasForeignKey("ActCostAccountID")
                         .OnDelete(DeleteBehavior.Restrict);

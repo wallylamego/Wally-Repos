@@ -60,7 +60,7 @@
                     }
                     @*Locations Section*@
                     @if (User.Identity.IsAuthenticated && (User.IsInRole("WareHouse") || User.IsInRole("Fleet")
-                       || User.IsInRole("Admin")))
+                      || User.IsInRole("Admin")))
                     {
                         <li>
                             <a class="dropdown-toggle" data-toggle="dropdown" asp-page="/Destinations/Destination">Destination<span class="caret"></span></a>
@@ -74,7 +74,7 @@
                     }
                     @*Fleet Section*@
                     @if (User.Identity.IsAuthenticated && (User.IsInRole("WareHouse") || User.IsInRole("Fleet")
-                       || User.IsInRole("Admin")))
+                      || User.IsInRole("Admin")))
                     {
                         <li>
                             <a class="dropdown-toggle" data-toggle="dropdown" asp-page="/Vehicles/Index">Fleet<span class="caret"></span></a>
@@ -91,7 +91,7 @@
                     }
                     @*Delivery Update Section*@
                     @if (User.Identity.IsAuthenticated && (User.IsInRole("WareHouse") || User.IsInRole("Fleet")
-                    || User.IsInRole("Admin") || User.IsInRole("Finance")))
+                   || User.IsInRole("Admin") || User.IsInRole("Finance")))
                     {
                         <li>
                             <a class="dropdown-toggle" data-toggle="dropdown" asp-page="/Admin">Deliveries<span class="caret"></span></a>
@@ -115,7 +115,17 @@
                             </ul>
                         </li>
                     }
-
+                    @*ABC Section*@
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <li>
+                            <a class="dropdown-toggle" data-toggle="dropdown" asp-page="/Admin">ABC<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a asp-page="/ABC/MonthlyUpdates">Mth: Updates</a></li>
+                                <li><a asp-page="/ABC/OtherIncome/OtherIncome">Other Income</a></li>
+                            </ul>
+                        </li>
+                    }
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>

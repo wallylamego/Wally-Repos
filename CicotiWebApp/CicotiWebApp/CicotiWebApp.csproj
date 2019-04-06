@@ -48,6 +48,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="Pages\ABC\Accounts\Account.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\ABC\Accounts\AccountTable.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\ABC\Other Income\OtherIncomeItem.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\ABC\Other Income\OtherIncome.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Pages\ABC\MonthlyUpdates.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

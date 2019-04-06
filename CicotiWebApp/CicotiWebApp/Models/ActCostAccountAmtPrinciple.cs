@@ -15,7 +15,7 @@ namespace CicotiWebApp.Models
         public string Comments { get; set; }
 
         public ActCostPeriod ActCostPeriod { get; set; }
-        public ActCostAccount GetActCostAccount { get; set; }
+        public ActCostAccount ActCostAccount { get; set; }
         public Principle Principle { get; set; }
 
 }

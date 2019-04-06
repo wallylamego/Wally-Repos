@@ -104,13 +104,14 @@
                             </ul>
                         </li>
                     }
-                    @*Reports Section*@
+                    @*ABC Section*@
                     @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                     {
                         <li>
                             <a class="dropdown-toggle" data-toggle="dropdown" asp-page="/Admin">ABC<span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a asp-page="/ABC/MonthlyUpdates">Mth: Updates</a></li>
+                                <li><a asp-page="/ABC/OtherIncome/OtherIncome">Other Income</a></li>
                             </ul>
                         </li>
                     }
