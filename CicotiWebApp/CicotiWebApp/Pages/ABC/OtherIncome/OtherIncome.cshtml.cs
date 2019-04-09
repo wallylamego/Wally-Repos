@@ -30,7 +30,7 @@ namespace CicotiWebApp.Pages.ABC.OtherIncome
             int filteredResultsCount = 0;
             int totalResultsCount = 0;
 
-            DataTableAjaxPostModel.GetOrderByParameters(Model.order, Model.columns, "ActCostPeriodID",
+            DataTableAjaxPostModel.GetOrderByParameters(Model.order, Model.columns, "ActCostAccountAmtPrincipleID",
                 out bool SortDir, out string SortBy);
 
 
@@ -41,7 +41,7 @@ namespace CicotiWebApp.Pages.ABC.OtherIncome
                 .Include(a=>a.ActCostAccount)
                .Select(Pamt => new
                {
-                   id = Pamt.ActCostAccountAmtPrincipleID
+                    Pamt.ActCostAccountAmtPrincipleID
                    ,principle = Pamt.Principle.PastelName
                    ,period = Pamt.ActCostPeriod.Period
                    ,account = Pamt.ActCostAccountID

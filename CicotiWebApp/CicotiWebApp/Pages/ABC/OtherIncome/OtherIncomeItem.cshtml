@@ -46,47 +46,48 @@
             <br />
 
             <div id="divAccountTable" style="width:90%; margin:0 auto;">
-                <table id="AccountTable" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>AccountID</th>
-                            <th>Pastel Account Number</th>
-                            <th>Account Description</th>
-                            <th>Select</th>
-                        </tr>
-                    </thead>
-                </table>
+                    <div id="divAccountTable">
+                        <table id="AccountTable" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>AccountID</th>
+                                    <th>Account Description</th>
+                                    <th>Pastel Account Number</th>
+                                    <th>Branch</th>
+                                    <th>Select</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
             </div>
         </div>
-
-        <div class="form-group">
-            <label asp-for="AccAmtPrinciple.ActCostAccountID" class="control-label"></label>
-            <input asp-for="AccAmtPrinciple.ActCostAccountID" class="form-control" id="actCostAccountID" />
-            <span asp-validation-for="AccAmtPrinciple.ActCostAccountID" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="AccAmtPrinciple.ActCostAccount.Description" class="control-label"></label>
-            <input asp-for="AccAmtPrinciple.ActCostAccount.Description" class="form-control" id="description" />
-            <span asp-validation-for="AccAmtPrinciple.ActCostAccountID" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="AccAmtPrinciple.Amount" class="control-label"></label>
-            <input asp-for="AccAmtPrinciple.Amount" class="form-control" id="amount" />
-            <span asp-validation-for="AccAmtPrinciple.Amount" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="AccAmtPrinciple.Comments" class="control-label"></label>
-            <input asp-for="AccAmtPrinciple.Comments" class="form-control" id="comments" />
-            <span asp-validation-for="AccAmtPrinciple.Comments" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <input type="submit" value="Save" class="btn btn-default" id="savebtn" />
-        </div>
-    </div>
+            <div class="form-group">
+                <label asp-for="AccAmtPrinciple.ActCostAccountID" class="control-label"></label>
+                <input asp-for="AccAmtPrinciple.ActCostAccountID" class="form-control" id="actCostAccountID" />
+                <span asp-validation-for="AccAmtPrinciple.ActCostAccountID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AccAmtPrinciple.ActCostAccount.Description" class="control-label"></label>
+                <input asp-for="AccAmtPrinciple.ActCostAccount.Description" class="form-control" id="description" />
+                <span asp-validation-for="AccAmtPrinciple.ActCostAccount.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AccAmtPrinciple.Amount" class="control-label"></label>
+                <input asp-for="AccAmtPrinciple.Amount" class="form-control" id="amount" />
+                <span asp-validation-for="AccAmtPrinciple.Amount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AccAmtPrinciple.Comments" class="control-label"></label>
+                <input asp-for="AccAmtPrinciple.Comments" class="form-control" id="comments" />
+                <span asp-validation-for="AccAmtPrinciple.Comments" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" id="savebtn" />
+            </div>
 </div>
-
+</div>
 <div>
-    <a asp-page="Index">Back to List</a>
+    <a asp-page="OtherIncome">Back to List</a>
 </div>
 
 @section Scripts {
@@ -99,10 +100,11 @@
         function updateAccountInputFields(data) {
             var selectedAccount = {};
             selectedAccount = JSON.parse(data);
+            alert("in Selected Account");
             console.log(selectedAccount.actCostAccountID);
             $("#actCostAccountID").val(selectedAccount.actCostAccountID);
-            $("#description").val(decodeURIComponent(selectedAccount.description));
-          
+            $("#description").val(decodeURIComponent(selectedAccount.accountName));
+           
             $("#divAccountTable").hide();
         
         }
@@ -110,7 +112,7 @@
         function GetAccountData() {
              $("#AccountTable").on('xhr.dt', function (e, settings, json, xhr) {
             }).DataTable({
-                lengthMenu: [25, 100, 150, 200],
+                lengthMenu: [5,10,25,100, 150, 200],
                 dom: '<lfB<t>ip>',
                 buttons: ['excel', 'copy', 'csv', 'pdf', 'print'],
                 "fixedHeader": {
@@ -165,24 +167,17 @@
                             "visible": true,
                             "searchable": false,
                             "orderable": false
-                        },
-                        {
-                            /*Delete button  is  visible and is not searchable*/
-                            "targets": [5],
-                            "visible": true,
-                            "searchable": false,
-                            "orderable": false
                         }
                     ],
                 "columns": [
-                    { "data": "accountID", "name": "accountID", "autoWidth": true },
+                    { "data": "actCostAccountID", "name": "actCostAccountID", "autoWidth": true },
                     { "data": "accountName", "name": "accountName", "autoWidth": true },
                     { "data": "accountNo", "name": "accountNo", "autoWidth": true },
                     { "data": "branch", "name": "branch", "autoWidth": true },
                     {
                         "render": function (data, type, full, meta) {
                             var selectedAccount = {};
-                            selectedAccount.accountID = full.accountID;
+                            selectedAccount.actCostAccountID = full.actCostAccountID;
                             selectedAccount.accountName = encodeURIComponent(full.accountName);
                             return "<p data-placement='top' data-toggle='tooltip' title='Select'><button id='btnModel' class='btn btn-primary btn-xs' data-title='Select' data-toggle='modal' data-target='#edit' onclick=updateAccountInputFields('" + JSON.stringify(selectedAccount) + "')><span class='glyphicon glyphicon-pencil'></span></button></p>";
                         }
@@ -247,10 +242,11 @@
         $(document).ready(function () {
             $('#savebtn').click(function () {
                 amtPrinToSave.actCostAccountAmtPrincipleID = $('#actCostAccountAmtPrincipleID').val();
-                amtPrinToSave.subContractorID = $('#subContractorID').val();
-                amtPrinToSave.employeeID = $('#employeeID').val();
-                amtPrinToSave.firstName = $('#firstName').val();
-                
+                amtPrinToSave.principleID = $('#principleID').val();
+                amtPrinToSave.actCostPeriodID = $('#actCostPeriodID').val();
+                amtPrinToSave.actCostAccountID = $('#actCostAccountID').val();
+                amtPrinToSave.amount = $('#amount').val();
+                amtPrinToSave.comments = $('#comments').val();
 
                 if ($('#actCostAccountAmtPrincipleID').val().length > 0 && $('#actCostAccountAmtPrincipleID').val() > 0) {
                     ajaxOtherIncomeUpdate(amtPrinToSave);

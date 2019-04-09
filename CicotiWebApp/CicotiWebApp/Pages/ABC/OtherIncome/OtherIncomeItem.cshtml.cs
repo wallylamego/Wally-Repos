@@ -67,6 +67,7 @@ namespace CicotiWebApp.Pages.ABC.OtherIncome
             if (ID != null)
             {
                 AccAmtPrinciple = await _context.ActCostAccountAmtPrinciple
+                    .Include(a=>a.ActCostAccount)
                     .SingleOrDefaultAsync(m => m.ActCostAccountAmtPrincipleID == ID);
             }
             PopulatePeriodSL();

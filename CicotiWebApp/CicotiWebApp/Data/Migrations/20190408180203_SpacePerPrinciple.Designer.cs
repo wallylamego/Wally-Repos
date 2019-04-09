@@ -4,14 +4,16 @@ using CicotiWebApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CicotiWebApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190408180203_SpacePerPrinciple")]
+    partial class SpacePerPrinciple
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -218,35 +220,6 @@ namespace CicotiWebApp.Data.Migrations
                     b.HasIndex("SiloID");
 
                     b.ToTable("ActCostAllocationSplits");
-                });
-
-            modelBuilder.Entity("CicotiWebApp.Models.ActCostAlloctedSpacePerPrinciple", b =>
-                {
-                    b.Property<int>("ActCostAlloctedSpacePerPrincipleID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("ActCostPeriodID");
-
-                    b.Property<double>("AmtAllocated");
-
-                    b.Property<int>("BranchID");
-
-                    b.Property<string>("Comments");
-
-                    b.Property<double>("PercentageAllocated");
-
-                    b.Property<int>("PrincipleID");
-
-                    b.HasKey("ActCostAlloctedSpacePerPrincipleID");
-
-                    b.HasIndex("ActCostPeriodID");
-
-                    b.HasIndex("BranchID");
-
-                    b.HasIndex("PrincipleID");
-
-                    b.ToTable("ActCostAlloctedSpacePerPrinciple");
                 });
 
             modelBuilder.Entity("CicotiWebApp.Models.ActCostBalanceAllocation", b =>
@@ -1633,24 +1606,6 @@ namespace CicotiWebApp.Data.Migrations
                     b.HasOne("CicotiWebApp.Models.Silo", "Silo")
                         .WithMany()
                         .HasForeignKey("SiloID")
-                        .OnDelete(DeleteBehavior.Restrict);
-                });
-
-            modelBuilder.Entity("CicotiWebApp.Models.ActCostAlloctedSpacePerPrinciple", b =>
-                {
-                    b.HasOne("CicotiWebApp.Models.ActCostPeriod", "ActCostPeriod")
-                        .WithMany()
-                        .HasForeignKey("ActCostPeriodID")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("CicotiWebApp.Models.Branch", "Branch")
-                        .WithMany()
-                        .HasForeignKey("BranchID")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("CicotiWebApp.Models.Principle", "Principle")
-                        .WithMany()
-                        .HasForeignKey("PrincipleID")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 

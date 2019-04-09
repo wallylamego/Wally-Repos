@@ -30,19 +30,27 @@ namespace CicotiWebApp.Pages.ABC.Accounts
             int filteredResultsCount = 0;
             int totalResultsCount = 0;
 
-            DataTableAjaxPostModel.GetOrderByParameters(Model.order, Model.columns, "DriverID",
+            DataTableAjaxPostModel.GetOrderByParameters(Model.order, Model.columns, "ActCostAccountID",
                 out bool SortDir, out string SortBy);
 
 
             //First create the View of the new model you wish to display to the user
             var AccountQuery = _context.ActCostAccount
                 .Include(b=>b.Branch)
+                .Include(c=>c.ActCostCategory)
+                .Include(sc=>sc.ActCostSubCategory)
+                .Include(cd=>cd.ActCostDriver)
+                .Include(sp=>sp.ActCostAllocationSplit)
                .Select(acc => new
                {
-                   accountID = acc.ActCostAccountID,
-                   accountName = acc.Description,
-                   accountNo = acc.AccountNo,
-                   branch = acc.Branch.BranchName,
+                   acc.ActCostAccountID,
+                   AccountName = acc.Description,
+                   AccountNo = acc.AccountNo,
+                   Branch = acc.Branch.BranchName,
+                   Category = acc.ActCostCategory.Description,
+                   SubCategory = acc.ActCostSubCategory.Description,
+                   CostDriver = acc.ActCostDriver.Description,
+                   AllocationSplit = acc.ActCostAllocationSplit.Description
                }
                );
 
@@ -53,9 +61,13 @@ namespace CicotiWebApp.Pages.ABC.Accounts
             {
                 AccountQuery = AccountQuery
                         .Where(
-                d => d.accountName.ToLower().Contains(Model.search.value.ToLower()) ||
-                        d.accountNo.ToString().ToLower().Contains(Model.search.value.ToLower()) ||
-                        d.branch.ToString().ToLower().Contains(Model.search.value.ToLower()) 
+                d => d.AccountName.ToLower().Contains(Model.search.value.ToLower()) ||
+                        d.AccountNo.ToString().ToLower().Contains(Model.search.value.ToLower()) ||
+                        d.Branch.ToString().ToLower().Contains(Model.search.value.ToLower()) ||
+                        d.Category.ToString().ToLower().Contains(Model.search.value.ToLower()) ||
+                        d.SubCategory.ToString().ToLower().Contains(Model.search.value.ToLower()) ||
+                        d.CostDriver.ToString().ToLower().Contains(Model.search.value.ToLower()) ||
+                        d.AllocationSplit.ToString().ToLower().Contains(Model.search.value.ToLower())
                         );
 
                 filteredResultsCount = AccountQuery.Count();

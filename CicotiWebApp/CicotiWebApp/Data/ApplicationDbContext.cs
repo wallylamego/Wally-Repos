@@ -85,6 +85,7 @@ namespace CicotiWebApp.Data
         public DbSet<ActCostInvestmentType> ActCostInvestmentType { get; set; }
         public DbSet<ActCostInvestment> ActCostInvestment { get; set; }
         public DbSet<ActCostFixedAssetAccount> ActCostFixedAssetAccount { get; set; }
+        public DbSet<ActCostAlloctedSpacePerPrinciple> ActCostAlloctedSpacePerPrinciple { get; set; }
 
         public DbSet<FuelPrice> FuelPrice { get; set; }
         public DbSet<VehicleKm> VehicleKms { get; set;}

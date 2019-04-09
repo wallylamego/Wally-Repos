@@ -48,7 +48,8 @@ namespace CicotiWebApp.Pages.Employee
                    CostCentre = e.CostCentre.CostCentreName,
                    e.ReportsToID,
                    ReportTo = e.ReportsTo.FirstName + " " + e.ReportsTo.LastName,
-                   e.StartDate
+                   e.StartDate,
+                   e.EndDate
                }
                );
 
