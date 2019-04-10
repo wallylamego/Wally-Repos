@@ -217,7 +217,7 @@
             $("#jobDescription").val(decodeURIComponent(selectedEmployee.jobDescription));
             $("#divEmployeeInputFieldsSection").show();
             $("#divEmployeeTable").hide();
-            $('#showEmployeeBtn').val("Hide Model");
+            $('#showEmployeeBtn').val("Hide Employee");
         }
 
         function updateModelInputFields(data) {
@@ -562,7 +562,6 @@
         });
         //Find Employee
         $('#findEmployeeBtn').click(function () {
-            alert("In Find Employee Btn");
             $("#divEmployeeTable").show();
             $('#divEmployeeInputFieldsSection').hide();
             if (!$.fn.DataTable.isDataTable('#EmployeeTable')) {

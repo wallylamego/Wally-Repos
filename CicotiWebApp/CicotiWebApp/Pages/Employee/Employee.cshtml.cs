@@ -15,10 +15,12 @@ namespace CicotiWebApp.Pages.Employee
     public class EmployeeModel : PageModel
     {
         private readonly CicotiWebApp.Data.ApplicationDbContext _context;
+        private EmployeeBusinessLayer _empBusLayer;
 
         public EmployeeModel(CicotiWebApp.Data.ApplicationDbContext context)
         {
             _context = context;
+            _empBusLayer = new EmployeeBusinessLayer();
         }
 
         [BindProperty]
@@ -84,24 +86,24 @@ namespace CicotiWebApp.Pages.Employee
         }
 
         #region Update Employee Details
-        //Updates the existing Vehicle
-        public async Task<IActionResult> OnPutUpdateEmployee([FromBody] Models.Employee obj)
-        {
-            if (obj != null && (HttpContext.User.IsInRole("Admin") || HttpContext.User.IsInRole("HR")))
-                {
-                try
-                {
-                    _context.Attach(obj).State = EntityState.Modified;
-                    await _context.SaveChangesAsync();
-                    return new JsonResult(obj);
-                }
-                catch (DbUpdateException d)
-                {
-                    return new JsonResult("Employee Changes not saved." + d.InnerException.Message);
-                }
-            }
-            return new JsonResult("Employee Changes not saved.");
-        }
+        ////Updates the existing Vehicle
+        //public async Task<IActionResult> OnPutUpdateEmployee([FromBody] Models.Employee obj)
+        //{
+        //    if (obj != null && (HttpContext.User.IsInRole("Admin") || HttpContext.User.IsInRole("HR")))
+        //        {
+        //        try
+        //        {
+        //            obj.ActCostAllocationSplitID = _empBusLayer.FindAllocationSplitID(obj.CostCentreID, obj.DepartmentID);
+        //            _context.Attach(obj).State = EntityState.Modified;
+        //            await _context.SaveChangesAsync();
+        //        }
+        //        catch (DbUpdateException d)
+        //        {
+        //            return new JsonResult("Employee Changes not saved." + d.InnerException.Message);
+        //        }
+        //    }
+        //    return new JsonResult("Employee Changes not saved.");
+        //}
 
         //Inserts a new Employee with details
         public async Task<IActionResult> OnPostInsertEmployee([FromBody] Models.Employee obj)
@@ -109,21 +111,44 @@ namespace CicotiWebApp.Pages.Employee
             if (obj != null && (HttpContext.User.IsInRole("Admin") || HttpContext.User.IsInRole("HR"))) 
             {
                 try
-                { 
-                    _context.Add(obj);
+                {
+                    obj.ActCostAllocationSplitID = _empBusLayer.FindAllocationSplitID(obj.CostCentreID, obj.DepartmentID);
+                    if (obj.EmployeeID == 0)
+                    {
+                        _context.Add(obj);
+                    }
+                    else
+                    {
+                        _context.Attach(obj).State = EntityState.Modified;
+                    }
+                    
                     await _context.SaveChangesAsync();
-                    int id = obj.EmployeeID; // Yes it's here
-                    return new JsonResult(obj);
+                    var value = new
+                    {
+                        msg = "Employee Successfully Updated",
+                        employee = obj
+                    };
+                    return new JsonResult(value);
                 }
                 catch (DbUpdateException d)
                 {
-                    return new JsonResult("Employee Not Added." + d.InnerException.Message);
+                    var value = new
+                    {
+                        msg = "Employee Changes not Saved" + d.InnerException.Message,
+                        employee = obj
+                    };
+                    return new JsonResult(value);
                 }
             }
 
             else
             {
-                return new JsonResult("Insert Destination was null");
+                var value = new
+                {
+                    msg = "Employee Changes not Saved",
+                    employee = obj
+                };
+                return new JsonResult(value);
             }
 
         }

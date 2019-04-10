@@ -11,8 +11,8 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="SalesImport"
   DTS:PackageType="5"
-  DTS:VersionBuild="2"
-  DTS:VersionGUID="{7406FA2B-AD6A-4EEA-909E-06AF1017E12B}">
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{90EBB3E2-AC9F-4D8D-B997-827A7C3BEF94}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -292,13 +292,13 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">3</property>
+                          name="Expression">4</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">3</property>
+                          name="FriendlyExpression">4</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -445,13 +445,13 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">201903</property>
+                          name="Expression">201904</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">201903</property>
+                          name="FriendlyExpression">201904</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -2597,13 +2597,21 @@ where [refTable].[Pastel Principle] = ?</property>
           Id="Package\Import Sales Data\Add Week Number"
           TopLeft="451,186.5" />
         <NodeLayout
-          Size="128.5,42"
-          Id="Package\Import Sales Data\Sales Data"
-          TopLeft="51.5,27.5" />
+          Size="180,42"
+          Id="Package\Import Sales Data\OLE DB Destination 1"
+          TopLeft="25.25,101" />
         <NodeLayout
           Size="157,42"
           Id="Package\Import Sales Data\LookUp Principal"
           TopLeft="413.5,108" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Import Sales Data\OLE DB Destination 2"
+          TopLeft="223.928571428571,178.214285714286" />
+        <NodeLayout
+          Size="128.5,42"
+          Id="Package\Import Sales Data\Sales Data"
+          TopLeft="51.5,27.5" />
         <NodeLayout
           Size="147,42"
           Id="Package\Import Sales Data\Add Year Date"
@@ -2612,6 +2620,172 @@ where [refTable].[Pastel Principle] = ?</property>
           Size="130,42"
           Id="Package\Import Sales Data\Add Month"
           TopLeft="334,327.5" />
+        <EdgeLayout
+          Id="Package\Import Sales Data.Paths[Lookup Match Output1]"
+          TopLeft="492,150">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="42.75,36.5"
+              Start="0,0"
+              End="42.75,29">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.25"
+                    Point2="0,18.25"
+                    Point3="4,18.25" />
+                  <mssgle:LineSegment
+                    End="38.75,18.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="38.75,18.25"
+                    Point2="42.75,18.25"
+                    Point3="42.75,22.25" />
+                  <mssgle:LineSegment
+                    End="42.75,29" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-26.81638671875,23.25,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import Sales Data.Paths[Lookup Match Output]"
+          TopLeft="389.5,118.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="24,10.5"
+              Start="0,0"
+              End="16.5,10.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="8,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="8,0"
+                    Point2="12,0"
+                    Point3="12,4" />
+                  <mssgle:LineSegment
+                    End="12,6.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="12,6.5"
+                    Point2="12,10.5"
+                    Point3="16,10.5" />
+                  <mssgle:LineSegment
+                    End="16.5,10.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-36.19138671875,-17.609375,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import Sales Data.Paths[Lookup Error Output]"
+          TopLeft="314.214285714286,139.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38.7142857142857"
+              Start="0,0"
+              End="0,31.2142857142857">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.2142857142857" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-45.86638671875,9.80245535714286,91.7327734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import Sales Data.Paths[Flat File Source Output]"
+          TopLeft="135.833333333333,69.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="178.666666666667,28"
+              Start="0,0"
+              End="178.666666666667,20.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,7.40661029976941" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,7.40661029976941"
+                    Point2="0,11.4066102997694"
+                    Point3="4,11.4066102997694" />
+                  <mssgle:LineSegment
+                    End="174.666666666667,11.4066102997694" />
+                  <mssgle:CubicBezierSegment
+                    Point1="174.666666666667,11.4066102997694"
+                    Point2="178.666666666667,11.4066102997694"
+                    Point3="178.666666666667,15.4066102997694" />
+                  <mssgle:LineSegment
+                    End="178.666666666667,20.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import Sales Data.Paths[Flat File Source Error Output]"
+          TopLeft="95.6666666666667,69.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="19.5833333333333,31.5"
+              Start="0,0"
+              End="19.5833333333333,24">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8.83243658724058" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8.83243658724058"
+                    Point2="0,12.8324365872406"
+                    Point3="4,12.8324365872406" />
+                  <mssgle:LineSegment
+                    End="15.5833333333333,12.8324365872406" />
+                  <mssgle:CubicBezierSegment
+                    Point1="15.5833333333333,12.8324365872406"
+                    Point2="19.5833333333333,12.8324365872406"
+                    Point3="19.5833333333333,16.8324365872406" />
+                  <mssgle:LineSegment
+                    End="19.5833333333333,24" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-53.8347200520833,17.8324365872406,127.2527734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Import Sales Data.Paths[Derived Column Output2]"
           TopLeft="399,369.5">
@@ -2702,180 +2876,6 @@ where [refTable].[Pastel Principle] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Import Sales Data.Paths[Lookup Match Output1]"
-          TopLeft="492,150">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="42.75,36.5"
-              Start="0,0"
-              End="42.75,29">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,14.25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,14.25"
-                    Point2="0,18.25"
-                    Point3="4,18.25" />
-                  <mssgle:LineSegment
-                    End="38.75,18.25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="38.75,18.25"
-                    Point2="42.75,18.25"
-                    Point3="42.75,22.25" />
-                  <mssgle:LineSegment
-                    End="42.75,29" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-26.81638671875,23.25,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Import Sales Data.Paths[Lookup Match Output]"
-          TopLeft="389.5,118.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="24,10.5"
-              Start="0,0"
-              End="16.5,10.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="8,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="8,0"
-                    Point2="12,0"
-                    Point3="12,4" />
-                  <mssgle:LineSegment
-                    End="12,6.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="12,6.5"
-                    Point2="12,10.5"
-                    Point3="16,10.5" />
-                  <mssgle:LineSegment
-                    End="16.5,10.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-36.19138671875,-17.609375,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Import Sales Data.Paths[Flat File Source Output]"
-          TopLeft="135.833333333333,69.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="178.666666666667,28"
-              Start="0,0"
-              End="178.666666666667,20.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,7.40661029976941" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,7.40661029976941"
-                    Point2="0,11.4066102997694"
-                    Point3="4,11.4066102997694" />
-                  <mssgle:LineSegment
-                    End="174.666666666667,11.4066102997694" />
-                  <mssgle:CubicBezierSegment
-                    Point1="174.666666666667,11.4066102997694"
-                    Point2="178.666666666667,11.4066102997694"
-                    Point3="178.666666666667,15.4066102997694" />
-                  <mssgle:LineSegment
-                    End="178.666666666667,20.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="180,42"
-          Id="Package\Import Sales Data\OLE DB Destination 1"
-          TopLeft="25.25,101" />
-        <EdgeLayout
-          Id="Package\Import Sales Data.Paths[Flat File Source Error Output]"
-          TopLeft="95.6666666666667,69.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="19.5833333333333,31.5"
-              Start="0,0"
-              End="19.5833333333333,24">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,8.83243658724058" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,8.83243658724058"
-                    Point2="0,12.8324365872406"
-                    Point3="4,12.8324365872406" />
-                  <mssgle:LineSegment
-                    End="15.5833333333333,12.8324365872406" />
-                  <mssgle:CubicBezierSegment
-                    Point1="15.5833333333333,12.8324365872406"
-                    Point2="19.5833333333333,12.8324365872406"
-                    Point3="19.5833333333333,16.8324365872406" />
-                  <mssgle:LineSegment
-                    End="19.5833333333333,24" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-53.8347200520833,17.8324365872406,127.2527734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="180,42"
-          Id="Package\Import Sales Data\OLE DB Destination 2"
-          TopLeft="223.928571428571,178.214285714286" />
-        <EdgeLayout
-          Id="Package\Import Sales Data.Paths[Lookup Error Output]"
-          TopLeft="314.214285714286,139.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,38.7142857142857"
-              Start="0,0"
-              End="0,31.2142857142857">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.2142857142857" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-45.86638671875,9.80245535714286,91.7327734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -2885,7 +2885,7 @@ where [refTable].[Pastel Principle] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2895,7 +2895,7 @@ where [refTable].[Pastel Principle] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

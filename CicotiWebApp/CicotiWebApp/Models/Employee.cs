@@ -10,19 +10,25 @@ namespace CicotiWebApp.Models
     public class Employee
     {
         public int EmployeeID { get; set; }
+        [Required]
         public string EmployeeNo { get; set; }
+        [Required]
         public string FirstName { get; set; }
+        [Required]
         public string LastName { get; set; }
 
         public int ? ReportsToID { get; set; }
         // you can remove the attribute
         [ForeignKey(nameof(ReportsToID))]
         public  Employee ReportsTo { get; set; }
-
+        [Required]
         public int BranchID { get; set; }
         public int SaleRepID { get; set; }
+        [Required]
         public int JobDescriptionID { get; set; }
+        [Required]
         public int DepartmentID { get; set; }
+        [Required]
         public int CostCentreID { get; set; }
         public int ? ActCostAllocationSplitID { get; set; }
 
