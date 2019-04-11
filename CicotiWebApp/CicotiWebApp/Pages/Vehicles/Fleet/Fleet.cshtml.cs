@@ -15,10 +15,11 @@ namespace CicotiWebApp.Pages.Vehicles.Fleet
     public class CreateModel : PageModel
     {
         private readonly CicotiWebApp.Data.ApplicationDbContext _context;
-
+        private VehicleBusinessLayer _vehicleBusLayer;
         public CreateModel(CicotiWebApp.Data.ApplicationDbContext context)
         {
             _context = context;
+            _vehicleBusLayer = new VehicleBusinessLayer();
         }
 
         [BindProperty]
@@ -28,6 +29,7 @@ namespace CicotiWebApp.Pages.Vehicles.Fleet
         public SelectList BranchSL { get; set; }
         public SelectList CostCentreSL { get; set; }
         public SelectList VehiclePurposeSL { get; set; }
+        public SelectList VehicleStatusSL { get; set; }
 
         public void PopulateVehicleTypeSL(object selectedVehicleType = null)
         {
@@ -36,6 +38,14 @@ namespace CicotiWebApp.Pages.Vehicles.Fleet
                               select v;
             VehicleTypeSL = new SelectList(VehicleTypesQuery.AsNoTracking(),
                         "VehicleTypeID", "Description", selectedVehicleType);
+        }
+        public void PopulateVehicleStatusSL(object selectedVehicleStatusSL = null)
+        {
+            var VehicleStatusQuery = from v in _context.VehicleStatus
+                                    orderby v.Description
+                                    select v;
+            VehicleStatusSL = new SelectList(VehicleStatusQuery.AsNoTracking(),
+                        "VehicleStatusID", "Description", selectedVehicleStatusSL);
         }
         public void PopulateBranchTypeSL(object selectedBranch = null)
         {
@@ -71,6 +81,7 @@ namespace CicotiWebApp.Pages.Vehicles.Fleet
             PopulateBranchTypeSL();
             PopulateCostCentreSL();
             PopulateVehiclePurposeSL();
+            PopulateVehicleStatusSL();
 
             if (VehicleID != null)
             {
@@ -106,6 +117,7 @@ namespace CicotiWebApp.Pages.Vehicles.Fleet
             {
                 obj.RegNumberABB = obj.RegistrationNumber.ToString().Replace(" ", "").Trim();
                 obj.SubContractorID = 2;
+                obj.ActCostAllocationSplitID = _vehicleBusLayer.FindAllocationSplitID(obj.CostCentreID);
                 _context.Attach(obj).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
                 return new JsonResult(obj);
@@ -173,9 +185,6 @@ namespace CicotiWebApp.Pages.Vehicles.Fleet
             return new JsonResult(value);
         }
 
-
-
-
         //Inserts a new Vehicle with details
         public async Task<IActionResult> OnPostInsertVehicle([FromBody] Vehicle obj)
         {
@@ -183,7 +192,11 @@ namespace CicotiWebApp.Pages.Vehicles.Fleet
             {
                 try
                 {
-                    obj.RegNumberABB = obj.RegistrationNumber.ToString().Replace(" ", "").Trim();
+                    string regNo = obj.RegistrationNumber.ToString().Replace(" ", "").Trim();
+                    regNo = regNo.ToString().Replace("-", "").Replace("/", "");
+                    obj.RegNumberABB = regNo;
+                    obj.ActCostAllocationSplitID = _vehicleBusLayer.FindAllocationSplitID(obj.CostCentreID);
+                    //enter CICOTI SubContractor Number
                     obj.SubContractorID = 2;
                     _context.Add(obj);
                     await _context.SaveChangesAsync();

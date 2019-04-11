@@ -48,7 +48,7 @@ namespace CicotiWebApp.Pages.Vehicles.Fleet
                    purpose = v.VehiclePurpose.Description,
                    Branch = v.Branch.BranchName,
                    CostCentre = v.CostCentre.CostCentreName,
-                   Employee = v.Employee.FirstName,
+                   Employee = v.Employee.FirstName + " " + v.Employee.LastName,
                    v.RegistrationNumber,
                    Make = v.Model.Make.MakeName,
                    Model = v.Model.ModelName,

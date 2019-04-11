@@ -24,8 +24,16 @@
         <input type="hidden" asp-for="Vehicle.ModelID" id="modelID" />
         <input type="hidden" asp-for="Vehicle.EmployeeID" id="employeeID" />
         <input type="hidden" asp-for="Vehicle.VehicleTypeID" id="vehicleTypeID" />
+        <div id="divVehicleStatus" class="form-group">
+            <label asp-for="Vehicle" class="control-label">Vehicle Status</label>
+            <select asp-for="Vehicle.VehicleStatusID" id="vehicleStatusID"
+                    asp-items="Model.VehicleStatusSL" class="form-control">
+                <option value="">--Select Vehicle Status--</option>
+            </select>
+            <span asp-validation-for="Vehicle.VehicleStatusID" class="text-danger"></span>
+        </div>
         <div id="divVehiclePurpose" class="form-group">
-            <label asp-for="Vehicle" class="control-label">Cost Centre</label>
+            <label asp-for="Vehicle" class="control-label">Vehicle Purpose</label>
             <select asp-for="Vehicle.VehiclePurposeID" id="vehiclePurposeID"
                     asp-items="Model.VehiclePurposeSL" class="form-control">
                 <option value="">--Select Vehicle Purpose--</option>
@@ -187,7 +195,31 @@
             <input asp-for="Vehicle.DepreciationMonths" class="form-control" id="depreciationMonths" />
             <span asp-validation-for="Vehicle.DepreciationMonths" class="text-danger"></span>
         </div>
-
+        <div id="divLtresPerHundredKms" class="form-group">
+            <label asp-for="Vehicle.litresPerHundredKms" class="control-label">Litres Per Hundred Kms</label>
+            <input asp-for="Vehicle.litresPerHundredKms" class="form-control" id="litresPerHundredKms" />
+            <span asp-validation-for="Vehicle.litresPerHundredKms" class="text-danger"></span>
+        </div>
+        <div id="divPayloadCubicMetres" class="form-group">
+            <label asp-for="Vehicle.PayloadCubicMetres" class="control-label">Payload Cubic Metres</label>
+            <input asp-for="Vehicle.PayloadCubicMetres" class="form-control" id="payloadCubicMetres" />
+            <span asp-validation-for="Vehicle.PayloadCubicMetres" class="text-danger"></span>
+        </div>
+        <div id="divPayloadLength" class="form-group">
+            <label asp-for="Vehicle.PayloadLength" class="control-label">Payload Length</label>
+            <input asp-for="Vehicle.PayloadLength" class="form-control" id="payloadLength" />
+            <span asp-validation-for="Vehicle.PayloadLength" class="text-danger"></span>
+        </div>
+        <div id="divPayloadHeight" class="form-group">
+            <label asp-for="Vehicle.PayloadHeight" class="control-label">Payload Height</label>
+            <input asp-for="Vehicle.PayloadHeight" class="form-control" id="payloadHeight" />
+            <span asp-validation-for="Vehicle.PayloadHeight" class="text-danger"></span>
+        </div>
+        <div id="divPayloadWidth" class="form-group">
+            <label asp-for="Vehicle.PayloadWidth" class="control-label">Payload Width</label>
+            <input asp-for="Vehicle.PayloadWidth" class="form-control" id="payloadWidth" />
+            <span asp-validation-for="Vehicle.PayloadWidth" class="text-danger"></span>
+        </div>
         <div class="form-group">
             <input type="submit" value="Save" class="btn btn-default" id="savebtn" />
         </div>
@@ -492,10 +524,10 @@
                     data: JSON.stringify(obj),
                     success: function (data) {
                         console.log(data);
-                        $("#vehicleID").val(data.loadID);
+                        $("#vehicleID").val(data.vehicleID);
                         console.log("Hidden Vehicle Id:" + $("#vehicleID").val());
                         $("#modalHeader").text("Vehicle Processing Status");
-                        $("#modalMessage").text(data.loadID + " was inserted.");
+                        $("#modalMessage").text(data.registrationNumber + " was inserted.");
                         $("#myModal").modal("show");
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
@@ -522,6 +554,13 @@
             vehicleToSave.acquisitionDate = $('#acquisitionDate').val();
             vehicleToSave.acquistionCost = $('#acquistionCost').val();
             vehicleToSave.depreciationMonths = $('#depreciationMonths').val();
+            vehicleToSave.vehicleStatusID = $('#vehicleStatusID').val();
+            vehicleToSave.litresPerHundredKms = $('#litresPerHundredKms').val();
+            vehicleToSave.payloadCubicMetres = $('#payloadCubicMetres').val();
+            vehicleToSave.payloadHeight = $('#payloadHeight').val();
+            vehicleToSave.payloadWidth = $('#payloadWidth').val();
+            vehicleToSave.payloadLength = $('#payloadLength').val();
+           
             if ($('#vehicleID').val().length > 0 && $('#vehicleID').val() > 0) {
                 vehicleToSave.vehicleID = $('#vehicleID').val();
                 ajaxVehicleUpdate(vehicleToSave);

@@ -351,14 +351,19 @@
             }
         });
 
-
+        var employeeStartdate = new Date($.now());
+        var now = new Date();
+        var employeeEnddate = new Date(now.getFullYear() + 5, now.getMonth(), now.getDay());
+        
         $('#datetimepicker1').datetimepicker(
             {
-                format: "YYYY/MM/DD hh:mm:ss A"
+                format: "YYYY/MM/DD hh:mm:ss A",
+                date: employeeStartdate
             });
         $('#datetimepicker2').datetimepicker(
             {
-                format: "YYYY/MM/DD hh:mm:ss A"
+                format: "YYYY/MM/DD hh:mm:ss A",
+                date: employeeEnddate
             });
     });//Document Ready end.
     </script>

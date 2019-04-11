@@ -30,6 +30,7 @@
                 <th>Branch</th>
                 <th>Cost Centre</th>
                 <th>Registration Number</th>
+                <th>Employee</th>
                 <th>Make</th>
                 <th>Model</th>
                 <th>Fuel Type</th>
@@ -39,7 +40,6 @@
                 <th>Acquisition Date</th>
                 <th>Acquisition Cost</th>
                 <th>Depreciation Months</th>
-                <th>Employee</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
@@ -108,63 +108,63 @@
                         "targets": [4],
                         "visible": true,
                         "searchable": true
-                    },
+                        },
+                        {
+                            /*Employee   is visible and is searchable*/
+                            "targets": [5],
+                            "visible": true,
+                            "searchable": true
+                        },
                     {
                         /*Make  is visible and is searchable*/
-                        "targets": [5],
-                        "visible": true,
-                        "searchable": true
-                    },
-                    {
-                        /*Model is visible and is searchable*/
                         "targets": [6],
                         "visible": true,
                         "searchable": true
                     },
                     {
-                        /*Fuel Type is visible and is searchable*/
+                        /*Model is visible and is searchable*/
                         "targets": [7],
                         "visible": true,
                         "searchable": true
                     },
                     {
-                        /*Drive Type is visible and is searchable*/
+                        /*Fuel Type is visible and is searchable*/
                         "targets": [8],
                         "visible": true,
                         "searchable": true
                     },
                     {
-                        /*Tonnage is visible and is searchable*/
+                        /*Drive Type is visible and is searchable*/
                         "targets": [9],
                         "visible": true,
                         "searchable": true
                     },
                     {
-                        /*Fixed Assets Register is visible and is searchable*/
+                        /*Tonnage is visible and is searchable*/
                         "targets": [10],
                         "visible": true,
                         "searchable": true
                     },
                     {
-                        /*Acquistion Date is visible and is searchable*/
+                        /*Fixed Assets Register is visible and is searchable*/
                         "targets": [11],
                         "visible": true,
                         "searchable": true
                     },
                     {
-                        /*Acquistion Cost is visible and is searchable*/
+                        /*Acquistion Date is visible and is searchable*/
                         "targets": [12],
                         "visible": true,
                         "searchable": true
                     },
                     {
-                        /*Depreciation Months is visible and is searchable*/
+                        /*Acquistion Cost is visible and is searchable*/
                         "targets": [13],
                         "visible": true,
                         "searchable": true
                     },
                     {
-                        /*Employee   is visible and is searchable*/
+                        /*Depreciation Months is visible and is searchable*/
                         "targets": [14],
                         "visible": true,
                         "searchable": true
@@ -190,6 +190,7 @@
                     { "data": "branch", "name": "branch", "autoWidth": true },
                     { "data": "costCentre", "name": "costCentre", "autoWidth": true },
                     { "data": "registrationNumber", "name": "registrationNumber", "autoWidth": true },
+                    { "data": "employee", "name": "employee", "autoWidth": true },
                     { "data": "make", "name": "make", "autoWidth": true },
                     { "data": "model", "name": "model", "autoWidth": true },
                     { "data": "fuelType", "name": "fuelType", "autoWidth": true },
@@ -199,7 +200,6 @@
                     { "data": "acquisitionDate", "name": "acquisitionDate", "autoWidth": true },
                     { "data": "acquisitionCost", "name": "acquisitionCost", "autoWidth": true },
                     { "data": "depreciationMonths", "name": "depreciationMonths", "autoWidth": true },
-                    { "data": "employee", "name": "employee", "autoWidth": true },
                     {
                         "render": function (data, type, full, meta) {
                             return "<p data-placement='top' data-toggle='tooltip' title='Edit'><button class='btn btn-primary btn-xs' data-title='Edit' data-toggle='modal' data-target='#edit' onclick='window.location.href=\"/Vehicles/Fleet/Fleet/" + full.vehicleID +  "\"\'><span class='glyphicon glyphicon-pencil'></span></button></p>";
