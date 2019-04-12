@@ -113,6 +113,10 @@
         </div>
         <br />
         <div id="EmployeeSection">
+            <div class="form-check" id="divChkBox">
+                <input type="checkbox" class="form-check-input" id="noEmployeeChkBox">
+                <label class="form-check-label" for="noEmployeeChkBox">No Employee Assigned.</label>
+            </div>
             <div class="input-group" id="divEmployeeBtns">
                 <span class="input-group-btn">
                     <input type="button" value="Find Employee." class="btn btn-default" id="findEmployeeBtn" />
@@ -165,6 +169,7 @@
                 </table>
             </div>
         </div>
+
         <div id="divRegistrationNumber" class="form-group">
             <label asp-for="Vehicle.RegistrationNumber" class="control-label"></label>
             <input asp-for="Vehicle.RegistrationNumber" class="form-control" id="registrationNumber" />
@@ -250,6 +255,7 @@
             $("#divEmployeeInputFieldsSection").show();
             $("#divEmployeeTable").hide();
             $('#showEmployeeBtn').val("Hide Employee");
+            $('#noEmployeeChkBox').prop("checked",false);
         }
 
         function updateModelInputFields(data) {
@@ -570,7 +576,25 @@
             }
         });
 
+        if ($('#employeeID').val().length > 0 && $('#employeeID').val() > 0) {
+            $('#noEmployeeChkBox').prop('checked', false);
+        } else {
+            $('#noEmployeeChkBox').prop('checked', true);
+        }
 
+
+        $('#noEmployeeChkBox').click(function () {
+          
+            if ($(this).prop("checked") == true) {
+                $("#employeeID").val("");
+                $("#employeeNo").val("");
+                $("#firstName").val("");
+                $("#lastName").val("");
+                $("#branchName").val("");
+                $("#jobDescription").val("");
+            }
+            
+        });
 
         //hide the Model table and the Model capture fields when the form starts up
         $("#divModelTable").hide();

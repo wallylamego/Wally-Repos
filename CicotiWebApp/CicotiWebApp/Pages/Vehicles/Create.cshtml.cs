@@ -59,7 +59,7 @@ namespace CicotiWebApp.Pages.Vehicles
                 return Page();
             }
 
-            Vehicle.RegNumberABB = Vehicle.RegNumberABB.ToString().Replace(" ", "").Trim();
+            Vehicle.RegNumberABB = Vehicle.RegistrationNumber.ToString().Replace(" ", "").Trim();
             Vehicle.VehiclePurposeID = 2;
             _context.Vehicles.Add(Vehicle);
             await _context.SaveChangesAsync();
