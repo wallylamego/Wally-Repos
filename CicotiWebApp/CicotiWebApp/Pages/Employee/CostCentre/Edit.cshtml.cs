@@ -47,23 +47,26 @@ namespace CicotiWebApp.Pages.Employee.CostCentre
                 return Page();
             }
 
-            _context.Attach((CicotiWebApp.Models.CostCentre)CostCentre).State = EntityState.Modified;
-
-            try
+            if (HttpContext.User.IsInRole("Admin"))
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CostCentreExists(CostCentre.CostCentreID))
+                try
                 {
-                    return NotFound();
+                    _context.Attach((CicotiWebApp.Models.CostCentre)CostCentre).State = EntityState.Modified;
+                    await _context.SaveChangesAsync();
                 }
-                else
+                catch (DbUpdateConcurrencyException)
                 {
-                    throw;
+                    if (!CostCentreExists(CostCentre.CostCentreID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
                 }
             }
+               
 
             return RedirectToPage("./Index");
         }

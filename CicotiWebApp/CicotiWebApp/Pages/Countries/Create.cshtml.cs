@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using CicotiWebApp.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CicotiWebApp.Pages.Countries
 {
@@ -34,8 +35,19 @@ namespace CicotiWebApp.Pages.Countries
             {
                 return Page();
             }
-            _context.Countries.Add(Country);
-            await _context.SaveChangesAsync();
+            if (HttpContext.User.IsInRole("Fleet") || (HttpContext.User.IsInRole("Admin")))
+            {
+                try
+                {
+                    _context.Countries.Add(Country);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException d)
+                {
+                    return new JsonResult(d.InnerException.Message);
+                }
+            }
+
             return RedirectToPage("./Index");
         }
     }

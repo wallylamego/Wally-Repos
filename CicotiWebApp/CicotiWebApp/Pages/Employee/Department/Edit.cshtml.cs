@@ -46,22 +46,23 @@ namespace CicotiWebApp.Pages.Employee.Department
             {
                 return Page();
             }
-
-            _context.Attach((CicotiWebApp.Models.Department)Department).State = EntityState.Modified;
-
-            try
+            if (HttpContext.User.IsInRole("Admin"))
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!DepartmentExists(Department.DepartmentID))
+                try
                 {
-                    return NotFound();
+                    _context.Attach((CicotiWebApp.Models.Department)Department).State = EntityState.Modified;
+                    await _context.SaveChangesAsync();
                 }
-                else
+                catch (DbUpdateConcurrencyException)
                 {
-                    throw;
+                    if (!DepartmentExists(Department.DepartmentID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
                 }
             }
 

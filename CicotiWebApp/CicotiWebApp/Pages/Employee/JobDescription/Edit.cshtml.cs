@@ -47,24 +47,25 @@ namespace CicotiWebApp.Pages.Employee.JobDescription
                 return Page();
             }
 
-            _context.Attach((CicotiWebApp.Models.JobDescription)JobDescription).State = EntityState.Modified;
-
-            try
+            if (HttpContext.User.IsInRole("Admin"))
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!JobDescriptionExists(JobDescription.JobDescriptionID))
+                try
                 {
-                    return NotFound();
+                    _context.Attach((CicotiWebApp.Models.JobDescription)JobDescription).State = EntityState.Modified;
+                    await _context.SaveChangesAsync();
                 }
-                else
+                catch (DbUpdateConcurrencyException)
                 {
-                    throw;
+                    if (!JobDescriptionExists(JobDescription.JobDescriptionID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
                 }
             }
-
             return RedirectToPage("./Index");
         }
 

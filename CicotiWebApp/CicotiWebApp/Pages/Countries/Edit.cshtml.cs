@@ -47,24 +47,25 @@ namespace WebAppFAM.Pages.Countries
                 return Page();
             }
 
-            _context.Attach(Country).State = EntityState.Modified;
-
-            try
+            if (HttpContext.User.IsInRole("Fleet") || (HttpContext.User.IsInRole("Admin")))
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CountryExists(Country.CountryID))
+                try
                 {
-                    return NotFound();
+                    _context.Attach(Country).State = EntityState.Modified;
+                    await _context.SaveChangesAsync();
                 }
-                else
+                catch (DbUpdateConcurrencyException)
                 {
-                    throw;
+                    if (!CountryExists(Country.CountryID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
                 }
             }
-
             return RedirectToPage("./Index");
         }
 

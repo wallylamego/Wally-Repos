@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using CicotiWebApp.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CicotiWebApp.Pages.Employee.JobDescription
 {
@@ -34,11 +35,30 @@ namespace CicotiWebApp.Pages.Employee.JobDescription
             {
                 return Page();
             }
-
-            _context.JobDescription.Add(JobDescription);
-            await _context.SaveChangesAsync();
-
+            if (HttpContext.User.IsInRole("Admin"))
+            {
+                try
+                {
+                    _context.JobDescription.Add(JobDescription);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!JobDescriptionExists(JobDescription.JobDescriptionID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+            }
             return RedirectToPage("./Index");
+        }
+        private bool JobDescriptionExists(int id)
+        {
+            return _context.JobDescription.Any(e => e.JobDescriptionID == id);
         }
     }
 }

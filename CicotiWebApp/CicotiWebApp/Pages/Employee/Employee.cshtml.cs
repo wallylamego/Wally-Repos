@@ -86,25 +86,6 @@ namespace CicotiWebApp.Pages.Employee
         }
 
         #region Update Employee Details
-        ////Updates the existing Vehicle
-        //public async Task<IActionResult> OnPutUpdateEmployee([FromBody] Models.Employee obj)
-        //{
-        //    if (obj != null && (HttpContext.User.IsInRole("Admin") || HttpContext.User.IsInRole("HR")))
-        //        {
-        //        try
-        //        {
-        //            obj.ActCostAllocationSplitID = _empBusLayer.FindAllocationSplitID(obj.CostCentreID, obj.DepartmentID);
-        //            _context.Attach(obj).State = EntityState.Modified;
-        //            await _context.SaveChangesAsync();
-        //        }
-        //        catch (DbUpdateException d)
-        //        {
-        //            return new JsonResult("Employee Changes not saved." + d.InnerException.Message);
-        //        }
-        //    }
-        //    return new JsonResult("Employee Changes not saved.");
-        //}
-
         //Inserts a new Employee with details
         public async Task<IActionResult> OnPostInsertEmployee([FromBody] Models.Employee obj)
         {

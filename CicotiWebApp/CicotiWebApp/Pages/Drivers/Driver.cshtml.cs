@@ -41,9 +41,19 @@ namespace CicotiWebApp.Pages.Drivers
             {
                 return Page();
             }
-
-            _context.Drivers.Add(Driver);
-            await _context.SaveChangesAsync();
+            if (HttpContext.User.IsInRole("Fleet") || (HttpContext.User.IsInRole("Admin")))
+            {
+                try
+                {
+                    _context.Drivers.Add(Driver);
+                    await _context.SaveChangesAsync();
+                    return new JsonResult("Driver has been created successfully.");
+                }
+                catch (DbUpdateException d)
+                {
+                    return new JsonResult("Driver not created." + d.InnerException.Message);
+                }
+            }
 
             return RedirectToPage("./Index");
         }

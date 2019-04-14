@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using CicotiWebApp.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CicotiWebApp.Pages.Employee.Department
 {
@@ -34,10 +35,32 @@ namespace CicotiWebApp.Pages.Employee.Department
             {
                 return Page();
             }
-            _context.Department.Add(Department);
-            await _context.SaveChangesAsync();
+            if (HttpContext.User.IsInRole("Admin"))
+            {
+                try
+                {
+                    _context.Department.Add(Department);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!DepartmentExists(Department.DepartmentID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+            }
+            
 
             return RedirectToPage("./Index");
+        }
+        private bool DepartmentExists(int id)
+        {
+            return _context.Department.Any(e => e.DepartmentID == id);
         }
     }
 }

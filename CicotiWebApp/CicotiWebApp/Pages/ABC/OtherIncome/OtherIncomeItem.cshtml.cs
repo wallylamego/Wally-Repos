@@ -78,7 +78,7 @@ namespace CicotiWebApp.Pages.ABC.OtherIncome
         //Updates the existing Driver Details
         public async Task<IActionResult> OnPutUpdateAmtPrin([FromBody] Models.ActCostAccountAmtPrinciple obj)
         {
-            if (obj != null && (HttpContext.User.IsInRole("Admin") || HttpContext.User.IsInRole("Fleet")))
+            if (obj != null && (HttpContext.User.IsInRole("Admin") ))
             {
                 try
                 {

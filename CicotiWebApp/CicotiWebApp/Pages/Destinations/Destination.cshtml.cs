@@ -28,8 +28,6 @@ namespace CicotiWebApp.Pages.Destinations
 
         public async Task<IActionResult> OnGetAsync(int? destinationId)
         {
-           // PopulateCustomerDropDownList();
-
             if (destinationId == null)
              {
                 return Page();
@@ -108,7 +106,7 @@ namespace CicotiWebApp.Pages.Destinations
 
         public async Task<IActionResult> OnPostInsert([FromBody] Destination obj)
         {
-            if (obj != null)
+            if (obj != null && (HttpContext.User.IsInRole("Fleet") || (HttpContext.User.IsInRole("Admin"))))
             {
                 try
                 {
@@ -130,21 +128,28 @@ namespace CicotiWebApp.Pages.Destinations
         }
         public async Task<IActionResult> OnPutUpdate([FromBody] Destination obj)
         {
-            try
+            if (HttpContext.User.IsInRole("Fleet") || (HttpContext.User.IsInRole("Admin")))
             {
-                _context.Attach(obj).State = EntityState.Modified;
-                await _context.SaveChangesAsync();
-                return new JsonResult("Destination updated.");
+                try
+                {
+                    _context.Attach(obj).State = EntityState.Modified;
+                    await _context.SaveChangesAsync();
+                    return new JsonResult("Destination updated.");
+                }
+                catch (DbUpdateException d)
+                {
+                    return new JsonResult("Destination not update." + d.InnerException.Message);
+                }
             }
-            catch(DbUpdateException d)
+            else
             {
-                return new JsonResult("Destination not update." + d.InnerException.Message);
+                return new JsonResult("You do not have rights to Update this Destination");
             }
         }
 
         public async Task<IActionResult> OnDeleteDelete([FromBody] Destination obj)
         {
-            if (obj != null && HttpContext.User.IsInRole("Admin"))
+            if (obj != null && ( HttpContext.User.IsInRole("Admin") || HttpContext.User.IsInRole("Fleet")))
             {
                 try
                 {

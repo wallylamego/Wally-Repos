@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using CicotiWebApp.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CicotiWebApp.Pages.Employee.CostCentre
 {
@@ -34,12 +35,31 @@ namespace CicotiWebApp.Pages.Employee.CostCentre
             {
                 return Page();
             }
-            
-            
-            _context.CostCentre.Add(CostCentre);
-            await _context.SaveChangesAsync();
-
+            if (HttpContext.User.IsInRole("Admin"))
+            {
+                try
+                {
+                    _context.CostCentre.Add(CostCentre);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!CostCentreExists(CostCentre.CostCentreID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+            }
+           
             return RedirectToPage("./Index");
+        }
+        private bool CostCentreExists(int id)
+        {
+            return _context.CostCentre.Any(e => e.CostCentreID == id);
         }
     }
 }

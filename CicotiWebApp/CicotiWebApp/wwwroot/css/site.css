@@ -12,6 +12,14 @@ body {
     padding-right: 15px;
 }
 
+.wrapper {
+    border: 2px solid;
+    border-color: rgb(0,74,128);
+    border-radius: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
 
 /* Carousel */
 .carousel-caption p {
