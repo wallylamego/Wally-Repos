@@ -37,21 +37,27 @@ namespace CicotiWebApp.Pages.Provinces
             }
 
             var EmptyProvince = new Models.Province();
-            
-            if (await TryUpdateModelAsync(
+
+
+            if (HttpContext.User.IsInRole("Fleet") || (HttpContext.User.IsInRole("Admin")))
+            {
+                if (await TryUpdateModelAsync(
                      EmptyProvince,
                      "Province",
-                      p=> p.ProvinceID,p=>p.CountryID,
-                      p=>p.ProvinceName
+                      p => p.ProvinceID, p => p.CountryID,
+                      p => p.ProvinceName
                          ))
-            {
-                _context.Provinces.Add(EmptyProvince);
-                await _context.SaveChangesAsync();
-                return RedirectToPage("./Index");
+                {
+
+                    _context.Provinces.Add(EmptyProvince);
+                    await _context.SaveChangesAsync();
+                    return RedirectToPage("./Index");
+                }
+                //Select Country ID if TryUpdateSync Fails
+                PopulateCountryDropDownList(_context, EmptyProvince.CountryID);
+                return Page();
             }
-            //Select Country ID if TryUpdateSync Fails
-            PopulateCountryDropDownList(_context, EmptyProvince.CountryID);
-            return Page();
+            return new JsonResult("You do not have access to update this screen");
         }
 
         

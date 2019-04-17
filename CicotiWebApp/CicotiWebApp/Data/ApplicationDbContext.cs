@@ -14,6 +14,7 @@ namespace CicotiWebApp.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+            Database.SetCommandTimeout(120);
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {

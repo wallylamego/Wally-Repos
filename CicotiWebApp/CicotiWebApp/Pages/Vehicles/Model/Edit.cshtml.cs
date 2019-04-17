@@ -90,24 +90,26 @@ namespace CicotiWebApp.Pages.Vehicles.Model
                 return Page();
             }
 
-            _context.Attach((CicotiWebApp.Models.Model)Model).State = EntityState.Modified;
 
-            try
+            if (HttpContext.User.IsInRole("Admin") || HttpContext.User.IsInRole("Fleet"))
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ModelExists(Model.ModelID))
+                try
                 {
-                    return NotFound();
+                    _context.Attach((CicotiWebApp.Models.Model)Model).State = EntityState.Modified;
+                    await _context.SaveChangesAsync();
                 }
-                else
+                catch (DbUpdateConcurrencyException)
                 {
-                    throw;
+                    if (!ModelExists(Model.ModelID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
                 }
             }
-
             return RedirectToPage("./Index");
         }
 

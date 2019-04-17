@@ -47,21 +47,23 @@ namespace CicotiWebApp.Pages.SKU
                 return Page();
             }
 
-            _context.Attach((CicotiWebApp.Models.SKU)SKU).State = EntityState.Modified;
-
-            try
+            if (HttpContext.User.IsInRole("Fleet") || (HttpContext.User.IsInRole("Admin")) || (HttpContext.User.IsInRole("WareHouse")))
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!SKUExists(SKU.SKUID))
+                try
                 {
-                    return NotFound();
+                    _context.Attach((CicotiWebApp.Models.SKU)SKU).State = EntityState.Modified;
+                    await _context.SaveChangesAsync();
                 }
-                else
+                catch (DbUpdateConcurrencyException)
                 {
-                    throw;
+                    if (!SKUExists(SKU.SKUID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
                 }
             }
 

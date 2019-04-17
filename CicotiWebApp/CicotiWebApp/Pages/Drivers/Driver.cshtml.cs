@@ -87,7 +87,7 @@ namespace CicotiWebApp.Pages.Drivers
                     return new JsonResult("Driver Changes not saved." + d.InnerException.Message);
                 }
             }
-            return new JsonResult("Drivers Changes not saved.");
+            return new JsonResult("Drivers Changes not saved. You do not have access rights to save these changes");
         }
 
         //Inserts a new Employee with details

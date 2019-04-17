@@ -77,10 +77,12 @@ namespace CicotiWebApp.Pages.Vehicles.Model
             {
                 return Page();
             }
-            
-            
-            _context.Models.Add(Model);
-            await _context.SaveChangesAsync();
+
+            if (HttpContext.User.IsInRole("Admin") || HttpContext.User.IsInRole("Fleet"))
+            {
+                _context.Models.Add(Model);
+                await _context.SaveChangesAsync();
+            }
 
             return RedirectToPage("./Index");
         }

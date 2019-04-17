@@ -70,27 +70,30 @@ namespace CicotiWebApp.Pages.Vehicles
             {
                 return Page();
             }
-            Vehicle.RegNumberABB = Vehicle.RegNumberABB.ToString().Replace(" ", "").Trim();
-            //set this as a delivery vehicle
-            Vehicle.VehiclePurposeID = 2;
-            _context.Attach(Vehicle).State = EntityState.Modified;
 
-            try
+           
+            if (HttpContext.User.IsInRole("Admin") || HttpContext.User.IsInRole("Fleet"))
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!VehicleExists(Vehicle.VehicleID))
+                try
                 {
-                    return NotFound();
+                    Vehicle.RegNumberABB = Vehicle.RegNumberABB.ToString().Replace(" ", "").Trim();
+                    //set this as a delivery vehicle
+                    Vehicle.VehiclePurposeID = 2;
+                    _context.Attach(Vehicle).State = EntityState.Modified;
+                    await _context.SaveChangesAsync();
                 }
-                else
+                catch (DbUpdateConcurrencyException)
                 {
-                    throw;
+                    if (!VehicleExists(Vehicle.VehicleID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
                 }
             }
-
             return RedirectToPage("./Index");
         }
 

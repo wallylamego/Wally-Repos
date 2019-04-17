@@ -162,8 +162,7 @@ namespace WebAppFAM.Pages.ABC
                 }
                 try
                 {
-                    _context.Database.ExecuteSqlCommand("Step3_AccBalanceMovementUpdate @p0",
-                    parameters: new[] { PeriodNo });
+                    _context.Database.ExecuteSqlCommand("Step3_AccBalanceMovementUpdate");
                     return new JsonResult("Balance Movements Updated Successfully for " + ActCostPeriod.Period);
                 }
                 catch (DbUpdateConcurrencyException e)
@@ -290,6 +289,137 @@ namespace WebAppFAM.Pages.ABC
                     _context.Database.ExecuteSqlCommand("Step7_CreateInvestmentTable @p0",
                     parameters: new[] { PeriodNo });
                     return new JsonResult("Investment Updated Successfully for " + ActCostPeriod.Period);
+                }
+                catch (DbUpdateConcurrencyException e)
+                {
+                    return new JsonResult("Update not run. Error Message is: " + e.InnerException.Message);
+                }
+            }
+            return new JsonResult("You do not rights to run this update");
+
+        }
+
+        //This procedures duplicates Account Allocation Per Principle (P4P acc and goodwill)
+        public JsonResult OnPostAccountAllocationPerPrinciple([FromBody] CopyFromToPeriod CopyFromToPeriod)
+        {
+            string CopyFromPeriodNo = CopyFromToPeriod.CopyFromPeriod.Period;
+            string CopyToPeriodNo = CopyFromToPeriod.CopyToPeriod.Period;
+
+            if (HttpContext.User.IsInRole("Admin"))
+            {
+                if ((!PeriodExists(CopyFromPeriodNo)) || (!PeriodExists(CopyToPeriodNo)))
+                {
+                    return new JsonResult("This period does not exist. Update not Run");
+                }
+                try
+                {
+                    _context.Database.ExecuteSqlCommand("DuplicateAccAllocPerPrinciple @p0, @p1",
+                    parameters: new[] {CopyToPeriodNo, CopyFromPeriodNo });
+                    return new JsonResult("Account Per Principle Updated for " + CopyToPeriodNo);
+                }
+                catch (DbUpdateConcurrencyException e)
+                {
+                    return new JsonResult("Update not run. Error Message is: " + e.InnerException.Message);
+                }
+            }
+            return new JsonResult("You do not rights to run this update");
+
+        }
+        //This procedures duplicates Cash Collection Costs Per Depot
+        public JsonResult OnPostCashCollectionCost([FromBody] CopyFromToPeriod CopyFromToPeriod)
+        {
+            string CopyFromPeriodNo = CopyFromToPeriod.CopyFromPeriod.Period;
+            string CopyToPeriodNo = CopyFromToPeriod.CopyToPeriod.Period;
+
+            if (HttpContext.User.IsInRole("Admin"))
+            {
+                if ((!PeriodExists(CopyFromPeriodNo)) || (!PeriodExists(CopyToPeriodNo)))
+                {
+                    return new JsonResult("This period does not exist. Update not Run");
+                }
+                try
+                {
+                    _context.Database.ExecuteSqlCommand("DuplicateActCostCashCollectionCost @p0, @p1",
+                    parameters: new[] { CopyToPeriodNo, CopyFromPeriodNo });
+                    return new JsonResult("Cash Collection Cost Duplicated for Period " + CopyToPeriodNo);
+                }
+                catch (DbUpdateConcurrencyException e)
+                {
+                    return new JsonResult("Update not run. Error Message is: " + e.InnerException.Message);
+                }
+            }
+            return new JsonResult("You do not rights to run this update");
+
+        }
+        //This procedures duplicates Insurance Costs Per Depot
+        public JsonResult OnPostInsuranceCost([FromBody] CopyFromToPeriod CopyFromToPeriod)
+        {
+            string CopyFromPeriodNo = CopyFromToPeriod.CopyFromPeriod.Period;
+            string CopyToPeriodNo = CopyFromToPeriod.CopyToPeriod.Period;
+
+            if (HttpContext.User.IsInRole("Admin"))
+            {
+                if ((!PeriodExists(CopyFromPeriodNo)) || (!PeriodExists(CopyToPeriodNo)))
+                {
+                    return new JsonResult("This period does not exist. Update not Run");
+                }
+                try
+                {
+                    _context.Database.ExecuteSqlCommand("DuplicateInsuranceType @p0, @p1",
+                    parameters: new[] { CopyToPeriodNo, CopyFromPeriodNo });
+                    return new JsonResult("Insurance Cost Duplicated for Period " + CopyToPeriodNo);
+                }
+                catch (DbUpdateConcurrencyException e)
+                {
+                    return new JsonResult("Update not run. Error Message is: " + e.InnerException.Message);
+                }
+            }
+            return new JsonResult("You do not rights to run this update");
+
+        }
+        //This procedures duplicates Staff Silo Costs
+        public JsonResult OnPostStaffSiloCost([FromBody] CopyFromToPeriod CopyFromToPeriod)
+        {
+            string CopyFromPeriodNo = CopyFromToPeriod.CopyFromPeriod.Period;
+            string CopyToPeriodNo = CopyFromToPeriod.CopyToPeriod.Period;
+
+            if (HttpContext.User.IsInRole("Admin"))
+            {
+                if ((!PeriodExists(CopyFromPeriodNo)) || (!PeriodExists(CopyToPeriodNo)))
+                {
+                    return new JsonResult("This period does not exist. Update not Run");
+                }
+                try
+                {
+                    _context.Database.ExecuteSqlCommand("DuplicateSpecificEmployeeSilos @p0, @p1",
+                    parameters: new[] { CopyToPeriodNo, CopyFromPeriodNo });
+                    return new JsonResult("Staff Silo Cost Duplicated for Period " + CopyToPeriodNo);
+                }
+                catch (DbUpdateConcurrencyException e)
+                {
+                    return new JsonResult("Update not run. Error Message is: " + e.InnerException.Message);
+                }
+            }
+            return new JsonResult("You do not rights to run this update");
+
+        }
+        //This procedures duplicates Staff Silo Costs
+        public JsonResult OnPostInterCompanyCost([FromBody] CopyFromToPeriod CopyFromToPeriod)
+        {
+            string CopyFromPeriodNo = CopyFromToPeriod.CopyFromPeriod.Period;
+            string CopyToPeriodNo = CopyFromToPeriod.CopyToPeriod.Period;
+
+            if (HttpContext.User.IsInRole("Admin"))
+            {
+                if ((!PeriodExists(CopyFromPeriodNo)) || (!PeriodExists(CopyToPeriodNo)))
+                {
+                    return new JsonResult("This period does not exist. Update not Run");
+                }
+                try
+                {
+                    _context.Database.ExecuteSqlCommand("DuplicateInterCompany @p0, @p1",
+                    parameters: new[] { CopyToPeriodNo, CopyFromPeriodNo });
+                    return new JsonResult("interCompany Cost Duplicated for Period " + CopyToPeriodNo);
                 }
                 catch (DbUpdateConcurrencyException e)
                 {

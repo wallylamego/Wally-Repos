@@ -47,24 +47,25 @@ namespace CicotiWebApp.Pages.VehicleTypes
                 return Page();
             }
 
-            _context.Attach(VehicleType).State = EntityState.Modified;
-
-            try
+            if (HttpContext.User.IsInRole("Admin") || HttpContext.User.IsInRole("Fleet"))
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!VehicleTypeExists(VehicleType.VehicleTypeID))
+                try
                 {
-                    return NotFound();
+                    _context.Attach(VehicleType).State = EntityState.Modified;
+                    await _context.SaveChangesAsync();
                 }
-                else
+                catch (DbUpdateConcurrencyException)
                 {
-                    throw;
+                    if (!VehicleTypeExists(VehicleType.VehicleTypeID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
                 }
             }
-
             return RedirectToPage("./Index");
         }
 

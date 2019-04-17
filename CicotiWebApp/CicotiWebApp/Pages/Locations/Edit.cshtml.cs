@@ -49,9 +49,13 @@ namespace CicotiWebApp.Pages.Locations
         
         public IActionResult OnPutUpdate([FromBody] Location obj)
         {
-            _context.Attach(obj).State = EntityState.Modified;
-            _context.SaveChanges();
-            return new JsonResult("Location: " + obj.LocationName + " Changes are saved.");
+            if (HttpContext.User.IsInRole("Fleet") || (HttpContext.User.IsInRole("Admin")))
+            {
+                _context.Attach(obj).State = EntityState.Modified;
+                _context.SaveChanges();
+                return new JsonResult("Location: " + obj.LocationName + " Changes are saved.");
+            }
+            return new JsonResult("You do not have access to add new Locations");
         }
 
  

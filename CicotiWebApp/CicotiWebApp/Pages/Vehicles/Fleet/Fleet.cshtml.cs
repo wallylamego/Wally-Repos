@@ -113,19 +113,23 @@ namespace CicotiWebApp.Pages.Vehicles.Fleet
         //Updates the existing Vehicle
         public async Task<IActionResult> OnPutUpdateVehicle([FromBody] Vehicle obj)
         {
-            try
+            if (HttpContext.User.IsInRole("Admin") || HttpContext.User.IsInRole("Fleet"))
             {
-                obj.RegNumberABB = obj.RegistrationNumber.ToString().Replace(" ", "").Trim();
-                obj.SubContractorID = 2;
-                obj.ActCostAllocationSplitID = _vehicleBusLayer.FindAllocationSplitID(obj.CostCentreID);
-                _context.Attach(obj).State = EntityState.Modified;
-                await _context.SaveChangesAsync();
-                return new JsonResult(obj);
+                try
+                {
+                    obj.RegNumberABB = obj.RegistrationNumber.ToString().Replace(" ", "").Trim();
+                    obj.SubContractorID = 2;
+                    obj.ActCostAllocationSplitID = _vehicleBusLayer.FindAllocationSplitID(obj.CostCentreID);
+                    _context.Attach(obj).State = EntityState.Modified;
+                    await _context.SaveChangesAsync();
+                    return new JsonResult(obj);
+                }
+                catch (DbUpdateException d)
+                {
+                    return new JsonResult("Vehicle Changes not saved." + d.InnerException.Message);
+                }
             }
-            catch (DbUpdateException d)
-            {
-                return new JsonResult("Vehicle Changes not saved." + d.InnerException.Message);
-            }
+            return new JsonResult("You do not have access to these changes");
         }
         public async Task<JsonResult> OnPostEmployeePaging([FromForm] DataTableAjaxPostModel Model)
         {
@@ -188,7 +192,7 @@ namespace CicotiWebApp.Pages.Vehicles.Fleet
         //Inserts a new Vehicle with details
         public async Task<IActionResult> OnPostInsertVehicle([FromBody] Vehicle obj)
         {
-            if (obj != null)
+            if (obj != null && (HttpContext.User.IsInRole("Admin") || HttpContext.User.IsInRole("Fleet")))
             {
                 try
                 {

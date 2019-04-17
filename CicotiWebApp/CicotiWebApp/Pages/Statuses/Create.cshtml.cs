@@ -34,10 +34,11 @@ namespace CicotiWebApp.Pages.Statuses
             {
                 return Page();
             }
-
-            _context.Status.Add((Status)Status);
-            await _context.SaveChangesAsync();
-
+            if (HttpContext.User.IsInRole("Admin"))
+            {
+                _context.Status.Add((Status)Status);
+                await _context.SaveChangesAsync();
+            }
             return RedirectToPage("./Index");
         }
     }

@@ -58,11 +58,13 @@ namespace CicotiWebApp.Pages.Vehicles
             {
                 return Page();
             }
-
-            Vehicle.RegNumberABB = Vehicle.RegistrationNumber.ToString().Replace(" ", "").Trim();
-            Vehicle.VehiclePurposeID = 2;
-            _context.Vehicles.Add(Vehicle);
-            await _context.SaveChangesAsync();
+            if (HttpContext.User.IsInRole("Admin") || HttpContext.User.IsInRole("Fleet"))
+            { 
+                Vehicle.RegNumberABB = Vehicle.RegistrationNumber.ToString().Replace(" ", "").Trim();
+                Vehicle.VehiclePurposeID = 2;
+                _context.Vehicles.Add(Vehicle);
+                await _context.SaveChangesAsync();
+            }
 
             return RedirectToPage("./Index");
         }

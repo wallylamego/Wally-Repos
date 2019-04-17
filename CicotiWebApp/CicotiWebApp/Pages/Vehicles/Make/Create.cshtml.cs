@@ -34,12 +34,15 @@ namespace CicotiWebApp.Pages.Vehicles.Make
             {
                 return Page();
             }
-            
-            
-            _context.Make.Add(Make);
-            await _context.SaveChangesAsync();
+            if (HttpContext.User.IsInRole("Admin") || HttpContext.User.IsInRole("Fleet"))
+            {
+                _context.Make.Add(Make);
+                await _context.SaveChangesAsync();
+               
+            }
+             return RedirectToPage("./Index");
 
-            return RedirectToPage("./Index");
+            
         }
     }
 }

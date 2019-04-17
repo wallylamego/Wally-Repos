@@ -30,15 +30,19 @@ namespace CicotiWebApp.Pages.SKU
 
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
+            if (HttpContext.User.IsInRole("Fleet") || (HttpContext.User.IsInRole("Admin")) || (HttpContext.User.IsInRole("WareHouse")))
             {
-                return Page();
+                if (!ModelState.IsValid)
+                {
+                    return Page();
+                }
+
+                _context.SKUs.Add(SKU);
+                await _context.SaveChangesAsync();
+
+                return RedirectToPage("./Index");
             }
-
-            _context.SKUs.Add(SKU);
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
+            return new JsonResult("You do not have access to change this page");
         }
     }
 }

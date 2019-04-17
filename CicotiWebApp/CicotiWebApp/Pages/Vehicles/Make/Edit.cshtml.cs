@@ -47,24 +47,25 @@ namespace CicotiWebApp.Pages.Vehicles.Make
                 return Page();
             }
 
-            _context.Attach((CicotiWebApp.Models.Make)Make).State = EntityState.Modified;
-
-            try
+            if (HttpContext.User.IsInRole("Admin") || HttpContext.User.IsInRole("Fleet"))
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!MakeExists(Make.MakeID))
+                try
                 {
-                    return NotFound();
+                    _context.Attach((CicotiWebApp.Models.Make)Make).State = EntityState.Modified;
+                    await _context.SaveChangesAsync();
                 }
-                else
+                catch (DbUpdateConcurrencyException)
                 {
-                    throw;
+                    if (!MakeExists(Make.MakeID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
                 }
             }
-
             return RedirectToPage("./Index");
         }
 

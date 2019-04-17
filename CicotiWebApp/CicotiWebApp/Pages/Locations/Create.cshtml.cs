@@ -86,9 +86,13 @@ namespace CicotiWebApp.Pages.Locations
 */
         public  IActionResult OnPostInsert([FromBody] Location obj)
         {
-            _context.Add(obj);
-            _context.SaveChanges();
-            return new JsonResult("Location: " + obj.LocationName + " added.");
+            if (HttpContext.User.IsInRole("Fleet") || (HttpContext.User.IsInRole("Admin")))
+            {
+                _context.Add(obj);
+                _context.SaveChanges();
+                return new JsonResult("Location: " + obj.LocationName + " added.");
+            }
+            return new JsonResult("You do not have access to add Locations");
         }
 
         public JsonResult OnGetProvinceList(int CountryId)

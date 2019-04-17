@@ -47,24 +47,25 @@ namespace CicotiWebApp.Pages.Statuses
                 return Page();
             }
 
-            _context.Attach((Status)Status).State = EntityState.Modified;
-
-            try
+            if (HttpContext.User.IsInRole("Admin"))
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!StatusExists(Status.StatusID))
+                try
                 {
-                    return NotFound();
+                    _context.Attach((Status)Status).State = EntityState.Modified;
+                    await _context.SaveChangesAsync();
                 }
-                else
+                catch (DbUpdateConcurrencyException)
                 {
-                    throw;
+                    if (!StatusExists(Status.StatusID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
                 }
             }
-
             return RedirectToPage("./Index");
         }
 

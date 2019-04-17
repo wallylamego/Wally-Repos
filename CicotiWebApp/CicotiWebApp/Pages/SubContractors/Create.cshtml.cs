@@ -34,10 +34,11 @@ namespace CicotiWebApp.Pages.SubContractors
             {
                 return Page();
             }
-
-            _context.SubContractor.Add(SubContractor);
-            await _context.SaveChangesAsync();
-
+            if (HttpContext.User.IsInRole("Admin") || HttpContext.User.IsInRole("Fleet"))
+            {
+                _context.SubContractor.Add(SubContractor);
+                await _context.SaveChangesAsync();
+            }
             return RedirectToPage("./Index");
         }
     }

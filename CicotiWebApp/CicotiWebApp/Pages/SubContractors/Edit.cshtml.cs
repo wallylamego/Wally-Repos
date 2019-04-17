@@ -47,24 +47,25 @@ namespace CicotiWebApp.Pages.SubContractors
                 return Page();
             }
 
-            _context.Attach(SubContractor).State = EntityState.Modified;
-
-            try
+            if (HttpContext.User.IsInRole("Admin") || HttpContext.User.IsInRole("Fleet"))
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!SubContractorExists(SubContractor.SubContractorID))
+                try
                 {
-                    return NotFound();
+                    _context.Attach(SubContractor).State = EntityState.Modified;
+                    await _context.SaveChangesAsync();
                 }
-                else
+                catch (DbUpdateConcurrencyException)
                 {
-                    throw;
+                    if (!SubContractorExists(SubContractor.SubContractorID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
                 }
             }
-
             return RedirectToPage("./Index");
         }
 

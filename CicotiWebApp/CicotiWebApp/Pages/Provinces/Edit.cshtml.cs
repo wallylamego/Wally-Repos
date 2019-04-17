@@ -49,22 +49,26 @@ namespace CicotiWebApp.Pages.Provinces
                 return Page();
             }
 
-            
-            var ProvinceToUpdate = await _context.Provinces.FindAsync(id);
-
-            if (await TryUpdateModelAsync(
-                     ProvinceToUpdate,
-                     "Province",
-                      p => p.ProvinceID, p => p.CountryID,
-                      p => p.ProvinceName
-                         ))
+            if (HttpContext.User.IsInRole("Fleet") || (HttpContext.User.IsInRole("Admin")))
             {
-            
-                await _context.SaveChangesAsync();
-                return RedirectToPage("./Index");
+                var ProvinceToUpdate = await _context.Provinces.FindAsync(id);
+
+                if (await TryUpdateModelAsync(
+                         ProvinceToUpdate,
+                         "Province",
+                          p => p.ProvinceID, p => p.CountryID,
+                          p => p.ProvinceName
+                             ))
+                {
+
+                    await _context.SaveChangesAsync();
+                    return RedirectToPage("./Index");
+                }
+
+                
             }
             //Select Country ID if TryUpdateSync Fails
-            PopulateCountryDropDownList(_context, ProvinceToUpdate.CountryID);
+            PopulateCountryDropDownList(_context, id);
             return Page();
         }
 

@@ -20,7 +20,7 @@
 <p>
     <a asp-page="Create">Run Procedures</a>
 </p>
-
+<div id="loader"></div>
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
 <div id="accordion">
@@ -37,40 +37,57 @@
             <div class="row" id="divLoadHeaderForm">
                 <div class="col-md-4">
                     <div id="divCopyOnePeriodToAnother">
-                        Duplicate Allocations From Period to Anaother
+                        Duplicate Allocations From One Period to Another
                         <div class="form-group" id="divCopyFromPeriod">
                             <label asp-for="ActCostPeriod.Period" class="control-label">Period to Copy From</label>
                             <input asp-for="ActCostPeriod.Period" class="form-control" id="periodCopyFrom" />
                             <span asp-validation-for="ActCostPeriod.Period" class="text-danger"></span>
                         </div>
+                        <br />
                         <div class="form-group" id="divCopyToPeriod">
                             <label asp-for="ActCostPeriod.Period" class="control-label">Period to Copy To</label>
                             <input asp-for="ActCostPeriod.Period" class="form-control" id="periodCopyTo" />
                             <span asp-validation-for="ActCostPeriod.Period" class="text-danger"></span>
                         </div>
-                        <div id="divAccAllocationToPeriod">
-                            <h5>Update the Account Allocation Per Principle (p4P acc and goodwill)</h5>
+                        <br />
+                        <div id="divAccAllocationToPeriod" class="wrapper">
+                            <h5>Update the Account Allocation Per Principle (P4P acc and goodwill)</h5>
                             <div class="form-group">
                                 <input type="submit" value="Run" class="btn btn-default" id="runAccPrinciple" />
                             </div>
+                            <p id="runAccAllocationToPeriodMsg"></p>
                         </div>
-                        <div id="divCashCollectionCostPerDepot">
+                        <br />
+                        <div id="divCashCollectionCostPerDepot" class="wrapper">
                             <h5>Update the Cash Collection Cost Per Depot: Used to allocate Bank Charges</h5>
                             <div class="form-group">
                                 <input type="submit" value="Run" class="btn btn-default" id="runCashCollection" />
                             </div>
+                            <p id="runCashCollectionCostPerDepotMsg"></p>
                         </div>
-                        <div id="divInsuranceCost">
+                        <br />
+                        <div id="divInsuranceCost" class="wrapper">
                             <h5>Update the Insurance Type Cost Per Period</h5>
                             <div class="form-group">
                                 <input type="submit" value="Run" class="btn btn-default" id="runInsuranceCosts" />
                             </div>
+                            <p id="runInsuranceCostMsg"></p>
                         </div>
-                        <div id="divSpecificEmployeeAllocationPerSilo">
+                        <br />
+                        <div id="divSpecificEmployeeAllocationPerSilo" class="wrapper">
                             <h5>Update the Employee Allocation Per Silo</h5>
                             <div class="form-group">
                                 <input type="submit" value="Run" class="btn btn-default" id="runAllocateSilo" />
                             </div>
+                            <p id="runSpecificEmployeeAllocationPerSiloMsg"></p>
+                        </div>
+                        <br />
+                        <div id="divInterCompany" class="wrapper">
+                            <h5>Update InterCompany Cost</h5>
+                            <div class="form-group">
+                                <input type="submit" value="Run" class="btn btn-default" id="runInterCompany" />
+                            </div>
+                            <p id="runInterCompanyMsg"></p>
                         </div>
                     </div> 
                 </div>
@@ -169,9 +186,9 @@
                     <div id="divAccBalanceUpdate" class="wrapper">
                         <h5>6- Update Movement on GL Accounts: sp Step3_AccBalanceMovementUpdate</h5>
                         <div class="form-group">
-                            <input type="submit" value="Run" class="btn btn-default" id="rubBalanceMovement" />
+                            <input type="submit" value="Run" class="btn btn-default" id="runBalanceMovement" />
                         </div>
-                        <p id="rubBalanceMovementMsg"></p>
+                        <p id="runBalanceMovementMsg"></p>
                     </div>
                     <br />
                     <div id="divStaffAllocation" class="wrapper">
@@ -243,7 +260,7 @@
     </div>
 
 </div>
-
+</div>
 
 @await Html.PartialAsync("_ModalPartial")
 @await Html.PartialAsync("_ModalConfirmPartial")
@@ -253,9 +270,65 @@
     <script type="text/javascript">
         $(document).ready(function ()
         {
+            $("#loader").hide();
+            $("#runTransCount").click(function () {
+                $("#loader").show();
+                $(window).scrollTop(0);
+                runTransactionCount();
+                //$.when(runTransactionCount()).done(function (a1) {
+                //    $("#loader").hide();
+                //});
+            });
+            $("#runSalesUpdate").click(function () {
+                SalesUpdate();
+            });
+            $("#runEmployeeArchive").click(function () {
+                EmployeeUpdate();
+            });
+            $("#runVehicleArchive").click(function () {
+                VehicleUpdate();
+            });
+            $("#runPalletUpdate").click(function () {
+                Pallets();
+            });
+            $("#runBalanceMovement").click(function () {
+                AccBalanceUpdate();
+            });
+            $("#runStaffPerPrinciple").click(function () {
+                StaffPerPrincipleUpdate();
+            });
+            $("#runVehicleAllocation").click(function () {
+                VehicleAllocationUpdate();
+            });
             $("#runAllocatedCosts").click(function () {
                 allocateCosts();
             });
+            $("#runDebtorsAllocation").click(function () {
+                $("#loader").show();
+                $(window).scrollTop(0);
+                DebtorsAllocationUpdate();
+            });
+            $("#runInvestmentTable").click(function () {
+                InvestmentUpdate();
+            });
+            $("#runAccPrinciple").click(function () {
+                DuplicateAccountPerPrinciple();
+            });
+            $("#runCashCollection").click(function () {
+                DuplicateCashCollectionCost();
+            });
+            $("#runInsuranceCosts").click(function () {
+                DuplicateInsuranceCost();
+            });
+            $("#runAllocateSilo").click(function () {
+                DuplicateStaffSiloCost();
+            });
+            $("#runInterCompany").click(function () {
+                DuplicateInterCompanyCost();
+            });
+            
+            
+            
 
         });//Document Ready end.
 
@@ -291,6 +364,495 @@
                     }
                 });//ajax
         }
+        function runTransactionCount()
+        {
+            console.log("Transaction Count function");
+            var obj = {};
+            obj.Period = $("#periodToUpdate").val();
+            console.log(JSON.stringify(obj));
+            console.log(obj.Period);
 
+            $.ajax({
+                type: "POST",
+                url: '/ABC/MonthlyUpdates?handler=TransCount',
+                headers:
+                    {
+                        "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                    },
+                contentType: "application/json",
+                dataType: "json",
+               // data: $("#period").val(),
+                data: JSON.stringify(obj),
+                success: function (msg) {
+                        $("#modalHeader").text("Transaction Count Status");
+                    $("#modalMessage").text(msg);
+                    $("#loader").hide();
+                    $("#myModal").modal("show");
+                    $("#runTransCountMsg").html(msg);
+                    },
+                    error: function () {
+                        $("#modalHeader").text("Transaction Count Status");
+                        $("#modalMessage").text(msg);
+                        $("#myModal").modal("show");
+                    }
+                });//ajax
+        }
+        function SalesUpdate()
+        {
+            console.log("Sales Update function");
+            var obj = {};
+            obj.Period = $("#periodToUpdate").val();
+            console.log(JSON.stringify(obj));
+            console.log(obj.Period);
+
+            $.ajax({
+                type: "POST",
+                url: '/ABC/MonthlyUpdates?handler=SalesUpdate',
+                headers:
+                    {
+                        "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                    },
+                contentType: "application/json",
+                dataType: "json",
+               // data: $("#period").val(),
+                data: JSON.stringify(obj),
+                success: function (msg) {
+                        $("#modalHeader").text("Sales Update Status");
+                        $("#modalMessage").text(msg);
+                    $("#myModal").modal("show");
+                    $("#runSalesUpdateMsg").html(msg);
+                    },
+                    error: function () {
+                        $("#modalHeader").text("Sales Update Status");
+                        $("#modalMessage").text(msg);
+                        $("#myModal").modal("show");
+                    }
+                });//ajax
+        }
+         function EmployeeUpdate()
+        {
+            console.log("Employee Update function");
+            var obj = {};
+            obj.Period = $("#periodToUpdate").val();
+            console.log(JSON.stringify(obj));
+            console.log(obj.Period);
+
+            $.ajax({
+                type: "POST",
+                url: '/ABC/MonthlyUpdates?handler=EmloyeeUpdate',
+                headers:
+                    {
+                        "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                    },
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify(obj),
+                success: function (msg) {
+                        $("#modalHeader").text("Employee Update Status");
+                        $("#modalMessage").text(msg);
+                    $("#myModal").modal("show");
+                    $("#runEmployeeArchiveMsg").html(msg);
+                    },
+                    error: function () {
+                        $("#modalHeader").text("Employee Update Status");
+                        $("#modalMessage").text(msg);
+                        $("#myModal").modal("show");
+                    }
+                });//ajax
+        }
+        function VehicleUpdate()
+        {
+            console.log("Vehicle Update function");
+            var obj = {};
+            obj.Period = $("#periodToUpdate").val();
+            console.log(JSON.stringify(obj));
+            console.log(obj.Period);
+
+            $.ajax({
+                type: "POST",
+                url: '/ABC/MonthlyUpdates?handler=VehicleUpdate',
+                headers:
+                    {
+                        "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                    },
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify(obj),
+                success: function (msg) {
+                        $("#modalHeader").text("Vehicle Update Status");
+                        $("#modalMessage").text(msg);
+                    $("#myModal").modal("show");
+                    $("#runVehicleArchiveMsg").html(msg);
+                    },
+                    error: function () {
+                        $("#modalHeader").text("Vehicle Update Status");
+                        $("#modalMessage").text(msg);
+                        $("#myModal").modal("show");
+                    }
+                });//ajax
+        }
+        function Pallets()
+        {
+            console.log("Pallets Update function");
+            var obj = {};
+            obj.Period = $("#periodToUpdate").val();
+            console.log(JSON.stringify(obj));
+            console.log(obj.Period);
+
+            $.ajax({
+                type: "POST",
+                url: '/ABC/MonthlyUpdates?handler=Pallets',
+                headers:
+                    {
+                        "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                    },
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify(obj),
+                success: function (msg) {
+                    $("#modalHeader").text("Pallets Update Status");
+                        $("#modalMessage").text(msg);
+                    $("#myModal").modal("show");
+                    $("#runPalletUpdateMsg").html(msg);
+                    },
+                    error: function () {
+                        $("#modalHeader").text("Pallets Update Status");
+                        $("#modalMessage").text(msg);
+                        $("#myModal").modal("show");
+                    }
+                });//ajax
+        }
+        function AccBalanceUpdate()
+        {
+            console.log("AccBalance Update function");
+            var obj = {};
+            obj.Period = $("#periodToUpdate").val();
+            console.log(JSON.stringify(obj));
+            console.log(obj.Period);
+
+            $.ajax({
+                type: "POST",
+                url: '/ABC/MonthlyUpdates?handler=AccBalanceUpdate',
+                headers:
+                    {
+                        "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                    },
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify(obj),
+                success: function (msg) {
+                    $("#modalHeader").text("AccBalance Update Status");
+                        $("#modalMessage").text(msg);
+                    $("#myModal").modal("show");
+                    $("#runBalanceMovementMsg").html(msg);
+                    },
+                    error: function () {
+                        $("#modalHeader").text("AccBalance  Update Status");
+                        $("#modalMessage").text(msg);
+                        $("#myModal").modal("show");
+                    }
+                });//ajax
+        }
+
+        function StaffPerPrincipleUpdate()
+        {
+            console.log("Staff Allocation Update function");
+            var obj = {};
+            obj.Period = $("#periodToUpdate").val();
+            console.log(JSON.stringify(obj));
+            console.log(obj.Period);
+
+            $.ajax({
+                type: "POST",
+                url: '/ABC/MonthlyUpdates?handler=StaffPerPrinciple',
+                headers:
+                    {
+                        "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                    },
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify(obj),
+                success: function (msg) {
+                    $("#modalHeader").text("Staff Per Principle Update Status");
+                        $("#modalMessage").text(msg);
+                    $("#myModal").modal("show");
+                    $("#runStaffPerPrincipleMsg").html(msg);
+                    },
+                    error: function () {
+                        $("#modalHeader").text("Staff Per Principle Update Status");
+                        $("#modalMessage").text(msg);
+                        $("#myModal").modal("show");
+                    }
+                });//ajax
+        }
+        function VehicleAllocationUpdate()
+        {
+            console.log("Vehicle Allocation Update function");
+            var obj = {};
+            obj.Period = $("#periodToUpdate").val();
+            console.log(JSON.stringify(obj));
+            console.log(obj.Period);
+
+            $.ajax({
+                type: "POST",
+                url: '/ABC/MonthlyUpdates?handler=VehicleAllocation',
+                headers:
+                    {
+                        "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                    },
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify(obj),
+                success: function (msg) {
+                    $("#modalHeader").text("Vehicle Allocation Status");
+                        $("#modalMessage").text(msg);
+                    $("#myModal").modal("show");
+                    $("#runVehicleAllocationMsg").html(msg);
+                    },
+                    error: function () {
+                        $("#modalHeader").text("Vehicle Allocation Status");
+                        $("#modalMessage").text(msg);
+                        $("#myModal").modal("show");
+                    }
+                });//ajax
+        }
+        function DebtorsAllocationUpdate()
+        {
+            console.log("Debtors Allocation Update function");
+            var obj = {};
+            obj.Period = $("#periodToUpdate").val();
+            console.log(JSON.stringify(obj));
+            console.log(obj.Period);
+
+            $.ajax({
+                type: "POST",
+                url: '/ABC/MonthlyUpdates?handler=AllocateDebtors',
+                headers:
+                    {
+                        "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                    },
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify(obj),
+                success: function (msg) {
+                    $("#modalHeader").text("Debtors Allocation Per Principle Update Status");
+                    $("#modalMessage").text(msg);
+                    $("#loader").hide();
+                    $("#myModal").modal("show");
+                    $("#runDebtorsAllocationMsg").html(msg);
+                    },
+                    error: function () {
+                        $("#modalHeader").text("Debtors Allocation Per Principle Update Status");
+                        $("#modalMessage").text(msg);
+                        $("#myModal").modal("show");
+                    }
+                });//ajax
+        }
+        function InvestmentUpdate()
+        {
+            console.log("Investment Update function");
+            var obj = {};
+            obj.Period = $("#periodToUpdate").val();
+            console.log(JSON.stringify(obj));
+            console.log(obj.Period);
+
+            $.ajax({
+                type: "POST",
+                url: '/ABC/MonthlyUpdates?handler=Investment',
+                headers:
+                    {
+                        "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                    },
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify(obj),
+                success: function (msg) {
+                    $("#modalHeader").text("Investment Update Status");
+                        $("#modalMessage").text(msg);
+                    $("#myModal").modal("show");
+                    $("#runInvestmentTableMsg").html(msg);
+                    },
+                    error: function () {
+                        $("#modalHeader").text("Investment Update Status");
+                        $("#modalMessage").text(msg);
+                        $("#myModal").modal("show");
+                    }
+                });//ajax
+        }
+     function DuplicateAccountPerPrinciple()
+        {
+         console.log("Acount Per Principle Update function");
+         var obj = {};
+         var periodFrom = {};
+         var periodTo = {};
+         periodFrom.Period = $("#periodCopyFrom").val();
+         periodTo.Period = $("#periodCopyTo").val();
+         obj.CopyFromPeriod = periodFrom;
+         obj.CopyToPeriod = periodTo;
+         console.log(JSON.stringify(obj));
+
+            $.ajax({
+                type: "POST",
+                url: '/ABC/MonthlyUpdates?handler=AccountAllocationPerPrinciple',
+                headers:
+                    {
+                        "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                    },
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify(obj),
+                success: function (msg) {
+                    $("#modalHeader").text("Allocation Per Account Per Principal Update Status");
+                        $("#modalMessage").text(msg);
+                    $("#myModal").modal("show");
+                    $("#runAccAllocationToPeriodMsg").html(msg);
+                    },
+                    error: function (msg) {
+                        $("#modalHeader").text("Allocation Per Account Per Principal Update Status");
+                        $("#modalMessage").text("There is an error");
+                        $("#myModal").modal("show");
+                    }
+                });//ajax
+        }
+        function DuplicateCashCollectionCost()
+        {
+         console.log("Cash Collection Cost Update function");
+         var obj = {};
+         var periodFrom = {};
+         var periodTo = {};
+         periodFrom.Period = $("#periodCopyFrom").val();
+         periodTo.Period = $("#periodCopyTo").val();
+         obj.CopyFromPeriod = periodFrom;
+         obj.CopyToPeriod = periodTo;
+         console.log(JSON.stringify(obj));
+
+            $.ajax({
+                type: "POST",
+                url: '/ABC/MonthlyUpdates?handler=CashCollectionCost',
+                headers:
+                    {
+                        "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                    },
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify(obj),
+                success: function (msg) {
+                    $("#modalHeader").text("Cash Collection Cost Update Status");
+                        $("#modalMessage").text(msg);
+                    $("#myModal").modal("show");
+                    $("#runCashCollectionCostPerDepotMsg").html(msg);
+                    },
+                    error: function (msg) {
+                        $("#modalHeader").text("Cash Collection Cost Update Status");
+                        $("#modalMessage").text("There is an error");
+                        $("#myModal").modal("show");
+                    }
+                });//ajax
+        }
+         function DuplicateInsuranceCost()
+        {
+         console.log("Insurance Cost Update function");
+         var obj = {};
+         var periodFrom = {};
+         var periodTo = {};
+         periodFrom.Period = $("#periodCopyFrom").val();
+         periodTo.Period = $("#periodCopyTo").val();
+         obj.CopyFromPeriod = periodFrom;
+         obj.CopyToPeriod = periodTo;
+         console.log(JSON.stringify(obj));
+
+            $.ajax({
+                type: "POST",
+                url: '/ABC/MonthlyUpdates?handler=InsuranceCost',
+                headers:
+                    {
+                        "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                    },
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify(obj),
+                success: function (msg) {
+                    $("#modalHeader").text("Insurance Cost Update Status");
+                        $("#modalMessage").text(msg);
+                    $("#myModal").modal("show");
+                    $("#runInsuranceCostMsg").html(msg);
+                    },
+                    error: function (msg) {
+                        $("#modalHeader").text("Insurance Cost Update Status");
+                        $("#modalMessage").text("There is an error");
+                        $("#myModal").modal("show");
+                    }
+                });//ajax
+        }
+        function DuplicateStaffSiloCost()
+        {
+         console.log("Staff Silo Cost Update function");
+         var obj = {};
+         var periodFrom = {};
+         var periodTo = {};
+         periodFrom.Period = $("#periodCopyFrom").val();
+         periodTo.Period = $("#periodCopyTo").val();
+         obj.CopyFromPeriod = periodFrom;
+         obj.CopyToPeriod = periodTo;
+         console.log(JSON.stringify(obj));
+
+            $.ajax({
+                type: "POST",
+                url: '/ABC/MonthlyUpdates?handler=StaffSiloCost',
+                headers:
+                    {
+                        "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                    },
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify(obj),
+                success: function (msg) {
+                    $("#modalHeader").text("Staff Silo Cost Update Status");
+                        $("#modalMessage").text(msg);
+                    $("#myModal").modal("show");
+                    $("#runSpecificEmployeeAllocationPerSiloMsg").html(msg);
+                    },
+                    error: function (msg) {
+                        $("#modalHeader").text("Staff Silo Cost Update Status");
+                        $("#modalMessage").text("There is an error");
+                        $("#myModal").modal("show");
+                    }
+                });//ajax
+        }
+    function DuplicateInterCompanyCost()
+        {
+         console.log("InterCompany Cost Update function");
+         var obj = {};
+         var periodFrom = {};
+         var periodTo = {};
+         periodFrom.Period = $("#periodCopyFrom").val();
+         periodTo.Period = $("#periodCopyTo").val();
+         obj.CopyFromPeriod = periodFrom;
+         obj.CopyToPeriod = periodTo;
+         console.log(JSON.stringify(obj));
+
+            $.ajax({
+                type: "POST",
+                url: '/ABC/MonthlyUpdates?handler=InterCompanyCost',
+                headers:
+                    {
+                        "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                    },
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify(obj),
+                success: function (msg) {
+                    $("#modalHeader").text("InterCompany Cost Update Status");
+                        $("#modalMessage").text(msg);
+                    $("#myModal").modal("show");
+                    $("#runInterCompanyMsg").html(msg);
+                    },
+                    error: function (msg) {
+                        $("#modalHeader").text("InterCompany Cost Update Status");
+                        $("#modalMessage").text("There is an error");
+                        $("#myModal").modal("show");
+                    }
+                });//ajax
+        }
     </script>
 }

@@ -288,46 +288,49 @@ namespace CicotiWebApp.Pages.Loads
         //Updates the existing Load Header
         public async Task<IActionResult> OnPutUpdateLoad([FromBody] Load obj)
         {
-            try
+
+            //First Check if you have the rights to update this load
+
+            if (obj != null && (HttpContext.User.IsInRole("Admin") || HttpContext.User.IsInRole("Fleet")))
             {
-                //  Load currentLoad = _context.Loads.FirstOrDefault(l => l.LoadID == obj.LoadID);
-                // Load currentLoad;
-
-
-                //check if all Invoices have a POD Status before the Load can be changed to Status Complete
-                //if any invoice does not have an Invoice Status of POD then the Load Cannot be marked as Complete
-                if (obj.LoadStatusID == 2)
+                try
                 {
-                    if (!CheckInvoiceStatus(obj))
+                    //check if all Invoices have a POD Status before the Load can be changed to Status Complete
+                    //if any invoice does not have an Invoice Status of POD then the Load Cannot be marked as Complete
+                    if (obj.LoadStatusID == 2)
                     {
-                        //Reset the Load Status to Incomplete if it fails the Invoice POD Test;
-                        obj.LoadStatusID = 1;
-                        return new JsonResult("Load not saved as Complete as there are still invoices which do not have a POD.");
+                        if (!CheckInvoiceStatus(obj))
+                        {
+                            //Reset the Load Status to Incomplete if it fails the Invoice POD Test;
+                            obj.LoadStatusID = 1;
+                            return new JsonResult("Load not saved as Complete as there are still invoices which do not have a POD.");
+                        }
                     }
+
+                    _context.Attach(obj).State = EntityState.Modified;
+                    await _context.SaveChangesAsync();
+
+                    //if the Status of the Load has been changed to Cancelled and the previous
+                    //status was not cancelled then revert all the invoices to their previous status
+                    if (obj.LoadStatusID == 3)
+                    {
+                        await CancelLoad(obj.LoadID);
+                    }
+
+                    return new JsonResult(obj);
                 }
-
-                _context.Attach(obj).State = EntityState.Modified;
-                await _context.SaveChangesAsync();
-
-                //if the Status of the Load has been changed to Cancelled and the previous
-                //status was not cancelled then revert all the invoices to their previous status
-                if (obj.LoadStatusID == 3)
+                catch (DbUpdateException d)
                 {
-                    await CancelLoad(obj.LoadID);
+                    return new JsonResult("Load Changes not saved." + d.InnerException.Message);
                 }
-
-                return new JsonResult(obj);
             }
-            catch (DbUpdateException d)
-            {
-                return new JsonResult("Load Changes not saved." + d.InnerException.Message);
-            }
+            return new JsonResult("You do not have access righst to change this load");
         }
 
         //Inserts a new Load with a Load Headers
         public async Task<IActionResult> OnPostInsertLoad([FromBody] Load obj)
         {
-            if (obj != null)
+            if (obj != null && (HttpContext.User.IsInRole("Admin") || HttpContext.User.IsInRole("Fleet")))
             {
                 try
                 {
@@ -347,12 +350,10 @@ namespace CicotiWebApp.Pages.Loads
                     return new JsonResult("Load Not Added." + d.InnerException.Message);
                 }
             }
-
             else
             {
-                return new JsonResult("Insert Load was null");
+                return new JsonResult("Insert Load was null or you do not have access rights to change this load.");
             }
-
         }
         #endregion UploadLoads
 

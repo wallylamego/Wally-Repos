@@ -34,9 +34,11 @@ namespace CicotiWebApp.Pages.VehicleTypes
             {
                 return Page();
             }
-
-            _context.VehicleTypes.Add(VehicleType);
-            await _context.SaveChangesAsync();
+            if (HttpContext.User.IsInRole("Admin") || HttpContext.User.IsInRole("Fleet"))
+            {
+                _context.VehicleTypes.Add(VehicleType);
+                await _context.SaveChangesAsync();
+            }
 
             return RedirectToPage("./Index");
         }
