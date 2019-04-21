@@ -52,7 +52,9 @@ namespace CicotiWebApp.Data
         public DbSet<LoadStatus> LoadStatus { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<SKU> SKUs { get; set;}
-        
+        public DbSet<ActCostChannel> ActCostChannel { get; set;}
+        public DbSet<ActCostWarehouse> ActCostWarehouse {get; set;}
+
         public DbSet<InvoiceStatusRole> InvoiceStatusRoles { get; set; }
 
         public DbSet<Destination> Destinations { get; set; }

@@ -328,6 +328,19 @@ namespace CicotiWebApp.Data.Migrations
                     b.ToTable("ActCostCategory");
                 });
 
+            modelBuilder.Entity("CicotiWebApp.Models.ActCostChannel", b =>
+                {
+                    b.Property<int>("ActCostChannelID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ChannelName");
+
+                    b.HasKey("ActCostChannelID");
+
+                    b.ToTable("ActCostChannel");
+                });
+
             modelBuilder.Entity("CicotiWebApp.Models.ActCostDriver", b =>
                 {
                     b.Property<int>("ActCostDriverID")
@@ -565,6 +578,29 @@ namespace CicotiWebApp.Data.Migrations
                     b.ToTable("ActCostTransactions");
                 });
 
+            modelBuilder.Entity("CicotiWebApp.Models.ActCostWarehouse", b =>
+                {
+                    b.Property<int>("ActCostWarehouseID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ActCostChannelID");
+
+                    b.Property<int>("BranchID");
+
+                    b.Property<string>("WarehouseCode");
+
+                    b.Property<string>("WarehouseName");
+
+                    b.HasKey("ActCostWarehouseID");
+
+                    b.HasIndex("ActCostChannelID");
+
+                    b.HasIndex("BranchID");
+
+                    b.ToTable("ActCostWarehouse");
+                });
+
             modelBuilder.Entity("CicotiWebApp.Models.Branch", b =>
                 {
                     b.Property<int>("BranchID")
@@ -741,15 +777,18 @@ namespace CicotiWebApp.Data.Migrations
 
                     b.Property<int>("DepartmentID");
 
-                    b.Property<string>("EmployeeNo");
+                    b.Property<string>("EmployeeNo")
+                        .IsRequired();
 
                     b.Property<DateTime>("EndDate");
 
-                    b.Property<string>("FirstName");
+                    b.Property<string>("FirstName")
+                        .IsRequired();
 
                     b.Property<int>("JobDescriptionID");
 
-                    b.Property<string>("LastName");
+                    b.Property<string>("LastName")
+                        .IsRequired();
 
                     b.Property<string>("PastelRepCode");
 
@@ -1813,6 +1852,19 @@ namespace CicotiWebApp.Data.Migrations
                     b.HasOne("CicotiWebApp.Models.Principle", "Principle")
                         .WithMany()
                         .HasForeignKey("PrincipleID")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("CicotiWebApp.Models.ActCostWarehouse", b =>
+                {
+                    b.HasOne("CicotiWebApp.Models.ActCostChannel", "ActCostChannel")
+                        .WithMany()
+                        .HasForeignKey("ActCostChannelID")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("CicotiWebApp.Models.Branch", "Branch")
+                        .WithMany()
+                        .HasForeignKey("BranchID")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
