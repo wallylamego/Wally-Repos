@@ -911,25 +911,71 @@ namespace CicotiWebApp.Data.Migrations
 
                     b.Property<int>("CustomerAccountID");
 
+                    b.Property<double?>("InvoiceAmount");
+
                     b.Property<DateTime>("InvoiceDate");
 
                     b.Property<string>("InvoiceNumber");
 
                     b.Property<DateTime>("InvoicePrintDate");
 
+                    b.Property<int?>("InvoiceProductTypeID");
+
                     b.Property<int?>("LoadID");
 
                     b.Property<int>("StatusID");
+
+                    b.Property<int?>("WarehouseID");
 
                     b.HasKey("InvoiceID");
 
                     b.HasIndex("CustomerAccountID");
 
+                    b.HasIndex("InvoiceProductTypeID");
+
                     b.HasIndex("LoadID");
 
                     b.HasIndex("StatusID");
 
+                    b.HasIndex("WarehouseID");
+
                     b.ToTable("Invoices");
+                });
+
+            modelBuilder.Entity("CicotiWebApp.Models.InvoiceLine", b =>
+                {
+                    b.Property<long>("InvoiceLineID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<double>("Amt");
+
+                    b.Property<int>("InvoiceID");
+
+                    b.Property<double>("Qty");
+
+                    b.Property<int>("SKUID");
+
+                    b.HasKey("InvoiceLineID");
+
+                    b.HasIndex("InvoiceID");
+
+                    b.HasIndex("SKUID");
+
+                    b.ToTable("InvoiceLine");
+                });
+
+            modelBuilder.Entity("CicotiWebApp.Models.InvoiceProductType", b =>
+                {
+                    b.Property<int>("InvoiceProductTypeID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ProductType");
+
+                    b.HasKey("InvoiceProductTypeID");
+
+                    b.ToTable("InvoiceProductType");
                 });
 
             modelBuilder.Entity("CicotiWebApp.Models.InvoiceStatus", b =>
@@ -1471,6 +1517,21 @@ namespace CicotiWebApp.Data.Migrations
                     b.ToTable("VehicleTypes");
                 });
 
+            modelBuilder.Entity("CicotiWebApp.Models.Warehouse", b =>
+                {
+                    b.Property<int>("WarehouseID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("PastelWarehouseID");
+
+                    b.Property<string>("WarehouseName");
+
+                    b.HasKey("WarehouseID");
+
+                    b.ToTable("Warehouse");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -1970,6 +2031,11 @@ namespace CicotiWebApp.Data.Migrations
                         .HasForeignKey("CustomerAccountID")
                         .OnDelete(DeleteBehavior.Restrict);
 
+                    b.HasOne("CicotiWebApp.Models.InvoiceProductType", "InvoiceProductType")
+                        .WithMany()
+                        .HasForeignKey("InvoiceProductTypeID")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("CicotiWebApp.Models.Load", "Load")
                         .WithMany("Invoices")
                         .HasForeignKey("LoadID")
@@ -1978,6 +2044,24 @@ namespace CicotiWebApp.Data.Migrations
                     b.HasOne("CicotiWebApp.Models.Status", "Status")
                         .WithMany()
                         .HasForeignKey("StatusID")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("CicotiWebApp.Models.Warehouse", "Warehouse")
+                        .WithMany()
+                        .HasForeignKey("WarehouseID")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("CicotiWebApp.Models.InvoiceLine", b =>
+                {
+                    b.HasOne("CicotiWebApp.Models.Invoice", "Invoice")
+                        .WithMany()
+                        .HasForeignKey("InvoiceID")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("CicotiWebApp.Models.SKU", "SKU")
+                        .WithMany()
+                        .HasForeignKey("SKUID")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 

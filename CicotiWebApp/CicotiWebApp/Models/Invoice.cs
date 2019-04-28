@@ -13,11 +13,16 @@ namespace CicotiWebApp.Models
         public DateTime InvoicePrintDate { get; set; }
         public int StatusID {get;set;}
         public int ? LoadID { get; set;}
+        public int? WarehouseID { get; set; }
         public int CustomerAccountID { get; set; }
+        public double ? InvoiceAmount { get; set; }
+        public int ? InvoiceProductTypeID { get; set; }
         public CustomerAccount CustomerAccount {get;set;}
         public ICollection<InvoiceStatus> InvoiceStatuses { get; set; }
         
         public Status Status { get; set; }
         public Load Load { get; set; }
+        public InvoiceProductType InvoiceProductType { get; set; }
+        public Warehouse Warehouse { get; set; }
     }
 }
