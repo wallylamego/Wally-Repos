@@ -10,7 +10,7 @@
 @model CicotiWebApp.Pages.Vehicles.Fleet.CreateModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Fleet: Edit";
     Layout = "~/Pages/_LayoutDataTables.cshtml";
 }
 
@@ -493,7 +493,6 @@
             $.ajax({
                 type: "PUT",
                 url: "/Vehicles/Fleet/Fleet?handler=UpdateVehicle",
-
                 headers:
                 {
                     "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
@@ -508,10 +507,12 @@
                     $("#modalMessage").text($("#vehicleID").val() + " was updated.");
                     $("#myModal").modal("show");
                     },
-                    error: function (jqXHR, textStatus, errorThrown) {
-
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(jqXHR);
+                    console.log(textStatus);
+                    console.log(errorThrown);
                         $("#modalHeader").text("Vehicle Processing Status");
-                        $("#modalMessage").text("Vehicle was not updated.");
+                    $("#modalMessage").text("Vehicle was not updated: ");
                         $("#myModal").modal("show");
                     }
                 });//ajax Update Section 1
