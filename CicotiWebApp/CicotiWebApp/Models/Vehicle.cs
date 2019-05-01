@@ -22,10 +22,13 @@ namespace CicotiWebApp.Models
         public double? PayloadWidth { get; set; }
         public double? PayloadLength { get; set; }
         public double? PayloadCubicMetres { get; set; }
+        [Required]
         public double litresPerHundredKms { get; set; }
 
         public string FixedAssetsNumber { get; set; }
+        [Required]
         public DateTime AcquisitionDate { get; set; }
+        [Required]
         public Double AcquistionCost { get; set; }
         public Double DepreciationMonths { get; set; }
         

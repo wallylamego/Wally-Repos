@@ -10,7 +10,7 @@
 @model CicotiWebApp.Pages.Employee.EmployeeModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Employee: Create/ Edit";
     Layout = "~/Pages/_LayoutDataTables.cshtml";
 }
 
@@ -291,9 +291,6 @@
                     }
                 });//ajax Update / Insert
         }
-
-
-
     $(document).ready(function ()
     {
         $('#savebtn').click(function () {
@@ -319,8 +316,6 @@
                 return;
 
         });
-
-
 
         //hide the Reports To table and the Reports To capture fields when the form starts up
         $("#divReportsToTable").hide();

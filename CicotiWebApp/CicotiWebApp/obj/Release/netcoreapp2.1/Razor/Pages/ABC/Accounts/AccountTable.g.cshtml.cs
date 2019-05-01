@@ -74,7 +74,7 @@ using CicotiWebApp.Data;
             WriteLiteral("\r\n<h2>Account Listing</h2>\r\n\r\n<p>\r\n    ");
             EndContext();
             BeginContext(412, 36, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "67e6b939dc2249ebba9c9e75276d051d", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "de776c20d6e340ffa5b6a8d874c3b4c3", async() => {
                 BeginContext(434, 10, true);
                 WriteLiteral("Create New");
                 EndContext();

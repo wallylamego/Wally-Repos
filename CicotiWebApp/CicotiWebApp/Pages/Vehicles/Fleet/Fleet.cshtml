@@ -19,216 +19,218 @@
 <h4>Fleet Vehicle Update</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
-        <input type="hidden" asp-for="Vehicle.VehicleID" id="vehicleID" />
-        <input type="hidden" asp-for="Vehicle.ModelID" id="modelID" />
-        <input type="hidden" asp-for="Vehicle.EmployeeID" id="employeeID" />
-        <input type="hidden" asp-for="Vehicle.VehicleTypeID" id="vehicleTypeID" />
-        <div id="divVehicleStatus" class="form-group">
-            <label asp-for="Vehicle" class="control-label">Vehicle Status</label>
-            <select asp-for="Vehicle.VehicleStatusID" id="vehicleStatusID"
-                    asp-items="Model.VehicleStatusSL" class="form-control">
-                <option value="">--Select Vehicle Status--</option>
-            </select>
-            <span asp-validation-for="Vehicle.VehicleStatusID" class="text-danger"></span>
-        </div>
-        <div id="divVehiclePurpose" class="form-group">
-            <label asp-for="Vehicle" class="control-label">Vehicle Purpose</label>
-            <select asp-for="Vehicle.VehiclePurposeID" id="vehiclePurposeID"
-                    asp-items="Model.VehiclePurposeSL" class="form-control">
-                <option value="">--Select Vehicle Purpose--</option>
-            </select>
-            <span asp-validation-for="Vehicle.VehiclePurposeID" class="text-danger"></span>
-        </div>
-        <div id="divBranch" class="form-group">
-            <label asp-for="Vehicle" class="control-label">Branch</label>
-            <select asp-for="Vehicle.BranchID" id="branchID"
-                    asp-items="Model.BranchSL" class="form-control">
-                <option value="">--Select Branch--</option>
-            </select>
-            <span asp-validation-for="Vehicle.BranchID" class="text-danger"></span>
-        </div>
-        <div id="CostCentre" class="form-group">
-            <label asp-for="Vehicle" class="control-label">Cost Centre</label>
-            <select asp-for="Vehicle.CostCentreID" id="costCentreID"
-                    asp-items="Model.CostCentreSL" class="form-control">
-                <option value="">--Select CostCentre--</option>
-            </select>
-            <span asp-validation-for="Vehicle.CostCentreID" class="text-danger"></span>
-        </div>
-        <div id="ModelSection">
-            <div class="input-group" id="divModelBtns">
-                <span class="input-group-btn">
-                    <input type="button" value="Find Model." class="btn btn-default" id="findModelBtn" />
-                </span>
-                <span class="input-group-btn">
-                    <input type="button" value="Show Model" class="btn btn-default" id="showModelBtn" />
-                </span>
+    <form id="vehicleForm" data-ajax="true" data-ajax-method="post" data-ajax-begin="">
+        <div class="col-md-4">
+            <input type="hidden" asp-for="Vehicle.VehicleID" id="vehicleID" />
+            <input type="hidden" asp-for="Vehicle.ModelID" id="modelID" />
+            <input type="hidden" asp-for="Vehicle.EmployeeID" id="employeeID" />
+            <input type="hidden" asp-for="Vehicle.VehicleTypeID" id="vehicleTypeID" />
+            <div id="divVehicleStatus" class="form-group">
+                <label asp-for="Vehicle" class="control-label">Vehicle Status</label>
+                <select asp-for="Vehicle.VehicleStatusID" id="vehicleStatusID"
+                        asp-items="Model.VehicleStatusSL" class="form-control">
+                    <option value="">--Select Vehicle Status--</option>
+                </select>
+                <span asp-validation-for="Vehicle.VehicleStatusID" class="text-danger"></span>
+            </div>
+            <div id="divVehiclePurpose" class="form-group">
+                <label asp-for="Vehicle" class="control-label">Vehicle Purpose</label>
+                <select asp-for="Vehicle.VehiclePurposeID" id="vehiclePurposeID"
+                        asp-items="Model.VehiclePurposeSL" class="form-control">
+                    <option value="">--Select Vehicle Purpose--</option>
+                </select>
+                <span asp-validation-for="Vehicle.VehiclePurposeID" class="text-danger"></span>
+            </div>
+            <div id="divBranch" class="form-group">
+                <label asp-for="Vehicle" class="control-label">Branch</label>
+                <select asp-for="Vehicle.BranchID" id="branchID"
+                        asp-items="Model.BranchSL" class="form-control">
+                    <option value="">--Select Branch--</option>
+                </select>
+                <span asp-validation-for="Vehicle.BranchID" class="text-danger"></span>
+            </div>
+            <div id="CostCentre" class="form-group">
+                <label asp-for="Vehicle" class="control-label">Cost Centre</label>
+                <select asp-for="Vehicle.CostCentreID" id="costCentreID"
+                        asp-items="Model.CostCentreSL" class="form-control">
+                    <option value="">--Select CostCentre--</option>
+                </select>
+                <span asp-validation-for="Vehicle.CostCentreID" class="text-danger"></span>
+            </div>
+            <div id="ModelSection">
+                <div class="input-group" id="divModelBtns">
+                    <span class="input-group-btn">
+                        <input type="button" value="Find Model." class="btn btn-default" id="findModelBtn" />
+                    </span>
+                    <span class="input-group-btn">
+                        <input type="button" value="Show Model" class="btn btn-default" id="showModelBtn" />
+                    </span>
+                </div>
+                <br />
+                <div id="divModelInputFieldsSection" class="well-sm" style="background-color:lightgray">
+                    <div class="form-group" id="divMake">
+                        <label class="control-label">Make</label>
+                        <input asp-for="Vehicle.Model.Make.MakeName" id="make" class="form-control" />
+                        <span asp-validation-for="Vehicle.Model.Make.MakeName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" id="divModel">
+                        <label class="control-label">Model</label>
+                        <input asp-for="Vehicle.Model.ModelName" id="modelName" class="form-control" />
+                        <span asp-validation-for="Vehicle.Model.ModelName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" id="divFuelType">
+                        <label class="control-label">Fuel Type</label>
+                        <input asp-for="Vehicle.Model.FuelType.Description" id="fuelType" class="form-control" />
+                        <span asp-validation-for="Vehicle.Model.FuelType.Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" id="divDriveType">
+                        <label class="control-label">Drive Type</label>
+                        <input asp-for="Vehicle.Model.DriveType.Description" id="driveType" class="form-control" />
+                        <span asp-validation-for="Vehicle.Model.DriveType.Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" id="divTonnage">
+                        <label class="control-label">Tonnage</label>
+                        <input asp-for="Vehicle.Model.VehicleType.Description" id="tonnage" class="form-control" />
+                        <span asp-validation-for="Vehicle.Model.VehicleType.Description" class="text-danger"></span>
+                    </div>
+                </div>
+                <div id="divModelTable" style="width:90%; margin:0 auto;">
+                    <table id="ModelTable" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>ModelID</th>
+                                <th>VehicleTypeID</th>
+                                <th>Make</th>
+                                <th>Model Name</th>
+                                <th>Fuel Type</th>
+                                <th>Drive Type</th>
+                                <th>Tonnage</th>
+                                <th>Wheels</th>
+                                <th>Select</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
             </div>
             <br />
-            <div id="divModelInputFieldsSection" class="well-sm" style="background-color:lightgray">
-                <div class="form-group" id="divMake">
-                    <label class="control-label">Make</label>
-                    <input asp-for="Vehicle.Model.Make.MakeName" id="make" class="form-control" />
-                    <span asp-validation-for="Vehicle.Model.Make.MakeName" class="text-danger"></span>
+            <div id="EmployeeSection">
+                <div class="form-check" id="divChkBox">
+                    <input type="checkbox" class="form-check-input" id="noEmployeeChkBox">
+                    <label class="form-check-label" for="noEmployeeChkBox">No Employee Assigned.</label>
                 </div>
-                <div class="form-group" id="divModel">
-                    <label class="control-label">Model</label>
-                    <input asp-for="Vehicle.Model.ModelName" id="modelName" class="form-control" />
-                    <span asp-validation-for="Vehicle.Model.ModelName" class="text-danger"></span>
+                <div class="input-group" id="divEmployeeBtns">
+                    <span class="input-group-btn">
+                        <input type="button" value="Find Employee." class="btn btn-default" id="findEmployeeBtn" />
+                    </span>
+                    <span class="input-group-btn">
+                        <input type="button" value="Show Employee" class="btn btn-default" id="showEmployeeBtn" />
+                    </span>
                 </div>
-                <div class="form-group" id="divFuelType">
-                    <label class="control-label">Fuel Type</label>
-                    <input asp-for="Vehicle.Model.FuelType.Description" id="fuelType" class="form-control" />
-                    <span asp-validation-for="Vehicle.Model.FuelType.Description" class="text-danger"></span>
+                <br />
+                <div id="divEmployeeInputFieldsSection" class="well-sm" style="background-color:lightgray">
+                    <div class="form-group" id="divEmployeeNo">
+                        <label class="control-label">Employee No</label>
+                        <input asp-for="Vehicle.Employee.EmployeeNo" id="employeeNo" class="form-control" />
+                        <span asp-validation-for="Vehicle.Employee.EmployeeNo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" id="divEmployeeFirstName">
+                        <label class="control-label">First Name</label>
+                        <input asp-for="Vehicle.Employee.FirstName" id="firstName" class="form-control" />
+                        <span asp-validation-for="Vehicle.Employee.FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" id="divEmployeeLastName">
+                        <label class="control-label">Last Name</label>
+                        <input asp-for="Vehicle.Employee.LastName" id="lastName" class="form-control" />
+                        <span asp-validation-for="Vehicle.Employee.LastName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" id="divBranch">
+                        <label class="control-label">Branch</label>
+                        <input asp-for="Vehicle.Employee.Branch.BranchName" id="branchName" class="form-control" />
+                        <span asp-validation-for="Vehicle.Employee.Branch.BranchName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" id="divJobDescription">
+                        <label class="control-label">Job Description</label>
+                        <input asp-for="Vehicle.Employee.JobDescription.Description" id="jobDescription" class="form-control" />
+                        <span asp-validation-for="Vehicle.Employee.JobDescription.Description" class="text-danger"></span>
+                    </div>
                 </div>
-                <div class="form-group" id="divDriveType">
-                    <label class="control-label">Drive Type</label>
-                    <input asp-for="Vehicle.Model.DriveType.Description" id="driveType" class="form-control" />
-                    <span asp-validation-for="Vehicle.Model.DriveType.Description" class="text-danger"></span>
-                </div>
-                <div class="form-group" id="divTonnage">
-                    <label class="control-label">Tonnage</label>
-                    <input asp-for="Vehicle.Model.VehicleType.Description" id="tonnage" class="form-control" />
-                    <span asp-validation-for="Vehicle.Model.VehicleType.Description" class="text-danger"></span>
-                </div>
-            </div>
-            <div id="divModelTable" style="width:90%; margin:0 auto;">
-                <table id="ModelTable" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>ModelID</th>
-                            <th>VehicleTypeID</th>
-                            <th>Make</th>
-                            <th>Model Name</th>
-                            <th>Fuel Type</th>
-                            <th>Drive Type</th>
-                            <th>Tonnage</th>
-                            <th>Wheels</th>
-                            <th>Select</th>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
-        </div>
-        <br />
-        <div id="EmployeeSection">
-            <div class="form-check" id="divChkBox">
-                <input type="checkbox" class="form-check-input" id="noEmployeeChkBox">
-                <label class="form-check-label" for="noEmployeeChkBox">No Employee Assigned.</label>
-            </div>
-            <div class="input-group" id="divEmployeeBtns">
-                <span class="input-group-btn">
-                    <input type="button" value="Find Employee." class="btn btn-default" id="findEmployeeBtn" />
-                </span>
-                <span class="input-group-btn">
-                    <input type="button" value="Show Employee" class="btn btn-default" id="showEmployeeBtn" />
-                </span>
-            </div>
-            <br />
-            <div id="divEmployeeInputFieldsSection" class="well-sm" style="background-color:lightgray">
-                <div class="form-group" id="divEmployeeNo">
-                    <label class="control-label">Employee No</label>
-                    <input asp-for="Vehicle.Employee.EmployeeNo" id="employeeNo" class="form-control" />
-                    <span asp-validation-for="Vehicle.Employee.EmployeeNo" class="text-danger"></span>
-                </div>
-                <div class="form-group" id="divEmployeeFirstName">
-                    <label class="control-label">First Name</label>
-                    <input asp-for="Vehicle.Employee.FirstName" id="firstName" class="form-control" />
-                    <span asp-validation-for="Vehicle.Employee.FirstName" class="text-danger"></span>
-                </div>
-                <div class="form-group" id="divEmployeeLastName">
-                    <label class="control-label">Last Name</label>
-                    <input asp-for="Vehicle.Employee.LastName" id="lastName" class="form-control" />
-                    <span asp-validation-for="Vehicle.Employee.LastName" class="text-danger"></span>
-                </div>
-                <div class="form-group" id="divBranch">
-                    <label class="control-label">Branch</label>
-                    <input asp-for="Vehicle.Employee.Branch.BranchName" id="branchName" class="form-control" />
-                    <span asp-validation-for="Vehicle.Employee.Branch.BranchName" class="text-danger"></span>
-                </div>
-                <div class="form-group" id="divJobDescription">
-                    <label class="control-label">Job Description</label>
-                    <input asp-for="Vehicle.Employee.JobDescription.Description" id="jobDescription" class="form-control" />
-                    <span asp-validation-for="Vehicle.Employee.JobDescription.Description" class="text-danger"></span>
+                <div id="divEmployeeTable" style="width:90%; margin:0 auto;">
+                    <table id="EmployeeTable" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>EmployeeID</th>
+                                <th>Employee No</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Branch</th>
+                                <th>Job Description</th>
+                                <th>Select</th>
+                            </tr>
+                        </thead>
+                    </table>
                 </div>
             </div>
-            <div id="divEmployeeTable" style="width:90%; margin:0 auto;">
-                <table id="EmployeeTable" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>EmployeeID</th>
-                            <th>Employee No</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Branch</th>
-                            <th>Job Description</th>
-                            <th>Select</th>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
-        </div>
 
-        <div id="divRegistrationNumber" class="form-group">
-            <label asp-for="Vehicle.RegistrationNumber" class="control-label"></label>
-            <input asp-for="Vehicle.RegistrationNumber" class="form-control" id="registrationNumber" />
-            <span asp-validation-for="Vehicle.RegistrationNumber" class="text-danger"></span>
-        </div>
-        <div id="divFixedAssetsNumber" class="form-group">
-            <label asp-for="Vehicle.FixedAssetsNumber" class="control-label"></label>
-            <input asp-for="Vehicle.FixedAssetsNumber" class="form-control" id="fixedAssetsNumber" />
-            <span asp-validation-for="Vehicle.FixedAssetsNumber" class="text-danger"></span>
-        </div>
-        <div class="form-group" id="divAcquisitionDate">
-            <label asp-for="Vehicle.AcquisitionDate" class="control-label">Acquisition Date</label>
-            <div class='input-group date' id='datetimepicker1'>
-                <input asp-for="Vehicle.AcquisitionDate" class="form-control" type="text" id="acquisitionDate" />
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-calendar"></span>
-                </span>
+            <div id="divRegistrationNumber" class="form-group">
+                <label asp-for="Vehicle.RegistrationNumber" class="control-label"></label>
+                <input asp-for="Vehicle.RegistrationNumber" class="form-control" id="registrationNumber" />
+                <span asp-validation-for="Vehicle.RegistrationNumber" class="text-danger"></span>
+            </div>
+            <div id="divFixedAssetsNumber" class="form-group">
+                <label asp-for="Vehicle.FixedAssetsNumber" class="control-label"></label>
+                <input asp-for="Vehicle.FixedAssetsNumber" class="form-control" id="fixedAssetsNumber" />
+                <span asp-validation-for="Vehicle.FixedAssetsNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group" id="divAcquisitionDate">
+                <label asp-for="Vehicle.AcquisitionDate" class="control-label">Acquisition Date</label>
+                <div class='input-group date' id='datetimepicker1'>
+                    <input asp-for="Vehicle.AcquisitionDate" class="form-control" type="text" id="acquisitionDate" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
                 <span asp-validation-for="Vehicle.AcquisitionDate" class="text-danger"></span>
             </div>
+            <div id="divAcquisitionCost" class="form-group">
+                <label asp-for="Vehicle.AcquistionCost" class="control-label">Acquistion Cost</label>
+                <input asp-for="Vehicle.AcquistionCost" class="form-control" id="acquistionCost" />
+                <span asp-validation-for="Vehicle.AcquistionCost" class="text-danger"></span>
+            </div>
+            <div id="divDepreciationMonths" class="form-group">
+                <label asp-for="Vehicle.DepreciationMonths" class="control-label">Depreciation Months</label>
+                <input asp-for="Vehicle.DepreciationMonths" class="form-control" id="depreciationMonths" />
+                <span asp-validation-for="Vehicle.DepreciationMonths" class="text-danger"></span>
+            </div>
+            <div id="divLtresPerHundredKms" class="form-group">
+                <label asp-for="Vehicle.litresPerHundredKms" class="control-label">Litres Per Hundred Kms</label>
+                <input asp-for="Vehicle.litresPerHundredKms" class="form-control" id="litresPerHundredKms" />
+                <span asp-validation-for="Vehicle.litresPerHundredKms" class="text-danger"></span>
+            </div>
+            <div id="divPayloadCubicMetres" class="form-group">
+                <label asp-for="Vehicle.PayloadCubicMetres" class="control-label">Payload Cubic Metres</label>
+                <input asp-for="Vehicle.PayloadCubicMetres" class="form-control" id="payloadCubicMetres" />
+                <span asp-validation-for="Vehicle.PayloadCubicMetres" class="text-danger"></span>
+            </div>
+            <div id="divPayloadLength" class="form-group">
+                <label asp-for="Vehicle.PayloadLength" class="control-label">Payload Length</label>
+                <input asp-for="Vehicle.PayloadLength" class="form-control" id="payloadLength" />
+                <span asp-validation-for="Vehicle.PayloadLength" class="text-danger"></span>
+            </div>
+            <div id="divPayloadHeight" class="form-group">
+                <label asp-for="Vehicle.PayloadHeight" class="control-label">Payload Height</label>
+                <input asp-for="Vehicle.PayloadHeight" class="form-control" id="payloadHeight" />
+                <span asp-validation-for="Vehicle.PayloadHeight" class="text-danger"></span>
+            </div>
+            <div id="divPayloadWidth" class="form-group">
+                <label asp-for="Vehicle.PayloadWidth" class="control-label">Payload Width</label>
+                <input asp-for="Vehicle.PayloadWidth" class="form-control" id="payloadWidth" />
+                <span asp-validation-for="Vehicle.PayloadWidth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" id="savebtn" />
+            </div>
         </div>
-        <div id="divAcquisitionCost" class="form-group">
-            <label asp-for="Vehicle.AcquistionCost" class="control-label">Acquistion Cost</label>
-            <input asp-for="Vehicle.AcquistionCost" class="form-control" id="acquistionCost" />
-            <span asp-validation-for="Vehicle.AcquistionCost" class="text-danger"></span>
-        </div>
-        <div id="divDepreciationMonths" class="form-group">
-            <label asp-for="Vehicle.DepreciationMonths" class="control-label">Depreciation Months</label>
-            <input asp-for="Vehicle.DepreciationMonths" class="form-control" id="depreciationMonths" />
-            <span asp-validation-for="Vehicle.DepreciationMonths" class="text-danger"></span>
-        </div>
-        <div id="divLtresPerHundredKms" class="form-group">
-            <label asp-for="Vehicle.litresPerHundredKms" class="control-label">Litres Per Hundred Kms</label>
-            <input asp-for="Vehicle.litresPerHundredKms" class="form-control" id="litresPerHundredKms" />
-            <span asp-validation-for="Vehicle.litresPerHundredKms" class="text-danger"></span>
-        </div>
-        <div id="divPayloadCubicMetres" class="form-group">
-            <label asp-for="Vehicle.PayloadCubicMetres" class="control-label">Payload Cubic Metres</label>
-            <input asp-for="Vehicle.PayloadCubicMetres" class="form-control" id="payloadCubicMetres" />
-            <span asp-validation-for="Vehicle.PayloadCubicMetres" class="text-danger"></span>
-        </div>
-        <div id="divPayloadLength" class="form-group">
-            <label asp-for="Vehicle.PayloadLength" class="control-label">Payload Length</label>
-            <input asp-for="Vehicle.PayloadLength" class="form-control" id="payloadLength" />
-            <span asp-validation-for="Vehicle.PayloadLength" class="text-danger"></span>
-        </div>
-        <div id="divPayloadHeight" class="form-group">
-            <label asp-for="Vehicle.PayloadHeight" class="control-label">Payload Height</label>
-            <input asp-for="Vehicle.PayloadHeight" class="form-control" id="payloadHeight" />
-            <span asp-validation-for="Vehicle.PayloadHeight" class="text-danger"></span>
-        </div>
-        <div id="divPayloadWidth" class="form-group">
-            <label asp-for="Vehicle.PayloadWidth" class="control-label">Payload Width</label>
-            <input asp-for="Vehicle.PayloadWidth" class="form-control" id="payloadWidth" />
-            <span asp-validation-for="Vehicle.PayloadWidth" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <input type="submit" value="Save" class="btn btn-default" id="savebtn" />
-        </div>
-    </div>
+    </form>
 </div>
 
 <div>
@@ -570,10 +572,16 @@
            
             if ($('#vehicleID').val().length > 0 && $('#vehicleID').val() > 0) {
                 vehicleToSave.vehicleID = $('#vehicleID').val();
-                ajaxVehicleUpdate(vehicleToSave);
+                if ($("#vehicleForm").valid()) {
+                    ajaxVehicleUpdate(vehicleToSave);
+                }
+                return;
             }
             else {
-                ajaxVehicleInsert(vehicleToSave);
+                if ($("#vehicleForm").valid()) {
+                    ajaxVehicleInsert(vehicleToSave);
+                }
+                return;
             }
         });
 
