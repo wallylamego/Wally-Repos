@@ -1,0 +1,125 @@
+﻿@page  "{SalesRepID?}"
+
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+@functions{
+    public string GetAntiXsrfRequestToken()
+    {
+        return Xsrf.GetAndStoreTokens(Model.HttpContext).RequestToken;
+    }
+}
+@model CicotiWebApp.Pages.Employee.SalesReps.SalesRepModel
+
+@{
+    ViewData["Title"] = "SalesRep: Edit/Create";
+    Layout = "~/Pages/_LayoutDataTables.cshtml";
+}
+
+<h4>Add Edit Sales Rep</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <input type="hidden" asp-for="SalesRep.SalesRepID" id="salesRepID" />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group">
+            <label asp-for="SalesRep.SalesRepCode" class="control-label"></label>
+            <input asp-for="SalesRep.SalesRepCode" class="form-control" id="salesRepCode" />
+            <span asp-validation-for="SalesRep.SalesRepCode" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="SalesRep.SalesRepName" class="control-label"></label>
+            <input asp-for="SalesRep.SalesRepName" class="form-control" id="salesRepName" />
+            <span asp-validation-for="SalesRep.SalesRepName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-default" id="savebtn" />
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Listing">Back to List</a>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ModalPartial")
+    @await Html.PartialAsync("_ModalConfirmPartial")
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script type="text/javascript">
+        var salesRepToSave = {};
+        
+
+        function ajaxSalesRepUpdate(obj) {
+        console.log("ajaxSalesRepUpdate Function runs: " + JSON.stringify(obj));
+            $.ajax({
+                type: "PUT",
+                url: "/Employee/SalesReps/SalesRep?handler=UpdateSalesRep",
+
+                headers:
+                {
+                    "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                },
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify(obj),
+                success: function (data) {
+                    console.log(data);
+                    console.log("Sales Rep Data successfully returned from DataBase");
+                    $("#modalHeader").text("Sales Rep Processing Status");
+                    $("#modalMessage").text($("#salesRepID").val() + " was updated.");
+                    $("#myModal").modal("show");
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+
+                        $("#modalHeader").text("Sales Rep Processing Status");
+                        $("#modalMessage").text("Sales Rep was not updated.");
+                        $("#myModal").modal("show");
+                    }
+                });//ajax Update Section 1
+        }
+
+        function ajaxSalesRepInsert(obj) {
+            console.log("SaleRep: in Insert Ajax Call: " + JSON.stringify(obj));
+            $.ajax({
+                type: "POST",
+                url: "/Employee/SalesReps/SalesRep?handler=InsertSalesRep",
+                    headers:
+                        {
+                            "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                        },
+                    contentType: "application/json",
+                    dataType: "json",
+                    data: JSON.stringify(obj),
+                    success: function (data) {
+                        $("#modalHeader").text("Sales Rep Processing Status");
+                        $("#modalMessage").text(data.salesRepID + " was inserted.");
+                        $("#myModal").modal("show");
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        $("#modalHeader").text("Sales Rep Processing Status");
+                        $("#modalMessage").text("Sales Rep Data Not Updated.");
+                        $("#myModal").modal("show");
+                    }
+                });//ajax insert
+        }
+
+        $(document).ready(function () {
+            $('#savebtn').click(function () {
+                salesRepToSave.salesRepID = $('#salesRepID').val();
+                salesRepToSave.salesRepCode = $('#salesRepCode').val();
+                salesRepToSave.salesRepName = $('#salesRepName').val();
+                
+                if ($('#salesRepID').val().length > 0 && $('#salesRepID').val() > 0) {
+                    ajaxSalesRepUpdate(salesRepToSave);
+                }
+                else {
+                    ajaxSalesRepInsert(salesRepToSave);
+                }
+            });
+
+   });//Document Ready end.
+
+    </script>
+
+}

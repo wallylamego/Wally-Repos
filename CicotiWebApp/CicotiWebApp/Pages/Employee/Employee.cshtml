@@ -18,122 +18,181 @@
 
 <h4>Employee Update</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form id="employeeForm" data-ajax="true" data-ajax-method="post" data-ajax-begin="">
-            <input type="hidden" asp-for="Employee.EmployeeID" id="employeeID" />
-            <input type="hidden" asp-for="Employee.ReportsToID" id="reportsToID" />
-            <div id="divEmployeeNo" class="form-group">
-                <label asp-for="Employee.EmployeeNo" class="control-label">Employee No</label>
-                <input asp-for="Employee.EmployeeNo" class="form-control" id="employeeNo" />
-                <span asp-validation-for="Employee.EmployeeNo" class="text-danger"></span>
-            </div>
-            <div id="divSalesRepCode" class="form-group">
-                <label asp-for="Employee.PastelRepCode" class="control-label">Pastel Rep Code</label>
-                <input asp-for="Employee.PastelRepCode" class="form-control" id="pastelRepCode" />
-                <span asp-validation-for="Employee.PastelRepCode" class="text-danger"></span>
-            </div>
-            <div id="divFirstName" class="form-group">
-                <label asp-for="Employee.FirstName" class="control-label">First Name</label>
-                <input asp-for="Employee.FirstName" class="form-control" id="firstName" />
-                <span asp-validation-for="Employee.FirstName" class="text-danger"></span>
-            </div>
-            <div id="divLastName" class="form-group">
-                <label asp-for="Employee.LastName" class="control-label">Last Name</label>
-                <input asp-for="Employee.LastName" class="form-control" id="lastName" />
-                <span asp-validation-for="Employee.LastName" class="text-danger"></span>
-            </div>
-            <div class="form-group" id="divStartDate">
-                <label asp-for="Employee.StartDate" class="control-label">Start Date</label>
-                <div class='input-group date' id='datetimepicker1'>
-                    <input asp-for="Employee.StartDate" class="form-control" type="text" id="startDate" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                    <span asp-validation-for="Employee.StartDate" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="form-group" id="divEndDate">
-                <label asp-for="Employee.EndDate" class="control-label">End Date</label>
-                <div class='input-group date' id='datetimepicker2'>
-                    <input asp-for="Employee.EndDate" class="form-control" type="text" id="endDate" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                    <span asp-validation-for="Employee.EndDate" class="text-danger"></span>
-                </div>
-            </div>
-            <div id="divJobDescription" class="form-group">
-                <label asp-for="Employee.JobDescription" class="control-label">Job Description</label>
-                <select asp-for="Employee.JobDescriptionID" id="jobDescriptionID"
-                        asp-items="Model.JobDescriptionSL" class="form-control">
-                    <option value="">--Select Job Description--</option>
-                </select>
-                <span asp-validation-for="Employee.JobDescriptionID" class="text-danger"></span>
-            </div>
-            <div id="divBranch" class="form-group">
-                <label asp-for="Employee.Branch" class="control-label">Branch</label>
-                <select asp-for="Employee.BranchID" id="branchID"
-                        asp-items="Model.BranchSL" class="form-control">
-                    <option value="">--Select Branch--</option>
-                </select>
-                <span asp-validation-for="Employee.BranchID" class="text-danger"></span>
-            </div>
-            <div id="CostCentre" class="form-group">
-                <label asp-for="Employee" class="control-label">Cost Centre</label>
-                <select asp-for="Employee.CostCentreID" id="costCentreID"
-                        asp-items="Model.CostCentreSL" class="form-control">
-                    <option value="">--Select CostCentre--</option>
-                </select>
-                <span asp-validation-for="Employee.CostCentreID" class="text-danger"></span>
-            </div>
-            <div id="Department" class="form-group">
-                <label asp-for="Employee" class="control-label">Department</label>
-                <select asp-for="Employee.DepartmentID" id="departmentID"
-                        asp-items="Model.DepartmentSL" class="form-control">
-                    <option value="">--Select Department--</option>
-                </select>
-                <span asp-validation-for="Employee.DepartmentID" class="text-danger"></span>
-            </div>
-            <div id="ReportsToSection">
-                <div class="input-group" id="divReportsToBtns">
-                    <span class="input-group-btn">
-                        <input type="button" value="Find Reports To." class="btn btn-default" id="findReportsToBtn" />
-                    </span>
-                    <span class="input-group-btn">
-                        <input type="button" value="Show Reports To" class="btn btn-default" id="showReportsToBtn" />
-                    </span>
-                </div>
-                <br />
-                <div id="divReportsToInputFieldsSection" class="well-sm" style="background-color:lightgray">
-                    <div class="form-group" id="divReportsToName">
-                        <label class="control-label">Reports To: Name</label>
-                        <input id="reportsToName" class="form-control" />
-                    </div>
-                </div>
-                <div id="divReportsToTable" style="width:90%; margin:0 auto;">
-                    <table id="ReportsToTable" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>EmployeeID</th>
-                                <th>Employee Number</th>
-                                <th>Name</th>
-                                <th>Job Description</th>
-                                <th>Department</th>
-                                <th>Branch</th>
-                                <th>Cost Centre</th>
-                                <th>Select</th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-            </div>
-            <div class="form-group">
-                <input type="button" value="Save" class="btn btn-default" id="savebtn" />
-            </div>
-        </form>
+<form id="employeeForm" class="form-horizontal" data-ajax="true" data-ajax-method="post" data-ajax-begin="">
+    <input type="hidden" asp-for="Employee.EmployeeID" id="employeeID" />
+    <input type="hidden" asp-for="Employee.ReportsToID" id="reportsToID" />
+    <div id="divEmployeeNo" class="form-group">
+        <div class="col-xs-12 col-md-2 col-lg-2 text-left">
+            <label asp-for="Employee.EmployeeNo" class="control-label">Employee No</label>
+        </div>
+        <div class="col-xs-12 col-md-10 col-lg-10 text-left">
+            <input asp-for="Employee.EmployeeNo" class="form-control" id="employeeNo" />
+        </div>
+        <span asp-validation-for="Employee.EmployeeNo" class="text-danger"></span>
     </div>
-</div>
+    <div id="divFirstName" class="form-group">
+        <div class="col-xs-12 col-md-2 col-lg-2 text-left">
+            <label asp-for="Employee.FirstName" class="control-label">First Name</label>
+        </div>
+        <div class="col-xs-12 col-md-10 col-lg-10 text-left">
+            <input asp-for="Employee.FirstName" class="form-control" id="firstName" />
+        </div>
+        <span asp-validation-for="Employee.FirstName" class="text-danger"></span>
+    </div>
+    <div id="divLastName" class="form-group">
+        <div class="col-xs-12 col-md-2 col-lg-2 text-left">
+            <label asp-for="Employee.LastName" class="control-label">Last Name</label>
+        </div>
+        <div class="col-xs-12 col-md-10 col-lg-10 text-left">
+            <input asp-for="Employee.LastName" class="form-control" id="lastName" />
+        </div>
+        <span asp-validation-for="Employee.LastName" class="text-danger"></span>
+    </div>
+    <div class="form-group" id="divStartDate">
+        <div class="col-xs-12 col-md-2 col-lg-2 text-left">
+            <label asp-for="Employee.StartDate" class="control-label">Start Date</label>
+        </div>
+        <div class='input-group date' id='datetimepicker1'>
+            <div class="col-xs-12 col-md-10 col-lg-10 text-left">
+                <input asp-for="Employee.StartDate" class="form-control" type="text" id="startDate" />
+            </div>
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+            <span asp-validation-for="Employee.StartDate" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group" id="divEndDate">
+        <div class="col-xs-12 col-md-2 col-lg-2 text-left">
+            <label asp-for="Employee.EndDate" class="control-label">End Date</label>
+        </div>
+        <div class='input-group date' id='datetimepicker2'>
+            <div class="col-xs-12 col-md-10 col-lg-10 text-left">
+                <input asp-for="Employee.EndDate" class="form-control" type="text" id="endDate" />
+            </div>
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+            <span asp-validation-for="Employee.EndDate" class="text-danger"></span>
+        </div>
+    </div>
+    <div id="divJobDescription" class="form-group">
+        <div class="col-xs-12 col-md-2 col-lg-2 text-left">
+            <label asp-for="Employee.JobDescription" class="control-label">Job Description</label>
+        </div>
+        <div class="col-xs-12 col-md-10 col-lg-10 text-left">
+            <select asp-for="Employee.JobDescriptionID" id="jobDescriptionID"
+                    asp-items="Model.JobDescriptionSL" class="form-control">
+                <option value="">--Select Job Description--</option>
+            </select>
+            <span asp-validation-for="Employee.JobDescriptionID" class="text-danger"></span>
+        </div>
+    </div>
+    <div id="divBranch" class="form-group">
+        <div class="col-xs-12 col-md-2 col-lg-2 text-left">
+            <label asp-for="Employee.Branch" class="control-label">Branch</label>
+        </div>
+        <div class="col-xs-12 col-md-10 col-lg-10 text-left">
+            <select asp-for="Employee.BranchID" id="branchID"
+                    asp-items="Model.BranchSL" class="form-control">
+                <option value="">--Select Branch--</option>
+            </select>
+        </div>
+        <span asp-validation-for="Employee.BranchID" class="text-danger"></span>
+    </div>
+    <div id="CostCentre" class="form-group">
+        <div class="col-xs-12 col-md-2 col-lg-2 text-left">
+            <label asp-for="Employee" class="control-label">Cost Centre</label>
+        </div>
+        <div class="col-xs-12 col-md-10 col-lg-10 text-left">
+            <select asp-for="Employee.CostCentreID" id="costCentreID"
+                    asp-items="Model.CostCentreSL" class="form-control">
+                <option value="">--Select CostCentre--</option>
+            </select>
+            <span asp-validation-for="Employee.CostCentreID" class="text-danger"></span>
+        </div>
+    </div>
+    <div id="Department" class="form-group">
+        <div class="col-xs-12 col-md-2 col-lg-2 text-left">
+            <label asp-for="Employee" class="control-label">Department</label>
+        </div>
+        <div class="col-xs-12 col-md-10 col-lg-10 text-left">
+            <select asp-for="Employee.DepartmentID" id="departmentID"
+                    asp-items="Model.DepartmentSL" class="form-control">
+                <option value="">--Select Department--</option>
+            </select>
+            <span asp-validation-for="Employee.DepartmentID" class="text-danger"></span>
+        </div>
+    </div>
+    <div id="ReportsToSection">
+        <div class="input-group" id="divReportsToBtns">
+            <div class="col-xs-12 col-md-4 col-lg-4">
+                <span class="input-group-btn">
+                    <input type="button" value="Find Reports To." class="btn btn-default" id="findReportsToBtn" />
+                </span>
+            </div>
+            <div class="col-xs-12 col-md-4 col-lg-4">
+            </div>
+            <div class="col-xs-12 col-md-4 col-lg-4">
+                <span class="input-group-btn">
+                    <input type="button" value="Show Reports To" class="btn btn-default" id="showReportsToBtn" />
+                </span>
+            </div>
+        </div>
+
+        <br />
+        <div id="divReportsToInputFieldsSection" class="well-sm" style="background-color:lightgray">
+            <div class="form-group" id="divReportsToName">
+                <div class="col-xs-12 col-md-2 col-lg-2 text-left">
+                    <label class="control-label">Reports To: Name</label>
+                </div>
+                <div class="col-xs-12 col-md-10 col-lg-10 text-left">
+                    <input id="reportsToName" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div id="divReportsToTable" style="width:90%; margin:0 auto;">
+            <table id="ReportsToTable" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>EmployeeID</th>
+                        <th>Employee Number</th>
+                        <th>Name</th>
+                        <th>Job Description</th>
+                        <th>Department</th>
+                        <th>Branch</th>
+                        <th>Cost Centre</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <br />
+    <div class="col-xs-12 col-md-4 col-lg-4">
+        <span class="input-group-btn">
+            <input type="button" value="Save" class="btn btn-default" id="savebtn" />
+        </span>
+    </div>
+    <br />
+    <hr />
+    <p>
+        <a asp-page="SalesRepEmployee/SaleRepEmployee">New Rep</a>
+        <a asp-page="SalesRepEmployee/SaleRepEmployee">Listing</a>
+    </p>
+    <div id="divSalesRepTable" style="width:90%; margin:0 auto;">
+        <table id="SalesRepTable" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>SalesRepID</th>
+                    <th>Sales Rep Code</th>
+                    <th>Sales Rep Name</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</form>
+
 
 <div>
     <a asp-page="Index">Back to List</a>
@@ -297,7 +356,6 @@
 
                 employeeToSave.employeeID = $('#employeeID').val();
                 employeeToSave.employeeNo = $('#employeeNo').val();
-                employeeToSave.pastelRepCode = $('#pastelRepCode').val();
                 employeeToSave.firstName = $('#firstName').val();
                 employeeToSave.lastName = $('#lastName').val();
                 employeeToSave.departmentID = $('#departmentID').val();
@@ -360,6 +418,73 @@
                 format: "YYYY/MM/DD hh:mm:ss A",
                 date: employeeEnddate
             });
+
+        $("#SalesRepTable").on('xhr.dt', function (e, settings, json, xhr) {
+            }).DataTable({
+                //lengthMenu: [5],
+                //dom: '<lfB<t>ip>',
+                dom: '<lf<t>ip>',
+                //buttons: ['excel', 'copy', 'csv', 'pdf', 'print'],
+                "fixedHeader": {
+                    "header": true,
+                    "footer": true
+                },
+                "responsive": true,
+                "processing": true, // for show progress bar
+                "serverSide": true, // for process server side
+                "filter": true, // this is for disable filter (search box)
+                "orderMulti": false, // for disable multiple column at once
+                "ajax": {
+
+                    "url": "/Employee/Employee?handler=SalesRepPaging",
+                     "headers":
+                        {
+                            "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                        },
+                    "type": "POST",
+                    "data": function (d) {
+                        // d.search.value = $('#tripId').val();
+                        //This is just test
+                        d.employeeID = $('#employeeID').val();
+                    },
+                    /*"contentType": "application/x-www-form-urlencoded",*/
+                    "datatype": "json"
+                },
+                "columnDefs":
+                [{
+                        /*Sales Rep ID is not visible and is not searchable*/
+                        "targets": [0],
+                        "visible": false,
+                        "searchable": false
+                    },
+                    {
+                        /*Sales Rep Code is visible and is searchable*/
+                        "targets": [1],
+                        "visible": true,
+                        "searchable": true
+                    },
+                    {
+                        /*Sales Rep Name is visible and is not searchable*/
+                        "targets": [2],
+                        "visible": true,
+                        "searchable": true
+                    },
+                ],
+                "columns": [
+                    { "data": "salesRepID", "name": "salesRepID", "autoWidth": true },
+                    { "data": "salesRepCode", "name": "salesRepCode", "autoWidth": true },
+                    { "data": "salesRepName", "name": "salesRepName", "autoWidth": true }
+                ]
+
+            });//Sales Rep Table
+
+
+
+
+
+
+
+
     });//Document Ready end.
     </script>
 }

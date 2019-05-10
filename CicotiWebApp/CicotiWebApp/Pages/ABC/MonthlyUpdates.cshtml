@@ -34,63 +34,71 @@
             </h5>
         </div>
         <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-            <div class="row" id="divLoadHeaderForm">
-                <div class="col-md-4">
-                    <div id="divCopyOnePeriodToAnother">
-                        Duplicate Allocations From One Period to Another
+            <div class="row" id="divDuplicateHeaderForm">
+                <div id="divCopyOnePeriodToAnother">
+                    <h4>Duplicate Allocations From One Period to Another</h4>
+                    <div class="row">
                         <div class="form-group" id="divCopyFromPeriod">
-                            <label asp-for="ActCostPeriod.Period" class="control-label">Period to Copy From</label>
-                            <input asp-for="ActCostPeriod.Period" class="form-control" id="periodCopyFrom" />
+                            <label asp-for="ActCostPeriod.Period" for="periodCopyFrom" class="control-label col-xs-2">Copy Period</label>
+                            <div class="col-xs-10">
+                                <input asp-for="ActCostPeriod.Period" class="form-control" id="periodCopyFrom" />
+                            </div>
                             <span asp-validation-for="ActCostPeriod.Period" class="text-danger"></span>
                         </div>
                         <br />
+                    </div>
+                    <div class="row">
                         <div class="form-group" id="divCopyToPeriod">
-                            <label asp-for="ActCostPeriod.Period" class="control-label">Period to Copy To</label>
-                            <input asp-for="ActCostPeriod.Period" class="form-control" id="periodCopyTo" />
+                            <label asp-for="ActCostPeriod.Period" for="periodCopyTo" class="control-label col-xs-2">Paste Period</label>
+                            <div class="col-xs-10">
+                                <input asp-for="ActCostPeriod.Period" class="form-control" id="periodCopyTo" />
+                            </div>
                             <span asp-validation-for="ActCostPeriod.Period" class="text-danger"></span>
                         </div>
-                        <br />
-                        <div id="divAccAllocationToPeriod" class="wrapper">
-                            <h5>Update the Account Allocation Per Principle (P4P acc and goodwill)</h5>
+                    </div>
+                    <br />
+                </div>
+                
+                <div id="divAccAllocationToPeriod" class="wrapper">
+                        <h5>Update the Account Allocation Per Principle (P4P acc and goodwill)</h5>
                             <div class="form-group">
                                 <input type="submit" value="Run" class="btn btn-default" id="runAccPrinciple" />
                             </div>
-                            <p id="runAccAllocationToPeriodMsg"></p>
-                        </div>
-                        <br />
-                        <div id="divCashCollectionCostPerDepot" class="wrapper">
-                            <h5>Update the Cash Collection Cost Per Depot: Used to allocate Bank Charges</h5>
-                            <div class="form-group">
-                                <input type="submit" value="Run" class="btn btn-default" id="runCashCollection" />
-                            </div>
-                            <p id="runCashCollectionCostPerDepotMsg"></p>
-                        </div>
-                        <br />
-                        <div id="divInsuranceCost" class="wrapper">
-                            <h5>Update the Insurance Type Cost Per Period</h5>
-                            <div class="form-group">
-                                <input type="submit" value="Run" class="btn btn-default" id="runInsuranceCosts" />
-                            </div>
-                            <p id="runInsuranceCostMsg"></p>
-                        </div>
-                        <br />
-                        <div id="divSpecificEmployeeAllocationPerSilo" class="wrapper">
-                            <h5>Update the Employee Allocation Per Silo</h5>
-                            <div class="form-group">
-                                <input type="submit" value="Run" class="btn btn-default" id="runAllocateSilo" />
-                            </div>
-                            <p id="runSpecificEmployeeAllocationPerSiloMsg"></p>
-                        </div>
-                        <br />
-                        <div id="divInterCompany" class="wrapper">
-                            <h5>Update InterCompany Cost</h5>
-                            <div class="form-group">
-                                <input type="submit" value="Run" class="btn btn-default" id="runInterCompany" />
-                            </div>
-                            <p id="runInterCompanyMsg"></p>
-                        </div>
-                    </div> 
+                        <p id="runAccAllocationToPeriodMsg"></p>
                 </div>
+                <br />
+                <div id="divCashCollectionCostPerDepot" class="wrapper">
+                    <h5>Update the Cash Collection Cost Per Depot: Used to allocate Bank Charges</h5>
+                    <div class="form-group">
+                        <input type="submit" value="Run" class="btn btn-default" id="runCashCollection" />
+                    </div>
+                    <p id="runCashCollectionCostPerDepotMsg"></p>
+                </div>
+                <br />
+                <div id="divInsuranceCost" class="wrapper">
+                    <h5>Update the Insurance Type Cost Per Period</h5>
+                    <div class="form-group">
+                        <input type="submit" value="Run" class="btn btn-default" id="runInsuranceCosts" />
+                    </div>
+                    <p id="runInsuranceCostMsg"></p>
+                </div>
+                <br />
+                <div id="divSpecificEmployeeAllocationPerSilo" class="wrapper">
+                    <h5>Update the Employee Allocation Per Silo</h5>
+                    <div class="form-group">
+                        <input type="submit" value="Run" class="btn btn-default" id="runAllocateSilo" />
+                    </div>
+                    <p id="runSpecificEmployeeAllocationPerSiloMsg"></p>
+                </div>
+                <br />
+                <div id="divInterCompany" class="wrapper">
+                    <h5>Update InterCompany Cost</h5>
+                    <div class="form-group">
+                        <input type="submit" value="Run" class="btn btn-default" id="runInterCompany" />
+                    </div>
+                    <p id="runInterCompanyMsg"></p>
+                </div>
+            </div> 
             </div>
         </div>
     </div>
@@ -107,23 +115,30 @@
         </div>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
             <div class="row" id="divImportsCheckList">
-                -Item 1: Payroll File for Period: Table: ActCostPayrollCost;
-                <br />
-                -Item 2: Debtors File for the Month: Table: ActCostDebtors;
-                <br />
-                -Item 3: Stock File for the Month: Table: ActCostStockOnHand;
-                <br />
-                -Item 4: Creditors File for the Month: Table: ActCostPrincipleBalance;
-                <br />
-                -Item 5: Account Balance Movement: Table: ActCostAccountBalance
-                <br />
-                -Item 6: Kilometres Travelled: Table: VehicleKms
-                <br />
-                -Item 7: Exchange Rates for Period
-                <br />
-                -Item 8: Import All Sales For the Period
+                @*<div class="col-xs-offset-0"></div>*@
+                <div class="col-xs-12">
+                    -Item 1: Payroll File for Period: Table: ActCostPayrollCost;
+                    <br />
+                    -Item 2: Debtors File for the Month: Table: ActCostDebtors;
+                    <br />
+                    -Item 3: Stock File for the Month: Table: ActCostStockOnHand;
+                    -Item 3.1. Check if all the SKUs are in the SKU Table before the stock is imported
+                    <br />
+                    -Item 4: Creditors File for the Month: Table: ActCostPrincipleBalance;
+                    <br />
+                    -Item 5: Account Balance Movement: Table: ActCostAccountBalance
+                    <br />
+                    -Item 6: Kilometres Travelled: Table: VehicleKms
+                    <br />
+                    -Item 7: Exchange Rates for Period
+                    <br />
+                    -Item 8: Import All Sales For the Period
+                    <br />
+                    -Item 8.1: Run Stored Procedure on CICOTDW: CreateSalesPerAccountPerPeriod
+                    <br />
+                    -Item 8.2: Run Stored Procedure on CICOTDW: CreateSalesPerDay
+                </div>
             </div>
-        </div>
     </div>
     <div class="card" id="cardSection3">
         <div class="card-header" id="headingThree">
@@ -137,8 +152,10 @@
         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
             <div class="row" id="divScriptsToRun">
                 <div class="form-group" id="divCopyFromPeriod">
-                    <label asp-for="ActCostPeriod.Period" class="control-label">Period to Update</label>
-                    <input asp-for="ActCostPeriod.Period" class="form-control" id="periodToUpdate" />
+                    <label for="periodToUpdate" class="control-label col-xs-2">Period to Update</label>
+                    <div class="col-xs-10">
+                        <input asp-for="ActCostPeriod.Period" class="form-control col-xs-10" id="periodToUpdate" />
+                    </div>
                     <span asp-validation-for="ActCostPeriod.Period" class="text-danger"></span>
                 </div>
                 <div id="divScripts">
@@ -418,7 +435,8 @@
                 data: JSON.stringify(obj),
                 success: function (msg) {
                         $("#modalHeader").text("Sales Update Status");
-                        $("#modalMessage").text(msg);
+                    $("#modalMessage").text(msg);
+                    $("#loader").hide();
                     $("#myModal").modal("show");
                     $("#runSalesUpdateMsg").html(msg);
                     },
@@ -449,7 +467,8 @@
                 data: JSON.stringify(obj),
                 success: function (msg) {
                         $("#modalHeader").text("Employee Update Status");
-                        $("#modalMessage").text(msg);
+                    $("#modalMessage").text(msg);
+                    $("#loader").hide();
                     $("#myModal").modal("show");
                     $("#runEmployeeArchiveMsg").html(msg);
                     },
@@ -480,7 +499,8 @@
                 data: JSON.stringify(obj),
                 success: function (msg) {
                         $("#modalHeader").text("Vehicle Update Status");
-                        $("#modalMessage").text(msg);
+                    $("#modalMessage").text(msg);
+                    $("#loader").hide();
                     $("#myModal").modal("show");
                     $("#runVehicleArchiveMsg").html(msg);
                     },
@@ -511,7 +531,8 @@
                 data: JSON.stringify(obj),
                 success: function (msg) {
                     $("#modalHeader").text("Pallets Update Status");
-                        $("#modalMessage").text(msg);
+                    $("#modalMessage").text(msg);
+                    $("#loader").hide();
                     $("#myModal").modal("show");
                     $("#runPalletUpdateMsg").html(msg);
                     },
@@ -542,7 +563,8 @@
                 data: JSON.stringify(obj),
                 success: function (msg) {
                     $("#modalHeader").text("AccBalance Update Status");
-                        $("#modalMessage").text(msg);
+                    $("#modalMessage").text(msg);
+                    $("#loader").hide();
                     $("#myModal").modal("show");
                     $("#runBalanceMovementMsg").html(msg);
                     },
@@ -574,7 +596,8 @@
                 data: JSON.stringify(obj),
                 success: function (msg) {
                     $("#modalHeader").text("Staff Per Principle Update Status");
-                        $("#modalMessage").text(msg);
+                    $("#modalMessage").text(msg);
+                    $("#loader").hide();
                     $("#myModal").modal("show");
                     $("#runStaffPerPrincipleMsg").html(msg);
                     },
@@ -605,7 +628,8 @@
                 data: JSON.stringify(obj),
                 success: function (msg) {
                     $("#modalHeader").text("Vehicle Allocation Status");
-                        $("#modalMessage").text(msg);
+                    $("#modalMessage").text(msg);
+                    $("#loader").hide();
                     $("#myModal").modal("show");
                     $("#runVehicleAllocationMsg").html(msg);
                     },
@@ -668,7 +692,8 @@
                 data: JSON.stringify(obj),
                 success: function (msg) {
                     $("#modalHeader").text("Investment Update Status");
-                        $("#modalMessage").text(msg);
+                    $("#modalMessage").text(msg);
+                    $("#loader").hide();
                     $("#myModal").modal("show");
                     $("#runInvestmentTableMsg").html(msg);
                     },

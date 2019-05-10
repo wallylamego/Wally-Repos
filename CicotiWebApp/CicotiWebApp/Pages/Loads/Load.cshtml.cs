@@ -146,8 +146,9 @@ namespace CicotiWebApp.Pages.Loads
                    StatusName = i.Status.Name,
                    i.StatusID
                }
-               ).Where(i=> i.StatusID == 3);
-
+               ).Where(i=> i.StatusID == 4);
+            //Status 4 is Warehouse Picked and Packed
+            //Only once Picked and Packed can it be put on a load schedule
             totalResultsCount = InvoiceQuery.Count();
             filteredResultsCount = totalResultsCount;
 

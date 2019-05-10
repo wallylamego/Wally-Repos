@@ -17,6 +17,7 @@ public class DataTableAjaxPostModel
     public List<Order> order { get; set; }
     public int FilterItemID { get; set; }
     public int LoadID { get; set; }
+    public int EmployeeID { get; set; }
     public int InvoiceID { get; set; }
     public string DeliveryStatus { get; set; }
     public string LoadStatus { get; set; }

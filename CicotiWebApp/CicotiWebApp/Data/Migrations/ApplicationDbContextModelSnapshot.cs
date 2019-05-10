@@ -15,7 +15,7 @@ namespace CicotiWebApp.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
+                .HasAnnotation("ProductVersion", "2.1.8-servicing-32085")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -1210,6 +1210,40 @@ namespace CicotiWebApp.Data.Migrations
                     b.ToTable("Provinces");
                 });
 
+            modelBuilder.Entity("CicotiWebApp.Models.SalesRep", b =>
+                {
+                    b.Property<int>("SalesRepID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("SalesRepCode");
+
+                    b.Property<string>("SalesRepName");
+
+                    b.HasKey("SalesRepID");
+
+                    b.ToTable("SalesReps");
+                });
+
+            modelBuilder.Entity("CicotiWebApp.Models.SalesRepCodeEmployeeNoLink", b =>
+                {
+                    b.Property<int>("SalesRepCodeEmployeeNoLinkID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("EmployeeID");
+
+                    b.Property<int>("SalesRepID");
+
+                    b.HasKey("SalesRepCodeEmployeeNoLinkID");
+
+                    b.HasIndex("EmployeeID");
+
+                    b.HasIndex("SalesRepID");
+
+                    b.ToTable("SalesRepCodeEmployeeNoLink");
+                });
+
             modelBuilder.Entity("CicotiWebApp.Models.Silo", b =>
                 {
                     b.Property<int>("SiloID")
@@ -2178,6 +2212,19 @@ namespace CicotiWebApp.Data.Migrations
                     b.HasOne("CicotiWebApp.Models.Country", "Country")
                         .WithMany()
                         .HasForeignKey("CountryID")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("CicotiWebApp.Models.SalesRepCodeEmployeeNoLink", b =>
+                {
+                    b.HasOne("CicotiWebApp.Models.Employee", "Employee")
+                        .WithMany()
+                        .HasForeignKey("EmployeeID")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("CicotiWebApp.Models.SalesRep", "SalesRep")
+                        .WithMany()
+                        .HasForeignKey("SalesRepID")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 

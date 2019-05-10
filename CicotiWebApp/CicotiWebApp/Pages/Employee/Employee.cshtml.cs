@@ -135,5 +135,48 @@ namespace CicotiWebApp.Pages.Employee
         }
         #endregion EmployeeUpdates
 
+        //get a list of invoices which have been selected for loading
+        public async Task<JsonResult> OnPostSalesRepPaging([FromForm] DataTableAjaxPostModel Model)
+        {
+            int filteredResultsCount = 0;
+            int totalResultsCount = 0;
+
+            DataTableAjaxPostModel.GetOrderByParameters(Model.order, Model.columns, "employeeID",
+                out bool SortDir, out string SortBy);
+
+            //First create the View of the new model you wish to display to the user
+            var SalesRepQuery = _context.SalesRepCodeEmployeeNoLink
+                .Include(s=>s.SalesRep)
+               .Select(s => new
+               {
+                   s.SalesRepID,
+                   s.EmployeeID,
+                   s.SalesRep.SalesRepCode,
+                   s.SalesRep.SalesRepName,
+               }
+               ).Where(i => i.EmployeeID == Model.EmployeeID);
+
+            totalResultsCount = SalesRepQuery.Count();
+            filteredResultsCount = totalResultsCount;
+
+           
+            var Result = await SalesRepQuery
+                        .Skip(Model.start)
+                        .Take(Model.length)
+                        .OrderBy(SortBy, SortDir)
+                        .ToListAsync();
+
+            var value = new
+            {
+                // this is what datatables wants sending back
+                draw = Model.draw,
+                recordsTotal = totalResultsCount,
+                recordsFiltered = filteredResultsCount,
+                data = Result
+            };
+            return new JsonResult(value);
+        }
+
+
     }
 }

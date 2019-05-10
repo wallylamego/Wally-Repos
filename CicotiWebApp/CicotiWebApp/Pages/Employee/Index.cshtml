@@ -16,7 +16,9 @@
     Layout = "~/Pages/_LayoutDataTables.cshtml";
 }
 
-<h2>Employees</h2>
+        <div class="page-header">
+            <h2>Employee Listing</h2>
+        </div>
 
 <p>
     <a asp-page="Employee">Update/New</a>
@@ -51,7 +53,7 @@
         {
             $("#EmployeeTable").on('xhr.dt', function (e, settings, json, xhr) {
             }).DataTable({
-                lengthMenu: [25, 100, 150, 400],
+                lengthMenu: [25, 100, 150, 500],
                 dom: '<lfB<t>ip>',
                 buttons: ['excel', 'copy', 'csv', 'pdf', 'print'],
                 "fixedHeader": {

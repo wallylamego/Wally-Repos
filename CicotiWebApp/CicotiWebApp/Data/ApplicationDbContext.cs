@@ -39,6 +39,8 @@ namespace CicotiWebApp.Data
         public DbSet<Principle> Principle { get; set; }
         public DbSet<Silo> Silo { get; set; }
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<SalesRepCodeEmployeeNoLink> SalesRepCodeEmployeeNoLink { get; set; }
+        public DbSet<SalesRep> SalesReps { get; set; }
         public DbSet<Status> Status { get; set; }
         public DbSet<CustomerAccount> Accounts { get; set; }
         public DbSet<Invoice> Invoices { get; set; }
