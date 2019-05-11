@@ -41,6 +41,7 @@ namespace CicotiWebApp.Pages.Vehicles.Fleet
                 .Include(c=>c.CostCentre)
                 .Include(e=>e.Employee)
                 .Include(vp=>vp.VehiclePurpose)
+                .Include(s=>s.VehicleStatus)
                .Where(v=>v.SubContractor.SubContractorID == 2)
                .Select(v => new
                {
@@ -58,7 +59,8 @@ namespace CicotiWebApp.Pages.Vehicles.Fleet
                    v.FixedAssetsNumber,
                    v.AcquisitionDate,
                    AcquisitionCost = v.AcquistionCost,
-                   v.DepreciationMonths
+                   v.DepreciationMonths,
+                   Status = v.VehicleStatus.Description
                }
                );
 
