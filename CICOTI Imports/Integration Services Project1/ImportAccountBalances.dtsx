@@ -11,16 +11,16 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="ImportAccountBalances"
   DTS:PackageType="5"
-  DTS:VersionBuild="1"
-  DTS:VersionGUID="{2D2591B9-645D-4B04-A5E8-F7F905C0D373}">
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{A65C38C7-0CBD-48EF-993B-2F32381B2E3B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:refId="Package.ConnectionManagers[BalanceImport]"
       DTS:CreationName="FLATFILE"
       DTS:DTSID="{52BEB594-A838-433F-8B67-F1D5FA6DFEEF}"
-      DTS:ObjectName="Flat File Connection Manager">
+      DTS:ObjectName="BalanceImport">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:Format="Delimited"
@@ -117,8 +117,8 @@
               <connections>
                 <connection
                   refId="Package\Import Balances\Flat File Source.Connections[FlatFileConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
-                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
+                  connectionManagerID="Package.ConnectionManagers[BalanceImport]"
+                  connectionManagerRefId="Package.ConnectionManagers[BalanceImport]"
                   name="FlatFileConnection" />
               </connections>
               <outputs>
@@ -440,13 +440,13 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="151,42"
-          Id="Package\Import Balances\Flat File Source"
-          TopLeft="238,50" />
-        <NodeLayout
           Size="171,42"
           Id="Package\Import Balances\OLE DB Destination"
           TopLeft="271.5,133.5" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Import Balances\Flat File Source"
+          TopLeft="238,50" />
         <EdgeLayout
           Id="Package\Import Balances.Paths[Flat File Source Output]"
           TopLeft="313.5,92">

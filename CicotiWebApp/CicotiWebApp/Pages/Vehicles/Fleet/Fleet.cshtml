@@ -569,6 +569,8 @@
             vehicleToSave.payloadHeight = $('#payloadHeight').val();
             vehicleToSave.payloadWidth = $('#payloadWidth').val();
             vehicleToSave.payloadLength = $('#payloadLength').val();
+
+            console.log("Before Ajax Call" + vehicleToSave);
            
             if ($('#vehicleID').val().length > 0 && $('#vehicleID').val() > 0) {
                 vehicleToSave.vehicleID = $('#vehicleID').val();
@@ -674,7 +676,8 @@
 
         $('#datetimepicker1').datetimepicker(
         {
-            format: "DD-MM-YYYY",
+              //  format: "DD/MM/YYYY",
+                format: "YYYY/MM/DD",
             date: '@Model.Vehicle.AcquisitionDate'
         }
     );

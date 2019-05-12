@@ -1,26 +1,26 @@
 <?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="4/3/2019 10:34:24 AM"
+  DTS:CreationDate="5/12/2019 12:39:20 PM"
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="OTIJHB-NB-081"
   DTS:CreatorName="OTI\WallyF"
-  DTS:DTSID="{2BACDC4E-484C-4E27-8BC9-FA75D19DF777}"
+  DTS:DTSID="{D8DA07FD-E3C2-4AE7-AC9D-66150AFD3810}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.0900.30"
   DTS:LocaleID="7177"
-  DTS:ObjectName="ImportAccountBalances"
+  DTS:ObjectName="KmImport"
   DTS:PackageType="5"
   DTS:VersionBuild="2"
-  DTS:VersionGUID="{A65C38C7-0CBD-48EF-993B-2F32381B2E3B}">
+  DTS:VersionGUID="{C633B21D-1FC3-446D-BFE8-83BAB0EC98ED}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[BalanceImport]"
+      DTS:refId="Package.ConnectionManagers[Km_Import]"
       DTS:CreationName="FLATFILE"
-      DTS:DTSID="{52BEB594-A838-433F-8B67-F1D5FA6DFEEF}"
-      DTS:ObjectName="BalanceImport">
+      DTS:DTSID="{CC47268D-D9DC-43C1-A141-30507C957E3E}"
+      DTS:ObjectName="Km_Import">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:Format="Delimited"
@@ -30,39 +30,55 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="C:\Users\wallyf\Desktop\NewBalanceImport.txt">
+          DTS:ConnectionString="C:\Users\wallyf\Cicoti\ROA\ABC Imports\KmImport.txt">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x0009_"
-              DTS:DataType="2"
+              DTS:DataType="7"
               DTS:TextQualified="True"
-              DTS:ObjectName="PeriodID"
-              DTS:DTSID="{A2AEF77E-C43D-4928-8547-A28991E2A868}"
+              DTS:ObjectName="TravelDate"
+              DTS:DTSID="{9F64C51B-5921-4E42-918E-9B3FC79561B7}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x0009_"
               DTS:DataType="4"
               DTS:TextQualified="True"
-              DTS:ObjectName="YTD"
-              DTS:DTSID="{C70368AE-99FA-426D-8046-88FB50C2E933}"
+              DTS:ObjectName="StartKm"
+              DTS:DTSID="{B11BF833-7765-4071-B2D7-D9532105073E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x0009_"
               DTS:DataType="4"
               DTS:TextQualified="True"
-              DTS:ObjectName="Movement"
-              DTS:DTSID="{D231CA2C-A986-4D47-AE5A-B78297D1E9C1}"
+              DTS:ObjectName="EndKm"
+              DTS:DTSID="{6C6B93B1-9149-4215-A4A4-D5452AB5D7A1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="4"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TravelKm"
+              DTS:DTSID="{621BCE5F-4077-401C-BEBD-816A4F62A8FE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="18"
+              DTS:TextQualified="True"
+              DTS:ObjectName="VehicleID"
+              DTS:DTSID="{59F12097-1437-4D1C-93F1-280860DAD57E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x000D__x000A_"
-              DTS:DataType="2"
+              DTS:DataType="18"
               DTS:TextQualified="True"
-              DTS:ObjectName="ActCostAccountID"
-              DTS:DTSID="{F7F87E32-1090-42FD-900F-3BB6B58A21AD}"
+              DTS:ObjectName="ActCostPeriodID"
+              DTS:DTSID="{7A051672-AC98-46B6-A1F7-D7EB0C9D4DC2}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -71,7 +87,7 @@
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[OTIJHB-NB-081\SQLEXPRESS.CICOTIDB]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{CD59EF0E-CAB4-4D5A-9047-06DD662DFF52}"
+      DTS:DTSID="{E4192DBC-5BD1-4ED4-8621-A55E9236FAD6}"
       DTS:ObjectName="OTIJHB-NB-081\SQLEXPRESS.CICOTIDB">
       <DTS:ObjectData>
         <DTS:ConnectionManager
@@ -82,13 +98,13 @@
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Import Balances"
+      DTS:refId="Package\Data Flow Task"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{4c848dfa-3cf5-40e5-a908-19fe98103fb5}"
+      DTS:DTSID="{D68845B6-8946-4919-8020-A82E092722C2}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Import Balances"
+      DTS:ObjectName="Data Flow Task"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -96,7 +112,7 @@
           version="1">
           <components>
             <component
-              refId="Package\Import Balances\Flat File Source"
+              refId="Package\Data Flow Task\Flat File Source"
               componentClassID="Microsoft.FlatFileSource"
               contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Flat File Source"
@@ -116,24 +132,24 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Import Balances\Flat File Source.Connections[FlatFileConnection]"
-                  connectionManagerID="Package.ConnectionManagers[BalanceImport]"
-                  connectionManagerRefId="Package.ConnectionManagers[BalanceImport]"
+                  refId="Package\Data Flow Task\Flat File Source.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Km_Import]"
+                  connectionManagerRefId="Package.ConnectionManagers[Km_Import]"
                   name="FlatFileConnection" />
               </connections>
               <outputs>
                 <output
-                  refId="Package\Import Balances\Flat File Source.Outputs[Flat File Source Output]"
+                  refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output]"
                   name="Flat File Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Import Balances\Flat File Source.Outputs[Flat File Source Output].Columns[ActCostAccountID]"
-                      dataType="i2"
+                      refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[TravelDate]"
+                      dataType="dbDate"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import Balances\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ActCostAccountID]"
-                      lineageId="Package\Import Balances\Flat File Source.Outputs[Flat File Source Output].Columns[ActCostAccountID]"
-                      name="ActCostAccountID"
+                      externalMetadataColumnId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[TravelDate]"
+                      lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[TravelDate]"
+                      name="TravelDate"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -147,33 +163,13 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Import Balances\Flat File Source.Outputs[Flat File Source Output].Columns[PeriodID]"
-                      dataType="i2"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import Balances\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[PeriodID]"
-                      lineageId="Package\Import Balances\Flat File Source.Outputs[Flat File Source Output].Columns[PeriodID]"
-                      name="PeriodID"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the data is in binary format."
-                          name="UseBinaryFormat">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Import Balances\Flat File Source.Outputs[Flat File Source Output].Columns[YTD]"
+                      refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[StartKm]"
                       dataType="r4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import Balances\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[YTD]"
-                      lineageId="Package\Import Balances\Flat File Source.Outputs[Flat File Source Output].Columns[YTD]"
-                      name="YTD"
+                      externalMetadataColumnId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[StartKm]"
+                      lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[StartKm]"
+                      name="StartKm"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -187,13 +183,73 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Import Balances\Flat File Source.Outputs[Flat File Source Output].Columns[Movement]"
+                      refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[EndKm]"
                       dataType="r4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import Balances\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Movement]"
-                      lineageId="Package\Import Balances\Flat File Source.Outputs[Flat File Source Output].Columns[Movement]"
-                      name="Movement"
+                      externalMetadataColumnId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[EndKm]"
+                      lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[EndKm]"
+                      name="EndKm"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[TravelKm]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[TravelKm]"
+                      lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[TravelKm]"
+                      name="TravelKm"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[VehicleID]"
+                      dataType="ui2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[VehicleID]"
+                      lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[VehicleID]"
+                      name="VehicleID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[ActCostPeriodID]"
+                      dataType="ui2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ActCostPeriodID]"
+                      lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[ActCostPeriodID]"
+                      name="ActCostPeriodID"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -210,45 +266,53 @@
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Import Balances\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ActCostAccountID]"
-                      dataType="i2"
-                      name="ActCostAccountID" />
+                      refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[TravelDate]"
+                      dataType="date"
+                      name="TravelDate" />
                     <externalMetadataColumn
-                      refId="Package\Import Balances\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[PeriodID]"
-                      dataType="i2"
-                      name="PeriodID" />
-                    <externalMetadataColumn
-                      refId="Package\Import Balances\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[YTD]"
+                      refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[StartKm]"
                       dataType="r4"
-                      name="YTD" />
+                      name="StartKm" />
                     <externalMetadataColumn
-                      refId="Package\Import Balances\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Movement]"
+                      refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[EndKm]"
                       dataType="r4"
-                      name="Movement" />
+                      name="EndKm" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[TravelKm]"
+                      dataType="r4"
+                      name="TravelKm" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[VehicleID]"
+                      dataType="ui2"
+                      name="VehicleID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ActCostPeriodID]"
+                      dataType="ui2"
+                      name="ActCostPeriodID" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Import Balances\Flat File Source.Outputs[Flat File Source Error Output]"
+                  refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Error Output]"
                   isErrorOut="true"
                   name="Flat File Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Import Balances\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
                       codePage="1252"
                       dataType="text"
                       description="Flat File Source Error Output Column"
-                      lineageId="Package\Import Balances\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
                       name="Flat File Source Error Output Column" />
                     <outputColumn
-                      refId="Package\Import Balances\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Import Balances\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Import Balances\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Import Balances\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -257,11 +321,11 @@
               </outputs>
             </component>
             <component
-              refId="Package\Import Balances\OLE DB Destination"
+              refId="Package\Data Flow Task\VehicleKmTable"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
-              name="OLE DB Destination"
+              name="VehicleKmTable"
               usesDispositions="true"
               version="4">
               <properties>
@@ -272,7 +336,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[ActCostAccountBalance]</property>
+                  name="OpenRowset">[dbo].[VehicleKms]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -314,7 +378,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Import Balances\OLE DB Destination.Connections[OleDbConnection]"
+                  refId="Package\Data Flow Task\VehicleKmTable.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[OTIJHB-NB-081\SQLEXPRESS.CICOTIDB]"
                   connectionManagerRefId="Package.ConnectionManagers[OTIJHB-NB-081\SQLEXPRESS.CICOTIDB]"
                   description="The OLE DB runtime connection used to access the database."
@@ -322,80 +386,101 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\Import Balances\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  refId="Package\Data Flow Task\VehicleKmTable.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Import Balances\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[YTD]"
+                      refId="Package\Data Flow Task\VehicleKmTable.Inputs[OLE DB Destination Input].Columns[TravelDate]"
+                      cachedDataType="dbDate"
+                      cachedName="TravelDate"
+                      externalMetadataColumnId="Package\Data Flow Task\VehicleKmTable.Inputs[OLE DB Destination Input].ExternalColumns[TravelDate]"
+                      lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[TravelDate]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\VehicleKmTable.Inputs[OLE DB Destination Input].Columns[StartKm]"
                       cachedDataType="r4"
-                      cachedName="YTD"
-                      externalMetadataColumnId="Package\Import Balances\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[YTD]"
-                      lineageId="Package\Import Balances\Flat File Source.Outputs[Flat File Source Output].Columns[YTD]" />
+                      cachedName="StartKm"
+                      externalMetadataColumnId="Package\Data Flow Task\VehicleKmTable.Inputs[OLE DB Destination Input].ExternalColumns[StartKm]"
+                      lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[StartKm]" />
                     <inputColumn
-                      refId="Package\Import Balances\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Movement]"
+                      refId="Package\Data Flow Task\VehicleKmTable.Inputs[OLE DB Destination Input].Columns[EndKm]"
                       cachedDataType="r4"
-                      cachedName="Movement"
-                      externalMetadataColumnId="Package\Import Balances\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Movement]"
-                      lineageId="Package\Import Balances\Flat File Source.Outputs[Flat File Source Output].Columns[Movement]" />
+                      cachedName="EndKm"
+                      externalMetadataColumnId="Package\Data Flow Task\VehicleKmTable.Inputs[OLE DB Destination Input].ExternalColumns[EndKm]"
+                      lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[EndKm]" />
                     <inputColumn
-                      refId="Package\Import Balances\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PeriodID]"
-                      cachedDataType="i2"
-                      cachedName="PeriodID"
-                      externalMetadataColumnId="Package\Import Balances\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ActCostPeriodID]"
-                      lineageId="Package\Import Balances\Flat File Source.Outputs[Flat File Source Output].Columns[PeriodID]" />
+                      refId="Package\Data Flow Task\VehicleKmTable.Inputs[OLE DB Destination Input].Columns[TravelKm]"
+                      cachedDataType="r4"
+                      cachedName="TravelKm"
+                      externalMetadataColumnId="Package\Data Flow Task\VehicleKmTable.Inputs[OLE DB Destination Input].ExternalColumns[TravelKm]"
+                      lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[TravelKm]" />
                     <inputColumn
-                      refId="Package\Import Balances\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ActCostAccountID]"
-                      cachedDataType="i2"
-                      cachedName="ActCostAccountID"
-                      externalMetadataColumnId="Package\Import Balances\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ActCostAccountID]"
-                      lineageId="Package\Import Balances\Flat File Source.Outputs[Flat File Source Output].Columns[ActCostAccountID]" />
+                      refId="Package\Data Flow Task\VehicleKmTable.Inputs[OLE DB Destination Input].Columns[VehicleID]"
+                      cachedDataType="ui2"
+                      cachedName="VehicleID"
+                      externalMetadataColumnId="Package\Data Flow Task\VehicleKmTable.Inputs[OLE DB Destination Input].ExternalColumns[VehicleID]"
+                      lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[VehicleID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\VehicleKmTable.Inputs[OLE DB Destination Input].Columns[ActCostPeriodID]"
+                      cachedDataType="ui2"
+                      cachedName="ActCostPeriodID"
+                      externalMetadataColumnId="Package\Data Flow Task\VehicleKmTable.Inputs[OLE DB Destination Input].ExternalColumns[ActCostPeriodID]"
+                      lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[ActCostPeriodID]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Import Balances\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ActCostAccountBalanceID]"
+                      refId="Package\Data Flow Task\VehicleKmTable.Inputs[OLE DB Destination Input].ExternalColumns[VehicleKmID]"
                       dataType="i4"
-                      name="ActCostAccountBalanceID" />
+                      name="VehicleKmID" />
                     <externalMetadataColumn
-                      refId="Package\Import Balances\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[YTD]"
+                      refId="Package\Data Flow Task\VehicleKmTable.Inputs[OLE DB Destination Input].ExternalColumns[TravelDate]"
+                      dataType="dbTimeStamp2"
+                      name="TravelDate"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\VehicleKmTable.Inputs[OLE DB Destination Input].ExternalColumns[StartKm]"
                       dataType="r8"
-                      name="YTD" />
+                      name="StartKm" />
                     <externalMetadataColumn
-                      refId="Package\Import Balances\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Movement]"
+                      refId="Package\Data Flow Task\VehicleKmTable.Inputs[OLE DB Destination Input].ExternalColumns[EndKm]"
                       dataType="r8"
-                      name="Movement" />
+                      name="EndKm" />
                     <externalMetadataColumn
-                      refId="Package\Import Balances\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ActCostPeriodID]"
+                      refId="Package\Data Flow Task\VehicleKmTable.Inputs[OLE DB Destination Input].ExternalColumns[TravelKm]"
+                      dataType="r8"
+                      name="TravelKm" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\VehicleKmTable.Inputs[OLE DB Destination Input].ExternalColumns[VehicleID]"
+                      dataType="i4"
+                      name="VehicleID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\VehicleKmTable.Inputs[OLE DB Destination Input].ExternalColumns[ActCostPeriodID]"
                       dataType="i4"
                       name="ActCostPeriodID" />
-                    <externalMetadataColumn
-                      refId="Package\Import Balances\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ActCostAccountID]"
-                      dataType="i4"
-                      name="ActCostAccountID" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Import Balances\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\Data Flow Task\VehicleKmTable.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Import Balances\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\Data Flow Task\VehicleKmTable.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Import Balances\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\Data Flow Task\VehicleKmTable.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Import Balances\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Data Flow Task\VehicleKmTable.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Import Balances\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Data Flow Task\VehicleKmTable.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Import Balances\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Data Flow Task\VehicleKmTable.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -406,10 +491,10 @@
           </components>
           <paths>
             <path
-              refId="Package\Import Balances.Paths[Flat File Source Output]"
-              endId="Package\Import Balances\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              refId="Package\Data Flow Task.Paths[Flat File Source Output]"
+              endId="Package\Data Flow Task\VehicleKmTable.Inputs[OLE DB Destination Input]"
               name="Flat File Source Output"
-              startId="Package\Import Balances\Flat File Source.Outputs[Flat File Source Output]" />
+              startId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -428,51 +513,51 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="155.5,42"
-          Id="Package\Import Balances"
-          TopLeft="119.75,57" />
+          Size="151.5,42"
+          Id="Package\Data Flow Task"
+          TopLeft="5.5,5.5" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\Import Balances">
+    design-time-name="Package\Data Flow Task">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="171,42"
-          Id="Package\Import Balances\OLE DB Destination"
-          TopLeft="271.5,133.5" />
-        <NodeLayout
           Size="151,42"
-          Id="Package\Import Balances\Flat File Source"
-          TopLeft="238,50" />
+          Id="Package\Data Flow Task\Flat File Source"
+          TopLeft="54.5,25" />
+        <NodeLayout
+          Size="153.5,42"
+          Id="Package\Data Flow Task\VehicleKmTable"
+          TopLeft="103.25,91.5" />
         <EdgeLayout
-          Id="Package\Import Balances.Paths[Flat File Source Output]"
-          TopLeft="313.5,92">
+          Id="Package\Data Flow Task.Paths[Flat File Source Output]"
+          TopLeft="130,67">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="43.5,41.5"
+              EndConnector="50,24.5"
               Start="0,0"
-              End="43.5,34">
+              End="50,17">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.75" />
+                    End="0,8.25" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,16.75"
-                    Point2="0,20.75"
-                    Point3="4,20.75" />
+                    Point1="0,8.25"
+                    Point2="0,12.25"
+                    Point3="4,12.25" />
                   <mssgle:LineSegment
-                    End="39.5,20.75" />
+                    End="46,12.25" />
                   <mssgle:CubicBezierSegment
-                    Point1="39.5,20.75"
-                    Point2="43.5,20.75"
-                    Point3="43.5,24.75" />
+                    Point1="46,12.25"
+                    Point2="50,12.25"
+                    Point3="50,16.25" />
                   <mssgle:LineSegment
-                    End="43.5,34" />
+                    End="50,17" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -485,7 +570,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Import Balances\OLE DB Destination">
+    design-time-name="Package\Data Flow Task\VehicleKmTable">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
