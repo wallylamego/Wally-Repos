@@ -16,6 +16,35 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ExchangeRate.ExchangeRateID" />
             <div class="form-group">
+                <label asp-for="ExchangeRate.FirstCurrency" class="control-label"></label>
+                <select asp-for="ExchangeRate.FirstCurrencyID"
+                        asp-items="Model.CurrencySL" class="form-control">
+                    <option value="">--Select Currency--</option>
+                </select>
+                <span asp-validation-for="ExchangeRate.FirstCurrencyID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExchangeRate.SecondCurrency" class="control-label"></label>
+                <select asp-for="ExchangeRate.SecondCurrencyID"
+                        asp-items="Model.CurrencySL" class="form-control">
+                    <option value="">--Select Currency--</option>
+                </select>
+                <span asp-validation-for="ExchangeRate.SecondCurrencyID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExchangeRate.Description" class="control-label"></label>
+                <input asp-for="ExchangeRate.Description" class="form-control" />
+                <span asp-validation-for="ExchangeRate.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExchangeRate.ActCostPeriod" class="control-label"></label>
+                <select asp-for="ExchangeRate.ActCostPeriodID"
+                        asp-items="Model.PeriodSL" class="form-control">
+                    <option value="">--Select Period--</option>
+                </select>
+                <span asp-validation-for="ExchangeRate.ActCostPeriodID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="ExchangeRate.AverageRate" class="control-label"></label>
                 <input asp-for="ExchangeRate.AverageRate" class="form-control" />
                 <span asp-validation-for="ExchangeRate.AverageRate" class="text-danger"></span>

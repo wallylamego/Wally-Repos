@@ -79,23 +79,41 @@
                         "searchable": false
                     },
                     {
-                        /*ExchangeRate Name is visible and is not searchable*/
+                        /*First Currency Name is visible and is not searchable*/
                         "targets": [1],
                         "visible": true,
                         "searchable": true
                     },
                     {
-                        /*Hrs in ExchangeRate is visible and is not searchable*/
+                        /* Second Currency Name is visible and is not searchable*/
                         "targets": [2],
                         "visible": true,
                         "searchable": true
                     },
                     {
-                        /*Sort Order No is visible and is not searchable*/
+                        /*Description No is visible and is not searchable*/
                         "targets": [3],
                         "visible": true,
                         "searchable": true
                     },
+                    {
+                        /*Period No is visible and is not searchable*/
+                        "targets": [4],
+                        "visible": true,
+                        "searchable": true
+                        },
+                        {
+                            /*Closing Rate No is visible and is not searchable*/
+                            "targets": [5],
+                            "visible": true,
+                            "searchable": true
+                        },
+                        {
+                            /*Average Rate is visible and is not searchable*/
+                            "targets": [6],
+                            "visible": true,
+                            "searchable": true
+                        },
                     {
                         /* edit button  is  visible and is not searchable*/
                         "targets": [7],
@@ -112,22 +130,22 @@
                     }
                 ],
                 "columns": [
-                    { "data": "ExchangeRateID", "name": "ExchangeRateID", "autoWidth": true },
+                    { "data": "exchangeRateID", "name": "exchangeRateID", "autoWidth": true },
                     { "data": "firstCurrency", "name": "firstCurrency", "autoWidth": true },
                     { "data": "secondCurrency", "name": "secondCurrency", "autoWidth": true },
-                    { "data": "Description", "name": "description", "autoWidth": true },
-                    { "data": "Period", "name": "period", "autoWidth": true },
-                    { "data": "AverageRate", "name": "averageRate", "autoWidth": true },
-                    { "data": "ClosingRate", "name": "closingRate", "autoWidth": true },
+                    { "data": "description", "name": "description", "autoWidth": true },
+                    { "data": "period", "name": "period", "autoWidth": true },
+                    { "data": "averageRate", "name": "averageRate", "autoWidth": true },
+                    { "data": "closingRate", "name": "closingRate", "autoWidth": true },
                     {
                         "render": function (data, type, full, meta) {
-                            return "<p data-placement='top' data-toggle='tooltip' title='Edit'><button class='btn btn-primary btn-xs' data-title='Edit' data-toggle='modal' data-target='#edit' onclick='window.location.href=\"/ABC/ExchangeRates/Edit/" + full.ExchangeRateID +  "\"\'><span class='glyphicon glyphicon-pencil'></span></button></p>";
+                            return "<p data-placement='top' data-toggle='tooltip' title='Edit'><button class='btn btn-primary btn-xs' data-title='Edit' data-toggle='modal' data-target='#edit' onclick='window.location.href=\"/ABC/ExchangeRates/Edit/" + full.exchangeRateID +  "\"\'><span class='glyphicon glyphicon-pencil'></span></button></p>";
                         }
                     },
                     {
                         "data": null, render: function (data, type, row)
                         {
-                            return '<p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" onclick=DeleteData("' + row.ExchangeRateID + '")><span class="glyphicon glyphicon-trash"></span></button></p>';
+                            return '<p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" onclick=DeleteData("' + row.exchangeRateID + '")><span class="glyphicon glyphicon-trash"></span></button></p>';
                        }
                     }
                 ]

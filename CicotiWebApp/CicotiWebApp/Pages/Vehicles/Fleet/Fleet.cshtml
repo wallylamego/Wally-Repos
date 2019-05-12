@@ -674,8 +674,8 @@
 
         $('#datetimepicker1').datetimepicker(
         {
-            format: "YYYY/MM/DD hh:mm:ss A"
-            @*,date: '@Model.ExecuteDate'*@
+            format: "DD-MM-YYYY",
+            date: '@Model.Vehicle.AcquisitionDate'
         }
     );
     });//Document Ready end.
