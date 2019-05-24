@@ -46,6 +46,7 @@ namespace CicotiWebApp.Pages.Vehicles
         public void PopulateSubContractorSL(object selectedSubContractor = null)
         {
             var SubContractorsQuery = from s in _context.SubContractor
+                                      where s.SubContractorID != 2
                                     orderby s.Name
                                     select s;
             SubContractorSL = new SelectList(SubContractorsQuery.AsNoTracking(),

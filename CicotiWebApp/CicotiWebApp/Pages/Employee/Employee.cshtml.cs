@@ -80,6 +80,7 @@ namespace CicotiWebApp.Pages.Employee
                     .Include(c => c.CostCentre)
                     .Include(e => e.JobDescription)
                     .Include(m => m.Department)
+                    .Include(r=>r.ReportsTo)
                     .SingleOrDefaultAsync(m => m.EmployeeID == EmployeeID);
             }
             return Page();

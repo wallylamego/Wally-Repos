@@ -36,6 +36,7 @@ namespace CicotiWebApp.Pages.Drivers
 
             //First create the View of the new model you wish to display to the user
             var DriverQuery = _context.Drivers
+               .Where(d=>d.SubContractorID != 2)
                .Select(driv => new
                {
                    SubContractor = driv.SubContractor.Name,

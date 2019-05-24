@@ -28,6 +28,8 @@
     <Compile Remove="Data\Migrations\20190323073921_ActCostAccountV.Designer.cs" />
     <Compile Remove="Data\Migrations\20190323075904_ActCostAccountVI.cs" />
     <Compile Remove="Data\Migrations\20190323075904_ActCostAccountVI.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190519051018_Region.cs" />
+    <Compile Remove="Data\Migrations\20190519051018_Region.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

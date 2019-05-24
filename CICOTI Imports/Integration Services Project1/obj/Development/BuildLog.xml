@@ -2,7 +2,7 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>CicotiImports</Name>
-    <LastWriteTime>2019-05-12T11:02:25.1383021Z</LastWriteTime>
+    <LastWriteTime>2019-05-23T20:19:27.8026737Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
@@ -53,12 +53,22 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>PackageLive.dtsx</Name>
-      <LastWriteTime>2019-05-11T13:18:06.3456565Z</LastWriteTime>
+      <LastWriteTime>2019-05-15T17:43:51.2360488Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>KmImport.dtsx</Name>
       <LastWriteTime>2019-05-12T11:02:21.2220829Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>TransferSalesData.dtsx</Name>
+      <LastWriteTime>2019-05-19T07:34:09.8171706Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Package2.dtsx</Name>
+      <LastWriteTime>2019-05-23T20:19:27.7238848Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

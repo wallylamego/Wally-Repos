@@ -934,7 +934,6 @@
         {
             //hide the loader
             $("#loader").hide();
-            //$("#loader").show();
             //hide the destination table and  capture fields when the form starts up
             $("#divDestinationTableSection").hide();
             $("#divDestinationInputFieldsSection").hide();
@@ -958,17 +957,17 @@
                 if ($('#loadID').val().length > 0 && $('#loadID').val() > 0) {
                     LoadToSave.loadID = $('#loadID').val();
                     $(window).scrollTop(0);
-                    $('#loadID').show();
+                    $('#loader').show();
                     $.when(ajaxLoadUpdate(LoadToSave)).done(function (a1) {
-                        $('#loadID').hide();
+                        $('#loader').hide();
                     });
                     //ajaxLoadUpdate(LoadToSave);
                 }
                 else {
                     $(window).scrollTop(0);
-                    $('#loadID').show();
+                    $('#loader').show();
                     $.when(ajaxLoadInsert(LoadToSave)).done(function (a1) {
-                        $('#loadID').hide();
+                        $('#loader').hide();
                     });
                   //  ajaxLoadInsert(LoadToSave);
                 }
@@ -1011,7 +1010,7 @@
                     }
                 });
                 $(window).scrollTop(0);
-                $('#loadID').show();
+                $('#loader').show();
                 $.when(ajaxInvoiceUpdate(arrInv)).done(function (a1) {
                     if (!$.fn.DataTable.isDataTable('#InvoiceTable')) {
                         getInvoiceData();
@@ -1027,7 +1026,7 @@
                         var oTable = $('#InvoiceSelectedTable').DataTable();
                         oTable.draw();
                     }
-                    $('#loadID').hide();
+                    $('#loader').hide();
                 });
                 //ajaxInvoiceUpdate(arrInv);
                 

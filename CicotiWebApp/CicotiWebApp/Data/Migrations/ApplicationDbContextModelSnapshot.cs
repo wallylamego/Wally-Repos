@@ -611,9 +611,30 @@ namespace CicotiWebApp.Data.Migrations
 
                     b.Property<string>("ERPBranchID");
 
+                    b.Property<int?>("RegionID");
+
                     b.HasKey("BranchID");
 
+                    b.HasIndex("RegionID");
+
                     b.ToTable("Branch");
+                });
+
+            modelBuilder.Entity("CicotiWebApp.Models.Brand", b =>
+                {
+                    b.Property<int>("BrandID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description");
+
+                    b.Property<int>("PrincipleID");
+
+                    b.HasKey("BrandID");
+
+                    b.HasIndex("PrincipleID");
+
+                    b.ToTable("Brand");
                 });
 
             modelBuilder.Entity("CicotiWebApp.Models.CostCentre", b =>
@@ -1210,6 +1231,19 @@ namespace CicotiWebApp.Data.Migrations
                     b.ToTable("Provinces");
                 });
 
+            modelBuilder.Entity("CicotiWebApp.Models.Region", b =>
+                {
+                    b.Property<int>("RegionID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("RegionName");
+
+                    b.HasKey("RegionID");
+
+                    b.ToTable("Region");
+                });
+
             modelBuilder.Entity("CicotiWebApp.Models.SalesRep", b =>
                 {
                     b.Property<int>("SalesRepID")
@@ -1263,6 +1297,8 @@ namespace CicotiWebApp.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("BrandID");
+
                     b.Property<string>("Code");
 
                     b.Property<string>("Comments");
@@ -1272,6 +1308,8 @@ namespace CicotiWebApp.Data.Migrations
                     b.Property<double>("CubicMetrePerUnit");
 
                     b.Property<string>("Description");
+
+                    b.Property<string>("PrincipleDescription");
 
                     b.Property<int?>("PrincipleID");
 
@@ -1283,11 +1321,40 @@ namespace CicotiWebApp.Data.Migrations
 
                     b.HasKey("SKUID");
 
+                    b.HasIndex("BrandID");
+
                     b.HasIndex("PrincipleID");
 
                     b.HasIndex("UOMID");
 
                     b.ToTable("SKUs");
+                });
+
+            modelBuilder.Entity("CicotiWebApp.Models.SkuUomLink", b =>
+                {
+                    b.Property<int>("SkuUomLinkID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<double>("ConversionFactor");
+
+                    b.Property<string>("Description");
+
+                    b.Property<int>("FromUOMID");
+
+                    b.Property<int>("SKUID");
+
+                    b.Property<int>("ToUOMID");
+
+                    b.HasKey("SkuUomLinkID");
+
+                    b.HasIndex("FromUOMID");
+
+                    b.HasIndex("SKUID");
+
+                    b.HasIndex("ToUOMID");
+
+                    b.ToTable("SkuUomLinks");
                 });
 
             modelBuilder.Entity("CicotiWebApp.Models.Status", b =>
@@ -1963,6 +2030,22 @@ namespace CicotiWebApp.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
+            modelBuilder.Entity("CicotiWebApp.Models.Branch", b =>
+                {
+                    b.HasOne("CicotiWebApp.Models.Region", "Region")
+                        .WithMany()
+                        .HasForeignKey("RegionID")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("CicotiWebApp.Models.Brand", b =>
+                {
+                    b.HasOne("CicotiWebApp.Models.Principle", "Principle")
+                        .WithMany()
+                        .HasForeignKey("PrincipleID")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
             modelBuilder.Entity("CicotiWebApp.Models.Destination", b =>
                 {
                     b.HasOne("CicotiWebApp.Models.Location", "EndLocation")
@@ -2230,6 +2313,11 @@ namespace CicotiWebApp.Data.Migrations
 
             modelBuilder.Entity("CicotiWebApp.Models.SKU", b =>
                 {
+                    b.HasOne("CicotiWebApp.Models.Brand", "Brand")
+                        .WithMany()
+                        .HasForeignKey("BrandID")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("CicotiWebApp.Models.Principle", "Principle")
                         .WithMany()
                         .HasForeignKey("PrincipleID")
@@ -2238,6 +2326,24 @@ namespace CicotiWebApp.Data.Migrations
                     b.HasOne("CicotiWebApp.Models.UOM", "UOM")
                         .WithMany()
                         .HasForeignKey("UOMID")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("CicotiWebApp.Models.SkuUomLink", b =>
+                {
+                    b.HasOne("CicotiWebApp.Models.UOM", "FromUOM")
+                        .WithMany()
+                        .HasForeignKey("FromUOMID")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("CicotiWebApp.Models.SKU", "SKU")
+                        .WithMany()
+                        .HasForeignKey("SKUID")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("CicotiWebApp.Models.UOM", "ToUOM")
+                        .WithMany()
+                        .HasForeignKey("ToUOMID")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 

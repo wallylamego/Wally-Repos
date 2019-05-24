@@ -31,6 +31,7 @@ namespace CicotiWebApp.Data
         public DbSet<JobDescription> JobDescription { get; set; }
         public DbSet<CostCentre> CostCentre { get; set; }
         public DbSet<Branch> Branch { get; set; }
+        public DbSet<Region> Region { get; set; }
         public DbSet<Make> Make { get; set; }
         public DbSet<Model> Models { get; set; }
         public DbSet<DriveType> DriveTypes { get; set; }
@@ -57,6 +58,8 @@ namespace CicotiWebApp.Data
         public DbSet<LoadStatus> LoadStatus { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<SKU> SKUs { get; set;}
+        public DbSet<SkuUomLink> SkuUomLinks { get; set; }
+        public DbSet<Brand> Brand { get; set; }
         public DbSet<ActCostChannel> ActCostChannel { get; set;}
         public DbSet<ActCostWarehouse> ActCostWarehouse {get; set;}
 

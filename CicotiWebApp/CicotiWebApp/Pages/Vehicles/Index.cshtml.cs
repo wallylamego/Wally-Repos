@@ -33,7 +33,7 @@ namespace CicotiWebApp.Pages.Vehicles
 
             //First create the View of the new model you wish to display to the user
             var VehicleQuery = _context.Vehicles
-               .Where(v=>v.VehiclePurposeID ==2)
+               .Where(v=>v.VehiclePurposeID ==2 && v.SubContractorID != 2 )
                .Select(v => new
                {
                    v.VehicleID,

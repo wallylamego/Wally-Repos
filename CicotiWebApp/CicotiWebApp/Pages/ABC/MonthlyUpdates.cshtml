@@ -58,13 +58,13 @@
                     </div>
                     <br />
                 </div>
-                
+
                 <div id="divAccAllocationToPeriod" class="wrapper">
-                        <h5>Update the Account Allocation Per Principle (P4P acc and goodwill)</h5>
-                            <div class="form-group">
-                                <input type="submit" value="Run" class="btn btn-default" id="runAccPrinciple" />
-                            </div>
-                        <p id="runAccAllocationToPeriodMsg"></p>
+                    <h5>Update the Account Allocation Per Principle (P4P acc and goodwill)</h5>
+                    <div class="form-group">
+                        <input type="submit" value="Run" class="btn btn-default" id="runAccPrinciple" />
+                    </div>
+                    <p id="runAccAllocationToPeriodMsg"></p>
                 </div>
                 <br />
                 <div id="divCashCollectionCostPerDepot" class="wrapper">
@@ -98,6 +98,14 @@
                     </div>
                     <p id="runInterCompanyMsg"></p>
                 </div>
+                <br />
+                <div id="divRentCostPerPrincipal" class="wrapper">
+                    <h5>Update Allocation Rental Per Principal </h5>
+                    <div class="form-group">
+                        <input type="submit" value="Run" class="btn btn-default" id="runAllocRental" />
+                    </div>
+                    <p id="runAllocRentalMsg"></p>
+                </div>
             </div> 
             </div>
         </div>
@@ -113,7 +121,7 @@
             </h5>
             
         </div>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
             <div class="row" id="divImportsCheckList">
                 @*<div class="col-xs-offset-0"></div>*@
                 <div class="col-xs-12">
@@ -347,9 +355,11 @@
             $("#runInterCompany").click(function () {
                 DuplicateInterCompanyCost();
             });
+            $("#runAllocRental").click(function () {
+                DuplicateAllocRentalCost();
+            });
             
-            
-            
+          
 
         });//Document Ready end.
 
@@ -883,5 +893,41 @@
                     }
                 });//ajax
         }
+        function DuplicateAllocRentalCost()
+        {
+         console.log("Allocated Rental Cost Update function");
+         var obj = {};
+         var periodFrom = {};
+         var periodTo = {};
+         periodFrom.Period = $("#periodCopyFrom").val();
+         periodTo.Period = $("#periodCopyTo").val();
+         obj.CopyFromPeriod = periodFrom;
+         obj.CopyToPeriod = periodTo;
+         console.log(JSON.stringify(obj));
+
+            $.ajax({
+                type: "POST",
+                url: '/ABC/MonthlyUpdates?handler=RentalCost',
+                headers:
+                    {
+                        "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                    },
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify(obj),
+                success: function (msg) {
+                    $("#modalHeader").text("Rental Cost Update Status");
+                        $("#modalMessage").text(msg);
+                    $("#myModal").modal("show");
+                    $("#runAllocRentalMsg").html(msg);
+                    },
+                    error: function (msg) {
+                        $("#modalHeader").text("Rental Cost Update Status");
+                        $("#modalMessage").text("There is an error");
+                        $("#myModal").modal("show");
+                    }
+                });//ajax
+        }
+        
     </script>
 }

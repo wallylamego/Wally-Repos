@@ -42,12 +42,12 @@ namespace CicotiWebApp.Pages.ABC.OtherIncome
                .Select(Pamt => new
                {
                     Pamt.ActCostAccountAmtPrincipleID
-                   ,principle = Pamt.Principle.PastelName
-                   ,period = Pamt.ActCostPeriod.Period
-                   ,account = Pamt.ActCostAccountID
-                   ,accountName = Pamt.ActCostAccount.Description
-                   ,amount = Pamt.Amount
-                   ,comments = Pamt.Comments
+                   ,Principle = Pamt.Principle.PastelName
+                   ,Period = Pamt.ActCostPeriod.Period
+                   ,Account = Pamt.ActCostAccountID
+                   ,AccountName = Pamt.ActCostAccount.Description
+                   ,Amount = Pamt.Amount
+                   ,Comments = Pamt.Comments
                }
                );
 
@@ -58,10 +58,10 @@ namespace CicotiWebApp.Pages.ABC.OtherIncome
             {
                 PrincipleAmtQuery = PrincipleAmtQuery
                         .Where(
-                d => d.principle.ToLower().Contains(Model.search.value.ToLower()) ||
-                        d.period.ToString().ToLower().Contains(Model.search.value.ToLower()) ||
-                        d.account.ToString().ToLower().Contains(Model.search.value.ToLower()) ||
-                        d.amount.ToString().ToLower().Contains(Model.search.value.ToLower()));
+                d => d.Principle.ToLower().Contains(Model.search.value.ToLower()) ||
+                        d.Period.ToString().ToLower().Contains(Model.search.value.ToLower()) ||
+                        d.Account.ToString().ToLower().Contains(Model.search.value.ToLower()) ||
+                        d.Amount.ToString().ToLower().Contains(Model.search.value.ToLower()));
 
                 filteredResultsCount = PrincipleAmtQuery.Count();
             }

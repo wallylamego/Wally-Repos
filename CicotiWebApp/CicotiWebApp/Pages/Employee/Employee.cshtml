@@ -147,7 +147,7 @@
                     <label class="control-label">Reports To: Name</label>
                 </div>
                 <div class="col-xs-12 col-md-10 col-lg-10 text-left">
-                    <input id="reportsToName" class="form-control" />
+                    <input  asp-for="Employee.ReportsTo.LastName" id="reportsToName" class="form-control" />
                 </div>
             </div>
         </div>
@@ -411,12 +411,12 @@
         
         $('#datetimepicker1').datetimepicker(
             {
-                format: "DD-MM-YYYY",
+                format: "YYYY/MM/DD",
                 date: '@Model.Employee.StartDate'
             });
         $('#datetimepicker2').datetimepicker(
             {
-                format: "DD-MM-YYYY",
+                format: "YYYY/MM/DD",
                 date: '@Model.Employee.EndDate'
             });
 
