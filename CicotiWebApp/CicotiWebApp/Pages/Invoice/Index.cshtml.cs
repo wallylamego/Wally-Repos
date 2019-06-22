@@ -55,11 +55,16 @@ namespace CicotiWebApp.Pages.Invoice
 
 
             var InvoiceQuery = _context.Invoices
+               .Include(a=> a.CustomerAccount)
+               .Include(w=>w.InvoiceProductType)
                .Select(i => new
                {
                    i.InvoiceID,
                    i.InvoiceNumber,
                    i.InvoicePrintDate,
+                   AccountNo = i.CustomerAccount.AccountNumber,
+                   AccountName = i.CustomerAccount.AccountDescription,
+                   i.InvoiceProductType.ProductType,
                    StatusName = i.Status.Name,
                    i.StatusID
                }
@@ -86,9 +91,11 @@ namespace CicotiWebApp.Pages.Invoice
                 InvoiceQuery = InvoiceQuery
                         .Where(
                 i => i.InvoiceNumber.ToLower().Contains(Model.search.value.ToLower()) ||
-                     i.StatusName.ToLower().Contains(Model.search.value.ToLower())
+                     i.StatusName.ToLower().Contains(Model.search.value.ToLower()) ||
+                     i.AccountNo.ToLower().Contains(Model.search.value.ToLower()) ||
+                     i.AccountName.ToLower().Contains(Model.search.value.ToLower()) ||
+                     i.ProductType.ToLower().Contains(Model.search.value.ToLower()) 
                        );
-
                 filteredResultsCount = InvoiceQuery.Count();
             }
             var Result = await InvoiceQuery

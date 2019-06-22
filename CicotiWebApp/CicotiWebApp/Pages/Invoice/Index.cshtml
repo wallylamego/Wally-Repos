@@ -29,6 +29,9 @@
                 <th>InvoiceID</th>
                 <th>Invoice Number</th>
                 <th>Invoice Printed Date</th>
+                <th>Account No</th>
+                <th>Account Name</th>
+                <th>Product</th>
                 <th>Invoice Status</th>
                 <th>Update</th>
                 <th>Select</th>
@@ -174,10 +177,28 @@
                         "targets": [2],
                         "visible": true,
                         "searchable": true
-                        },
+                    },
+                    {
+                        /*Account No is visible and is searchable*/
+                        "targets": [3],
+                        "visible": true,
+                        "searchable": true
+                    },
+                    {
+                        /*Account Name No is visible and is searchable*/
+                        "targets": [4],
+                        "visible": true,
+                        "searchable": true
+                    },
+                    {
+                        /*Product Type is visible and is searchable*/
+                        "targets": [5],
+                        "visible": true,
+                        "searchable": true
+                    },
                     {
                         /*Status is visible and is searchable*/
-                        "targets": [3],
+                        "targets": [6],
                         "visible": true,
                         "searchable": true
                     }
@@ -192,6 +213,9 @@
                             return moment(data).format("DD-MM-YYYY HH:mm");
                         }
                     },
+                    { "data": "accountNo", "name": "accountNo", "autoWidth": true },
+                    { "data": "accountName", "name": "accountName", "autoWidth": true },
+                    { "data": "productType", "name": "productType", "autoWidth": true },
                     { "data": "statusName", "name": "statusName", "autoWidth": true },
                     {
                         'render': function (data, type, full, meta) {

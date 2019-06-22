@@ -42,9 +42,8 @@ namespace CicotiWebApp.Pages.ABC.AccountMovement
                .Select(acc => new
                {
                    acc.ActCostAccountID,
-                   acc.ActCostAccount.MainAccountNo,
-                   AccountName = acc.ActCostAccount.Description,
                    acc.ActCostAccount.AccountNo,
+                   AccountName = acc.ActCostAccount.Description,
                    PeriodNo = acc.ActCostPeriod.Period,
                    acc.Movement,
                    acc.YTD,

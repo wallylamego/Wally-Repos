@@ -33,8 +33,8 @@ namespace CicotiWebApp.Pages.Invoice
             if (InvoiceID != null)
             {
                 Invoice = await _context.Invoices
-                   // .Include(i=>i.)
-                    
+                   .Include(i=>i.CustomerAccount)
+                   .Include(p=>p.InvoiceProductType)
                     .SingleOrDefaultAsync(i=> i.InvoiceID == InvoiceID);
             }
 

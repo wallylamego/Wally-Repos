@@ -9,24 +9,27 @@
         return Xsrf.GetAndStoreTokens(Model.HttpContext).RequestToken;
     }
 }
-@model CicotiWebApp.Pages.ABC.Accounts.AccountTableModel
+@model CicotiWebApp.Pages.ABC.AccountMovement.AccountMovTableModel
 
 @{
-    ViewData["Title"] = "ABC: Account Listing";
+    ViewData["Title"] = "ABC: Account Movement Table";
 }
 
-<h2>Account Listing</h2>
+<h2>Account Balance Listing</h2>
 
 <p>
     <a asp-page="Account">Create New</a>
 </p>
-<div id="divAccountTable" style="width:90%; margin:0 auto;">
-    <table id="AccountTable" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
+<div id="divAccountMovTable" style="width:90%; margin:0 auto;">
+    <table id="AccountMovTable" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
         <thead>
             <tr>
                 <th>AccountID</th>
-                <th>Account Name</th>
                 <th>Account No</th>
+                <th>Account Name</th>
+                <th>Period No</th>
+                <th>Movement</th>
+                <th>YTD</th>
                 <th>Branch</th>
                 <th>Category</th>
                 <th>Sub Category</th>
@@ -47,7 +50,7 @@
     <script type="text/javascript">
         $(document).ready(function ()
         {
-            $("#AccountTable").on('xhr.dt', function (e, settings, json, xhr) {
+            $("#AccountMovTable").on('xhr.dt', function (e, settings, json, xhr) {
             }).DataTable({
                 lengthMenu: [25, 100, 150, 200],
                 dom: '<lfB<t>ip>',
@@ -63,7 +66,7 @@
                 "orderMulti": false, // for disable multiple column at once
                 "ajax": {
 
-                    "url": "/ABC/Accounts/AccountTable?handler=Paging",
+                    "url": "/ABC/AccountMovement/AccountMovTable?handler=Paging",
                      "headers":
                         {
                             "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
@@ -79,13 +82,13 @@
                         "targets": [0],
                         "visible": false,
                         "searchable": false
-                        },
-                        {
-                            /*Account Number is  visible and is searchable*/
-                            "targets": [1],
-                            "visible": true,
-                            "searchable": true
-                        },
+                    },
+                    {
+                        /*Account Number is  visible and is searchable*/
+                        "targets": [1],
+                        "visible": true,
+                        "searchable": true
+                    },
                     {
                         /*accountName is visible and is searchable*/
                         "targets": [2],
@@ -93,45 +96,63 @@
                         "searchable": true
                     },
                     {
-                        /*branch is visible and is searchable*/
+                        /*PeriodNo is visible and is searchable*/
                         "targets": [3],
+                        "visible": true,
+                        "searchable": true
+                    },
+                    {
+                        /*Movement is visible and is searchable*/
+                        "targets": [4],
+                        "visible": true,
+                        "searchable": true
+                    },
+                    {
+                        /*YTD is visible and is searchable*/
+                        "targets": [5],
+                        "visible": true,
+                        "searchable": true
+                    },
+                    {
+                        /*branch is visible and is searchable*/
+                        "targets": [6],
                         "visible": true,
                         "searchable": true
                         },
                         {
                             /*Category is visible and is searchable*/
-                            "targets": [4],
+                            "targets": [7],
                             "visible": true,
                             "searchable": true
                         },
                         {
                             /*Sub Category is visible and is searchable*/
-                            "targets": [5],
+                            "targets": [8],
                             "visible": true,
                             "searchable": true
                         },
                         {
                             /*Cost Driver is visible and is searchable*/
-                            "targets": [6],
+                            "targets": [9],
                             "visible": true,
                             "searchable": true
                         },
                         {
                             /*Allocation Split is visible and is  searchable*/
-                            "targets": [7],
+                            "targets": [10],
                             "visible": true,
                             "searchable": true
                         },
                     {
                         /*Edit button  is  visible and is not searchable*/
-                        "targets": [8],
+                        "targets": [11],
                         "visible": true,
                         "searchable": false,
                         "orderable": false
                     },
                     {
                         /*Delete button  is  visible and is not searchable*/
-                        "targets": [9],
+                        "targets": [12],
                         "visible": true,
                         "searchable": false,
                         "orderable": false
@@ -139,8 +160,11 @@
                 ],
                 "columns": [
                     { "data": "actCostAccountID", "name": "actCostAccountID", "autoWidth": true },
-                    { "data": "accountName", "name": "accountName", "autoWidth": true },
                     { "data": "accountNo", "name": "accountNo", "autoWidth": true },
+                    { "data": "accountName", "name": "accountName", "autoWidth": true },
+                    { "data": "periodNo", "name": "periodNo", "autoWidth": true },
+                    { "data": "movement", "name": "movement", "autoWidth": true },
+                    { "data": "ytd", "name": "ytd", "autoWidth": true },
                     { "data": "branch", "name": "branch", "autoWidth": true },
                     { "data": "category", "name": "category", "autoWidth": true },
                     { "data": "subCategory", "name": "subCategory", "autoWidth": true },
@@ -165,7 +189,7 @@
 
     function DeleteData(ID)
      {
-            if (confirm("Are you sure you want to delete this Account ...?"))
+            if (confirm("Are you sure you want to delete this Account Movement ...?"))
             {
                 console.log(" ID to be deleted is: " + ID)
                 Delete(ID);
@@ -185,7 +209,7 @@
 
             $.ajax({
                 type: "DELETE",
-                url: '/ABC/Accounts/AccountTable?handler=Delete',
+                url: '/ABC/AccountMovement/AccountMovTable?handler=Delete',
                 headers:
                     {
                         "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
@@ -194,22 +218,21 @@
                 dataType: "json",
                 data: JSON.stringify(obj),
                 success: function (msg) {
-                        oTable = $('#AccountTable').DataTable();
+                        oTable = $('#AccountMovTable').DataTable();
                         oTable.draw();
                         $("#msg").html(msg);
-                        $("#modalHeader").text("Account Processing Status");
+                        $("#modalHeader").text("Account Movement Processing Status");
                         $("#modalMessage").text(msg);
                         $("#myModal").modal("show");
                     },
                     error: function () {
                         $("#msg").html("Error while making Ajax call!");
-                        $("#modalHeader").text("Account Processing Status");
+                        $("#modalHeader").text("Account Movement Processing Status");
                         $("#modalMessage").text(msg);
                         $("#myModal").modal("show");
                     }
                 });//ajax
-
-        }
+}
 
     </script>
 }

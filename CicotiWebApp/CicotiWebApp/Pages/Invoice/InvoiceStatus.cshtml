@@ -51,7 +51,11 @@
                         <label asp-for="Invoice.CustomerAccount.AccountDescription" class="control-label">Account Name</label>
                         <input asp-for="Invoice.CustomerAccount.AccountDescription" id="accountDescription" class="form-control" />
                     </div>
-                   </div>
+                    <div class="form-group" id="divProductType">
+                        <label asp-for="Invoice.InvoiceProductType.ProductType" class="control-label">Product Type</label>
+                        <input asp-for="Invoice.InvoiceProductType.ProductType" id="productType" class="form-control" />
+                    </div>
+                </div>
             </div>
         </div>
     </div>
