@@ -53,7 +53,8 @@ namespace CicotiWebApp.Pages.SKU
             {
                 SKUQuery = SKUQuery
                         .Where(
-                c => c.Description.ToLower().Contains(Model.search.value.ToLower())
+                c => c.Description.ToLower().Contains(Model.search.value.ToLower()) ||
+                 c.Code.ToLower().Contains(Model.search.value.ToLower())
                        );
 
                 filteredResultsCount = SKUQuery.Count();

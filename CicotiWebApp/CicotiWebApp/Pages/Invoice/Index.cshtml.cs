@@ -52,8 +52,8 @@ namespace CicotiWebApp.Pages.Invoice
 
 
             //First create the View of the new model you wish to display to the user
-           
-           
+
+
             var InvoiceQuery = _context.Invoices
                .Select(i => new
                {
@@ -69,8 +69,14 @@ namespace CicotiWebApp.Pages.Invoice
             //Those which do not have a status of POD or Cancelled
             if (Model.DeliveryStatus.ToUpper().Contains("DELIVERED"))
                 {
-                    InvoiceQuery = InvoiceQuery.Where(i => i.StatusID != 8).Where(i => i.StatusID != 10);
+                    InvoiceQuery = InvoiceQuery.Where(i => i.StatusID != 8).Where(i => i.StatusID != 10)
+                    .OrderByDescending(i => i.InvoicePrintDate);
                 }
+            else
+            {
+                InvoiceQuery = InvoiceQuery
+                   .OrderByDescending(i => i.InvoicePrintDate);
+            }
 
             totalResultsCount = InvoiceQuery.Count();
             filteredResultsCount = totalResultsCount;
@@ -133,32 +139,50 @@ namespace CicotiWebApp.Pages.Invoice
         public async Task<JsonResult> OnPutUpdate([FromBody] List<InvoiceStatus> InvoiceListing)
         {
             int NewInvoiceStatusID = 0;
+            string InvoiceNotAdded = "WorkFlow Sequence Error: Invoices Not Added: ";
+            int InvProcessedCount = 0;
+            int InvNotProcessedCount = 0;
+
             if (InvoiceListing != null && InvoiceListing.Count() > 0)
+            {
+
                 NewInvoiceStatusID = InvoiceListing.First().StatusID;
                 //First Check if this user can update the Invoice to this Status
-                if( await workFlowRule.WorkFlowRuleRole(NewInvoiceStatusID, HttpContext ))
+                if (await workFlowRule.WorkFlowRuleRole(NewInvoiceStatusID, HttpContext))
                 {
                     try
                     {
                         var UserId = _userManager.GetUserId(HttpContext.User);
                         CicotiWebApp.Models.Invoice InvoiceItem;
-
+                       
                         //Update the Invoice Table in Database
                         foreach (var In in InvoiceListing)
                         {
                             InvoiceItem = _context.Invoices.FirstOrDefault(i => i.InvoiceID == In.InvoiceID);
                             if (workFlowRule.WorFlowRuleSequence(In.StatusID, InvoiceItem.StatusID))
-                                {
-                                    In.UserID = UserId;
-                                    InvoiceItem.StatusID = In.StatusID;
-                                    _context.Attach(InvoiceItem).State = EntityState.Modified;
-                                    _context.Add(In);
-                                    await _context.SaveChangesAsync();
-                                }
+                            {
+                                In.UserID = UserId;
+                                InvoiceItem.StatusID = In.StatusID;
+                                _context.Attach(InvoiceItem).State = EntityState.Modified;
+                                _context.Add(In);
+                                await _context.SaveChangesAsync();
+                                InvProcessedCount += InvProcessedCount + 1;
                             }
-                        
-                        return new JsonResult("Invoice Status successfully");
-                        
+                            else
+                            {
+                                InvNotProcessedCount += InvNotProcessedCount + 1;
+                                InvoiceNotAdded +=  InvoiceItem.InvoiceNumber + "; ";
+                            }
+                        }
+                        if (InvNotProcessedCount == 0)
+                        {
+                            return new JsonResult("Success: No of Invoices Processed -" + InvProcessedCount);
+                        }
+                        else
+                        {
+                            return new JsonResult("No of Invoices Processed Successfully: " + InvProcessedCount +" . " + "No of Invoices Not Processed:" + InvNotProcessedCount + "; " + InvoiceNotAdded);
+                        }
+
                     }
                     catch (DbUpdateException d)
                     {
@@ -167,10 +191,10 @@ namespace CicotiWebApp.Pages.Invoice
                 }
                 else
                 {
-                    return new JsonResult("Invoice Status not Updated. You may not have rights to update to this Invoice Status.");
+                    return new JsonResult("Invoice Status not Updated. You do not have rights to update to this Invoice Status.");
                 }
-        
-           
+            }//Nothing has been selected for updating
+            return new JsonResult("You have not selected Deliveries / Invoices for Updating");
         }
     }
 }

@@ -100,7 +100,6 @@
         function updateAccountInputFields(data) {
             var selectedAccount = {};
             selectedAccount = JSON.parse(data);
-            alert("in Selected Account");
             console.log(selectedAccount.actCostAccountID);
             $("#actCostAccountID").val(selectedAccount.actCostAccountID);
             $("#description").val(decodeURIComponent(selectedAccount.accountName));

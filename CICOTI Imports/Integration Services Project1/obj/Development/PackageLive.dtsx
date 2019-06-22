@@ -11,8 +11,8 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="PackageLive"
   DTS:PackageType="5"
-  DTS:VersionBuild="19"
-  DTS:VersionGUID="{BF5E943C-A899-4BD3-B047-CBE032F5E35B}">
+  DTS:VersionBuild="21"
+  DTS:VersionGUID="{FD07D854-1215-4AD2-8298-B47D895FABAF}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAbF26Zi3FRkOEhd/YP64L/QAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACZ+KulNrRlI+1/R7pHwOtmAAAAAASAAACgAAAAEAAAAE25BXvIHuPrM8L359vdFgAgAAAAdsCfrN/fDtMhPv6H1y8kQ7ZOKWo4DHxtCGEoicVBm1IUAAAAsUkcoyWmEkjC50O5xA9riyyd2YE</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAbF26Zi3FRkOEhd/YP64L/QAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABqvOOFWBK0zRU2CwzSgc1QAAAAAASAAACgAAAAEAAAAMblJ/54Rvs62mPjuDKDjwkgAAAAbZa59eU8a7nDVmofBOTrMuYRvVnkmV62xPx5d5S8uOIUAAAAXcGjDgigwbBkLfH5vKsI+UraH1Q</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -2232,6 +2232,14 @@
           Id="Package\Delete Data From Vehicle ABC"
           TopLeft="387.5,35.5" />
         <NodeLayout
+          Size="170,42"
+          Id="Package\Get Sales Rep Data"
+          TopLeft="16.5,171.5" />
+        <NodeLayout
+          Size="215.5,42"
+          Id="Package\Get Sales Rep Employee Link"
+          TopLeft="216.5,173.5" />
+        <NodeLayout
           Size="212.5,42"
           Id="Package\Get Updated Employee Data"
           TopLeft="56,117.25" />
@@ -2295,22 +2303,168 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="170,42"
-          Id="Package\Get Sales Rep Data"
-          TopLeft="16.5,171.5" />
-        <NodeLayout
-          Size="215.5,42"
-          Id="Package\Get Sales Rep Employee Link"
-          TopLeft="216.5,173.5" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\Get Updated Employee Data">
+    design-time-name="Package\Get Sales Rep Data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Get Sales Rep Data\OLE DB Source"
+          TopLeft="133.5,20.75" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Get Sales Rep Data\OLE DB Destination"
+          TopLeft="114.75,83.25" />
+        <EdgeLayout
+          Id="Package\Get Sales Rep Data.Paths[OLE DB Source Output]"
+          TopLeft="283.5,41.75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="2.25,62.5"
+              Start="0,0"
+              End="9.75,62.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="20.75,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="20.75,0"
+                    Point2="24.75,0"
+                    Point3="24.75,4" />
+                  <mssgle:LineSegment
+                    End="24.75,58.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="24.75,58.5"
+                    Point2="24.75,62.5"
+                    Point3="20.75,62.5" />
+                  <mssgle:LineSegment
+                    End="9.75,62.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Get Sales Rep Data\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Get Sales Rep Data\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Get Sales Rep Employee Link">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Get Sales Rep Employee Link\OLE DB Source"
+          TopLeft="217,10" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Get Sales Rep Employee Link\OLE DB Destination"
+          TopLeft="263.5,119" />
+        <EdgeLayout
+          Id="Package\Get Sales Rep Employee Link.Paths[OLE DB Source Output]"
+          TopLeft="292,52">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="57,67"
+              Start="0,0"
+              End="57,59.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.5"
+                    Point2="0,33.5"
+                    Point3="4,33.5" />
+                  <mssgle:LineSegment
+                    End="53,33.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="53,33.5"
+                    Point2="57,33.5"
+                    Point3="57,37.5" />
+                  <mssgle:LineSegment
+                    End="57,59.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Get Sales Rep Employee Link\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Get Sales Rep Employee Link\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Get Updated Employee Data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="199.5,42"
           Id="Package\Get Updated Employee Data\Get Azure Employee Data"
@@ -2350,9 +2504,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2439,158 +2591,6 @@
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Get Updated Vehicle Data\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Get Sales Rep Data">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="150,42"
-          Id="Package\Get Sales Rep Data\OLE DB Source"
-          TopLeft="133.5,20.75" />
-        <NodeLayout
-          Size="171,42"
-          Id="Package\Get Sales Rep Data\OLE DB Destination"
-          TopLeft="114.75,83.25" />
-        <EdgeLayout
-          Id="Package\Get Sales Rep Data.Paths[OLE DB Source Output]"
-          TopLeft="283.5,41.75">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="2.25,62.5"
-              Start="0,0"
-              End="9.75,62.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="20.75,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="20.75,0"
-                    Point2="24.75,0"
-                    Point3="24.75,4" />
-                  <mssgle:LineSegment
-                    End="24.75,58.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="24.75,58.5"
-                    Point2="24.75,62.5"
-                    Point3="20.75,62.5" />
-                  <mssgle:LineSegment
-                    End="9.75,62.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Get Sales Rep Data\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Get Sales Rep Data\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Get Sales Rep Employee Link">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="150,42"
-          Id="Package\Get Sales Rep Employee Link\OLE DB Source"
-          TopLeft="217,10" />
-        <NodeLayout
-          Size="171,42"
-          Id="Package\Get Sales Rep Employee Link\OLE DB Destination"
-          TopLeft="263.5,119" />
-        <EdgeLayout
-          Id="Package\Get Sales Rep Employee Link.Paths[OLE DB Source Output]"
-          TopLeft="292,52">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="57,67"
-              Start="0,0"
-              End="57,59.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,29.5"
-                    Point2="0,33.5"
-                    Point3="4,33.5" />
-                  <mssgle:LineSegment
-                    End="53,33.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="53,33.5"
-                    Point2="57,33.5"
-                    Point3="57,37.5" />
-                  <mssgle:LineSegment
-                    End="57,59.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Get Sales Rep Employee Link\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Get Sales Rep Employee Link\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

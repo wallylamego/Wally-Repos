@@ -11,8 +11,8 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="MonthlyStockImport"
   DTS:PackageType="5"
-  DTS:VersionBuild="36"
-  DTS:VersionGUID="{769AD4A3-3F25-4FC7-AF17-E7A9B1A37C26}">
+  DTS:VersionBuild="40"
+  DTS:VersionGUID="{C8C22F0F-4167-45A8-9723-A5C2BCCE1A91}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -351,7 +351,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="ActPeriodID">
       <DTS:VariableValue
-        DTS:DataType="3">39</DTS:VariableValue>
+        DTS:DataType="3">41</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -360,7 +360,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="PeriodNo">
       <DTS:VariableValue
-        DTS:DataType="8">201903</DTS:VariableValue>
+        DTS:DataType="8">201905</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -909,6 +909,81 @@
                       refId="Package\ImportStockData\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\ImportStockData\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ImportStockData\Get Rid of Spaces in Code"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Get Rid of Spaces in Code"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\ImportStockData\Get Rid of Spaces in Code.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ImportStockData\Get Rid of Spaces in Code.Inputs[Derived Column Input].Columns[code]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="code"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\ImportStockData\Flat File Source.Outputs[Flat File Source Output].Columns[code]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[TRIM](#{Package\ImportStockData\Flat File Source.Outputs[Flat File Source Output].Columns[code]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">TRIM(code)</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ImportStockData\Get Rid of Spaces in Code.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\ImportStockData\Get Rid of Spaces in Code.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\ImportStockData\Get Rid of Spaces in Code.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\ImportStockData\Get Rid of Spaces in Code.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ImportStockData\Get Rid of Spaces in Code.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ImportStockData\Get Rid of Spaces in Code.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ImportStockData\Get Rid of Spaces in Code.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ImportStockData\Get Rid of Spaces in Code.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1588,6 +1663,11 @@ where [refTable].[Code] = ?</property>
               name="Derived Column Output"
               startId="Package\ImportStockData\Add Act Cost  PeriodID.Outputs[Derived Column Output]" />
             <path
+              refId="Package\ImportStockData.Paths[Derived Column Output1]"
+              endId="Package\ImportStockData\LookUp SKU ID.Inputs[Lookup Input]"
+              name="Derived Column Output"
+              startId="Package\ImportStockData\Get Rid of Spaces in Code.Outputs[Derived Column Output]" />
+            <path
               refId="Package\ImportStockData.Paths[Flat File Source Output]"
               endId="Package\ImportStockData\LookUp BranchID.Inputs[Lookup Input]"
               name="Flat File Source Output"
@@ -1599,19 +1679,19 @@ where [refTable].[Code] = ?</property>
               startId="Package\ImportStockData\LookUp SKU ID.Outputs[Lookup Error Output]" />
             <path
               refId="Package\ImportStockData.Paths[Lookup Match Output]"
-              endId="Package\ImportStockData\LookUp SKU ID.Inputs[Lookup Input]"
-              name="Lookup Match Output"
-              startId="Package\ImportStockData\LookUp BranchID.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\ImportStockData.Paths[Lookup Match Output1]"
               endId="Package\ImportStockData\Add Act Cost  PeriodID.Inputs[Derived Column Input]"
               name="Lookup Match Output"
               startId="Package\ImportStockData\LookUp SKU ID.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\ImportStockData.Paths[Lookup Match Output2]"
+              refId="Package\ImportStockData.Paths[Lookup Match Output1]"
               endId="Package\ImportStockData\Stock Table.Inputs[OLE DB Destination Input]"
               name="Lookup Match Output"
               startId="Package\ImportStockData\Look Up Principle ID.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\ImportStockData.Paths[Lookup Match Output2]"
+              endId="Package\ImportStockData\Get Rid of Spaces in Code.Inputs[Derived Column Input]"
+              name="Lookup Match Output"
+              startId="Package\ImportStockData\LookUp BranchID.Outputs[Lookup Match Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -1718,7 +1798,7 @@ where [refTable].[Code] = ?</property>
           Id="Package\ImportStockData\Add Act Cost  PeriodID"
           TopLeft="426.25,235" />
         <EdgeLayout
-          Id="Package\ImportStockData.Paths[Lookup Match Output2]"
+          Id="Package\ImportStockData.Paths[Lookup Match Output1]"
           TopLeft="544.125,375.75">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -1754,7 +1834,7 @@ where [refTable].[Code] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\ImportStockData.Paths[Lookup Match Output1]"
+          Id="Package\ImportStockData.Paths[Lookup Match Output]"
           TopLeft="484.083333333333,188">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -1786,30 +1866,6 @@ where [refTable].[Code] = ?</property>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="-30.4830533854167,24.0956749672346,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\ImportStockData.Paths[Lookup Match Output]"
-          TopLeft="462.875,100">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,46"
-              Start="0,0"
-              End="0,38.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,38.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,13.4453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1917,6 +1973,80 @@ where [refTable].[Code] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="201,42"
+          Id="Package\ImportStockData\Get Rid of Spaces in Code"
+          TopLeft="640.625,110" />
+        <EdgeLayout
+          Id="Package\ImportStockData.Paths[Lookup Match Output2]"
+          TopLeft="546,79">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="94.625,46.3333333333333"
+              Start="0,0"
+              End="87.125,46.3333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="50.6915137614679,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="50.6915137614679,0"
+                    Point2="54.6915137614679,0"
+                    Point3="54.6915137614679,4" />
+                  <mssgle:LineSegment
+                    End="54.6915137614679,42.3333333333333" />
+                  <mssgle:CubicBezierSegment
+                    Point1="54.6915137614679,42.3333333333333"
+                    Point2="54.6915137614679,46.3333333333333"
+                    Point3="58.6915137614679,46.3333333333333" />
+                  <mssgle:LineSegment
+                    End="87.125,46.3333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="6.50012704271789,-17.609375,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ImportStockData.Paths[Derived Column Output1]"
+          TopLeft="640.625,136.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-104.875,30.3333333333333"
+              Start="0,0"
+              End="-97.375,30.3333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-40.2591743119266,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-40.2591743119266,0"
+                    Point2="-44.2591743119266,0"
+                    Point3="-44.2591743119266,4" />
+                  <mssgle:LineSegment
+                    End="-44.2591743119266,26.3333333333333" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-44.2591743119266,26.3333333333333"
+                    Point2="-44.2591743119266,30.3333333333333"
+                    Point3="-48.2591743119266,30.3333333333333" />
+                  <mssgle:LineSegment
+                    End="-97.375,30.3333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -1926,7 +2056,7 @@ where [refTable].[Code] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>

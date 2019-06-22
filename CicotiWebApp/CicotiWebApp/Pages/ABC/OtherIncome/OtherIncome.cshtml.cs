@@ -61,6 +61,7 @@ namespace CicotiWebApp.Pages.ABC.OtherIncome
                 d => d.Principle.ToLower().Contains(Model.search.value.ToLower()) ||
                         d.Period.ToString().ToLower().Contains(Model.search.value.ToLower()) ||
                         d.Account.ToString().ToLower().Contains(Model.search.value.ToLower()) ||
+                        d.Comments.ToString().ToLower().Contains(Model.search.value.ToLower()) ||
                         d.Amount.ToString().ToLower().Contains(Model.search.value.ToLower()));
 
                 filteredResultsCount = PrincipleAmtQuery.Count();

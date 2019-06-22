@@ -85,7 +85,6 @@
             $('#update').click(function () {
                 var arrInv = [];
                 var InvItem = new Object();
-                $("#loader").show();
                 $('input[type="checkbox"]').each(function () {
                     //if checkbox is checked
                     if (this.checked) {
@@ -102,7 +101,14 @@
                     console.log("Item in Array: " + i);
                     console.log(arrInv[i].invoiceID);
                 }
-                ajaxInvoiceUpdate(arrInv);
+                if (arrInv.length > 0) {
+                    ajaxInvoiceUpdate(arrInv);
+                }
+                else { 
+                $("#modalHeader").text("Invoice Processing Status");
+                $("#modalMessage").text("You have not Selected any Invoices / Deliveries for Updating");
+                $("#myModal").modal("show");
+            }
 
             });
 
@@ -115,6 +121,12 @@
                 //dom: '<lfB<t><"top"i>p>',
                 "dom": '<"top"lBfp><"top"i>rt<><"clear">',
                 buttons: ['excel', 'copy', 'csv', 'pdf', 'print'],
+                "drawCallback": function (settings) {
+                    $("#loader").hide();
+                },
+                "initComplete": function (settings, json) {
+                    $("#loader").hide();
+                },
                 "fixedHeader": {
                     "header": true,
                     "footer": true
@@ -138,7 +150,11 @@
                         //d.filterItemID = 4;
                         d.deliveryStatus = deliveryStatus;
                     },
-                    "datatype": "json"
+                    "datatype": "json",
+                    "beforeSend": function () {
+                        $(window).scrollTop(0);
+                        $("#loader").show();
+                    },
                 },
                 "columnDefs":
                 [   {
@@ -209,7 +225,11 @@
                         },
                     contentType: "application/json",
                     dataType: "json",
-                    data: JSON.stringify(obj),
+                data: JSON.stringify(obj),
+                beforeSend: function () {
+                    $(window).scrollTop(0);
+                    $("#loader").show();
+                },
                 success: function (data) {
                         $("#loader").hide();
                         console.log(data);

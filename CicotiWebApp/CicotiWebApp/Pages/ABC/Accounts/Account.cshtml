@@ -1,4 +1,4 @@
-﻿@page  "{ID?}"
+﻿@page  "{AccountID?}"
 
 @inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
 @functions{
@@ -7,7 +7,7 @@
         return Xsrf.GetAndStoreTokens(Model.HttpContext).RequestToken;
     }
 }
-@model CicotiWebApp.Pages.Drivers.DriverModel
+@model CicotiWebApp.Pages.ABC.Accounts.AccountModel
 
 @{
     ViewData["Title"] = "ABC: Account";
@@ -18,73 +18,75 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <input type="hidden" asp-for="Driver.EmployeeID" id="employeeID" />
-        <input type="hidden" asp-for="Driver.DriverID" id="driverID" />
+       
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="form-group">
-            <label asp-for="Driver.SubContractor.Name" class="control-label"></label>
-            <select asp-for="Driver.SubContractorID" id="subContractorID"
-                    asp-items="Model.SubContractorSL" class="form-control">
-                Invoice Status
-                <option value="">--Select SubContractor--</option>
+        <div class="form-group" id="divActCostAccountID">
+            <label asp-for="Account.ActCostAccountID" class="control-label"></label>
+            <input asp-for="Account.ActCostAccountID" class="form-control" id="actCostAccountID" />
+            <span asp-validation-for="Account.ActCostAccountID" class="text-danger"></span>
+        </div>
+        <div class="form-group" id="divAccountNo">
+            <label asp-for="Account.AccountNo" class="control-label"></label>
+            <input asp-for="Account.AccountNo" class="form-control" id="accountNo" />
+            <span asp-validation-for="Account.AccountNo" class="text-danger"></span>
+        </div>
+        <div class="form-group" id="divBranch">
+            <label asp-for="Account.Branch.BranchName" class="control-label"></label>
+            <select asp-for="Account.BranchID" id="branchID"
+                    asp-items="Model.BranchSL" class="form-control">
+                <option value="">--Select Branch--</option>
             </select>
-            <span asp-validation-for="Driver.SubContractorID" class="text-danger"></span>
+            <span asp-validation-for="Account.BranchID" class="text-danger"></span>
         </div>
-        <div id="EmployeeSection">
-            <div class="input-group" id="divEmployeeBtns">
-                <span class="input-group-btn">
-                    <input type="button" value="Find Employee." class="btn btn-default" id="findEmployeeBtn" />
-                </span>
-                @*<span class="input-group-btn">
-                        <input type="button" value="Show Employee" class="btn btn-default" id="showEmployeeBtn" />
-                    </span>*@
-            </div>
-            <br />
-
-            <div id="divEmployeeTable" style="width:90%; margin:0 auto;">
-                <table id="EmployeeTable" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>EmployeeID</th>
-                            <th>Employee Number</th>
-                            <th>Name</th>
-                            <th>Job Description</th>
-                            <th>Department</th>
-                            <th>Branch</th>
-                            <th>Cost Centre</th>
-                            <th>Select</th>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
+        <div class="form-group" id="divAccDescription">
+            <label asp-for="Account.Description" class="control-label"></label>
+            <input asp-for="Account.Description" class="form-control" id="description" />
+            <span asp-validation-for="Account.Description" class="text-danger"></span>
         </div>
-
-        <div class="form-group">
-            <label asp-for="Driver.FirstName" class="control-label"></label>
-            <input asp-for="Driver.FirstName" class="form-control" id="firstName" />
-            <span asp-validation-for="Driver.FirstName" class="text-danger"></span>
+        <div class="form-group" id="divCategory">
+            <label asp-for="Account.ActCostCategory.Description" class="control-label"></label>
+            <select asp-for="Account.ActCostCategoryID" id="actCostCategoryID"
+                    asp-items="Model.CategorySL" class="form-control">
+                <option value="">--Select Category--</option>
+            </select>
+            <span asp-validation-for="Account.ActCostCategoryID" class="text-danger"></span>
         </div>
-        <div class="form-group">
-            <label asp-for="Driver.Surname" class="control-label"></label>
-            <input asp-for="Driver.Surname" class="form-control" id="surname" />
-            <span asp-validation-for="Driver.Surname" class="text-danger"></span>
+        <div class="form-group" id="divMainAccountNo">
+            <label asp-for="Account.MainAccountNo" class="control-label"></label>
+            <input asp-for="Account.MainAccountNo" class="form-control" id="mainAccountNo" />
+            <span asp-validation-for="Account.MainAccountNo" class="text-danger"></span>
         </div>
-
-        <div class="form-group">
-            <label asp-for="Driver.CellNumber" class="control-label"></label>
-            <input asp-for="Driver.CellNumber" class="form-control" id="cellNumber" />
-            <span asp-validation-for="Driver.CellNumber" class="text-danger"></span>
+        <div class="form-group" id="divCostDriver">
+            <label asp-for="Account.ActCostDriver.Description" class="control-label"></label>
+            <select asp-for="Account.ActCostDriverID" id="actCostDriverID"
+                    asp-items="Model.CostDriverSL" class="form-control">
+                <option value="">--Select Cost Driver--</option>
+            </select>
+            <span asp-validation-for="Account.ActCostDriverID" class="text-danger"></span>
         </div>
-        <div class="form-group">
-            <label asp-for="Driver.PDPExpiryDate" class="control-label"></label>
-            <input asp-for="Driver.PDPExpiryDate" class="form-control" id="pdpExpiryDate" />
-            <span asp-validation-for="Driver.PDPExpiryDate" class="text-danger"></span>
+        <div class="form-group" id="divActCostAllocationSplit">
+            <label asp-for="Account.ActCostAllocationSplit.Description" class="control-label"></label>
+            <select asp-for="Account.ActCostAllocationSplitID" id="actCostAllocationSplitID"
+                    asp-items="Model.CostAllocationSL" class="form-control">
+                <option value="">--Select Cost Allocation Split--</option>
+            </select>
+            <span asp-validation-for="Account.ActCostAllocationSplitID" class="text-danger"></span>
         </div>
-
-        <div class="form-group">
-            <label asp-for="Driver.IDNumber" class="control-label"></label>
-            <input asp-for="Driver.IDNumber" class="form-control" />
-            <span asp-validation-for="Driver.IDNumber" class="text-danger"></span>
+        <div class="form-group" id="divActCostSubCategory">
+            <label asp-for="Account.ActCostSubCategoryID" class="control-label"></label>
+            <select asp-for="Account.ActCostSubCategoryID" id="actCostSubCategoryID"
+                    asp-items="Model.SubCategorySL" class="form-control">
+                <option value="">--Select Sub Category--</option>
+            </select>
+            <span asp-validation-for="Account.ActCostSubCategoryID" class="text-danger"></span>
+        </div>
+        <div class="form-group" id="divAccountType">
+            <label asp-for="Account.ActCostAccountType.Description" class="control-label"></label>
+            <select asp-for="Account.ActCostAccountTypeID" id="actCostAccountTypeID"
+                    asp-items="Model.AccountTypeSL" class="form-control">
+                <option value="">--Select AccountType--</option>
+            </select>
+            <span asp-validation-for="Account.ActCostAccountTypeID" class="text-danger"></span>
         </div>
         <div class="form-group">
             <input type="submit" value="Save" class="btn btn-default" id="savebtn" />
@@ -93,7 +95,7 @@
 </div>
 
 <div>
-    <a asp-page="Index">Back to List</a>
+    <a asp-page="AccountTable">Back to List</a>
 </div>
 
 @section Scripts {
@@ -102,127 +104,13 @@
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 
     <script type="text/javascript">
-        var driverToSave = {};
-        function updateEmployeeInputFields(data) {
-            var selectedEmployee = {};
-            selectedEmployee = JSON.parse(data);
-            console.log(selectedEmployee.employeeID);
-            $("#employeeID").val(selectedEmployee.EmployeeID);
-            $("#firstName").val(decodeURIComponent(selectedEmployee.name));
-            $("#surname").val(decodeURIComponent(selectedEmployee.name));
-          //  $("#divEmployeeInputFieldsSection").show();
-            $("#divEmployeeTable").hide();
-        //    $('#showEmployeeBtn').val("Hide Employee Details");
-        }
-
-        function GetEmployeeData() {
-             $("#EmployeeTable").on('xhr.dt', function (e, settings, json, xhr) {
-            }).DataTable({
-                lengthMenu: [25, 100, 150, 200],
-                dom: '<lfB<t>ip>',
-                buttons: ['excel', 'copy', 'csv', 'pdf', 'print'],
-                "fixedHeader": {
-                    "header": true,
-                    "footer": true
-                },
-                "responsive": true,
-                "processing": true, // for show progress bar
-                "serverSide": true, // for process server side
-                "filter": true, // this is for disable filter (search box)
-                "orderMulti": false, // for disable multiple column at once
-                "ajax": {
-
-                    "url": "/Employee/Index?handler=Paging",
-                     "headers":
-                        {
-                            "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
-                        },
-                    "type": "POST",
-                    /*"contentType": "application/x-www-form-urlencoded",*/
-                    "datatype": "json"
-                },
-                "columnDefs":
-                [   {
-                        /*Employee ID is not visible and is not searchable*/
-                        "targets": [0],
-                        "visible": false,
-                        "searchable": true
-                    },
-                    {
-                        /*Reports To Employee No is visible and is searchable*/
-                        "targets": [1],
-                        "visible": false,
-                        "searchable": true
-                    },
-                    {
-                        /*Name is visible and is not searchable*/
-                        "targets": [2],
-                        "visible": true,
-                        "searchable": true,
-                        "orderable": true
-                    },
-                    {
-                        /*Job Description is visible and is not searchable*/
-                        "targets": [3],
-                        "visible": true,
-                        "searchable": true,
-                        "orderable": true
-                    },
-                    {
-                        /*Department is visible and is not searchable*/
-                        "targets": [4],
-                        "visible": true,
-                        "searchable": true,
-                        "orderable": true
-                    },
-                    {
-                        /*Branch  is visible and is not searchable*/
-                        "targets": [5],
-                        "visible": true,
-                        "searchable": true,
-                        "orderable": true
-                    },
-                    {
-                        /*Cost Centre is visible and is not searchable*/
-                        "targets": [6],
-                        "visible": true,
-                        "searchable": true,
-                        "orderable": true
-                    },
-                    {
-                        /*Select button  is  visible and is not searchable*/
-                        "targets": [7],
-                        "visible": true,
-                        "searchable": false,
-                        "orderable": false
-                    }
-                ],
-                "columns": [
-                    { "data": "employeeID", "name": "employeeID", "autoWidth": true },
-                    { "data": "employeeNo", "name": "employeeNo", "autoWidth": true },
-                    { "data": "name", "name": "make", "autoWidth": true },
-                    { "data": "jobDescription", "name": "jobDescription", "autoWidth": true },
-                    { "data": "department", "name": "department", "autoWidth": true },
-                    { "data": "branch", "name": "branch", "autoWidth": true },
-                    { "data": "costCentre", "name": "costCentre", "autoWidth": true },
-                    {
-                        "render": function (data, type, full, meta) {
-                            var selectedEmployee = {};
-                            selectedEmployee.EmployeeID = full.employeeID;
-                            selectedEmployee.name = encodeURIComponent(full.name);
-                            return "<p data-placement='top' data-toggle='tooltip' title='Select'><button id='btnModel' class='btn btn-primary btn-xs' data-title='Select' data-toggle='modal' data-target='#edit' onclick=updateEmployeeInputFields('" + JSON.stringify(selectedEmployee) + "')><span class='glyphicon glyphicon-pencil'></span></button></p>";
-                        }
-                    }
-                ]
-            });//Employee Table
-        }
-
-        function ajaxDriverUpdate(obj) {
-        console.log("ajaxDriverUpdate Function runs: " + JSON.stringify(obj));
+        var accountToSave = {};
+        
+        function ajaxAccountUpdate(obj) {
+        console.log("ajaxAccountUpdate Function runs: " + JSON.stringify(obj));
             $.ajax({
                 type: "PUT",
-                url: "/Drivers/Driver?handler=UpdateDriver",
-
+                url: "/ABC/Accounts/Account?handler=UpdateAccount",
                 headers:
                 {
                     "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
@@ -232,25 +120,25 @@
                 data: JSON.stringify(obj),
                 success: function (data) {
                     console.log(data);
-                    console.log("Driver Data successfully returned from DataBase");
-                    $("#modalHeader").text("Driver Processing Status");
-                    $("#modalMessage").text($("#driverID").val() + " was updated.");
+                    console.log("Account successfully returned from DataBase");
+                    $("#modalHeader").text("Account Processing Status");
+                    $("#modalMessage").text($("#actCostAccountID").val() + " was updated.");
                     $("#myModal").modal("show");
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
 
-                        $("#modalHeader").text("Driver Processing Status");
-                        $("#modalMessage").text("Driver was not updated.");
+                        $("#modalHeader").text("Account Processing Status");
+                        $("#modalMessage").text("Account was not updated.");
                         $("#myModal").modal("show");
                     }
                 });//ajax Update Section 1
         }
 
-        function ajaxDriverInsert(obj) {
-            console.log("Driver: in Insert Ajax Call: " + JSON.stringify(obj));
+        function ajaxAccountInsert(obj) {
+            console.log("Account: in Insert Ajax Call: " + JSON.stringify(obj));
             $.ajax({
                 type: "POST",
-                url: "/Drivers/Driver?handler=InsertDriver",
+                url: "/ABC/Accounts/Account?handler=InsertAccount",
                     headers:
                         {
                             "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
@@ -259,13 +147,14 @@
                     dataType: "json",
                     data: JSON.stringify(obj),
                     success: function (data) {
-                        $("#modalHeader").text("Driver Processing Status");
-                        $("#modalMessage").text(data.driverID + " was inserted.");
+                        $("#modalHeader").text("Account Processing Status");
+                        $("#modalMessage").text(data.actCostAccountID + " was inserted.");
+                        $('#actCostAccountID').val(data.actCostAccountID);
                         $("#myModal").modal("show");
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
-                        $("#modalHeader").text("Driver Processing Status");
-                        $("#modalMessage").text("Driver Data Not Updated.");
+                        $("#modalHeader").text("Account Processing Status");
+                        $("#modalMessage").text("Account Data Not Updated.");
                         $("#myModal").modal("show");
                     }
                 });//ajax insert
@@ -273,58 +162,26 @@
 
         $(document).ready(function () {
             $('#savebtn').click(function () {
-                driverToSave.driverID = $('#driverID').val();
-                driverToSave.subContractorID = $('#subContractorID').val();
-                driverToSave.employeeID = $('#employeeID').val();
-                driverToSave.firstName = $('#firstName').val();
-                driverToSave.surname = $('#surname').val();
-                driverToSave.lastName = $('#lastName').val();
-                if ($('#cellNumber').val().length > 0) {
-                    driverToSave.cellNumber = $('#cellNumber').val();
+                accountToSave.actCostAccountID = $('#actCostAccountID').val();
+                accountToSave.accountNo = $('#accountNo').val();
+                accountToSave.branchID = $('#branchID').val();
+                accountToSave.description = $('#description').val();
+                accountToSave.actCostCategoryID = $('#actCostCategoryID').val();
+                accountToSave.mainAccountNo = $('#mainAccountNo').val();
+                accountToSave.actCostDriverID = $('#actCostDriverID').val();
+                accountToSave.actCostAllocationSplitID = $('#actCostAllocationSplitID').val();
+                accountToSave.actCostSubCategoryID = $('#actCostSubCategoryID').val();
+                accountToSave.actCostAccountTypeID = $('#actCostAccountTypeID').val();
+
+                if ($('#actCostAccountID').val().length > 0 && $('#actCostAccountID').val() > 0) {
+                    ajaxAccountUpdate(accountToSave);
                 }
                 else {
-                    driverToSave.cellNumber = '0';
-                }
-
-                driverToSave.pdpExpiryDate = $('#pdpExpiryDate').val();
-
-                driverToSave.idNumber = $('#idNumber').val();
-
-                if ($('#driverID').val().length > 0 && $('#driverID').val() > 0) {
-                    ajaxDriverUpdate(driverToSave);
-                }
-                else {
-                    ajaxDriverInsert(driverToSave);
+                    accountToSave.actCostAccountID = 0;
+                    ajaxAccountInsert(accountToSave);
                 }
             });
 
-            //hide the Reports To table and the Reports To capture fields when the form starts up
-            $("#divEmployeeTable").hide();
-          //  $("#divEmployeeInputFieldsSection").hide();
-          //  $("#EmployeeName").prop("disabled", true);
-
-
-            //Find Model
-            $('#findEmployeeBtn').click(function () {
-                $("#divEmployeeTable").show();
-                //$('#divEmployeeInputFieldsSection').hide();
-                if (!$.fn.DataTable.isDataTable('#EmployeeTable')) {
-                    GetEmployeeData();
-                }
-            });
-            //Show and Hide Model Button
-            //$('#showEmployeeBtn').click(function () {
-            //    if ($('#showEmployeeBtn').val() == "Show Employee Details") {
-            //        $("#divEmployeeTable").hide();
-            //        $('#divEmployeeInputFieldsSection').show();
-            //        $('#showEmployeeBtn').val("Hide Employee Details");
-            //    }
-            //    else {
-            //        $("#divEmployeeTable").hide();
-            //        $('#divEmployeeInputFieldsSection').hide();
-            //        $('#showEmployeeBtn').val("Show Employee Details");
-            //    }
-            //});
 
    });//Document Ready end.
 

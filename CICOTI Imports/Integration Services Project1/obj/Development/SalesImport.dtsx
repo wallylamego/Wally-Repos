@@ -11,8 +11,8 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="SalesImport"
   DTS:PackageType="5"
-  DTS:VersionBuild="5"
-  DTS:VersionGUID="{D7699CEC-46C0-4A59-B0B2-4A79D9E4314B}">
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{599DC7B8-B1F5-41E2-9731-913E0FEB2FDF}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -292,13 +292,13 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">4</property>
+                          name="Expression">5</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">4</property>
+                          name="FriendlyExpression">5</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -445,13 +445,13 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">201904</property>
+                          name="Expression">201905</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">201904</property>
+                          name="FriendlyExpression">201905</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -498,7 +498,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[SalesErrorBranches]</property>
+                  name="OpenRowset">[Error Branches]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -913,7 +913,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[SalesErrorPrincipals]</property>
+                  name="OpenRowset">[ErrorPrincipalSales]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -2823,7 +2823,7 @@ where [refTable].[Pastel Principle] = ?</property>
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[SalesInitialErrors]</property>
+                  name="OpenRowset">[SalesErrorTable]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -3019,33 +3019,33 @@ where [refTable].[Pastel Principle] = ?</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="171,42"
-          Id="Package\Import Sales Data\OLE DB Destination"
-          TopLeft="268,400.5" />
-        <NodeLayout
-          Size="150,42"
-          Id="Package\Import Sales Data\LookUp Branch"
-          TopLeft="239.5,97.5" />
-        <NodeLayout
-          Size="167.5,42"
-          Id="Package\Import Sales Data\Add Week Number"
-          TopLeft="451,186.5" />
-        <NodeLayout
-          Size="152.5,42"
-          Id="Package\Import Sales Data\SalesErrorTable"
-          TopLeft="25.25,101" />
-        <NodeLayout
-          Size="157,42"
-          Id="Package\Import Sales Data\LookUp Principal"
-          TopLeft="413.5,108" />
+          Size="128.5,42"
+          Id="Package\Import Sales Data\Sales Data"
+          TopLeft="51.5,27.5" />
         <NodeLayout
           Size="148.5,42"
           Id="Package\Import Sales Data\Error Branches"
           TopLeft="223.928571428571,178.214285714286" />
         <NodeLayout
-          Size="128.5,42"
-          Id="Package\Import Sales Data\Sales Data"
-          TopLeft="51.5,27.5" />
+          Size="152.5,42"
+          Id="Package\Import Sales Data\SalesErrorTable"
+          TopLeft="25.25,101" />
+        <NodeLayout
+          Size="167.5,42"
+          Id="Package\Import Sales Data\Add Week Number"
+          TopLeft="451,186.5" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Import Sales Data\ErrorPrincipalSales"
+          TopLeft="712.5,188.125" />
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Import Sales Data\LookUp Branch"
+          TopLeft="239.5,97.5" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Import Sales Data\OLE DB Destination"
+          TopLeft="268,400.5" />
         <NodeLayout
           Size="147,42"
           Id="Package\Import Sales Data\Add Year Date"
@@ -3054,6 +3054,32 @@ where [refTable].[Pastel Principle] = ?</property>
           Size="130,42"
           Id="Package\Import Sales Data\Add Month"
           TopLeft="334,327.5" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Import Sales Data\LookUp Principal"
+          TopLeft="413.5,108" />
+        <EdgeLayout
+          Id="Package\Import Sales Data.Paths[Derived Column Output]"
+          TopLeft="536.875,228.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,27.5"
+              Start="0,0"
+              End="0,20">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Import Sales Data.Paths[Lookup Match Output1]"
           TopLeft="492,150">
@@ -3123,6 +3149,42 @@ where [refTable].[Pastel Principle] = ?</property>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="-36.19138671875,-17.609375,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import Sales Data.Paths[Lookup Error Output1]"
+          TopLeft="516.833333333333,150">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="278.666666666667,38.125"
+              Start="0,0"
+              End="278.666666666667,30.625">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.4807692307692" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.4807692307692"
+                    Point2="0,15.4807692307692"
+                    Point3="4,15.4807692307692" />
+                  <mssgle:LineSegment
+                    End="274.666666666667,15.4807692307692" />
+                  <mssgle:CubicBezierSegment
+                    Point1="274.666666666667,15.4807692307692"
+                    Point2="278.666666666667,15.4807692307692"
+                    Point3="278.666666666667,19.4807692307692" />
+                  <mssgle:LineSegment
+                    End="278.666666666667,30.625" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="93.4669466145833,20.4807692307692,91.7327734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -3288,71 +3350,48 @@ where [refTable].[Pastel Principle] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Import Sales Data.Paths[Derived Column Output]"
-          TopLeft="536.875,228.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,27.5"
-              Start="0,0"
-              End="0,20">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="166,42"
-          Id="Package\Import Sales Data\ErrorPrincipalSales"
-          TopLeft="712.5,188.125" />
-        <EdgeLayout
-          Id="Package\Import Sales Data.Paths[Lookup Error Output1]"
-          TopLeft="516.833333333333,150">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="278.666666666667,38.125"
-              Start="0,0"
-              End="278.666666666667,30.625">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,11.4807692307692" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,11.4807692307692"
-                    Point2="0,15.4807692307692"
-                    Point3="4,15.4807692307692" />
-                  <mssgle:LineSegment
-                    End="274.666666666667,15.4807692307692" />
-                  <mssgle:CubicBezierSegment
-                    Point1="274.666666666667,15.4807692307692"
-                    Point2="278.666666666667,15.4807692307692"
-                    Point3="278.666666666667,19.4807692307692" />
-                  <mssgle:LineSegment
-                    End="278.666666666667,30.625" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="93.4669466145833,20.4807692307692,91.7327734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import Sales Data\Error Branches">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import Sales Data\SalesErrorTable">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import Sales Data\ErrorPrincipalSales">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Import Sales Data\LookUp Branch">
     <Properties>
@@ -3377,25 +3416,12 @@ where [refTable].[Pastel Principle] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Import Sales Data\SalesErrorTable">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Import Sales Data\LookUp Principal">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -3405,36 +3431,10 @@ where [refTable].[Pastel Principle] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Import Sales Data\Error Branches">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Import Sales Data\ErrorPrincipalSales">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

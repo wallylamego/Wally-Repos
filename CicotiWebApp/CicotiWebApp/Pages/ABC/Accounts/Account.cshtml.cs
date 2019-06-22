@@ -20,49 +20,88 @@ namespace CicotiWebApp.Pages.ABC.Accounts
         {
             _context = context;
         }
-        public SelectList SubContractorSL { get; set; }
+        
+        public SelectList CostDriverSL { get; set; }
+        public SelectList BranchSL { get; set; }
+        public SelectList CategorySL { get; set; }
+        public SelectList SubCategorySL { get; set; }
+        public SelectList CostAllocationSL { get; set; }
+        public SelectList AccountTypeSL { get; set; }
 
-        public void PopulateSubContractorSL(object selectedSubContractor = null)
+        
+        public void PopulateCostDriverSL(object selectedCostDriver = null)
         {
-            var SubContractorsQuery = from s in _context.SubContractor
-                                      orderby s.Name
+            var CostDriverQuery = from s in _context.ActCostDrivers
+                                      orderby s.Description
                                       select s;
-            SubContractorSL = new SelectList(SubContractorsQuery.AsNoTracking(),
-                        "SubContractorID", "Name", selectedSubContractor);
+            CostDriverSL = new SelectList(CostDriverQuery.AsNoTracking(),
+                        "ActCostDriverID", "Description", selectedCostDriver);
+        }
+        public void PopulateBranchSL(object selectedBranch = null)
+        {
+            var BranchQuery = from s in _context.Branch
+                                      orderby s.BranchName
+                                      select s;
+            BranchSL = new SelectList(BranchQuery.AsNoTracking(),
+                        "BranchID", "BranchName", selectedBranch);
+        }
+        public void PopulateCategorySL(object selectedCategory = null)
+        {
+            var CategoryQuery = from s in _context.ActCostCategory
+                                      orderby s.ActCostCategoryID
+                                      select s;
+            CategorySL = new SelectList(CategoryQuery.AsNoTracking(),
+                        "ActCostCategoryID", "Description", selectedCategory);
+        }
+        public void PopulateSubCategorySL(object selectedSubCategory = null)
+        {
+            var SubCategoryQuery = from s in _context.ActSubCostCategory
+                                      orderby s.Description
+                                      select s;
+            SubCategorySL = new SelectList(SubCategoryQuery.AsNoTracking(),
+                        "ActCostSubCategoryID", "Description", selectedSubCategory);
+        }
+        public void PopulateCostAllocationSL(object selectedCostAllocation = null)
+        {
+            var CostAllocationQuery = from s in _context.ActCostAllocationSplits
+                                      orderby s.Description
+                                      select s;
+            CostAllocationSL = new SelectList(CostAllocationQuery.AsNoTracking(),
+                        "ActCostAllocationSplitID", "Description", selectedCostAllocation);
+        }
+        public void PopulateAccountTypeSL(object selectedAccountType = null)
+        {
+            var AccountTypeQuery = from s in _context.ActCostAccountType
+                                      orderby s.Description
+                                      select s;
+            AccountTypeSL = new SelectList(AccountTypeQuery.AsNoTracking(),
+                        "ActCostAccountTypeID", "Description", selectedAccountType);
         }
 
-       
-        [BindProperty]
-        public Driver Driver { get; set; }
+        [BindProperty] 
+        public ActCostAccount Account { get; set; }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnGetAsync(int? AccountID)
         {
-            if (!ModelState.IsValid)
+            Account = new ActCostAccount { };
+
+
+            if (AccountID != null)
             {
-                return Page();
+                Account = await _context.ActCostAccount
+                    .SingleOrDefaultAsync(m => m.ActCostAccountID == AccountID);
             }
-
-            _context.Drivers.Add(Driver);
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
-        }
-        public async Task<IActionResult> OnGetAsync(int? DriverID)
-        {
-            Driver = new Models.Driver { };
-
-
-            if (DriverID != null)
-            {
-                Driver = await _context.Drivers
-                    .SingleOrDefaultAsync(m => m.DriverID == DriverID);
-            }
-            PopulateSubContractorSL();
+            PopulateCostDriverSL();
+            PopulateBranchSL();
+            PopulateCategorySL();
+            PopulateSubCategorySL();
+            PopulateCostAllocationSL();
+            PopulateAccountTypeSL();
             return Page();
         }
-        #region Update Driver Details
-        //Updates the existing Driver Details
-        public async Task<IActionResult> OnPutUpdateDriver([FromBody] Models.Driver obj)
+        #region Update Account Details
+        //Updates the existing Account Details
+        public async Task<IActionResult> OnPutUpdateAccount([FromBody] Models.ActCostAccount obj)
         {
             if (obj != null && (HttpContext.User.IsInRole("Admin") || HttpContext.User.IsInRole("Fleet")))
             {
@@ -74,14 +113,14 @@ namespace CicotiWebApp.Pages.ABC.Accounts
                 }
                 catch (DbUpdateException d)
                 {
-                    return new JsonResult("Driver Changes not saved." + d.InnerException.Message);
+                    return new JsonResult("Account Changes not saved." + d.InnerException.Message);
                 }
             }
-            return new JsonResult("Drivers Changes not saved.");
+            return new JsonResult("Account Changes not saved.");
         }
 
-        //Inserts a new Employee with details
-        public async Task<IActionResult> OnPostInsertDriver([FromBody] Models.Driver obj)
+        //Inserts a new Account with details
+        public async Task<IActionResult> OnPostInsertAccount([FromBody] Models.ActCostAccount obj)
         {
             if (obj != null && (HttpContext.User.IsInRole("Admin") || HttpContext.User.IsInRole("Fleet")))
             {
@@ -89,22 +128,22 @@ namespace CicotiWebApp.Pages.ABC.Accounts
                 {
                     _context.Add(obj);
                     await _context.SaveChangesAsync();
-                    int id = obj.DriverID; // Yes it's here
+                    int id = obj.ActCostAccountID; // Yes it's here
                     return new JsonResult(obj);
                 }
                 catch (DbUpdateException d)
                 {
-                    return new JsonResult("Driver Not Added." + d.InnerException.Message);
+                    return new JsonResult("Account Not Added." + d.InnerException.Message);
                 }
             }
 
             else
             {
-                return new JsonResult("Driver Not Inserted");
+                return new JsonResult("Account Not Inserted");
             }
 
         }
-        #endregion DriverUpdates
+        #endregion AccountUpdates
 
     }
 }
