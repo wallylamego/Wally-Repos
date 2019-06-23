@@ -107,5 +107,6 @@ namespace CicotiWebApp.Data
         public DbQuery<VwDeliveryStatusDetail> VwDeliveryStatusDetails { get; set; }
         public DbQuery<VwDeliveryStatsSummary> VwDeliveryStatusSummaryPerMonth_2 { get; set; }
         public DbQuery<VwStockCountSummary> VwStockCountSummary { get; set; }
+        public DbQuery<VwEmployeeViewSalesRepCode> VwEmployeeViewSalesRepCode { get; set; }
     }
 }

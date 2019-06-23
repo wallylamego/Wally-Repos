@@ -7,17 +7,21 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using CicotiWebApp.Models;
 using CicotiWebApp;
-
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
+using CicotiWebApp.Services;
+using CicotiWebApp.SQLViews;
 
 namespace CicotiWebApp.Pages.Employee
 {
     public class IndexModel : PageModel
     {
         private readonly CicotiWebApp.Data.ApplicationDbContext _context;
-
-        public IndexModel(CicotiWebApp.Data.ApplicationDbContext context)
+        private IHostingEnvironment _hostingEnvironment;
+        public IndexModel(CicotiWebApp.Data.ApplicationDbContext context, IHostingEnvironment hostingEnvironment)
         {
             _context = context;
+            _hostingEnvironment = hostingEnvironment;
         }
 
         public IList<Models.Employee> Employees { get;set; }
@@ -111,6 +115,18 @@ namespace CicotiWebApp.Pages.Employee
         public async Task OnGetAsync()
         {
             Employees = await _context.Employees.ToListAsync();
+        }
+        public async Task<IActionResult> OnPostExport()
+        {
+           // string sWebRootFolder = _hostingEnvironment.WebRootPath;
+            string sFileName = @"employeeDetails.xlsx";
+            string URL = string.Format("{0}://{1}/{2}", Request.Scheme, Request.Host, sFileName);
+            //  FileInfo file = new FileInfo(Path.Combine(sWebRootFolder, sFileName));
+            //  var memory = new MemoryStream();
+            ExcelImportExport excelExport = new ExcelImportExport(sFileName, _hostingEnvironment);
+            List<VwEmployeeViewSalesRepCode> EmployeeList =  _context.VwEmployeeViewSalesRepCode.ToList();
+            MemoryStream memory = await excelExport.CreateExcelFileAsync(EmployeeList);
+            return File(memory, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", sFileName);
         }
     }
 }

@@ -16,12 +16,20 @@
     Layout = "~/Pages/_LayoutDataTables.cshtml";
 }
 
-        <div class="page-header">
-            <h2>Employee Listing</h2>
+<div class="page-header">
+    <h2>Employee Listing</h2>
+</div>
+<form method="post" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-8" style="padding-top:10px;">
+            <button asp-page-handler="Export" class="btn btn-default">Export</button>
         </div>
-
+    </div>
+    <br />
+</form>
 <p>
     <a asp-page="Employee">Update/New</a>
+
 </p>
 <div id="loader"></div>
 <div id="divEmployeeTable" style="width:90%; margin:0 auto;">
@@ -100,7 +108,7 @@
                         "visible": true,
                         "searchable": true
                         },
-                       
+
                     {
                         /*Employee Name  is visible and is searchable*/
                         "targets": [2],
