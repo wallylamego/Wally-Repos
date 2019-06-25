@@ -20,50 +20,51 @@ namespace CicotiWebApp.Pages.ABC.StaffAllocation
             _context = context;
         }
         
-        //This get provides a list of Other Income Items
+        //This get provides a list of Staff Allocation Items
         public async Task<JsonResult> OnPostPaging([FromForm] DataTableAjaxPostModel Model)
         {
 
             int filteredResultsCount = 0;
             int totalResultsCount = 0;
 
-            DataTableAjaxPostModel.GetOrderByParameters(Model.order, Model.columns, "ActCostAccountAmtPrincipleID",
+            DataTableAjaxPostModel.GetOrderByParameters(Model.order, Model.columns, "ActCostSiloAllocationID",
                 out bool SortDir, out string SortBy);
 
 
             //First create the View of the new model you wish to display to the user
-            var PrincipleAmtQuery = _context.ActCostAccountAmtPrinciple
+            var AlloSiloQuery = _context.ActCostSiloAllocations
                 .Include(p=>p.ActCostPeriod)
-                .Include(pr=>pr.Principle)
-                .Include(a=>a.ActCostAccount)
-               .Select(Pamt => new
+                .Include(s=>s.Silo)
+                .Include(e=>e.Employee)
+               .Select(s => new
                {
-                    Pamt.ActCostAccountAmtPrincipleID
-                   ,Principle = Pamt.Principle.PastelName
-                   ,Period = Pamt.ActCostPeriod.Period
-                   ,Account = Pamt.ActCostAccountID
-                   ,AccountName = Pamt.ActCostAccount.Description
-                   ,Amount = Pamt.Amount
-                   ,Comments = Pamt.Comments
+                   s.ActCostSiloAllocationID,
+                   Silo = s.Silo.SiloName,
+                   s.ActCostPeriod.Period,
+                   s.Employee.EmployeeNo,
+                   s.Employee.LastName,
+                   s.AllocPercentage,
+                   s.Description,
+                   s.Comments
                }
                );
 
-            totalResultsCount = PrincipleAmtQuery.Count();
+            totalResultsCount = AlloSiloQuery.Count();
             filteredResultsCount = totalResultsCount;
 
             if (!string.IsNullOrEmpty(Model.search.value))
             {
-                PrincipleAmtQuery = PrincipleAmtQuery
+                AlloSiloQuery = AlloSiloQuery
                         .Where(
-                d => d.Principle.ToLower().Contains(Model.search.value.ToLower()) ||
-                        d.Period.ToString().ToLower().Contains(Model.search.value.ToLower()) ||
-                        d.Account.ToString().ToLower().Contains(Model.search.value.ToLower()) ||
+                d => d.Period.ToLower().Contains(Model.search.value.ToLower()) ||
+                        d.Description.ToString().ToLower().Contains(Model.search.value.ToLower()) ||
+                        d.LastName.ToString().ToLower().Contains(Model.search.value.ToLower()) ||
                         d.Comments.ToString().ToLower().Contains(Model.search.value.ToLower()) ||
-                        d.Amount.ToString().ToLower().Contains(Model.search.value.ToLower()));
+                        d.EmployeeNo.ToString().ToLower().Contains(Model.search.value.ToLower()));
 
-                filteredResultsCount = PrincipleAmtQuery.Count();
+                filteredResultsCount = AlloSiloQuery.Count();
             }
-            var Result = await PrincipleAmtQuery
+            var Result = await AlloSiloQuery
                         .Skip(Model.start)
                         .Take(Model.length)
                         .OrderBy(SortBy, SortDir)
@@ -80,24 +81,24 @@ namespace CicotiWebApp.Pages.ABC.StaffAllocation
             return new JsonResult(value);
         }
 
-        public async Task<IActionResult> OnDeleteDelete([FromBody] ActCostAccountAmtPrinciple obj)
+        public async Task<IActionResult> OnDeleteDelete([FromBody] ActCostSiloAllocation obj)
         {
             if (obj != null && HttpContext.User.IsInRole("Admin"))
             {
                 try
                 {
-                    _context.ActCostAccountAmtPrinciple.Remove(obj);
+                    _context.ActCostSiloAllocations.Remove(obj);
                     await _context.SaveChangesAsync();
-                    return new JsonResult("Other Income Removed  successfully");
+                    return new JsonResult("Silo Removed  successfully");
                 }
                 catch(DbUpdateException d)
                 {
-                    return new JsonResult("Other Income Amount not removed." + d.InnerException.Message);
+                    return new JsonResult("Silo Allocation not removed." + d.InnerException.Message);
                 }
             }
             else
             {
-                return new JsonResult("Other Income not removed.");
+                return new JsonResult("Silo Allocation not removed.");
             }
         }
     }

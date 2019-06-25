@@ -64,6 +64,7 @@ namespace CicotiWebApp.Pages.ABC.StaffAllocation
             {
                 ActCostSiloAllocation = await _context.ActCostSiloAllocations
                     .Include(a=>a.Silo)
+                    .Include(e=>e.Employee)
                     .SingleOrDefaultAsync(m => m.ActCostSiloAllocationID == ID);
             }
             PopulatePeriodSL();

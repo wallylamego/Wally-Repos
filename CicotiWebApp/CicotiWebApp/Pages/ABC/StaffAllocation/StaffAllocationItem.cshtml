@@ -102,7 +102,7 @@
     </div>
 </div>
 <div>
-    <a asp-page="OtherIncome">Back to List</a>
+    <a asp-page="StaffAllocation">Back to List</a>
 </div>
 
 @section Scripts {
@@ -288,11 +288,11 @@
                 StaffAllocToSave.comments = $('#comments').val();
 
                 if ($('#actCostSiloAllocationID').val().length > 0 && $('#actCostSiloAllocationID').val() > 0) {
-                    ajaxOtherIncomeUpdate(StaffAllocToSave);
+                    ajaxStaffAllocationUpdate(StaffAllocToSave);
                 }
                 else {
                     StaffAllocToSave.actCostSiloAllocationID = 0
-                    ajaxOtherIncomeInsert(StaffAllocToSave);
+                    ajaxStaffAllocationInsert(StaffAllocToSave);
                 }
             });
 

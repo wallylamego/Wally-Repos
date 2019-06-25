@@ -74,7 +74,7 @@ using CicotiWebApp.Data;
             WriteLiteral("\r\n<h2>SubContr. Driver Listing</h2>\r\n\r\n<p>\r\n    ");
             EndContext();
             BeginContext(413, 35, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4f8741cd542d449791bf4172de3517ed", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d7bf8abb3e3541cfb7fe5474e9179f7a", async() => {
                 BeginContext(434, 10, true);
                 WriteLiteral("Create New");
                 EndContext();
