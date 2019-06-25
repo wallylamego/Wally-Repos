@@ -19,11 +19,8 @@ namespace CicotiWebApp.Pages.ABC.OtherIncome
         {
             _context = context;
         }
-
-        public IList<Driver> Driver { get;set; }
-
         
-        //This get provides a list of Paged Drivers
+        //This get provides a list of Other Income Items
         public async Task<JsonResult> OnPostPaging([FromForm] DataTableAjaxPostModel Model)
         {
 

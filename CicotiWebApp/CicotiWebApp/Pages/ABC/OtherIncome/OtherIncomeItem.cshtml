@@ -18,8 +18,13 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <input type="hidden" asp-for="AccAmtPrinciple.ActCostAccountAmtPrincipleID" id="actCostAccountAmtPrincipleID" />
+        @*<input type="hidden" asp-for="AccAmtPrinciple.ActCostAccountAmtPrincipleID" id="actCostAccountAmtPrincipleID" />*@
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="AccAmtPrinciple.ActCostAccountAmtPrincipleID" class="control-label"></label>
+            <input asp-for="AccAmtPrinciple.ActCostAccountAmtPrincipleID" class="form-control" id="actCostAccountAmtPrincipleID" />
+            <span asp-validation-for="AccAmtPrinciple.ActCostAccountAmtPrincipleID" class="text-danger"></span>
+        </div>
         <div class="form-group">
             <label asp-for="AccAmtPrinciple.Principle.PastelName" class="control-label"></label>
             <select asp-for="AccAmtPrinciple.PrincipleID" id="principleID"
@@ -46,45 +51,45 @@
             <br />
 
             <div id="divAccountTable" style="width:90%; margin:0 auto;">
-                    <div id="divAccountTable">
-                        <table id="AccountTable" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th>AccountID</th>
-                                    <th>Account Description</th>
-                                    <th>Pastel Account Number</th>
-                                    <th>Branch</th>
-                                    <th>Select</th>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
+                <div id="divAccountTable">
+                    <table id="AccountTable" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>AccountID</th>
+                                <th>Account Description</th>
+                                <th>Pastel Account Number</th>
+                                <th>Branch</th>
+                                <th>Select</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
             </div>
         </div>
-            <div class="form-group">
-                <label asp-for="AccAmtPrinciple.ActCostAccountID" class="control-label"></label>
-                <input asp-for="AccAmtPrinciple.ActCostAccountID" class="form-control" id="actCostAccountID" />
-                <span asp-validation-for="AccAmtPrinciple.ActCostAccountID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AccAmtPrinciple.ActCostAccount.Description" class="control-label"></label>
-                <input asp-for="AccAmtPrinciple.ActCostAccount.Description" class="form-control" id="description" />
-                <span asp-validation-for="AccAmtPrinciple.ActCostAccount.Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AccAmtPrinciple.Amount" class="control-label"></label>
-                <input asp-for="AccAmtPrinciple.Amount" class="form-control" id="amount" />
-                <span asp-validation-for="AccAmtPrinciple.Amount" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AccAmtPrinciple.Comments" class="control-label"></label>
-                <input asp-for="AccAmtPrinciple.Comments" class="form-control" id="comments" />
-                <span asp-validation-for="AccAmtPrinciple.Comments" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" id="savebtn" />
-            </div>
-</div>
+        <div class="form-group">
+            <label asp-for="AccAmtPrinciple.ActCostAccountID" class="control-label"></label>
+            <input asp-for="AccAmtPrinciple.ActCostAccountID" class="form-control" id="actCostAccountID" />
+            <span asp-validation-for="AccAmtPrinciple.ActCostAccountID" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="AccAmtPrinciple.ActCostAccount.Description" class="control-label"></label>
+            <input asp-for="AccAmtPrinciple.ActCostAccount.Description" class="form-control" id="description" />
+            <span asp-validation-for="AccAmtPrinciple.ActCostAccount.Description" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="AccAmtPrinciple.Amount" class="control-label"></label>
+            <input asp-for="AccAmtPrinciple.Amount" class="form-control" id="amount" />
+            <span asp-validation-for="AccAmtPrinciple.Amount" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="AccAmtPrinciple.Comments" class="control-label"></label>
+            <input asp-for="AccAmtPrinciple.Comments" class="form-control" id="comments" />
+            <span asp-validation-for="AccAmtPrinciple.Comments" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-default" id="savebtn" />
+        </div>
+    </div>
 </div>
 <div>
     <a asp-page="OtherIncome">Back to List</a>
@@ -251,6 +256,7 @@
                     ajaxOtherIncomeUpdate(amtPrinToSave);
                 }
                 else {
+                    amtPrinToSave.actCostAccountAmtPrincipleID = 0
                     ajaxOtherIncomeInsert(amtPrinToSave);
                 }
             });
