@@ -22,6 +22,7 @@ namespace CicotiWebApp.Pages.Employee
         {
             _context = context;
             _hostingEnvironment = hostingEnvironment;
+
         }
 
         public IList<Models.Employee> Employees { get;set; }
