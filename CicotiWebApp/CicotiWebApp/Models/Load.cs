@@ -11,8 +11,8 @@ namespace CicotiWebApp.Models
     {
         public int LoadID { get; set; }
         public string LoadName { get; set; }
-        public string LoadDate { get; set; }
-       
+        public DateTime LoadDate { get; set; }
+        
         public int VehicleID { get; set; }
         public int DriverID { get; set; }
         public string UserID { get; set; }

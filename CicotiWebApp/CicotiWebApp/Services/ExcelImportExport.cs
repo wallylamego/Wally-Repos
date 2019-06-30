@@ -30,7 +30,19 @@ namespace CicotiWebApp.Services
             workbook = new XSSFWorkbook();
             excelSheet = workbook.CreateSheet("Export");
         }
-      
+
+        
+        public async Task<MemoryStream> DownloadAsync(string filename)
+        {
+            var memory = new MemoryStream();
+            using (var stream = new FileStream(Path.Combine(_sWebRootFolder, _sFileName), FileMode.Open))
+            {
+                await stream.CopyToAsync(memory);
+            }
+            memory.Position = 0;
+            return memory;
+        }
+
         public async Task<MemoryStream> CreateExcelFileAsync<T>(List<T> list)
         {
             var memory = new MemoryStream();
@@ -69,7 +81,6 @@ namespace CicotiWebApp.Services
             }
             memory.Position = 0;
             return memory;
-
         }
 
         public static DataTable CreateDataTableForPropertiesOfType<T>()

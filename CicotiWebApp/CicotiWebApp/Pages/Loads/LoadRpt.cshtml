@@ -1,19 +1,17 @@
 ﻿@page
+@model CicotiWebApp.Pages.Loads.LoadRptModel
+
 @{
-    Layout = "_LayoutDataTables";
+    ViewData["Title"] = "Load: Reports";
+    Layout = "~/Pages/_LayoutDataTables.cshtml";
 }
+
 @inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
 @functions{
     public string GetAntiXsrfRequestToken()
     {
         return Xsrf.GetAndStoreTokens(Model.HttpContext).RequestToken;
     }
-}
-@model CicotiWebApp.Pages.Loads.LoadRptModel
-
-@{
-    ViewData["Title"] = "Load: Reports";
-    Layout = "~/Pages/_LayoutDataTables.cshtml";
 }
 
 <h2>Load Reports</h2>
@@ -66,7 +64,8 @@
         var rptToSave = {};
         loadRpt = "VwLoadSummary";
 
-        function ajaxLoadReports(obj) {
+        function ajaxLoadReports(obj)
+        {
             console.log("Report: in Load Reports Ajax Call: " + JSON.stringify(obj));
             $.ajax({
                 type: "POST",
@@ -77,10 +76,6 @@
                         },
                     contentType: "application/json",
                     dataType: "json",
-                    "beforeSend": function () {
-                        $(window).scrollTop(0);
-                        $("#loader").show();
-                    },
                     data: JSON.stringify(obj),
                 success: function (data) {
                     $("#modalHeader").text("Processing Load Report Data");
@@ -102,6 +97,8 @@
             $("#loader").hide();
             $('#exportBtn').click(function () {
                 rptToSave.reportName = loadRpt;
+                rptToSave.reportID = 0;
+                rptToSave.reportDate = $('#startDate').val();
                 rptToSave.startDate = $('#startDate').val();
                 rptToSave.endDate = $('#endDate').val();
                 ajaxLoadReports(rptToSave);

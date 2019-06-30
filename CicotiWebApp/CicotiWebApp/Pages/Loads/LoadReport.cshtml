@@ -1,0 +1,149 @@
+﻿@page  "{LoadID?}"
+@model CicotiWebApp.Pages.Loads.LoadReportModel
+
+@{
+    ViewData["Title"] = "Load: Reports";
+    Layout = "~/Pages/_LayoutDataTables.cshtml";
+}
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+@functions{
+    public string GetAntiXsrfRequestToken()
+    {
+        return Xsrf.GetAndStoreTokens(Model.HttpContext).RequestToken;
+    }
+}
+
+<h2>Load Reports</h2>
+
+<div id="loader"></div>
+<label class="radio-inline"><input type="radio" name="loadRpt" value="VwLoadSummary" checked>Summary</label>
+<label class="radio-inline"><input type="radio" name="loadRpt" value="VwLoadDetail">Per Load Per Invoice Line</label>
+<br />
+
+<div class="form-group" id="divStartDate">
+    <label asp-for="Report.StartDate" class="control-label">Loading Date</label>
+    <div class='input-group date' id='datetimepicker1'>
+        <input asp-for="Report.StartDate" type="text" class="form-control" id="startDate" />
+        <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+        <span asp-validation-for="Report.StartDate" class="text-danger"></span>
+    </div>
+</div>
+
+<div class="form-group" id="divEndDate">
+    <label asp-for="Report.EndDate" class="control-label">Loading Date</label>
+    <div class='input-group date' id='datetimepicker2'>
+        <input asp-for="Report.EndDate" type="text" class="form-control" id="endDate" />
+        <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+        <span asp-validation-for="Report.EndDate" class="text-danger"></span>
+    </div>
+</div>
+
+<div class="col-xs-12 col-md-4 col-lg-4">
+    <span class="input-group-btn">
+        <input type="button" value="Create File" class="btn btn-default" id="exportBtn" />
+    </span>
+</div>
+<br/>
+<div id="downloadlink">
+
+</div>
+
+<br />
+
+@section Scripts {
+    @await Html.PartialAsync("_ModalPartial")
+    @await Html.PartialAsync("_ModalConfirmPartial")
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script type="text/javascript">
+        var loadRpt;
+        var filename = "";
+        var rptToSave = {};
+        loadRpt = "VwLoadSummary";
+
+        function ajaxLoadReports(obj)
+        {
+            console.log("Report: in Load Reports Ajax Call: " + JSON.stringify(obj));
+            $.ajax({
+                type: "POST",
+                url: "/Loads/LoadReport?handler=Export",
+                    headers:
+                        {
+                            "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                        },
+                    contentType: "application/json",
+                    dataType: "json",
+                    beforeSend: function () {
+                        $(window).scrollTop(0);
+                        $("#loader").show();
+                    },
+                    data: JSON.stringify(obj),
+                success: function (data) {
+                    $("#modalHeader").text("Processing Load Report Data");
+                    $("#modalMessage").text(data);
+                    $("#myModal").modal("show");
+                    $("#loader").hide();
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        $("#modalHeader").text("Processing Load Report Data");
+                        $("#modalMessage").text("Data Not DownLoaded");
+                        $("#myModal").modal("show");
+                        $("#loader").hide();
+                    }
+                });//ajax Update / Insert
+        }
+        $(document).ready(function ()
+        {
+          $("#loader").hide();
+            $('#exportBtn').click(function () {
+
+                $("#anchor1").remove();
+                var today = new Date();
+                var time = today.getHours() + "-" + today.getMinutes() + "-" + today.getSeconds();
+                var date =  today.getFullYear() +"-" + (today.getMonth() + 1) + "-" + today.getDate();
+                var datetime = date + "-" + time;
+                rptToSave.reportName = loadRpt;
+                rptToSave.filename = loadRpt + datetime + ".xlsx";
+                rptToSave.reportID = 0;
+                rptToSave.reportDate = $('#startDate').val();
+                rptToSave.startDate = $('#startDate').val();
+                rptToSave.endDate = $('#endDate').val();
+                ajaxLoadReports(rptToSave);
+                var a = $('<a />');
+                filename = "Test";
+                anchorLink = "/UploadFiles/Download?filename=" + rptToSave.filename;
+                a.attr('href', anchorLink);
+                a.attr('id', "anchor1");
+                //.attr('class', "download");
+                anchorText = "Click to download file";
+                a.text(anchorText);
+                $('#downloadlink').append(a);
+                return;
+            });
+
+            $("input[type='radio']").click(function () {
+                var radioValue = $("input[name='loadRpt']:checked").val();
+                if (radioValue) {
+                    loadRpt = radioValue;
+                }
+            });
+             $('#datetimepicker1').datetimepicker(
+                    {
+                     format: "YYYY/MM/DD",
+                     date: '@Model.Report.StartDate'
+                    }
+            );
+            $('#datetimepicker2').datetimepicker(
+                {
+                    format: "YYYY/MM/DD",
+                    date: '@Model.Report.EndDate'
+                }
+            );
+        });//Document Ready end.
+
+    </script>
+
+}

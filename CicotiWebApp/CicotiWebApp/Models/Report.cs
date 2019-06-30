@@ -9,6 +9,7 @@ namespace CicotiWebApp.Models
     {
         public int ReportID { get; set; }
         public string ReportName { get; set; }
+        public string FileName { get; set; }
         public DateTime ReportDate { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }

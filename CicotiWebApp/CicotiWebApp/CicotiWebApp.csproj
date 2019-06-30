@@ -43,10 +43,13 @@
     <PackageReference Include="Microsoft.jQuery.Unobtrusive.Ajax" Version="3.2.6" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" PrivateAssets="All" />
     <PackageReference Include="NPOI" Version="2.4.1" />
+    <PackageReference Include="WindowsAzure.Storage" Version="9.3.3" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Areas\Identity\Services\" />
+    <Folder Include="Filters\" />
+    <Folder Include="Helpers\" />
     <Folder Include="Pages\Branch\" />
     <Folder Include="wwwroot\lib\bootstrap\dist\css\" />
     <Folder Include="wwwroot\lib\bootstrap\dist\fonts\" />
@@ -55,6 +58,9 @@
 
   <ItemGroup>
     <Content Update="Pages\ABC\AccountMovement\AccountMovTable.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\Loads\LoadReport.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Pages\Loads\LoadRpt.cshtml">
