@@ -19,7 +19,7 @@ namespace CicotiWebApp.SQLViews
         public string ModelName { get; set; }
         public string InvoiceNumber { get; set; }
         public DateTime InvoiceDate { get; set; }
-        public string InvoiceAmount { get; set; }
+        public Double InvoiceAmount { get; set; }
         public string AccountNumber { get; set; }
         public string AccountDescription { get; set; }
     }
