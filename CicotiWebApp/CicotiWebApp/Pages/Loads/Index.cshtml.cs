@@ -27,7 +27,7 @@ namespace CicotiWebApp.Pages.Loads
             int filteredResultsCount = 0;
             int totalResultsCount = 0;
 
-            DataTableAjaxPostModel.GetOrderByParameters(Model.order, Model.columns, "LoadName",
+            DataTableAjaxPostModel.GetOrderByParameters(Model.order, Model.columns, "LoadDate",
                 out bool SortDir, out string SortBy);
 
 
@@ -61,7 +61,7 @@ namespace CicotiWebApp.Pages.Loads
             totalResultsCount = LoadQuery.Count();
             filteredResultsCount = totalResultsCount;
 
-            if (!string.IsNullOrEmpty(Model.search.value))
+          if (!string.IsNullOrEmpty(Model.search.value))
             {
                 LoadQuery = LoadQuery
                         .Where(
@@ -74,10 +74,12 @@ namespace CicotiWebApp.Pages.Loads
 
                 filteredResultsCount = LoadQuery.Count();
             }
+           // LoadQuery.OrderByDescending(l => l.LoadDate);
             var Result = await LoadQuery
                         .Skip(Model.start)
                         .Take(Model.length)
                         .OrderBy(SortBy, SortDir)
+ //                       .OrderByDescending(l => l.LoadDate)
                         .ToListAsync();
 
             var value = new

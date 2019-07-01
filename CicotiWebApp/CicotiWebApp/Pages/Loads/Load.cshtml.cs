@@ -64,7 +64,12 @@ namespace CicotiWebApp.Pages.Loads
                     .Include(d=>d.Driver)
                     .SingleOrDefaultAsync(m => m.LoadID == LoadID);
             }
-
+            else
+            {
+                //Set a new Load to Incomplete
+                Load.LoadStatusID = 1;
+                Load.LoadDate = DateTime.Now;
+            }
             return Page();
         }
 

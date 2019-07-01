@@ -44,7 +44,7 @@ namespace CicotiWebApp.Pages.Invoice
         [BindProperty]
         public CicotiWebApp.Models.Invoice Invoice { get; set; }
 
-        //get a list of invoices which have been selected for loading
+        //get the list of invoice Statuses which have been selected for loading
         public async Task<JsonResult> OnPostInvoiceStatusPaging([FromForm] DataTableAjaxPostModel Model)
         {
             int filteredResultsCount = 0;
@@ -63,7 +63,7 @@ namespace CicotiWebApp.Pages.Invoice
                    StatusName = i.Status.Name,
                    StatusDate = i.CreatedUtc,
                    User= i.User.UserName,
-                   i.Load.LoadDate,
+                   LoadDate = i.Load.LoadDate.ToString(),
                    i.Load.LoadName,
                    i.LoadID
                }
@@ -83,6 +83,59 @@ namespace CicotiWebApp.Pages.Invoice
                 filteredResultsCount = InvoiceStatusQuery.Count();
             }
             var Result = await InvoiceStatusQuery
+                        .Skip(Model.start)
+                        .Take(Model.length)
+                        .OrderBy(SortBy, SortDir)
+                        .ToListAsync();
+
+            var value = new
+            {
+                // this is what datatables wants sending back
+                draw = Model.draw,
+                recordsTotal = totalResultsCount,
+                recordsFiltered = filteredResultsCount,
+                data = Result
+            };
+            return new JsonResult(value);
+        }
+
+        //get the list of invoice Statuses which have been selected for loading
+        public async Task<JsonResult> OnPostInvoiceLinePaging([FromForm] DataTableAjaxPostModel Model)
+        {
+            int filteredResultsCount = 0;
+            int totalResultsCount = 0;
+
+            DataTableAjaxPostModel.GetOrderByParameters(Model.order, Model.columns, "code",
+                out bool SortDir, out string SortBy);
+
+
+            //First create the View of the new model you wish to display to the user
+            var InvoiceLineQuery = _context.InvoiceLine
+                .Include(s=> s.SKU)
+               .Select(i => new
+               {
+                   i.InvoiceID,
+                   i.InvoiceLineID,
+                   i.SKU.Code,
+                   i.SKU.Description,
+                   i.Qty,
+                   i.Amt
+               }
+               ).Where(i => i.InvoiceID == Model.InvoiceID);
+
+            totalResultsCount = InvoiceLineQuery.Count();
+            filteredResultsCount = totalResultsCount;
+
+            if (!string.IsNullOrEmpty(Model.search.value))
+            {
+                InvoiceLineQuery = InvoiceLineQuery
+                        .Where(
+                i => i.Description.ToLower().Contains(Model.search.value.ToLower()) 
+                       );
+
+                filteredResultsCount = InvoiceLineQuery.Count();
+            }
+            var Result = await InvoiceLineQuery
                         .Skip(Model.start)
                         .Take(Model.length)
                         .OrderBy(SortBy, SortDir)

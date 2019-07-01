@@ -22,7 +22,7 @@
     <div class="card" id="cardSection1">
         <div class="card-header" id="headingOne">
             <h5 class="mb-0">
-                <button class="btn-primary" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                <button class="btn-primary" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" id="btnLoadHeaderSection"
                         aria-controls="collapseOne" >
                     Section 1: LoadName, LoadDate, Driver, Vehicle
                 </button>
@@ -917,6 +917,7 @@
 
         $(document).ready(function ()
         {
+            
             //hide the loader
             $("#loader").hide();
             //hide the destination table and  capture fields when the form starts up
@@ -1088,12 +1089,7 @@
                 newWin.print();
                 newWin.close();
             });
-             $('#datetimepicker1').datetimepicker(
-                    {
-                        format: "YYYY/MM/DD hh:mm:ss A",
-                       // date: '@Model.ExecuteDate'
-                    }
-                );
+            
             //hide the driver table and the driver capture fields when the form starts up
             $("#divDriverTable").hide();
             $("#divDriverInputFieldsSection").hide();
@@ -1189,6 +1185,9 @@
                     getInvoiceData();
                 }
             });
+            $('#btnLoadHeaderSection').click(function () {
+                $('#loadName').focus();
+            });
             $('#btnInvoiceSelected').click(function () {
                 $("#divInvoiceSelectedTable").show();
                 console.log("In button Invoice Selected");
@@ -1198,7 +1197,7 @@
             });
            $('#datetimepicker1').datetimepicker(
                     {
-                        format: "YYYY/MM/DD hh:mm:ss A",
+                        format: "YYYY/MM/DD",
                         date: '@Model.Load.LoadDate'
                     }
                 );

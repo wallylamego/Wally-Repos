@@ -73,6 +73,7 @@
                 //dom: '<lfB<t>ip>',
                 dom: '<"top"lBfp><"top"i>rt<><"clear">',
                 buttons: ['excel', 'copy', 'csv', 'pdf', 'print'],
+                "order": [[1, "desc"]],
                 "fixedHeader": {
                     "header": true,
                     "footer": true
@@ -170,7 +171,12 @@
                 ],
                 "columns": [
                     { "data": "loadID", "name": "loadID", "autoWidth": true },
-                    { "data": "loadDate", "name": "loadDate", "autoWidth": true },
+                    {
+                        data: "loadDate",
+                        render: function (data, type, row) {
+                            return moment(data).format("DD-MM-YYYY");
+                        }
+                    },
                     { "data": "loadName", "name": "loadName", "autoWidth": true },
                     { "data": "destination", "name": "destination", "autoWidth": true },
                     { "data": "loadStatus", "name": "loadStatus", "autoWidth": true },

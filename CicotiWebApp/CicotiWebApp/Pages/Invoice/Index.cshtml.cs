@@ -75,12 +75,12 @@ namespace CicotiWebApp.Pages.Invoice
             if (Model.DeliveryStatus.ToUpper().Contains("DELIVERED"))
                 {
                     InvoiceQuery = InvoiceQuery.Where(i => i.StatusID != 8).Where(i => i.StatusID != 10)
-                    .OrderByDescending(i => i.InvoicePrintDate);
+                    .OrderBy(i => i.InvoicePrintDate);
                 }
             else
             {
                 InvoiceQuery = InvoiceQuery
-                   .OrderByDescending(i => i.InvoicePrintDate);
+                   .OrderBy(i => i.InvoicePrintDate);
             }
 
             totalResultsCount = InvoiceQuery.Count();
