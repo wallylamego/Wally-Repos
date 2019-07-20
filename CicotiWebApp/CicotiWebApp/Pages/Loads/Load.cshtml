@@ -839,7 +839,7 @@
                     console.log(data);
                     console.log("Load Data successfully returned from DataBase");
                     $("#modalHeader").text("Load Section 1 Processing Status");
-                    $("#modalMessage").text(data);
+                    $("#modalMessage").text("Load name: " + data.loadName + " processed successfully.");
                     $("#myModal").modal("show");
                     },
                     error: function (jqXHR, textStatus, errorThrown) {

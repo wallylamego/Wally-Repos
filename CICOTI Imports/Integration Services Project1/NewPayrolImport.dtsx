@@ -11,8 +11,8 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="NewPayrolImport"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{DE191AC3-BDD2-4D94-BB97-2DEC3C791341}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{931743DB-27BF-4EC8-9622-04656EFE1870}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -30,7 +30,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="C:\Users\wallyf\Desktop\PayrollNewImport.txt">
+          DTS:ConnectionString="C:\Users\wallyf\Cicoti\ROA\ABC Imports\PayrollNewImport.txt">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -38,7 +38,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="ActCostPeriodID"
-              DTS:DTSID="{79A5B124-614B-46D4-A6F1-37FC9CFB007B}"
+              DTS:DTSID="{C60E3F41-4B6C-4E1B-AE3E-B8AA0E384D3F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -47,7 +47,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Employee Code"
-              DTS:DTSID="{25CA7297-C8EE-4548-A25C-051E0669026D}"
+              DTS:DTSID="{BB383234-8B14-4704-B829-6D617FCCD7E8}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -56,7 +56,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Surname"
-              DTS:DTSID="{7BE300B8-2233-4E4B-A36D-457CB61EB557}"
+              DTS:DTSID="{CDF31684-8D4E-4E68-95ED-AEB9FEE42A12}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -65,7 +65,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Full Names"
-              DTS:DTSID="{502DFB3A-6C1B-40C8-B701-23BCC8D2B051}"
+              DTS:DTSID="{326A1822-6899-4A60-A5D1-01A4F18FD6D0}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -74,7 +74,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Second Name"
-              DTS:DTSID="{F2EC4EC4-7ADD-4CFD-A396-3613EA77639A}"
+              DTS:DTSID="{9714161A-877C-48DF-B757-60181C9DDC1F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -82,7 +82,7 @@
               DTS:DataType="7"
               DTS:TextQualified="True"
               DTS:ObjectName="Termination Date"
-              DTS:DTSID="{F1D8DB07-6144-4209-AF84-E7599D82DCD8}"
+              DTS:DTSID="{169342CE-8ABD-4961-ABEA-09A561B3167B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -91,7 +91,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Branch "
-              DTS:DTSID="{B0859191-3202-40AE-B170-7764FCF54787}"
+              DTS:DTSID="{63797C82-6F04-4D84-80EE-663F03B4573C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -100,7 +100,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Attribute"
-              DTS:DTSID="{56CD113F-44EB-4692-AA61-868DF09B3682}"
+              DTS:DTSID="{DA414DCB-A85A-4650-AFC4-EC437EC294CD}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -108,7 +108,7 @@
               DTS:DataType="4"
               DTS:TextQualified="True"
               DTS:ObjectName="Value"
-              DTS:DTSID="{8D9D29DA-91A6-4A75-91B1-3862BE44A54A}"
+              DTS:DTSID="{2A5FF543-A312-4FA3-ABA3-1209C8D62E8D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -116,7 +116,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="ActCostPayrollFieldID"
-              DTS:DTSID="{2CBE59AB-999B-4C59-B2F0-D45D20F7997A}"
+              DTS:DTSID="{3D4C978C-78E8-4A0E-8F3A-69C32ABD1869}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>

@@ -62,6 +62,10 @@ namespace CicotiWebApp.Pages.Loads
                     .Include(s=>s.Vehicle.SubContractor)
                     .Include(v=>v.Vehicle.VechileType)
                     .Include(d=>d.Driver)
+                    .Include(s=>s.Destination.StartLocation)
+                    .Include(e=>e.Destination.EndLocation)
+                    .Include(det=>det.Destination)
+                    .Include(u=>u.User)
                     .SingleOrDefaultAsync(m => m.LoadID == LoadID);
             }
             else

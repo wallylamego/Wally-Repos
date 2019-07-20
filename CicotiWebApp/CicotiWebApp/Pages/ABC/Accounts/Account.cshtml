@@ -18,10 +18,10 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-       
+
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group" id="divActCostAccountID">
-            <label asp-for="Account.ActCostAccountID" class="control-label"></label>
+            <label asp-for="Account.ActCostAccountID" class="control-label">Account ID</label>
             <input asp-for="Account.ActCostAccountID" class="form-control" id="actCostAccountID" />
             <span asp-validation-for="Account.ActCostAccountID" class="text-danger"></span>
         </div>
@@ -30,8 +30,13 @@
             <input asp-for="Account.AccountNo" class="form-control" id="accountNo" />
             <span asp-validation-for="Account.AccountNo" class="text-danger"></span>
         </div>
+        <div class="form-group" id="divMainAccountNo">
+            <label asp-for="Account.MainAccountNo" class="control-label">Main Account</label>
+            <input asp-for="Account.MainAccountNo" class="form-control" id="mainAccountNo" />
+            <span asp-validation-for="Account.MainAccountNo" class="text-danger"></span>
+        </div>
         <div class="form-group" id="divBranch">
-            <label asp-for="Account.Branch.BranchName" class="control-label"></label>
+            <label asp-for="Account.Branch.BranchName" class="control-label">Branch Name</label>
             <select asp-for="Account.BranchID" id="branchID"
                     asp-items="Model.BranchSL" class="form-control">
                 <option value="">--Select Branch--</option>
@@ -39,41 +44,20 @@
             <span asp-validation-for="Account.BranchID" class="text-danger"></span>
         </div>
         <div class="form-group" id="divAccDescription">
-            <label asp-for="Account.Description" class="control-label"></label>
+            <label asp-for="Account.Description" class="control-label">Acc. Description</label>
             <input asp-for="Account.Description" class="form-control" id="description" />
             <span asp-validation-for="Account.Description" class="text-danger"></span>
         </div>
         <div class="form-group" id="divCategory">
-            <label asp-for="Account.ActCostCategory.Description" class="control-label"></label>
+            <label asp-for="Account.ActCostCategory.Description" class="control-label">Category</label>
             <select asp-for="Account.ActCostCategoryID" id="actCostCategoryID"
                     asp-items="Model.CategorySL" class="form-control">
                 <option value="">--Select Category--</option>
             </select>
             <span asp-validation-for="Account.ActCostCategoryID" class="text-danger"></span>
         </div>
-        <div class="form-group" id="divMainAccountNo">
-            <label asp-for="Account.MainAccountNo" class="control-label"></label>
-            <input asp-for="Account.MainAccountNo" class="form-control" id="mainAccountNo" />
-            <span asp-validation-for="Account.MainAccountNo" class="text-danger"></span>
-        </div>
-        <div class="form-group" id="divCostDriver">
-            <label asp-for="Account.ActCostDriver.Description" class="control-label"></label>
-            <select asp-for="Account.ActCostDriverID" id="actCostDriverID"
-                    asp-items="Model.CostDriverSL" class="form-control">
-                <option value="">--Select Cost Driver--</option>
-            </select>
-            <span asp-validation-for="Account.ActCostDriverID" class="text-danger"></span>
-        </div>
-        <div class="form-group" id="divActCostAllocationSplit">
-            <label asp-for="Account.ActCostAllocationSplit.Description" class="control-label"></label>
-            <select asp-for="Account.ActCostAllocationSplitID" id="actCostAllocationSplitID"
-                    asp-items="Model.CostAllocationSL" class="form-control">
-                <option value="">--Select Cost Allocation Split--</option>
-            </select>
-            <span asp-validation-for="Account.ActCostAllocationSplitID" class="text-danger"></span>
-        </div>
         <div class="form-group" id="divActCostSubCategory">
-            <label asp-for="Account.ActCostSubCategoryID" class="control-label"></label>
+            <label asp-for="Account.ActCostSubCategoryID" class="control-label">Sub Category</label>
             <select asp-for="Account.ActCostSubCategoryID" id="actCostSubCategoryID"
                     asp-items="Model.SubCategorySL" class="form-control">
                 <option value="">--Select Sub Category--</option>
@@ -81,13 +65,31 @@
             <span asp-validation-for="Account.ActCostSubCategoryID" class="text-danger"></span>
         </div>
         <div class="form-group" id="divAccountType">
-            <label asp-for="Account.ActCostAccountType.Description" class="control-label"></label>
+            <label asp-for="Account.ActCostAccountType.Description" class="control-label">Account Type</label>
             <select asp-for="Account.ActCostAccountTypeID" id="actCostAccountTypeID"
                     asp-items="Model.AccountTypeSL" class="form-control">
                 <option value="">--Select AccountType--</option>
             </select>
             <span asp-validation-for="Account.ActCostAccountTypeID" class="text-danger"></span>
         </div>
+
+        <div class="form-group" id="divCostDriver">
+            <label asp-for="Account.ActCostDriver.Description" class="control-label">Cost Driver</label>
+            <select asp-for="Account.ActCostDriverID" id="actCostDriverID"
+                    asp-items="Model.CostDriverSL" class="form-control">
+                <option value="">--Select Cost Driver--</option>
+            </select>
+            <span asp-validation-for="Account.ActCostDriverID" class="text-danger"></span>
+        </div>
+        <div class="form-group" id="divActCostAllocationSplit">
+            <label asp-for="Account.ActCostAllocationSplit.Description" class="control-label">Allocation Split</label>
+            <select asp-for="Account.ActCostAllocationSplitID" id="actCostAllocationSplitID"
+                    asp-items="Model.CostAllocationSL" class="form-control">
+                <option value="">--Select Cost Allocation Split--</option>
+            </select>
+            <span asp-validation-for="Account.ActCostAllocationSplitID" class="text-danger"></span>
+        </div>
+
         <div class="form-group">
             <input type="submit" value="Save" class="btn btn-default" id="savebtn" />
         </div>

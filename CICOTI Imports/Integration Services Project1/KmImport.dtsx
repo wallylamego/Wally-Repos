@@ -11,8 +11,8 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="KmImport"
   DTS:PackageType="5"
-  DTS:VersionBuild="2"
-  DTS:VersionGUID="{C633B21D-1FC3-446D-BFE8-83BAB0EC98ED}">
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{2A523160-5F44-4C1A-93B3-2F5346ED18A5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>

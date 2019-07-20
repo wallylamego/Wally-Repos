@@ -18,8 +18,19 @@
 
 <h2>Invoice Delivery Listing</h2>
 <div id="loader"></div>
-<label class="radio-inline"><input type="radio" name="deliveryStatus" value="allStatus">All</label>
-<label class="radio-inline"><input type="radio" name="deliveryStatus" value="notDelivered" checked>Not Delivered</label>
+
+<label class="radio-inline"><input type="radio" name="statusID" value="0">All Undelivered</label>
+<label class="radio-inline"><input type="radio" name="statusID" value="12" checked>Finance: Captured</label>
+<label class="radio-inline"><input type="radio" name="statusID" value="3" checked>WH: Received</label>
+<label class="radio-inline"><input type="radio" name="statusID" value="4" checked>WH: Pick And Pack</label>
+<label class="radio-inline"><input type="radio" name="statusID" value="5" checked>WH: Load Schedule</label>
+<br />
+<br />
+<label class="radio-inline"><input type="radio" name="statusID" value="6" checked>WH: Loaded</label>
+<label class="radio-inline"><input type="radio" name="statusID" value="8" checked>WH: POD</label>
+<label class="radio-inline"><input type="radio" name="statusID" value="9" checked>WH: Unable to Deliver</label>
+<label class="radio-inline"><input type="radio" name="statusID" value="99" checked>All Deliveries</label>
+
 <br />
 <br />
 <div id="divInvoiceTable" style="width:90%; margin:0 auto;">
@@ -55,7 +66,7 @@
             <input type="text" class="form-control" id="executeDate" />
             <span class="input-group-addon">
                 <span class="glyphicon glyphicon-calendar"></span>
-                </span>
+            </span>
 
             <span asp-validation-for="ExecuteDate" class="text-danger"></span>
         </div>
@@ -69,15 +80,17 @@
 @section Scripts {
 
     <script type="text/javascript">
-        var deliveryStatus;
-        deliveryStatus = "notDeliveredStatus";
+       
+        var statusID;
+        statusID = 0;
+
         $(document).ready(function ()
         {
             $("#loader").hide();
             $("input[type='radio']").click(function () {
-                var radioValue = $("input[name='deliveryStatus']:checked").val();
+                var radioValue = $("input[name='statusID']:checked").val();
                 if (radioValue) {
-                    deliveryStatus = radioValue;
+                    statusID = radioValue;
                     var oTable = $('#InvoiceTable').DataTable();
                     oTable.draw();
                 }
@@ -105,7 +118,7 @@
                 if (arrInv.length > 0) {
                     ajaxInvoiceUpdate(arrInv);
                 }
-                else { 
+                else {
                 $("#modalHeader").text("Invoice Processing Status");
                 $("#modalMessage").text("You have not Selected any Invoices / Deliveries for Updating");
                 $("#myModal").modal("show");
@@ -150,7 +163,7 @@
                     "data": function (d) {
                        // d.search.value = $('#tripId').val();
                         //d.filterItemID = 4;
-                        d.deliveryStatus = deliveryStatus;
+                        d.statusID = statusID;
                     },
                     "datatype": "json",
                     "beforeSend": function () {

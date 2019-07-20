@@ -42,7 +42,7 @@ namespace CicotiWebApp.Pages.Invoice
 
             int filteredResultsCount = 0;
             int totalResultsCount = 0;
-            int Test = Model.FilterItemID;
+
 
             DataTableAjaxPostModel.GetOrderByParameters(Model.order, Model.columns, "invoiceNumber",
                 out bool SortDir, out string SortBy);
@@ -55,8 +55,8 @@ namespace CicotiWebApp.Pages.Invoice
 
 
             var InvoiceQuery = _context.Invoices
-               .Include(a=> a.CustomerAccount)
-               .Include(w=>w.InvoiceProductType)
+               .Include(a => a.CustomerAccount)
+               .Include(w => w.InvoiceProductType)
                .Select(i => new
                {
                    i.InvoiceID,
@@ -70,18 +70,18 @@ namespace CicotiWebApp.Pages.Invoice
                }
                );
 
-            //Filter out all the Non Delivered Invoices
-            //Those which do not have a status of POD or Cancelled
-            if (Model.DeliveryStatus.ToUpper().Contains("DELIVERED"))
-                {
-                    InvoiceQuery = InvoiceQuery.Where(i => i.StatusID != 8).Where(i => i.StatusID != 10)
-                    .OrderBy(i => i.InvoicePrintDate);
-                }
-            else
+            switch (Model.StatusID)
             {
-                InvoiceQuery = InvoiceQuery
-                   .OrderBy(i => i.InvoicePrintDate);
-            }
+                case 0:
+                    //where status not equal to POD and Cancelled by Credit Note
+                    InvoiceQuery = InvoiceQuery.Where(i => i.StatusID != 8).Where(i => i.StatusID != 10)
+                        .OrderBy(i => i.InvoicePrintDate);
+                    break;
+                default:
+                    InvoiceQuery = InvoiceQuery.Where(i => i.StatusID == Model.StatusID)
+                    .OrderBy(i => i.InvoicePrintDate);
+                    break;
+}           
 
             totalResultsCount = InvoiceQuery.Count();
             filteredResultsCount = totalResultsCount;

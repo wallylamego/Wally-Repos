@@ -11,16 +11,16 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="CreditorsImport"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{4DC096E6-BFFD-48C1-9DF9-9AA6A4CB168E}">
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{CD6AE185-318A-4E2E-8E02-75656CA9DDF3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:refId="Package.ConnectionManagers[CreditorsImports]"
       DTS:CreationName="FLATFILE"
       DTS:DTSID="{4464B78F-A07A-406F-A11E-FF89CF3CE95D}"
-      DTS:ObjectName="Flat File Connection Manager">
+      DTS:ObjectName="CreditorsImports">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:Format="Delimited"
@@ -30,7 +30,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="C:\Users\wallyf\Desktop\CreditorsImport.txt">
+          DTS:ConnectionString="C:\Users\wallyf\Cicoti\ROA\ABC Imports\CreditorsImport.txt">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -39,7 +39,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="PeriodID"
-              DTS:DTSID="{BCBA946F-3A73-4764-B048-E1303ADA4D88}"
+              DTS:DTSID="{D0360C47-4B0E-4222-BCA9-9492C53177CE}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -48,7 +48,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="PrincipleID"
-              DTS:DTSID="{1F384A79-CB0D-42C1-8EA0-FAED2EFB3B8B}"
+              DTS:DTSID="{B0BD66C1-41A6-4124-A2DB-73EE9EBAA4F1}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -57,7 +57,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Balance"
-              DTS:DTSID="{4279D284-9809-4AF7-B684-C55D4B896F18}"
+              DTS:DTSID="{A904D968-B53F-4428-9950-8E49173F432C}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -112,8 +112,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task\Flat File Source.Connections[FlatFileConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
-                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
+                  connectionManagerID="Package.ConnectionManagers[CreditorsImports]"
+                  connectionManagerRefId="Package.ConnectionManagers[CreditorsImports]"
                   name="FlatFileConnection" />
               </connections>
               <outputs>
@@ -419,13 +419,13 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="151,42"
-          Id="Package\Data Flow Task\Flat File Source"
-          TopLeft="78.5,30.5" />
-        <NodeLayout
           Size="171,42"
           Id="Package\Data Flow Task\OLE DB Destination"
           TopLeft="144.75,103.25" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Data Flow Task\Flat File Source"
+          TopLeft="78.5,30.5" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Flat File Source Output]"
           TopLeft="154,72.5">

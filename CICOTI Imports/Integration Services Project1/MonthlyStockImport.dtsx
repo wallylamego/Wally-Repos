@@ -11,241 +11,15 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="MonthlyStockImport"
   DTS:PackageType="5"
-  DTS:VersionBuild="40"
-  DTS:VersionGUID="{C8C22F0F-4167-45A8-9723-A5C2BCCE1A91}">
+  DTS:VersionBuild="42"
+  DTS:VersionGUID="{053B2830-6FE2-40F0-B403-1D6DE84D3D29}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[ErrorFileConnection]"
-      DTS:CreationName="FLATFILE"
-      DTS:DTSID="{06639040-BD16-458A-8D98-DF328DC99866}"
-      DTS:ObjectName="ErrorFileConnection">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:Format="Delimited"
-          DTS:LocaleID="7177"
-          DTS:HeaderRowDelimiter="_x000D__x000A_"
-          DTS:RowDelimiter=""
-          DTS:TextQualifier="_x003C_none_x003E_"
-          DTS:CodePage="1252"
-          DTS:ConnectionString="C:\Users\wallyf\Desktop\ImportErrorFile.txt">
-          <DTS:FlatFileColumns>
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="Branch"
-              DTS:DTSID="{04D2F479-1AD5-49CE-A616-38FE04BB9E96}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="code"
-              DTS:DTSID="{9DBE507E-2A21-45BB-A75A-77424EFB36CE}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="Item Description_1"
-              DTS:DTSID="{3739FDC7-B0DF-413E-BD3F-930CE2BF2B57}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="StockGroup"
-              DTS:DTSID="{293BCDDB-A81C-4EA4-A77D-827A0C788A61}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="BranchWarehouse"
-              DTS:DTSID="{72F0D134-75E1-4E6C-8E40-63D3391E9869}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="4"
-              DTS:TextQualified="True"
-              DTS:ObjectName="QtyOnHand"
-              DTS:DTSID="{894E0ADB-D5BD-403B-8FD0-45388EE041AA}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="4"
-              DTS:TextQualified="True"
-              DTS:ObjectName="UnitCost"
-              DTS:DTSID="{73C86550-EDD6-4CD8-9335-857EE460AD38}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="4"
-              DTS:TextQualified="True"
-              DTS:ObjectName=" Value"
-              DTS:DTSID="{64871FBB-8E87-43E5-8F1B-41974390D3ED}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="3"
-              DTS:TextQualified="True"
-              DTS:ObjectName="BranchID"
-              DTS:DTSID="{B0C9487B-AF6A-48F4-BA56-033694B21502}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="3"
-              DTS:TextQualified="True"
-              DTS:ObjectName="ErrorCode"
-              DTS:DTSID="{BA5B7E98-0BBE-48F9-8037-F9ACE1252C7B}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x000D__x000A_"
-              DTS:DataType="3"
-              DTS:TextQualified="True"
-              DTS:ObjectName="ErrorColumn"
-              DTS:DTSID="{5CC572DB-0148-4D3B-9FEE-DBC5B87E020A}"
-              DTS:CreationName="" />
-          </DTS:FlatFileColumns>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
-      DTS:CreationName="EXCEL"
-      DTS:DTSID="{300EE9AC-84AC-4AFE-9135-BE915D54EEF5}"
-      DTS:ObjectName="Excel Connection Manager">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\wallyf\Desktop\UnMatchedSKUs.xls;Extended Properties=&quot;EXCEL 8.0;HDR=YES&quot;;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[Excel Connection Manager 1]"
-      DTS:CreationName="EXCEL"
-      DTS:DTSID="{FF657FA5-8F7C-4CFF-860E-6D4991E91CCC}"
-      DTS:ObjectName="Excel Connection Manager 1">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\wallyf\Desktop\Import_Error_File.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
-      DTS:CreationName="FLATFILE"
-      DTS:DTSID="{ECBB5A6F-455A-4F65-9DD2-2178FEDA3D04}"
-      DTS:ObjectName="Flat File Connection Manager">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:Format="Delimited"
-          DTS:LocaleID="7177"
-          DTS:HeaderRowDelimiter="_x000D__x000A_"
-          DTS:ColumnNamesInFirstDataRow="True"
-          DTS:RowDelimiter=""
-          DTS:TextQualifier="_x003C_none_x003E_"
-          DTS:CodePage="1252"
-          DTS:ConnectionString="C:\Users\wallyf\Desktop\New_SKU_Import_For_Stock.txt">
-          <DTS:FlatFileColumns>
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="Description"
-              DTS:DTSID="{068724D5-4EC9-4A68-B9EE-BDD4977A3389}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x0009_"
-              DTS:DataType="4"
-              DTS:TextQualified="True"
-              DTS:ObjectName="UnitsPerPallets"
-              DTS:DTSID="{1A8C0200-B3E0-4712-992A-8CE10614AD80}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x0009_"
-              DTS:DataType="4"
-              DTS:TextQualified="True"
-              DTS:ObjectName="CubicMetrePerPallet"
-              DTS:DTSID="{6716DF8D-5A5F-4BB3-BD7C-C68BDAB0B117}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x0009_"
-              DTS:DataType="4"
-              DTS:TextQualified="True"
-              DTS:ObjectName="CubicMetrePerUnit"
-              DTS:DTSID="{C0F37932-4EB3-48F8-8523-D4D9D2CD0831}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x0009_"
-              DTS:DataType="4"
-              DTS:TextQualified="True"
-              DTS:ObjectName="WeightPerUnit"
-              DTS:DTSID="{36321991-B862-4331-B9BE-06FD216DFCEF}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x0009_"
-              DTS:DataType="16"
-              DTS:TextQualified="True"
-              DTS:ObjectName="PrincipleID"
-              DTS:DTSID="{7B4BE2DB-04DE-4BD2-B294-5AE35B736C0E}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x0009_"
-              DTS:DataType="16"
-              DTS:TextQualified="True"
-              DTS:ObjectName="UOMID"
-              DTS:DTSID="{0D20A017-2E54-4578-9B5B-0F3F5CD95446}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="Comments"
-              DTS:DTSID="{AC624B35-6DB8-400A-BA0D-304D51EB130F}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x000D__x000A_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="Code"
-              DTS:DTSID="{53CCF336-3115-43A7-A8C0-7DDE9D6FFDF8}"
-              DTS:CreationName="" />
-          </DTS:FlatFileColumns>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[MonthlyStockImport]"
       DTS:CreationName="FLATFILE"
+      DTS:Description="Stock Import File"
       DTS:DTSID="{D8A5928D-3152-40DF-AD86-FBFD7B36FAE5}"
       DTS:ObjectName="MonthlyStockImport">
       <DTS:ObjectData>
@@ -257,7 +31,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="C:\Users\wallyf\Desktop\StockImport.txt">
+          DTS:ConnectionString="C:\Users\wallyf\Cicoti\ROA\ABC Imports\StockImport.txt">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -266,7 +40,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Branch"
-              DTS:DTSID="{1FD95BB6-52B5-48F5-B2F5-6B79C31151A1}"
+              DTS:DTSID="{C5EA3D23-2725-4CAC-817B-8A6C66B4B9AA}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -275,7 +49,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="code"
-              DTS:DTSID="{0FDA493B-C5D7-476B-941A-EAE94EC0D316}"
+              DTS:DTSID="{982C9970-C012-40CD-93CD-B5099F330CCF}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -284,7 +58,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Item Description_1"
-              DTS:DTSID="{EDB47F78-2959-4299-AF23-0D21F7EEE6D9}"
+              DTS:DTSID="{125D29BF-F3BE-475E-AF66-1201CC7FE7F8}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -293,7 +67,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="StockGroup"
-              DTS:DTSID="{80A56FE8-5F7D-4F43-9C89-BDE5D8239510}"
+              DTS:DTSID="{10460DAC-627B-47BD-82C2-C94890D005AB}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -302,7 +76,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="BranchWarehouse"
-              DTS:DTSID="{D4B22220-430B-43B3-A882-CAD56892A9B6}"
+              DTS:DTSID="{C6085641-728D-4256-A870-ED51CFF66EDB}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -310,7 +84,7 @@
               DTS:DataType="4"
               DTS:TextQualified="True"
               DTS:ObjectName="QtyOnHand"
-              DTS:DTSID="{681541E9-97CB-44D0-9A7A-FC2D358AF67A}"
+              DTS:DTSID="{62C93655-A4F2-4BBF-BE4D-E1A35E25C729}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -318,7 +92,7 @@
               DTS:DataType="4"
               DTS:TextQualified="True"
               DTS:ObjectName="UnitCost"
-              DTS:DTSID="{817F8965-1A64-41BD-97DC-4822C2F72D15}"
+              DTS:DTSID="{09D3EE7E-77AD-4D78-874F-E7C027A24750}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -326,7 +100,7 @@
               DTS:DataType="4"
               DTS:TextQualified="True"
               DTS:ObjectName=" Value"
-              DTS:DTSID="{5AB5DC02-E86E-4211-A55C-4F053123E3D5}"
+              DTS:DTSID="{C12C9D96-3F5E-4A8F-BA3C-41AD103D7C36}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -342,6 +116,118 @@
           DTS:ConnectionString="Data Source=OTIJHB-NB-081\SQLEXPRESS;Initial Catalog=CICOTIDB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SKU_ID_Import_Errors]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{06639040-BD16-458A-8D98-DF328DC99866}"
+      DTS:ObjectName="SKU_ID_Import_Errors">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="7177"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\wallyf\Cicoti\ROA\ABC Imports\StockImportErrors.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Branch"
+              DTS:DTSID="{EF72F896-ABF5-4211-9F2E-51685A3FCB6D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="code"
+              DTS:DTSID="{75D25859-354A-44AF-A72B-63DD85D9A3F1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Item Description_1"
+              DTS:DTSID="{0605752D-A327-4DF6-9E11-5A5E01D4E27C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="StockGroup"
+              DTS:DTSID="{17B052F3-939B-4519-B35A-D9ACA81F7CDA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="BranchWarehouse"
+              DTS:DTSID="{64DD683C-1CF3-4D61-8BB6-ABF41E3041A6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="4"
+              DTS:TextQualified="True"
+              DTS:ObjectName="QtyOnHand"
+              DTS:DTSID="{C1F02503-675D-493B-B4AE-8DEDC19395C0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="4"
+              DTS:TextQualified="True"
+              DTS:ObjectName="UnitCost"
+              DTS:DTSID="{A94B477F-9D5D-4DF0-B806-56974EB49F68}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="4"
+              DTS:TextQualified="True"
+              DTS:ObjectName=" Value"
+              DTS:DTSID="{E8B7748D-2D36-4681-9C40-9C63FF2A3E40}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="BranchID"
+              DTS:DTSID="{CF56E996-68AF-4617-B90B-C6ECB7B9E916}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ErrorCode"
+              DTS:DTSID="{0252ACF8-AADD-4015-862C-9BAF81E0301A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ErrorColumn"
+              DTS:DTSID="{D23B13AB-E99B-48B0-864B-E84D862B1D32}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
   <DTS:Variables>
     <DTS:Variable
@@ -351,7 +237,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="ActPeriodID">
       <DTS:VariableValue
-        DTS:DataType="3">41</DTS:VariableValue>
+        DTS:DataType="3">42</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -360,7 +246,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="PeriodNo">
       <DTS:VariableValue
-        DTS:DataType="8">201905</DTS:VariableValue>
+        DTS:DataType="8">201906</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -503,8 +389,8 @@
               <connections>
                 <connection
                   refId="Package\ImportStockData\Flat File Destination.Connections[FlatFileConnection]"
-                  connectionManagerID="Package.ConnectionManagers[ErrorFileConnection]"
-                  connectionManagerRefId="Package.ConnectionManagers[ErrorFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SKU_ID_Import_Errors]"
+                  connectionManagerRefId="Package.ConnectionManagers[SKU_ID_Import_Errors]"
                   name="FlatFileConnection" />
               </connections>
               <inputs>
@@ -1770,33 +1656,73 @@ where [refTable].[Code] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="151,42"
-          Id="Package\ImportStockData\LookUp SKU ID"
-          TopLeft="384.75,146" />
+          Size="133.5,42"
+          Id="Package\ImportStockData\Stock Table"
+          TopLeft="517.5,426.875" />
         <NodeLayout
-          Size="174.5,42"
-          Id="Package\ImportStockData\Look Up Principle ID"
-          TopLeft="456.875,333.75" />
+          Size="201,42"
+          Id="Package\ImportStockData\Get Rid of Spaces in Code"
+          TopLeft="640.625,110" />
         <NodeLayout
           Size="172,42"
           Id="Package\ImportStockData\Flat File Destination"
           TopLeft="180.625,233.75" />
         <NodeLayout
-          Size="133.5,42"
-          Id="Package\ImportStockData\Stock Table"
-          TopLeft="517.5,426.875" />
+          Size="161,42"
+          Id="Package\ImportStockData\LookUp BranchID"
+          TopLeft="385,58" />
         <NodeLayout
           Size="151,42"
           Id="Package\ImportStockData\Flat File Source"
           TopLeft="148,26" />
         <NodeLayout
-          Size="161,42"
-          Id="Package\ImportStockData\LookUp BranchID"
-          TopLeft="385,58" />
+          Size="174.5,42"
+          Id="Package\ImportStockData\Look Up Principle ID"
+          TopLeft="456.875,333.75" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\ImportStockData\LookUp SKU ID"
+          TopLeft="384.75,146" />
         <NodeLayout
           Size="186.5,42"
           Id="Package\ImportStockData\Add Act Cost  PeriodID"
           TopLeft="426.25,235" />
+        <EdgeLayout
+          Id="Package\ImportStockData.Paths[Lookup Match Output2]"
+          TopLeft="546,79">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="94.625,46.3333333333333"
+              Start="0,0"
+              End="87.125,46.3333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="50.6915137614679,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="50.6915137614679,0"
+                    Point2="54.6915137614679,0"
+                    Point3="54.6915137614679,4" />
+                  <mssgle:LineSegment
+                    End="54.6915137614679,42.3333333333333" />
+                  <mssgle:CubicBezierSegment
+                    Point1="54.6915137614679,42.3333333333333"
+                    Point2="54.6915137614679,46.3333333333333"
+                    Point3="58.6915137614679,46.3333333333333" />
+                  <mssgle:LineSegment
+                    End="87.125,46.3333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="6.50012704271789,-17.609375,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\ImportStockData.Paths[Lookup Match Output1]"
           TopLeft="544.125,375.75">
@@ -1940,80 +1866,6 @@ where [refTable].[Code] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\ImportStockData.Paths[Derived Column Output]"
-          TopLeft="519.5,277">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="24.625,56.75"
-              Start="0,0"
-              End="24.625,49.25">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,24.375" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,24.375"
-                    Point2="0,28.375"
-                    Point3="4,28.375" />
-                  <mssgle:LineSegment
-                    End="20.625,28.375" />
-                  <mssgle:CubicBezierSegment
-                    Point1="20.625,28.375"
-                    Point2="24.625,28.375"
-                    Point3="24.625,32.375" />
-                  <mssgle:LineSegment
-                    End="24.625,49.25" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="201,42"
-          Id="Package\ImportStockData\Get Rid of Spaces in Code"
-          TopLeft="640.625,110" />
-        <EdgeLayout
-          Id="Package\ImportStockData.Paths[Lookup Match Output2]"
-          TopLeft="546,79">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="94.625,46.3333333333333"
-              Start="0,0"
-              End="87.125,46.3333333333333">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="50.6915137614679,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="50.6915137614679,0"
-                    Point2="54.6915137614679,0"
-                    Point3="54.6915137614679,4" />
-                  <mssgle:LineSegment
-                    End="54.6915137614679,42.3333333333333" />
-                  <mssgle:CubicBezierSegment
-                    Point1="54.6915137614679,42.3333333333333"
-                    Point2="54.6915137614679,46.3333333333333"
-                    Point3="58.6915137614679,46.3333333333333" />
-                  <mssgle:LineSegment
-                    End="87.125,46.3333333333333" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="6.50012704271789,-17.609375,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\ImportStockData.Paths[Derived Column Output1]"
           TopLeft="640.625,136.666666666667">
           <EdgeLayout.Curve>
@@ -2047,21 +1899,68 @@ where [refTable].[Code] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ImportStockData.Paths[Derived Column Output]"
+          TopLeft="519.5,277">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="24.625,56.75"
+              Start="0,0"
+              End="24.625,49.25">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.375" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.375"
+                    Point2="0,28.375"
+                    Point3="4,28.375" />
+                  <mssgle:LineSegment
+                    End="20.625,28.375" />
+                  <mssgle:CubicBezierSegment
+                    Point1="20.625,28.375"
+                    Point2="24.625,28.375"
+                    Point3="24.625,32.375" />
+                  <mssgle:LineSegment
+                    End="24.625,49.25" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\ImportStockData\LookUp SKU ID">
+    design-time-name="Package\ImportStockData\Stock Table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ImportStockData\LookUp BranchID">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[dbo].[SKUs]</Value>
+          type="q3:string">[dbo].[Branch]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
@@ -2097,20 +1996,7 @@ where [refTable].[Code] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\ImportStockData\Stock Table">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\ImportStockData\LookUp BranchID">
+    design-time-name="Package\ImportStockData\LookUp SKU ID">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -2120,7 +2006,7 @@ where [refTable].[Code] = ?</property>
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[dbo].[Branch]</Value>
+          type="q3:string">[dbo].[SKUs]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>

@@ -11,8 +11,8 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="DebtorsImport"
   DTS:PackageType="5"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{73E3ED4D-25C9-4BC7-A539-C732146557C4}">
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{05539C72-670B-4DD4-8A4B-E00E442B4AEA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -30,7 +30,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="C:\Users\wallyf\Desktop\DebtorsImport.txt">
+          DTS:ConnectionString="C:\Users\wallyf\Cicoti\ROA\ABC Imports\DebtorsImport.txt">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -38,7 +38,7 @@
               DTS:DataType="16"
               DTS:TextQualified="True"
               DTS:ObjectName="ActCostPeriodID"
-              DTS:DTSID="{8F2036E3-906D-4BCC-A03B-1F935A2C44B8}"
+              DTS:DTSID="{60F8FC86-9E95-4D2E-BCE6-F1AD926E7694}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -47,7 +47,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="Customer"
-              DTS:DTSID="{CF781DEA-DAF1-45A4-A2C2-A02312EE335C}"
+              DTS:DTSID="{322D0C25-7884-49AC-BC1F-4DF1D7BCB98A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -56,7 +56,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="AccountNo"
-              DTS:DTSID="{7A022918-862C-4081-B35E-501566194D6B}"
+              DTS:DTSID="{1A6FBF45-B1DB-4E7D-A597-72AE6A4D3FAF}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -65,7 +65,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName=" Credit Limit "
-              DTS:DTSID="{0FF8249D-118C-4ED8-AF53-8A3B36F471F3}"
+              DTS:DTSID="{76EED06D-275E-4A9C-BD1F-FAF1857BD704}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -74,7 +74,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Credit Terms"
-              DTS:DTSID="{C0964AE8-5C7A-469C-BA3B-711F86EE57CB}"
+              DTS:DTSID="{A0DAEB31-2474-4E99-A2D6-C9FF67E35A27}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -82,7 +82,7 @@
               DTS:DataType="4"
               DTS:TextQualified="True"
               DTS:ObjectName="180 Days"
-              DTS:DTSID="{E1F865F6-274E-426D-B18A-39CA217AD4F2}"
+              DTS:DTSID="{61C54F00-5CBB-4076-8ED7-4DD4DB51B175}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -90,7 +90,7 @@
               DTS:DataType="4"
               DTS:TextQualified="True"
               DTS:ObjectName="150 Days"
-              DTS:DTSID="{B37D2B0D-0D6C-4E40-AE90-70CB557CCB71}"
+              DTS:DTSID="{2D246848-122B-48E7-88B9-EE76B5C04D06}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -98,7 +98,7 @@
               DTS:DataType="4"
               DTS:TextQualified="True"
               DTS:ObjectName="120 Days"
-              DTS:DTSID="{65A43E56-197B-4151-803C-86416D48FFE7}"
+              DTS:DTSID="{27DD83CF-17E7-49A3-9518-ED9D8B6A77FB}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -106,7 +106,7 @@
               DTS:DataType="4"
               DTS:TextQualified="True"
               DTS:ObjectName="90 Days"
-              DTS:DTSID="{A3DAB122-2841-495A-92D3-485B5EBAF5BE}"
+              DTS:DTSID="{5BA808D8-562F-47F4-B98B-1AE395E41B35}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -114,7 +114,7 @@
               DTS:DataType="4"
               DTS:TextQualified="True"
               DTS:ObjectName="60 Days"
-              DTS:DTSID="{14C501DF-2D4A-47DB-BF42-B8A056A4F59D}"
+              DTS:DTSID="{AD607225-4BA7-473E-8D54-363BBFA5B153}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -122,7 +122,7 @@
               DTS:DataType="4"
               DTS:TextQualified="True"
               DTS:ObjectName="30 Days"
-              DTS:DTSID="{3116528C-CEF1-40BF-A254-143F81C34FDA}"
+              DTS:DTSID="{BB65BB37-8C53-448C-9513-0F6AE4553FAA}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -130,7 +130,7 @@
               DTS:DataType="4"
               DTS:TextQualified="True"
               DTS:ObjectName="Current"
-              DTS:DTSID="{DD0C5065-C970-4CF9-AD02-1F082749A05B}"
+              DTS:DTSID="{B2DCB6DE-14A8-4D0B-AB52-44825603AF6D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -138,7 +138,7 @@
               DTS:DataType="4"
               DTS:TextQualified="True"
               DTS:ObjectName="Balance"
-              DTS:DTSID="{D8FA53C5-43C3-43E9-AAC9-CE36DCF1E371}"
+              DTS:DTSID="{20F71A4E-89F2-4CCC-BB7A-DE1EEF00D045}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>

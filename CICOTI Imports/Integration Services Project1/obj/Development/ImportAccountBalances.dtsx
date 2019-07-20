@@ -11,14 +11,15 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="ImportAccountBalances"
   DTS:PackageType="5"
-  DTS:VersionBuild="2"
-  DTS:VersionGUID="{A65C38C7-0CBD-48EF-993B-2F32381B2E3B}">
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{A370FF34-6CD7-4749-B57F-0F9B33221E6B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[BalanceImport]"
       DTS:CreationName="FLATFILE"
+      DTS:Description="Movement Imports"
       DTS:DTSID="{52BEB594-A838-433F-8B67-F1D5FA6DFEEF}"
       DTS:ObjectName="BalanceImport">
       <DTS:ObjectData>
@@ -30,7 +31,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="C:\Users\wallyf\Desktop\NewBalanceImport.txt">
+          DTS:ConnectionString="C:\Users\wallyf\Cicoti\ROA\ABC Imports\NewBalanceImport.txt">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -38,7 +39,7 @@
               DTS:DataType="2"
               DTS:TextQualified="True"
               DTS:ObjectName="PeriodID"
-              DTS:DTSID="{A2AEF77E-C43D-4928-8547-A28991E2A868}"
+              DTS:DTSID="{1A4B6D2D-0CB4-42F4-B266-6A6A0D61428C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -46,7 +47,7 @@
               DTS:DataType="4"
               DTS:TextQualified="True"
               DTS:ObjectName="YTD"
-              DTS:DTSID="{C70368AE-99FA-426D-8046-88FB50C2E933}"
+              DTS:DTSID="{354D736B-1774-4EEA-B85D-C83C09E32686}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -54,7 +55,7 @@
               DTS:DataType="4"
               DTS:TextQualified="True"
               DTS:ObjectName="Movement"
-              DTS:DTSID="{D231CA2C-A986-4D47-AE5A-B78297D1E9C1}"
+              DTS:DTSID="{625247DF-2289-4F21-9498-5F9C930A2D08}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -62,7 +63,7 @@
               DTS:DataType="2"
               DTS:TextQualified="True"
               DTS:ObjectName="ActCostAccountID"
-              DTS:DTSID="{F7F87E32-1090-42FD-900F-3BB6B58A21AD}"
+              DTS:DTSID="{D5564D9D-88A2-4C62-8BE9-75756E03DBD4}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>

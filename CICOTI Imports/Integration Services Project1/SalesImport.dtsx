@@ -11,8 +11,8 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="SalesImport"
   DTS:PackageType="5"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{599DC7B8-B1F5-41E2-9731-913E0FEB2FDF}">
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{1766AAE2-21D8-4275-A14F-AD7DD8586031}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -29,6 +29,7 @@
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[SalesImportTextFile]"
       DTS:CreationName="FLATFILE"
+      DTS:Description="Import Sales for Month"
       DTS:DTSID="{A6547BFD-70E5-455A-B6AF-6A68A8260B5A}"
       DTS:ObjectName="SalesImportTextFile">
       <DTS:ObjectData>
@@ -40,7 +41,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="C:\Users\wallyf\Desktop\SalesImport.txt">
+          DTS:ConnectionString="C:\Users\wallyf\Cicoti\ROA\ABC Imports\SalesImport.txt">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -48,7 +49,7 @@
               DTS:DataType="14"
               DTS:TextQualified="True"
               DTS:ObjectName="ActualQuantity"
-              DTS:DTSID="{9AB0B1DA-CAFD-4CC4-A760-9A31F98CAE34}"
+              DTS:DTSID="{22C380A7-85D0-4ADB-9C2D-DD3D73732FD1}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -56,7 +57,7 @@
               DTS:DataType="14"
               DTS:TextQualified="True"
               DTS:ObjectName="ActualSalesValue"
-              DTS:DTSID="{3CB92B1C-2500-45D7-B8D2-3A2A67CCEA78}"
+              DTS:DTSID="{0C1A59CA-2943-4DBB-9885-F64F3001C8A1}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -65,7 +66,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Code"
-              DTS:DTSID="{68C1778B-CCDD-478A-AE77-9F8D02BB460D}"
+              DTS:DTSID="{E92DC83C-F003-446E-A34E-7BCBD1FDD134}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -73,7 +74,7 @@
               DTS:DataType="14"
               DTS:TextQualified="True"
               DTS:ObjectName="Cost"
-              DTS:DTSID="{6FC8282A-EAD2-457F-9449-DF6067068E89}"
+              DTS:DTSID="{D34C8F61-E49F-4AFD-80D1-69F6CC435BA9}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -82,7 +83,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="ItemDescription"
-              DTS:DTSID="{FDC4C2BA-807F-4C63-B39F-5FCCB3624A3C}"
+              DTS:DTSID="{569D7366-79BB-4B1D-85B3-9E6D407DE1C7}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -90,7 +91,7 @@
               DTS:DataType="14"
               DTS:TextQualified="True"
               DTS:ObjectName="Profit"
-              DTS:DTSID="{F94A77F0-D37B-4B8B-9B3C-4194E5F64908}"
+              DTS:DTSID="{7D209AA4-5AA4-4D1F-9685-F546553B1726}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -99,7 +100,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="ProfitPerc"
-              DTS:DTSID="{CB7BBD92-464F-4E39-B9F3-BD750F38E1CB}"
+              DTS:DTSID="{F1A2340A-5E8F-4E90-BE58-5DE66C17B872}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -108,7 +109,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Reference"
-              DTS:DTSID="{E55E1D96-FDE6-4AB1-817F-5FA74F758B30}"
+              DTS:DTSID="{8D0457BA-58AC-4E77-B7E1-C1D60DEF3EB0}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -116,7 +117,7 @@
               DTS:DataType="7"
               DTS:TextQualified="True"
               DTS:ObjectName="TxDate"
-              DTS:DTSID="{0A3B6524-9E54-4389-A906-CCA3DDFF1C1D}"
+              DTS:DTSID="{6BF7BA97-4277-4C01-8C16-1B71429E4164}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -125,7 +126,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="itemgroup"
-              DTS:DTSID="{C5E5D85F-40EB-404A-9CFC-820CA26E40FA}"
+              DTS:DTSID="{FAACDEC7-28BE-4F96-96BB-3D94B3B60D52}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -134,7 +135,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Branch"
-              DTS:DTSID="{A9A35B44-5DE9-4FCA-BB9A-641C6A41C0D7}"
+              DTS:DTSID="{6ACCCFD5-37C1-41D7-B3C9-D6BB62348E5C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -143,7 +144,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Warehousecode"
-              DTS:DTSID="{F9FDC0F9-027B-425D-8DF1-4E02D345C151}"
+              DTS:DTSID="{8002DA4D-0139-41A5-90B5-214B4B90D3B5}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -152,7 +153,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="WarehouseName"
-              DTS:DTSID="{4CD3BC2C-C9F7-4D4A-8DF9-44F57B192656}"
+              DTS:DTSID="{48BF6334-5811-43F1-A921-97CED1902096}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -161,7 +162,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Account"
-              DTS:DTSID="{CBCA08F4-093A-425F-BB0F-41715F0E6CC7}"
+              DTS:DTSID="{228D8B96-9D7D-4D03-BEE9-CBE359AF5765}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -170,7 +171,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Name"
-              DTS:DTSID="{B987B93B-C4F6-4DA7-81C3-4CA64D99CA96}"
+              DTS:DTSID="{E173BCCD-AA95-46B3-B1D4-D6F45AE05F1D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -179,7 +180,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="ulARType"
-              DTS:DTSID="{82BBAEE4-95D0-4F7E-825E-7AADA8727ED5}"
+              DTS:DTSID="{67E5A800-8C1F-4D2A-BF1A-6ABA30D2E5A1}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -188,7 +189,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="AreaCode"
-              DTS:DTSID="{D169072B-061D-49F4-A666-F115D364C88B}"
+              DTS:DTSID="{AFFD627F-1541-4F05-A55A-85181D29C9E9}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -197,7 +198,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="AreaDescription"
-              DTS:DTSID="{39756D6D-F5F2-49C5-AB30-93DEAA3071FC}"
+              DTS:DTSID="{C1F882F1-841F-49BD-8E11-6261CC5A5C47}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -206,7 +207,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="ClientGroup"
-              DTS:DTSID="{4DA8321E-5B6F-4391-88FB-BD305DD1D95C}"
+              DTS:DTSID="{A0676D77-483F-485F-9E75-44A0876D991A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -215,7 +216,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="ClientGroupName"
-              DTS:DTSID="{54C44A59-92E7-4AAB-9026-A9167764D053}"
+              DTS:DTSID="{86E0D040-2772-498E-AE97-88D3315E1B66}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -224,7 +225,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="RepCode"
-              DTS:DTSID="{33CECEC7-EFE7-4B86-A2B8-F3E1F0C3BA20}"
+              DTS:DTSID="{13AA1390-0197-4BB9-A8C0-1F7EC512CA29}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -233,7 +234,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="RepName"
-              DTS:DTSID="{E56B560B-1A00-4CE1-AC71-E872266C0A4C}"
+              DTS:DTSID="{008B2F77-6332-4AE1-B04D-5EE7131DEF5E}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -292,13 +293,13 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">5</property>
+                          name="Expression">6</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">5</property>
+                          name="FriendlyExpression">6</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -445,13 +446,13 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">201905</property>
+                          name="Expression">201906</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">201905</property>
+                          name="FriendlyExpression">201906</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>

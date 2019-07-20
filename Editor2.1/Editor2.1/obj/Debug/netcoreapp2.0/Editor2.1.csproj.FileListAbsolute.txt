@@ -1,0 +1,11 @@
+C:\Users\wallyf\source\repos\Editor2.1\Editor2.1\obj\Debug\netcoreapp2.0\Editor2.1.csprojAssemblyReference.cache
+C:\Users\wallyf\source\repos\Editor2.1\Editor2.1\bin\Debug\netcoreapp2.0\Editor2.1.deps.json
+C:\Users\wallyf\source\repos\Editor2.1\Editor2.1\bin\Debug\netcoreapp2.0\Editor2.1.runtimeconfig.json
+C:\Users\wallyf\source\repos\Editor2.1\Editor2.1\bin\Debug\netcoreapp2.0\Editor2.1.runtimeconfig.dev.json
+C:\Users\wallyf\source\repos\Editor2.1\Editor2.1\bin\Debug\netcoreapp2.0\Editor2.1.dll
+C:\Users\wallyf\source\repos\Editor2.1\Editor2.1\bin\Debug\netcoreapp2.0\Editor2.1.pdb
+C:\Users\wallyf\source\repos\Editor2.1\Editor2.1\obj\Debug\netcoreapp2.0\Editor2.1.csproj.CoreCompileInputs.cache
+C:\Users\wallyf\source\repos\Editor2.1\Editor2.1\obj\Debug\netcoreapp2.0\Editor2.1.AssemblyInfoInputs.cache
+C:\Users\wallyf\source\repos\Editor2.1\Editor2.1\obj\Debug\netcoreapp2.0\Editor2.1.AssemblyInfo.cs
+C:\Users\wallyf\source\repos\Editor2.1\Editor2.1\obj\Debug\netcoreapp2.0\Editor2.1.dll
+C:\Users\wallyf\source\repos\Editor2.1\Editor2.1\obj\Debug\netcoreapp2.0\Editor2.1.pdb

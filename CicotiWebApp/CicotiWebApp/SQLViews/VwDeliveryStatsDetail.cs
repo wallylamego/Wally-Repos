@@ -15,7 +15,7 @@ namespace CicotiWebApp.SQLViews
         public int CustomerAccountID{get; private set; }
         public string StatusName { get; private set; }
         public DateTime LastStatusDate { get; private set; }
-        public Double ExpiryTime { get; private set; }
+        public int ExpiryTime { get; private set; }
         public Double TargetExpiryTime { get; private set; }
         public string SLAStatus { get; private set; }
         public int StatusID { get; private set; }
