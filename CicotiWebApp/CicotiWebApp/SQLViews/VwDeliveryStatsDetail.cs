@@ -5,20 +5,20 @@ using System.Threading.Tasks;
 
 namespace CicotiWebApp.SQLViews
 {
-    public class VwDeliveryStatusDetail
+    public class VwDeliveryStatusPivot
     {
-        
-        public int InvoiceID { get; private set; }
-        public string InvoiceNumber { get; private set; }
         public DateTime InvoiceDate { get; private set; }
-        public DateTime InvoicePrintDate { get; private set; }
-        public int CustomerAccountID{get; private set; }
-        public string StatusName { get; private set; }
-        public DateTime LastStatusDate { get; private set; }
-        public int ExpiryTime { get; private set; }
-        public Double TargetExpiryTime { get; private set; }
-        public string SLAStatus { get; private set; }
-        public int StatusID { get; private set; }
-        public int StatusID_Invoice_Table { get; private set; }
+        public string ProductType { get; private set; }
+        public int Finance{get; private set; }
+        public int Warehouse { get; private set; }
+        public int Transport { get; private set; }
+        public int Pod { get; private set; }
+        public int Other { get; private set; }
+        public int Total { get; private set; }
+        public double UnDelivered { get; private set; }
     }
 }
+/****** Script for SelectTopNRows command from SSMS  ******/
+
+
+

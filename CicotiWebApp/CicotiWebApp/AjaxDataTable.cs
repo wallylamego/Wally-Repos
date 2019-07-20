@@ -23,6 +23,8 @@ public class DataTableAjaxPostModel
     public string LoadStatus { get; set; }
     public int StatusID { get; set; }
     public string UserID { get; set; }
+    public DateTime StartDate { get; set; }
+    public DateTime EndDate { get; set; }
 
     public static string GetOrderByString(List<Order> OrderList, List<Column> ColumnList, string DefaultColumnSort)
         {

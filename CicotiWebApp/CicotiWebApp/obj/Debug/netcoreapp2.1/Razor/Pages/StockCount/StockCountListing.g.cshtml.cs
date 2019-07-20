@@ -75,7 +75,7 @@ using CicotiWebApp.Data;
             WriteLiteral("\r\n<br />\r\n<h2>Stock Count Listing</h2>\r\n\r\n<p>\r\n    ");
             EndContext();
             BeginContext(472, 45, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0262b69c79d2449cb4e08b7e995ed8f0", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b8c39385e93a462da7a909a6c7fd3d8b", async() => {
                 BeginContext(494, 19, true);
                 WriteLiteral("Back to SKU Listing");
                 EndContext();
