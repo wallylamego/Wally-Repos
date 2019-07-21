@@ -68,6 +68,7 @@ namespace CicotiWebApp
 
             if (NewInvoiceStatus.SortOrder == CurrentInvoiceStatus.SortOrder + 1 ||
                 NewInvoiceStatus.SortOrder == CurrentInvoiceStatus.SortOrder - 1 ||
+                NewInvoiceStatus.SortOrder == 8 ||
                 NewInvoiceStatus.Name.ToUpper().Contains("CANCEL"))
             {
                 return true;
