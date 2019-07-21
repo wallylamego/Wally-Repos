@@ -183,17 +183,17 @@ namespace CicotiWebApp.Pages.Invoice
                         }
                         if (InvNotProcessedCount == 0)
                         {
-                            return new JsonResult("Success: No of Invoices Processed -" + InvProcessedCount);
+                            return new JsonResult("Success: No of Invoices Processed: " + InvProcessedCount);
                         }
                         else
                         {
-                            return new JsonResult("No of Invoices Processed Successfully: " + InvProcessedCount +" . " + "No of Invoices Not Processed:" + InvNotProcessedCount + "; " + InvoiceNotAdded);
+                            return new JsonResult("No of Invoices Processed Successfully: " + InvProcessedCount +" . " + "No of Invoices Not Processed: " + InvNotProcessedCount + "; " + InvoiceNotAdded);
                         }
 
                     }
                     catch (DbUpdateException d)
                     {
-                        return new JsonResult("Invoice Status not Updated." + d.InnerException.Message);
+                        return new JsonResult("Invoice Status not Updated. " + d.InnerException.Message);
                     }
                 }
                 else
