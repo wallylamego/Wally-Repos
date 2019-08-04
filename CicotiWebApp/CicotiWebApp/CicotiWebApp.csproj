@@ -60,6 +60,9 @@
     <Content Update="Pages\ABC\AccountMovement\AccountMovTable.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Pages\Invoice\RoleStatus.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Pages\Loads\LoadReport.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

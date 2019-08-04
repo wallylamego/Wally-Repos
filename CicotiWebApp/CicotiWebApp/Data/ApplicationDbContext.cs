@@ -111,5 +111,6 @@ namespace CicotiWebApp.Data
         public DbQuery<VwDeliveryStatusPivot> VwDeliveryStatusPivot { get; set; }
         public DbQuery<VwLoadSummary> VwLoadSummary { get; set; }
         public DbQuery<VwLoadDetail> VwLoadDetail { get; set; }
+        public DbQuery<VwInvoiceStatusRoles> VwInvoiceStatusRoles { get; set; }
     }
 }

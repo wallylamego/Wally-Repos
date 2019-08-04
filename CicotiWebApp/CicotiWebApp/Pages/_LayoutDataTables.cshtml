@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - CICOTI</title>
+    <title>@ViewData["Title"]</title>
     <link rel="icon" type="image/png" href="~/images/favicon.png">
     <!-- For apple devices -->
     <link rel="apple-touch-icon" type="image/png" href="~/images/favicon.png" />
@@ -40,7 +40,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-page="/Index" class="navbar-brand">CICOTI</a>
+                <a asp-page="/Index" class="navbar-brand">
+                    <img class="img-responsive" src="~/images/CicotiOnly.PNG" height="100" width="100" />
+                </a>
             </div>
             <div class="navbar-collapse collapse">
                 
@@ -92,6 +94,7 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" asp-page="/Admin">Deliveries<span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a asp-page="/Invoice/Index">Update Delivery Status</a></li>
+                                <li><a asp-page="/Invoice/RoleStatus">Roles and Status</a></li>
                                 <li><a asp-page="/Loads/Index">Load Maintenance</a></li>
                                 <li><a asp-page="/Loads/LoadReport">Load Reports</a></li>
                                 <li><a asp-page="/Statuses/Index">Delivery Status</a></li>
