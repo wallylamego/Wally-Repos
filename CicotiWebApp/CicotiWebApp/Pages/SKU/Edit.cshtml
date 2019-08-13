@@ -14,7 +14,11 @@
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="SKU.SKUID" />
+            <div class="form-group">
+                <label asp-for="SKU.SKUID" class="control-label"></label>
+                <input asp-for="SKU.SKUID" class="form-control" />
+                <span asp-validation-for="SKU.SKUID" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="SKU.Code" class="control-label"></label>
                 <input asp-for="SKU.Code" class="form-control" />
@@ -25,12 +29,31 @@
                 <input asp-for="SKU.Description" class="form-control" />
                 <span asp-validation-for="SKU.Description" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="SKU.UOM" class="control-label"></label>
-                <input asp-for="SKU.UOM" class="form-control" />
-                <span asp-validation-for="SKU.UOM" class="text-danger"></span>
+            <div id="divUOM" class="form-group">
+                <label asp-for="SKU.UOM" class="control-label">UOM</label>
+                <select asp-for="SKU.UOMID" id="uOMID"
+                        asp-items="Model.UOMSL" class="form-control">
+                    <option value="">--Select UOM--</option>
+                </select>
+                <span asp-validation-for="SKU.UOMID" class="text-danger"></span>
             </div>
-            
+            <div class="form-group">
+                <label asp-for="SKU.Principle" class="control-label">Principal</label>
+                <select asp-for="SKU.PrincipleID" id="principleID"
+                        asp-items="Model.PrincipalSL" class="form-control">
+                    <option value="">--Select Principal--</option>
+                </select>
+                <span asp-validation-for="SKU.PrincipleID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SKU.BrandID" class="control-label">Brand</label>
+                <select asp-for="SKU.BrandID" id="principleID"
+                        asp-items="Model.BrandSL" class="form-control">
+                    <option value="">--Select Brand--</option>
+                </select>
+                <span asp-validation-for="SKU.BrandID" class="text-danger"></span>
+            </div>
+
             <div class="form-group">
                 <label asp-for="SKU.UnitsPerPallets" class="control-label"></label>
                 <input asp-for="SKU.UnitsPerPallets" class="form-control" />
@@ -52,11 +75,10 @@
                 <span asp-validation-for="SKU.CubicMetrePerUnit" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="SKU.UOM" class="control-label"></label>
-                <input asp-for="SKU.UOM" class="form-control" />
-                <span asp-validation-for="SKU.UOM" class="text-danger"></span>
+                <label asp-for="SKU.Comments" class="control-label">Comments</label>
+                <input asp-for="SKU.Comments" class="form-control" />
+                <span asp-validation-for="SKU.Comments" class="text-danger"></span>
             </div>
-           
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>

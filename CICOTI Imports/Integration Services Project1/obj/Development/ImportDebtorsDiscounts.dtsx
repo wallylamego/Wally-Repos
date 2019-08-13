@@ -11,16 +11,16 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="ImportDebtorsDiscounts"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{D2CB085B-C86E-4D81-AE66-904842B5D72E}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{942F1E00-CA07-419F-A61D-56018653E778}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:refId="Package.ConnectionManagers[DiscountAllowed_txt]"
       DTS:CreationName="FLATFILE"
       DTS:DTSID="{1A74E755-7464-43E2-9AB8-0A27803579A9}"
-      DTS:ObjectName="Flat File Connection Manager">
+      DTS:ObjectName="DiscountAllowed_txt">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:Format="Delimited"
@@ -30,7 +30,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="C:\Users\wallyf\Desktop\Imports\Discount_Allowed.txt">
+          DTS:ConnectionString="C:\Users\wallyf\Cicoti\ROA\ABC Imports\Discount_Allowed.txt">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -38,7 +38,7 @@
               DTS:DataType="133"
               DTS:TextQualified="True"
               DTS:ObjectName="Date"
-              DTS:DTSID="{9C161361-09CC-4BD5-9F1B-9BBE842CFB64}"
+              DTS:DTSID="{77128EAA-A28A-4F33-A702-31674B71F013}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -47,7 +47,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Code"
-              DTS:DTSID="{1FC28E38-B3C9-4466-BFDD-F4F32266473A}"
+              DTS:DTSID="{EF887AA8-B087-4CEB-932B-6156BFCCECED}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -55,7 +55,7 @@
               DTS:DataType="4"
               DTS:TextQualified="True"
               DTS:ObjectName="Debit"
-              DTS:DTSID="{BE18A0F5-7510-4D7C-9F37-6CC742F1CDD0}"
+              DTS:DTSID="{462C9B55-9387-4E4C-A3D9-B4B4BD3E1859}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -64,7 +64,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Description"
-              DTS:DTSID="{6D83B730-65CE-406F-9F91-17E3CAF6DAAD}"
+              DTS:DTSID="{F6510174-C90E-423B-9567-041977051E64}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -73,7 +73,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Reference"
-              DTS:DTSID="{77B41366-A68E-4030-A1D6-2E14B77A7177}"
+              DTS:DTSID="{15922677-3108-4022-8C46-AC90EA9D46C8}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -293,8 +293,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task\Flat File Source.Connections[FlatFileConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
-                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
+                  connectionManagerID="Package.ConnectionManagers[DiscountAllowed_txt]"
+                  connectionManagerRefId="Package.ConnectionManagers[DiscountAllowed_txt]"
                   name="FlatFileConnection" />
               </connections>
               <outputs>
@@ -505,13 +505,13 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="151,42"
-          Id="Package\Data Flow Task\Flat File Source"
-          TopLeft="62.75,17.75" />
-        <NodeLayout
           Size="182,42"
           Id="Package\Data Flow Task\DebtorsDiscountTable"
           TopLeft="121.5,84.25" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Data Flow Task\Flat File Source"
+          TopLeft="62.75,17.75" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Flat File Source Output]"
           TopLeft="138.25,59.75">

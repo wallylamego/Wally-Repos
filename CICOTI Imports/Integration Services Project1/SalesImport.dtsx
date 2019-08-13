@@ -11,8 +11,8 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="SalesImport"
   DTS:PackageType="5"
-  DTS:VersionBuild="9"
-  DTS:VersionGUID="{1766AAE2-21D8-4275-A14F-AD7DD8586031}">
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{CBD201BE-084B-40D2-BA6B-880DA740E5CC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -293,13 +293,13 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">6</property>
+                          name="Expression">7</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">6</property>
+                          name="FriendlyExpression">7</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -446,13 +446,13 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">201906</property>
+                          name="Expression">201907</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">201906</property>
+                          name="FriendlyExpression">201907</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>

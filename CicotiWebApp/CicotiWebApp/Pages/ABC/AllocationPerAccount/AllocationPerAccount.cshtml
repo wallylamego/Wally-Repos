@@ -1,0 +1,192 @@
+﻿@page  "{AccountID?}"
+
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+@functions{
+    public string GetAntiXsrfRequestToken()
+    {
+        return Xsrf.GetAndStoreTokens(Model.HttpContext).RequestToken;
+    }
+}
+@model CicotiWebApp.Pages.ABC.AllocationPerAccount.AllocationPerAccountModel
+
+@{
+    ViewData["Title"] = "ABC: Account";
+    Layout = "~/Pages/_LayoutDataTables.cshtml";
+}
+
+<h4>Add Edit Account Per Principal</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group" id="divActCostAccountID">
+            <label asp-for="Account.ActCostAccountID" class="control-label">Account ID</label>
+            <input asp-for="Account.ActCostAccountID" class="form-control" id="actCostAccountID" />
+            <span asp-validation-for="Account.ActCostAccountID" class="text-danger"></span>
+        </div>
+        <div class="form-group" id="divAccountNo">
+            <label asp-for="Account.AccountNo" class="control-label"></label>
+            <input asp-for="Account.AccountNo" class="form-control" id="accountNo" />
+            <span asp-validation-for="Account.AccountNo" class="text-danger"></span>
+        </div>
+        <div class="form-group" id="divMainAccountNo">
+            <label asp-for="Account.MainAccountNo" class="control-label">Main Account</label>
+            <input asp-for="Account.MainAccountNo" class="form-control" id="mainAccountNo" />
+            <span asp-validation-for="Account.MainAccountNo" class="text-danger"></span>
+        </div>
+        <div class="form-group" id="divBranch">
+            <label asp-for="Account.Branch.BranchName" class="control-label">Branch Name</label>
+            <select asp-for="Account.BranchID" id="branchID"
+                    asp-items="Model.BranchSL" class="form-control">
+                <option value="">--Select Branch--</option>
+            </select>
+            <span asp-validation-for="Account.BranchID" class="text-danger"></span>
+        </div>
+        <div class="form-group" id="divAccDescription">
+            <label asp-for="Account.Description" class="control-label">Acc. Description</label>
+            <input asp-for="Account.Description" class="form-control" id="description" />
+            <span asp-validation-for="Account.Description" class="text-danger"></span>
+        </div>
+        <div class="form-group" id="divCategory">
+            <label asp-for="Account.ActCostCategory.Description" class="control-label">Category</label>
+            <select asp-for="Account.ActCostCategoryID" id="actCostCategoryID"
+                    asp-items="Model.CategorySL" class="form-control">
+                <option value="">--Select Category--</option>
+            </select>
+            <span asp-validation-for="Account.ActCostCategoryID" class="text-danger"></span>
+        </div>
+        <div class="form-group" id="divActCostSubCategory">
+            <label asp-for="Account.ActCostSubCategoryID" class="control-label">Sub Category</label>
+            <select asp-for="Account.ActCostSubCategoryID" id="actCostSubCategoryID"
+                    asp-items="Model.SubCategorySL" class="form-control">
+                <option value="">--Select Sub Category--</option>
+            </select>
+            <span asp-validation-for="Account.ActCostSubCategoryID" class="text-danger"></span>
+        </div>
+        <div class="form-group" id="divAccountType">
+            <label asp-for="Account.ActCostAccountType.Description" class="control-label">Account Type</label>
+            <select asp-for="Account.ActCostAccountTypeID" id="actCostAccountTypeID"
+                    asp-items="Model.AccountTypeSL" class="form-control">
+                <option value="">--Select AccountType--</option>
+            </select>
+            <span asp-validation-for="Account.ActCostAccountTypeID" class="text-danger"></span>
+        </div>
+
+        <div class="form-group" id="divCostDriver">
+            <label asp-for="Account.ActCostDriver.Description" class="control-label">Cost Driver</label>
+            <select asp-for="Account.ActCostDriverID" id="actCostDriverID"
+                    asp-items="Model.CostDriverSL" class="form-control">
+                <option value="">--Select Cost Driver--</option>
+            </select>
+            <span asp-validation-for="Account.ActCostDriverID" class="text-danger"></span>
+        </div>
+        <div class="form-group" id="divActCostAllocationSplit">
+            <label asp-for="Account.ActCostAllocationSplit.Description" class="control-label">Allocation Split</label>
+            <select asp-for="Account.ActCostAllocationSplitID" id="actCostAllocationSplitID"
+                    asp-items="Model.CostAllocationSL" class="form-control">
+                <option value="">--Select Cost Allocation Split--</option>
+            </select>
+            <span asp-validation-for="Account.ActCostAllocationSplitID" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-default" id="savebtn" />
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-page="AccountTable">Back to List</a>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ModalPartial")
+    @await Html.PartialAsync("_ModalConfirmPartial")
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script type="text/javascript">
+        var accountToSave = {};
+        
+        function ajaxAccountUpdate(obj) {
+        console.log("ajaxAccountUpdate Function runs: " + JSON.stringify(obj));
+            $.ajax({
+                type: "PUT",
+                url: "/ABC/Accounts/Account?handler=UpdateAccount",
+                headers:
+                {
+                    "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                },
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify(obj),
+                success: function (data) {
+                    console.log(data);
+                    console.log("Account successfully returned from DataBase");
+                    $("#modalHeader").text("Account Processing Status");
+                    $("#modalMessage").text($("#actCostAccountID").val() + " was updated.");
+                    $("#myModal").modal("show");
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+
+                        $("#modalHeader").text("Account Processing Status");
+                        $("#modalMessage").text("Account was not updated.");
+                        $("#myModal").modal("show");
+                    }
+                });//ajax Update Section 1
+        }
+
+        function ajaxAccountInsert(obj) {
+            console.log("Account: in Insert Ajax Call: " + JSON.stringify(obj));
+            $.ajax({
+                type: "POST",
+                url: "/ABC/Accounts/Account?handler=InsertAccount",
+                    headers:
+                        {
+                            "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                        },
+                    contentType: "application/json",
+                    dataType: "json",
+                    data: JSON.stringify(obj),
+                    success: function (data) {
+                        $("#modalHeader").text("Account Processing Status");
+                        $("#modalMessage").text(data.actCostAccountID + " was inserted.");
+                        $('#actCostAccountID').val(data.actCostAccountID);
+                        $("#myModal").modal("show");
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        $("#modalHeader").text("Account Processing Status");
+                        $("#modalMessage").text("Account Data Not Updated.");
+                        $("#myModal").modal("show");
+                    }
+                });//ajax insert
+        }
+
+        $(document).ready(function () {
+            $('#savebtn').click(function () {
+                accountToSave.actCostAccountID = $('#actCostAccountID').val();
+                accountToSave.accountNo = $('#accountNo').val();
+                accountToSave.branchID = $('#branchID').val();
+                accountToSave.description = $('#description').val();
+                accountToSave.actCostCategoryID = $('#actCostCategoryID').val();
+                accountToSave.mainAccountNo = $('#mainAccountNo').val();
+                accountToSave.actCostDriverID = $('#actCostDriverID').val();
+                accountToSave.actCostAllocationSplitID = $('#actCostAllocationSplitID').val();
+                accountToSave.actCostSubCategoryID = $('#actCostSubCategoryID').val();
+                accountToSave.actCostAccountTypeID = $('#actCostAccountTypeID').val();
+
+                if ($('#actCostAccountID').val().length > 0 && $('#actCostAccountID').val() > 0) {
+                    ajaxAccountUpdate(accountToSave);
+                }
+                else {
+                    accountToSave.actCostAccountID = 0;
+                    ajaxAccountInsert(accountToSave);
+                }
+            });
+
+
+   });//Document Ready end.
+
+    </script>
+
+}

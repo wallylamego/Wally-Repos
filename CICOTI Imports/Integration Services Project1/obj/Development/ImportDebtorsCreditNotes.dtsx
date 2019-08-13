@@ -11,8 +11,8 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="ImportDebtorsCreditNotes"
   DTS:PackageType="5"
-  DTS:VersionBuild="2"
-  DTS:VersionGUID="{8469E9D9-A3E6-42CD-ADC1-75F00C8F4006}">
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{797D1257-7B2B-4BF6-9EA2-90926D1B48BE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -30,7 +30,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="C:\Users\wallyf\Desktop\Imports\DebtorsCreditNotes.txt">
+          DTS:ConnectionString="C:\Users\wallyf\Cicoti\ROA\ABC Imports\DebtorsCreditNotes.txt">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -39,7 +39,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Customer"
-              DTS:DTSID="{0753834A-D962-42F0-8FB4-5BFD8C5A1317}"
+              DTS:DTSID="{E831000D-FB7F-4055-A191-F8E90C7800F8}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -47,7 +47,7 @@
               DTS:DataType="133"
               DTS:TextQualified="True"
               DTS:ObjectName="Date"
-              DTS:DTSID="{98FCB0E4-5737-4F67-AB4A-F2B46ED50C3D}"
+              DTS:DTSID="{032AB016-783B-4331-9B91-F0B7FB6D2C32}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -56,7 +56,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Reference"
-              DTS:DTSID="{CB19CCDE-B000-4536-B1A1-EEF55D4D7E18}"
+              DTS:DTSID="{94BB9093-5903-4FDE-9D10-7FA1F578453A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -65,7 +65,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Code"
-              DTS:DTSID="{5B7B4EDA-8213-4D08-A09B-51177C9B2481}"
+              DTS:DTSID="{1CB83F9D-0DCD-4750-A7A9-033AE800CDC4}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -73,7 +73,7 @@
               DTS:DataType="4"
               DTS:TextQualified="True"
               DTS:ObjectName="Debit"
-              DTS:DTSID="{9BCFD3B5-0C62-4CFC-81AC-A39E8223C8E4}"
+              DTS:DTSID="{4AA89F18-FD4A-47DA-9D63-619355339B5B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -81,7 +81,7 @@
               DTS:DataType="4"
               DTS:TextQualified="True"
               DTS:ObjectName="Credit"
-              DTS:DTSID="{47301817-943D-4F64-B773-5B3D90E272E8}"
+              DTS:DTSID="{93C8033D-3A3B-4382-A047-A030DAADAD77}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -90,7 +90,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Description"
-              DTS:DTSID="{B3EF729C-ADC9-4945-8538-3B4DC1F101C1}"
+              DTS:DTSID="{C7847CB7-33A9-403E-850D-EF50281D7478}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -99,7 +99,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Audit No "
-              DTS:DTSID="{CE2ED37E-DD6A-4B7E-BAB4-35380862D51D}"
+              DTS:DTSID="{2EB44390-5C7B-4B0C-B3B7-60CED06E6CDE}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -649,13 +649,13 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="151,42"
-          Id="Package\Data Flow Task\Flat File Source"
-          TopLeft="82,19" />
-        <NodeLayout
           Size="227,42"
           Id="Package\Data Flow Task\ActCostDebtorsCreditNoteTable"
           TopLeft="72.25,94.75" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Data Flow Task\Flat File Source"
+          TopLeft="82,19" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Flat File Source Output]"
           TopLeft="157.5,61">

@@ -37,7 +37,37 @@ namespace CicotiWebApp.Pages.SKU
             {
                 return NotFound();
             }
+            PopulatePrincipalSL();
+            PopulateUOMSL();
+            PopulateBrandSL();
             return Page();
+        }
+        public SelectList UOMSL { get; set; }
+        public void PopulateUOMSL(object selectedUOM = null)
+        {
+            var UOMQuery = from v in _context.UOM
+                                       orderby v.Description
+                                       select v;
+            UOMSL = new SelectList(UOMQuery.AsNoTracking(),
+                        "UOMID", "Description", selectedUOM);
+        }
+        public SelectList PrincipalSL { get; set; }
+        public void PopulatePrincipalSL(object selectedPrincipal = null)
+        {
+            var PrincipalQuery = from v in _context.Principle
+                           orderby v.PrincipalName
+                           select v;
+            PrincipalSL = new SelectList(PrincipalQuery.AsNoTracking(),
+                        "PrincipleID", "PrincipalName", selectedPrincipal);
+        }
+        public SelectList BrandSL { get; set; }
+        public void PopulateBrandSL(object selectedBrand = null)
+        {
+            var BrandQuery = from v in _context.Brand
+                                 orderby v.Description
+                                 select v;
+            BrandSL = new SelectList(BrandQuery.AsNoTracking(),
+                        "BrandID", "Description", selectedBrand);
         }
 
         public async Task<IActionResult> OnPostAsync()
@@ -51,8 +81,16 @@ namespace CicotiWebApp.Pages.SKU
             {
                 try
                 {
-                    _context.Attach((CicotiWebApp.Models.SKU)SKU).State = EntityState.Modified;
-                    await _context.SaveChangesAsync();
+                    if (SKU.SKUID == 0)
+                    {
+                        _context.SKUs.Add(SKU);
+                        await _context.SaveChangesAsync();
+                    }
+                    else
+                    {
+                        _context.Attach((CicotiWebApp.Models.SKU)SKU).State = EntityState.Modified;
+                        await _context.SaveChangesAsync();
+                    }
                 }
                 catch (DbUpdateConcurrencyException)
                 {

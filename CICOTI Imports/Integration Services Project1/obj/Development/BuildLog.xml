@@ -2,23 +2,23 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>CicotiImports</Name>
-    <LastWriteTime>2019-07-15T04:30:32.2673224Z</LastWriteTime>
+    <LastWriteTime>2019-08-12T08:43:53.6976787Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>MonthlyStockImport.dtsx</Name>
-      <LastWriteTime>2019-07-07T09:41:34.8471462Z</LastWriteTime>
+      <LastWriteTime>2019-08-10T13:15:17.5903419Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>DebtorsImport.dtsx</Name>
-      <LastWriteTime>2019-07-15T04:18:00.7647252Z</LastWriteTime>
+      <LastWriteTime>2019-07-15T04:31:47.9586516Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>SalesImport.dtsx</Name>
-      <LastWriteTime>2019-07-07T11:55:55.2990569Z</LastWriteTime>
+      <LastWriteTime>2019-08-06T09:01:48.4050432Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -43,7 +43,7 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>PackageLive.dtsx</Name>
-      <LastWriteTime>2019-07-15T03:11:48.5410332Z</LastWriteTime>
+      <LastWriteTime>2019-08-12T08:43:53.6505588Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -53,17 +53,32 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>TransferSalesData.dtsx</Name>
-      <LastWriteTime>2019-06-08T04:57:02.4122463Z</LastWriteTime>
+      <LastWriteTime>2019-08-11T07:10:59.8763548Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>ImportDebtorsCreditNotes.dtsx</Name>
-      <LastWriteTime>2019-07-03T16:41:28.3381504Z</LastWriteTime>
+      <LastWriteTime>2019-08-11T10:48:49.6175846Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>ImportDebtorsDiscounts.dtsx</Name>
-      <LastWriteTime>2019-07-03T16:41:28.3102246Z</LastWriteTime>
+      <LastWriteTime>2019-08-11T10:25:00.1616874Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>ImportTransportCost.dtsx</Name>
+      <LastWriteTime>2019-08-11T14:57:48.370535Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>SalesRepsFromAzure.dtsx</Name>
+      <LastWriteTime>2019-08-12T07:21:40.8074824Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>SalesRepEmployeeLink.dtsx</Name>
+      <LastWriteTime>2019-08-12T08:46:34.4793233Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

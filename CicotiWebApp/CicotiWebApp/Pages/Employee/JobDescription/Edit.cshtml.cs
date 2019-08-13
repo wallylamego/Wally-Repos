@@ -47,7 +47,7 @@ namespace CicotiWebApp.Pages.Employee.JobDescription
                 return Page();
             }
 
-            if (HttpContext.User.IsInRole("Admin"))
+            if (HttpContext.User.IsInRole("Admin") || HttpContext.User.IsInRole("HR"))
             {
                 try
                 {

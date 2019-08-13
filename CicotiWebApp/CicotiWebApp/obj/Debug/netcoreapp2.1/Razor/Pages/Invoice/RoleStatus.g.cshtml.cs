@@ -76,7 +76,7 @@ using CicotiWebApp.Data;
             WriteLiteral("\r\n<h2>Roles and Delivery Status</h2>\r\n\r\n");
             EndContext();
             BeginContext(451, 67, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "9d8ff5ba00b74059b46430303bfc3987", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "a233b15162b441eea9023082aaee74b0", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

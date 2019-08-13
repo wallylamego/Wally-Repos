@@ -11,8 +11,8 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="MonthlyStockImport"
   DTS:PackageType="5"
-  DTS:VersionBuild="42"
-  DTS:VersionGUID="{053B2830-6FE2-40F0-B403-1D6DE84D3D29}">
+  DTS:VersionBuild="43"
+  DTS:VersionGUID="{CACDCD88-7B38-4236-8C8F-31EFBB9B9856}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -237,7 +237,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="ActPeriodID">
       <DTS:VariableValue
-        DTS:DataType="3">42</DTS:VariableValue>
+        DTS:DataType="3">43</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -246,7 +246,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="PeriodNo">
       <DTS:VariableValue
-        DTS:DataType="8">201906</DTS:VariableValue>
+        DTS:DataType="8">201907</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
