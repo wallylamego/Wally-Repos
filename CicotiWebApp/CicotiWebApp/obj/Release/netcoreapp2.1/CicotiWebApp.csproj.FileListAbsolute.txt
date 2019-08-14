@@ -101,7 +101,6 @@ C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Release\netcoreapp2.1
 C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Release\netcoreapp2.1\Razor\Pages\Provinces\Index.g.cshtml.cs
 C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Release\netcoreapp2.1\Razor\Pages\Reports\DeliveryStatus.g.cshtml.cs
 C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Release\netcoreapp2.1\Razor\Pages\Reports\DeliveryStatusSummary.g.cshtml.cs
-C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Release\netcoreapp2.1\Razor\Pages\SKU\Create.g.cshtml.cs
 C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Release\netcoreapp2.1\Razor\Pages\SKU\Edit.g.cshtml.cs
 C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Release\netcoreapp2.1\Razor\Pages\SKU\Index.g.cshtml.cs
 C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Release\netcoreapp2.1\Razor\Pages\Statuses\Create.g.cshtml.cs
@@ -150,3 +149,5 @@ C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Release\netcoreapp2.1
 C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Release\netcoreapp2.1\Razor\Pages\Reports\DeliveryStatusPivot.g.cshtml.cs
 C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Release\netcoreapp2.1\Razor\Pages\Invoice\RoleStatus.g.cshtml.cs
 C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Release\netcoreapp2.1\Razor\Pages\VehicleTypes\UsefulLinks.g.cshtml.cs
+C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Release\netcoreapp2.1\Razor\Pages\ABC\AllocationPerAccount\AllocationPerAccount.g.cshtml.cs
+C:\Users\wallyf\source\repos\CicotiWebApp\CicotiWebApp\obj\Release\netcoreapp2.1\Razor\Pages\ABC\AllocationPerAccount\AllocationPerAccountTable.g.cshtml.cs
