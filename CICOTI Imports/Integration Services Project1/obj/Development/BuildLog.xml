@@ -2,7 +2,7 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>CicotiImports</Name>
-    <LastWriteTime>2019-08-12T08:43:53.6976787Z</LastWriteTime>
+    <LastWriteTime>2019-08-24T16:38:59.400884Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
@@ -79,6 +79,11 @@
     <ProjectBuildItemInfo>
       <Name>SalesRepEmployeeLink.dtsx</Name>
       <LastWriteTime>2019-08-12T08:46:34.4793233Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>ImportPODUpdates.dtsx</Name>
+      <LastWriteTime>2019-08-24T16:38:59.3001561Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

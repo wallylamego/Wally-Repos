@@ -82,7 +82,7 @@ using CicotiWebApp.Data;
             WriteLiteral("\r\n<h2>Delivery Status: Per Day</h2>\r\n\r\n<br />\r\n<br />\r\n<div class=\"form-group\" id=\"divStartDate\">\r\n    ");
             EndContext();
             BeginContext(535, 82, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("label", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5523639c59a947d68f1c6584402ff062", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("label", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e4a88bb234984c63978305c33416b967", async() => {
                 BeginContext(591, 18, true);
                 WriteLiteral("Invoice Start Date");
                 EndContext();
@@ -109,7 +109,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_LabelTagHelper.For = ModelExpressionProvid
             WriteLiteral("\r\n    <div class=\'input-group date\' id=\'datetimepicker1\'>\r\n        ");
             EndContext();
             BeginContext(684, 84, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "19b4599131cc4a1c9057d4ba4f2e1e5d", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "3c9af0536bfa461bb60592b0a05a0882", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper>();
@@ -136,7 +136,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
             WriteLiteral("\r\n        <span class=\"input-group-addon\">\r\n            <span class=\"glyphicon glyphicon-calendar\"></span>\r\n        </span>\r\n        ");
             EndContext();
             BeginContext(901, 71, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("span", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6e58e6449899494cab08879cbec15343", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("span", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "82005c2667ec44be9c7100a996fb851d", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_ValidationMessageTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.ValidationMessageTagHelper>();
@@ -160,7 +160,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_ValidationMessageTagHelper.For = ModelExpr
             WriteLiteral("\r\n    </div>\r\n</div>\r\n<div class=\"form-group\" id=\"divEndDate\">\r\n    ");
             EndContext();
             BeginContext(1040, 78, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("label", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f2c16df1d21f451c8c1c6a0a10f997a4", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("label", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1dbd97c8205b47b6b5b4597f5d9db23a", async() => {
                 BeginContext(1094, 16, true);
                 WriteLiteral("Invoice End Date");
                 EndContext();
@@ -187,7 +187,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_LabelTagHelper.For = ModelExpressionProvid
             WriteLiteral("\r\n    <div class=\'input-group date\' id=\'datetimepicker2\'>\r\n        ");
             EndContext();
             BeginContext(1185, 80, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "cb78dd77f6d24a5f83aca39ffae8416e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "780c1a9508cc43c1998976b19d1b1226", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper>();
@@ -214,7 +214,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
             WriteLiteral("\r\n        <span class=\"input-group-addon\">\r\n            <span class=\"glyphicon glyphicon-calendar\"></span>\r\n        </span>\r\n        ");
             EndContext();
             BeginContext(1398, 69, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("span", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6dceb46c4ec14091b4ecd65252f2b1c6", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("span", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c999e3e1835341cf9a339839b01bd755", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_ValidationMessageTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.ValidationMessageTagHelper>();

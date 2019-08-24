@@ -75,11 +75,14 @@ namespace CicotiWebApp.Pages.Invoice
                 case 0:
                     //where status not equal to POD and Cancelled by Credit Note
                     InvoiceQuery = InvoiceQuery.Where(i => i.StatusID != 8).Where(i => i.StatusID != 10)
-                        .OrderBy(i => i.InvoicePrintDate);
+                        .OrderByDescending(i => i.InvoicePrintDate);
+                    break;
+                case 99:
+                    InvoiceQuery = InvoiceQuery.OrderByDescending(i => i.InvoicePrintDate);
                     break;
                 default:
                     InvoiceQuery = InvoiceQuery.Where(i => i.StatusID == Model.StatusID)
-                    .OrderBy(i => i.InvoicePrintDate);
+                    .OrderByDescending(i => i.InvoicePrintDate);
                     break;
 }           
 
@@ -139,7 +142,7 @@ namespace CicotiWebApp.Pages.Invoice
         public async Task<IActionResult>  OnGetAsync()
         {
             await PopulateStatusSLAsync();
-            ExecuteDate = DateTime.Now;
+            ExecuteDate = DateTime.Now.AddHours(2);
             return Page();
         }
 

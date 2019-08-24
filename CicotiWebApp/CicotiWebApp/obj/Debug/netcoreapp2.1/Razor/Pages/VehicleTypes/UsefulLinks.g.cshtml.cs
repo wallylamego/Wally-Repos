@@ -61,7 +61,7 @@ using CicotiWebApp.Data;
             WriteLiteral("<a href=\"https://www.imperiallogistics.com/\" target=\"_blank\" role=\"button\">\r\n    ");
             EndContext();
             BeginContext(139, 86, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "7a089477d7c14cc1ba11d254ec57a88b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "606304a8bb834e4182f7d0e4b3a1b6d7", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

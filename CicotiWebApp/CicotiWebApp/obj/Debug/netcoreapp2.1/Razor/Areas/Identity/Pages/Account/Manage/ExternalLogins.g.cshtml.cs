@@ -129,12 +129,12 @@ Write(Html.Partial("_StatusMessage", Model.StatusMessage));
             WriteLiteral("                        ");
             EndContext();
             BeginContext(547, 547, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "40651926be9d49c3bd1602d2ea045d06", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b073bf8fa214444ab4226962d6543b91", async() => {
                 BeginContext(616, 69, true);
                 WriteLiteral("\r\n                            <div>\r\n                                ");
                 EndContext();
                 BeginContext(685, 75, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "196da0091c9742b29777000782244b0b", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "8a70b10c0c584b1dbbb61c62c54a5a7b", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper>();
@@ -161,7 +161,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
                 WriteLiteral("\r\n                                ");
                 EndContext();
                 BeginContext(794, 71, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "c7d873be50164556995907c67281a7bf", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "2415eab550544911bd69c3f58872f437", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper>();
@@ -269,7 +269,7 @@ WriteAttributeValue(" ", 963, login.LoginProvider, 964, 20, false);
             WriteLiteral("    <h4>Add another service to log in.</h4>\r\n    <hr />\r\n    ");
             EndContext();
             BeginContext(1442, 510, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "86141007144040a4941e7b687eddca6c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f7158e94b8884b84b858db4fa9c07c1b", async() => {
                 BeginContext(1536, 55, true);
                 WriteLiteral("\r\n        <div id=\"socialLoginList\">\r\n            <p>\r\n");
                 EndContext();

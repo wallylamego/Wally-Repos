@@ -113,7 +113,7 @@ using CicotiWebApp.Data;
             WriteLiteral("                    ");
             EndContext();
             BeginContext(1115, 66, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "933698b0db964f328a907ed62715a10a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "a038251a8e31417194b27736975a18cb", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -132,7 +132,7 @@ using CicotiWebApp.Data;
             WriteLiteral("\r\n                    </a>\r\n                </div>\r\n                <div class=\"col-sm-3\">\r\n                    <a href=\"https://www.diageo.com/\" target=\"_blank\">\r\n                        ");
             EndContext();
             BeginContext(1369, 63, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "0e7aa54858e642acbf4af496fb3dadd7", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "a23f11ef596041c8b307532c52ea0d2e", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -151,7 +151,7 @@ using CicotiWebApp.Data;
             WriteLiteral("\r\n                    </a>\r\n                </div>\r\n                <div class=\"col-sm-3\">\r\n                    <a href=\"http://www.bat.com/\" target=\"_blank\">\r\n                        ");
             EndContext();
             BeginContext(1616, 62, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "a8c151db9aa14f2394c51d902a1143a7", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "a00ac8ab86e74f59b174608e604c13c2", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -170,7 +170,7 @@ using CicotiWebApp.Data;
             WriteLiteral("\r\n                    </a>\r\n                </div>\r\n                <div class=\"col-sm-3\">\r\n                    <a href=\"https://www.kwv.co.za/\" target=\"_blank\">\r\n                        ");
             EndContext();
             BeginContext(1865, 60, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "621083e52dd6469b8af3a208b5f3ec17", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "0e130df5ff2f45e6a8eb1df26b5a1b99", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -211,7 +211,7 @@ using CicotiWebApp.Data;
                         ");
             EndContext();
             BeginContext(2589, 73, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "310fc452084d4ebfb35cc72ab2d6ba47", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "26d5b809e3d44e9dbde1917fd59313e8", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -230,7 +230,7 @@ using CicotiWebApp.Data;
             WriteLiteral("\r\n                    </a>\r\n                </div>\r\n                <div class=\"col-sm-2\">\r\n                    <a href=\"http://www.pioneerfoods.co.za/\" target=\"_blank\">\r\n                        ");
             EndContext();
             BeginContext(2857, 75, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "111da1b25b5947c0aa97d49198a94765", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "921423f6a61d4635ac85dabf50ef1256", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -249,7 +249,7 @@ using CicotiWebApp.Data;
             WriteLiteral("\r\n                    </a>\r\n                </div>\r\n                <div class=\"col-sm-2\">\r\n                    <a href=\"https://www.simba.co.za/\" target=\"_blank\">\r\n                        ");
             EndContext();
             BeginContext(3121, 71, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "a8b5c8a73f7742129476c3f5a1d532aa", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "23a42129f5af4317a21f2382ca8f8328", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -268,7 +268,7 @@ using CicotiWebApp.Data;
             WriteLiteral("\r\n                    </a>\r\n                </div>\r\n                <div class=\"col-sm-2\">\r\n                    <a href=\"https://www.gsk.com/\" target=\"_blank\">\r\n                        ");
             EndContext();
             BeginContext(3377, 67, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "d13d986875d643969f28f2d3ba881f34", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "2302957720e94c0d94422effd09275ed", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -287,7 +287,7 @@ using CicotiWebApp.Data;
             WriteLiteral("\r\n                    </a>\r\n                </div>\r\n                <div class=\"col-sm-2\">\r\n                    <a href=\"https://www.cerebos.co.za/\" target=\"_blank\">\r\n                        ");
             EndContext();
             BeginContext(3635, 75, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "055ec834d34646ae801edcb8dab583cf", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "2cd7b4964c60402494040b4c98cad5c0", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -306,7 +306,7 @@ using CicotiWebApp.Data;
             WriteLiteral("\r\n                    </a>\r\n                </div>\r\n                <div class=\"col-sm-2\">\r\n                    <a href=\"\" target=\"_blank\">\r\n                        ");
             EndContext();
             BeginContext(3875, 73, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "ad2c8d44b29d4af9862de98e6af19abe", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "dbdc4691dc7149a1b6401dbdfca1704f", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -346,7 +346,7 @@ using CicotiWebApp.Data;
                     ");
             EndContext();
             BeginContext(4543, 66, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "866c5943c37e4c72ad601c1a37fbc91c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "088e9e9d17074658971858ca7973e1cf", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -365,7 +365,7 @@ using CicotiWebApp.Data;
             WriteLiteral("\r\n                </div>\r\n                <div class=\"col-sm-2\">\r\n                    ");
             EndContext();
             BeginContext(4695, 63, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "075399bc2d7e491b94323f96a732551a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "2116771502b047458699cee99f80b6b7", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -384,7 +384,7 @@ using CicotiWebApp.Data;
             WriteLiteral("\r\n                </div>\r\n                <div class=\"col-sm-2\">\r\n                    ");
             EndContext();
             BeginContext(4844, 68, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "4037ae0c0d8a44428e1c98b2c9a76c63", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "f9ea68a8ae7648ceb0584f37665353c5", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -403,7 +403,7 @@ using CicotiWebApp.Data;
             WriteLiteral("\r\n                </div>\r\n                <div class=\"col-sm-2\">\r\n                    ");
             EndContext();
             BeginContext(4998, 69, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "14a26a0fb9254ab4ac0a865f8efe3555", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "89ead25a8d2143d2b8809ed2fe4e9a3f", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -422,7 +422,7 @@ using CicotiWebApp.Data;
             WriteLiteral("\r\n                </div>\r\n                <div class=\"col-sm-2\">\r\n                    ");
             EndContext();
             BeginContext(5153, 66, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "62873f85c48e4fa9a4fec20d31beb113", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "0fdf219826944b4a9163994906948469", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -441,7 +441,7 @@ using CicotiWebApp.Data;
             WriteLiteral("\r\n                </div>\r\n                <div class=\"col-sm-2\">\r\n                    ");
             EndContext();
             BeginContext(5305, 65, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "8609c8013f314554ae30c86964d4c7dc", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "017aef0ce1b04b0c881c045d45c02b45", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -479,7 +479,7 @@ using CicotiWebApp.Data;
                     ");
             EndContext();
             BeginContext(5933, 66, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "9d8d96e0fa2c4b088a5c504dea3c8744", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "53bae3a5205546978a01b4d099746b1c", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -498,7 +498,7 @@ using CicotiWebApp.Data;
             WriteLiteral("\r\n                </div>\r\n                <div class=\"col-sm-2\">\r\n                    ");
             EndContext();
             BeginContext(6085, 64, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "86340379c828413fb3c777e03378a7ff", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "e6dd288421f0481781d7d4dcecf8b949", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -517,7 +517,7 @@ using CicotiWebApp.Data;
             WriteLiteral("\r\n                </div>\r\n                <div class=\"col-sm-2\">\r\n                    ");
             EndContext();
             BeginContext(6235, 62, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "6d6e761f58724dc38bfac09bf9d21c1c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "1b7972dbd5144176bf92abc7c455e187", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -536,7 +536,7 @@ using CicotiWebApp.Data;
             WriteLiteral("\r\n                </div>\r\n                <div class=\"col-sm-2\">\r\n                    ");
             EndContext();
             BeginContext(6383, 73, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "31a940e4e05045078d81476f5b92c59b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "9dcdeba61ce749548c37152a0da83f1f", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -555,7 +555,7 @@ using CicotiWebApp.Data;
             WriteLiteral("\r\n                </div>\r\n                <div class=\"col-sm-2\">\r\n                    ");
             EndContext();
             BeginContext(6542, 71, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "cdc6431ce3724c7fb68e952f9e0f6b7d", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "934fa7beab3549069e1a9eecb10f35ba", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -574,7 +574,7 @@ using CicotiWebApp.Data;
             WriteLiteral("\r\n                </div>\r\n                <div class=\"col-sm-2\">\r\n                    ");
             EndContext();
             BeginContext(6699, 68, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "54f36683a3f942e19441aa3dea072412", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "159a5c4672b04854a0a9c3c7177a2a85", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

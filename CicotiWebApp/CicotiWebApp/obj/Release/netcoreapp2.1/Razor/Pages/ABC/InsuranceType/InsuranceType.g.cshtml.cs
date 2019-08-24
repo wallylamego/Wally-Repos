@@ -74,7 +74,7 @@ using CicotiWebApp.Data;
             WriteLiteral("\r\n<h2>Insurance Type Listing</h2>\r\n\r\n<p>\r\n    ");
             EndContext();
             BeginContext(431, 46, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "01cdc06f475941afa54904b7e514ea2c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2866e76868b04d9494c1f10e2262a2c3", async() => {
                 BeginContext(463, 10, true);
                 WriteLiteral("Create New");
                 EndContext();

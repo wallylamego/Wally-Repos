@@ -69,6 +69,7 @@ namespace CicotiWebApp.Pages.Employee
                      v.CostCentre.ToLower().Contains(Model.search.value.ToLower()) ||
                      v.EmployeeNo.ToLower().Contains(Model.search.value.ToLower()) ||
                      v.CostCentre.ToLower().Contains(Model.search.value.ToLower()) ||
+                     v.Branch.ToLower().Contains(Model.search.value.ToLower()) ||
                      v.Department.ToLower().Contains(Model.search.value.ToLower()) ||
                      v.ReportTo.ToLower().Contains(Model.search.value.ToLower()) ||
                      v.JobDescription.ToLower().Contains(Model.search.value.ToLower())

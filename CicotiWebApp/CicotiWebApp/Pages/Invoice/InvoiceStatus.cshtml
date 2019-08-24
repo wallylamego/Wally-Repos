@@ -2,7 +2,7 @@
 @model CicotiWebApp.Pages.Invoice.InvoiceStatusModel
 
 @{
-    ViewData["Title"] = "Delivery: Status";
+    ViewData["Title"] = "Delivery: Status: " + Model.Invoice.InvoiceNumber;
     Layout = "~/Pages/_LayoutDataTables.cshtml";
 }
 @inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
@@ -15,7 +15,7 @@
 
 <br />
 <br />
-<h4>Invoice Status Details</h4>
+<h4>Invoice Status Details:  @Model.Invoice.InvoiceNumber</h4>
 
 <hr />
 <div id="accordion">

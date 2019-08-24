@@ -45,7 +45,7 @@
                 <th>Account Name</th>
                 <th>Product</th>
                 <th>Invoice Status</th>
-                <th>Select</th>
+                @*<th>Select</th>*@
             </tr>
         </thead>
     </table>
@@ -87,6 +87,9 @@
         $(document).ready(function ()
         {
             $("#loader").hide();
+            var $radios = $('input:radio[name=statusID]');
+            $radios.filter('[value=0]').prop('checked', true);
+
             $("input[type='radio']").click(function () {
                 var radioValue = $("input[name='statusID']:checked").val();
                 if (radioValue) {
@@ -223,7 +226,15 @@
                 ],
                 "columns": [
                     { "data": "invoiceID", "name": "invoiceID", "autoWidth": true },
-                    { "data": "invoiceNumber", "name": "invoiceNumber", "autoWidth": true },
+                    {
+                        "data": "invoiceNumber", "name": "invoiceNumber",
+                        fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
+                            if (oData.invoiceNumber) {
+                                $(nTd).html("<a target='_blank' href='/Invoice/InvoiceStatus/" + oData.invoiceID + "'>" + oData.invoiceNumber + "</a>");
+                            }
+                        }
+                    },
+                    //{ "data": "invoiceNumber", "name": "invoiceNumber", "autoWidth": true },
                     {
                         data: "invoicePrintDate",
                         render: function (data, type, row) {
@@ -239,12 +250,12 @@
                     { "data": "accountNo", "name": "accountNo", "autoWidth": true },
                     { "data": "accountName", "name": "accountName", "autoWidth": true },
                     { "data": "productType", "name": "productType", "autoWidth": true },
-                    { "data": "statusName", "name": "statusName", "autoWidth": true },
-                    {
-                        "render": function (data, type, full, meta) {
-                            return "<p data-placement='top' data-toggle='tooltip' title='Edit'><button class='btn btn-primary btn-xs' data-title='Edit' data-toggle='modal' data-target='#edit' onclick='window.location.href=\"/Invoice/InvoiceStatus/" + full.invoiceID + "\"\'><span class='glyphicon glyphicon-pencil'></span></button></p>";
-                        }
-                    }
+                    { "data": "statusName", "name": "statusName", "autoWidth": true }
+                    //{
+                    //    "render": function (data, type, full, meta) {
+                    //        return "<p data-placement='top' data-toggle='tooltip' title='Edit'><button class='btn btn-primary btn-xs' data-title='Edit' data-toggle='modal' data-target='#edit' onclick='window.location.href=\"/Invoice/InvoiceStatus/" + full.invoiceID + "\"\'><span class='glyphicon glyphicon-pencil'></span></button></p>";
+                    //    }
+                    //}
                 ]
 
                 });//Invoice Table

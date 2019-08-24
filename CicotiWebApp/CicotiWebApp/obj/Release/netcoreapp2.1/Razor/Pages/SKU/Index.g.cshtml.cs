@@ -75,7 +75,7 @@ using CicotiWebApp.Data;
             WriteLiteral("\r\n<h2>SKU Listing</h2>\r\n\r\n<p>\r\n    ");
             EndContext();
             BeginContext(433, 33, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9204ded53aba426e92a1344a11fe21c5", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0e1759de416745848b9cb2d9fb2fdbc1", async() => {
                 BeginContext(452, 10, true);
                 WriteLiteral("Create New");
                 EndContext();
