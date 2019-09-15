@@ -11,8 +11,8 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="MonthlyStockImport"
   DTS:PackageType="5"
-  DTS:VersionBuild="43"
-  DTS:VersionGUID="{CACDCD88-7B38-4236-8C8F-31EFBB9B9856}">
+  DTS:VersionBuild="48"
+  DTS:VersionGUID="{3093CDA9-9DE0-4A68-945B-ACFA4F97DFBA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -237,7 +237,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="ActPeriodID">
       <DTS:VariableValue
-        DTS:DataType="3">43</DTS:VariableValue>
+        DTS:DataType="3">44</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -246,7 +246,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="PeriodNo">
       <DTS:VariableValue
-        DTS:DataType="8">201907</DTS:VariableValue>
+        DTS:DataType="8">201908</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -1587,7 +1587,7 @@ where [refTable].[Code] = ?</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{6561C6E6-9943-4D4B-B1F0-DA2F9D5650A8}"
+      DTS:DTSID="{92097553-604C-4BCC-9B05-92C6DDD27B40}"
       DTS:From="Package\GetActCostPeriodID"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
@@ -1606,39 +1606,39 @@ where [refTable].[Code] = ?</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="171.5,42"
+          Size="172,42"
           Id="Package\GetActCostPeriodID"
-          TopLeft="129.375,30.625" />
+          TopLeft="195.375,40.625" />
         <NodeLayout
-          Size="158.5,42"
+          Size="158,42"
           Id="Package\ImportStockData"
-          TopLeft="126.875,155" />
+          TopLeft="164.875,236" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="215.125,72.625">
+          TopLeft="281.375,82.625">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-9.00000000000006,82.375"
+              EndConnector="-37.5,153.375"
               Start="0,0"
-              End="-9.00000000000006,74.875">
+              End="-37.5,145.875">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,37.1875" />
+                    End="0,72.6875" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,37.1875"
-                    Point2="0,41.1875"
-                    Point3="-4,41.1875" />
+                    Point1="0,72.6875"
+                    Point2="0,76.6875"
+                    Point3="-4,76.6875" />
                   <mssgle:LineSegment
-                    End="-5.00000000000006,41.1875" />
+                    End="-33.5,76.6875" />
                   <mssgle:CubicBezierSegment
-                    Point1="-5.00000000000006,41.1875"
-                    Point2="-9.00000000000006,41.1875"
-                    Point3="-9.00000000000006,45.1875" />
+                    Point1="-33.5,76.6875"
+                    Point2="-37.5,76.6875"
+                    Point3="-37.5,80.6875" />
                   <mssgle:LineSegment
-                    End="-9.00000000000006,74.875" />
+                    End="-37.5,145.875" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1656,7 +1656,7 @@ where [refTable].[Code] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="133.5,42"
+          Size="134,42"
           Id="Package\ImportStockData\Stock Table"
           TopLeft="517.5,426.875" />
         <NodeLayout
@@ -1676,7 +1676,7 @@ where [refTable].[Code] = ?</property>
           Id="Package\ImportStockData\Flat File Source"
           TopLeft="148,26" />
         <NodeLayout
-          Size="174.5,42"
+          Size="174,42"
           Id="Package\ImportStockData\Look Up Principle ID"
           TopLeft="456.875,333.75" />
         <NodeLayout
@@ -1684,7 +1684,7 @@ where [refTable].[Code] = ?</property>
           Id="Package\ImportStockData\LookUp SKU ID"
           TopLeft="384.75,146" />
         <NodeLayout
-          Size="186.5,42"
+          Size="186,42"
           Id="Package\ImportStockData\Add Act Cost  PeriodID"
           TopLeft="426.25,235" />
         <EdgeLayout
@@ -1719,7 +1719,7 @@ where [refTable].[Code] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="6.50012704271789,-17.609375,96.3827734375,11.609375"
+              BoundingBox="6.5001270427179,-17.609375,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1827,7 +1827,7 @@ where [refTable].[Code] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-130.762220052084,23.5878112712975,91.7327734375,11.609375"
+              BoundingBox="-130.762220052083,23.5878112712975,91.7327734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>

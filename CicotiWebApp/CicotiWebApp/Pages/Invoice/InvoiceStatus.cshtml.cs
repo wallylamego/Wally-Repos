@@ -119,7 +119,9 @@ namespace CicotiWebApp.Pages.Invoice
                    i.SKU.Code,
                    i.SKU.Description,
                    i.Qty,
-                   i.Amt
+                   i.Amt,
+                   i.Weight,
+                   i.CubicMetres
                }
                ).Where(i => i.InvoiceID == Model.InvoiceID);
 

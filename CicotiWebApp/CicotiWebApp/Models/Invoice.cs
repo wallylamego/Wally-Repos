@@ -19,7 +19,10 @@ namespace CicotiWebApp.Models
         public int ? InvoiceProductTypeID { get; set; }
         public CustomerAccount CustomerAccount {get;set;}
         public ICollection<InvoiceStatus> InvoiceStatuses { get; set; }
-        
+        public double ? Weight { get; set; }
+        public double ? CubicMetres { get; set; }
+
+
         public Status Status { get; set; }
         public Load Load { get; set; }
         public InvoiceProductType InvoiceProductType { get; set; }

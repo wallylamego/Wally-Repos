@@ -112,5 +112,7 @@ namespace CicotiWebApp.Data
         public DbQuery<VwLoadSummary> VwLoadSummary { get; set; }
         public DbQuery<VwLoadDetail> VwLoadDetail { get; set; }
         public DbQuery<VwInvoiceStatusRoles> VwInvoiceStatusRoles { get; set; }
+        public DbQuery<VwInvoiceWeightsDetail> VwInvoiceWeightsDetail { get; set; }
+        public DbQuery<VwInvoiceWeightSummary> VwInvoiceWeightSummary { get; set; }
     }
 }

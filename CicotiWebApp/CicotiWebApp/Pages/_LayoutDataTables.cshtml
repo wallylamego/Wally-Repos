@@ -98,6 +98,10 @@
                                 <li><a asp-page="/Loads/Index">Load Maintenance</a></li>
                                 <li><a asp-page="/Loads/LoadReport">Load Reports</a></li>
                                 <li><a asp-page="/Statuses/Index">Delivery Status</a></li>
+                                @if (User.Identity.IsAuthenticated && (User.IsInRole("Admin") || User.IsInRole("Manager")))
+                                {
+                                    <li><a asp-page="/SKU/Index">SKUs</a></li>
+                                }
                             </ul>
                         </li>
                     }
@@ -110,6 +114,8 @@
                                 <li><a asp-page="/Reports/DeliveryStatusPivot">Delivery Status Per Day</a></li>
                                 <li><a asp-page="/Reports/DeliveryStatus">Delivery Status</a></li>
                                 <li><a asp-page="/Reports/DeliveryStatusSummary">Delivery Status Summary</a></li>
+                                <li><a asp-page="/Reports/OutstandingProofOfDelivery">Oustanding PODs</a></li>
+                                <li><a asp-page="/Reports/UndeliveredReport">Undelivered Report</a></li>
                             </ul>
                         </li>
                     }
@@ -128,7 +134,7 @@
                                 <li><a asp-page="/ABC/Accounts/AccountTable">ABC: Acc. Table</a></li>
                                 <li><a asp-page="/ABC/ExchangeRates/Index">ABC: Exchange Rates</a></li>
                                 <li><a asp-page="/Users/UserListing">User Listing</a></li>
-                                <li><a asp-page="/SKU/Index">SKUs</a></li>
+                                
                                 <li><a asp-page="/StockCount/FindSKU">Add Stock Count Item</a></li>
                             </ul>
                         </li>

@@ -11,8 +11,8 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="SalesImport"
   DTS:PackageType="5"
-  DTS:VersionBuild="10"
-  DTS:VersionGUID="{CBD201BE-084B-40D2-BA6B-880DA740E5CC}">
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{46DB1FE6-8B8D-468B-8233-84480417FFB5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -293,13 +293,13 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">7</property>
+                          name="Expression">8</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">7</property>
+                          name="FriendlyExpression">8</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -446,13 +446,13 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">201907</property>
+                          name="Expression">201908</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">201907</property>
+                          name="FriendlyExpression">201908</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -3020,19 +3020,19 @@ where [refTable].[Pastel Principle] = ?</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="128.5,42"
+          Size="128,42"
           Id="Package\Import Sales Data\Sales Data"
           TopLeft="51.5,27.5" />
         <NodeLayout
-          Size="148.5,42"
+          Size="148,42"
           Id="Package\Import Sales Data\Error Branches"
           TopLeft="223.928571428571,178.214285714286" />
         <NodeLayout
-          Size="152.5,42"
+          Size="152,42"
           Id="Package\Import Sales Data\SalesErrorTable"
           TopLeft="25.25,101" />
         <NodeLayout
-          Size="167.5,42"
+          Size="168,42"
           Id="Package\Import Sales Data\Add Week Number"
           TopLeft="451,186.5" />
         <NodeLayout
@@ -3185,7 +3185,7 @@ where [refTable].[Pastel Principle] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="93.4669466145833,20.4807692307692,91.7327734375,11.609375"
+              BoundingBox="93.4669466145835,20.4807692307692,91.7327734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -3399,7 +3399,7 @@ where [refTable].[Pastel Principle] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -3409,7 +3409,7 @@ where [refTable].[Pastel Principle] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

@@ -112,6 +112,8 @@
                                     <th>SKU Description</th>
                                     <th>Qty</th>
                                     <th>Amt</th>
+                                    <th>Weight</th>
+                                    <th>Cubic Metres</th>
                                 </tr>
                             </thead>
                         </table>
@@ -272,7 +274,19 @@
                         "targets": [4],
                         "visible": true,
                         "searchable": true
+                        },
+                    {
+                        /*Weight is visible and is searchable*/
+                        "targets": [5],
+                        "visible": true,
+                        "searchable": false
                     },
+                    {
+                        /*Cubic Metres is visible and is searchable*/
+                        "targets": [6],
+                        "visible": true,
+                        "searchable": false
+                    }
                 ],
                 "columns": [
                     { "data": "invoiceLineID", "name": "invoiceLineID", "autoWidth": true },
@@ -283,7 +297,9 @@
                         "render": function (data, type, full, meta) {
                             return FormatToDecimal(full.amt);
                         }
-                    }
+                    },
+                    { "data": "weight", "name": "statusName", "autoWidth": true },
+                    { "data": "cubicMetres", "name": "cubicMetres", "autoWidth": true }
                 ]
 
             });//Selected Invoice Line Table

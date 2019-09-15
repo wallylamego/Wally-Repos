@@ -2,13 +2,13 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>CicotiImports</Name>
-    <LastWriteTime>2019-08-24T16:38:59.400884Z</LastWriteTime>
+    <LastWriteTime>2019-09-08T18:28:31.8125872Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>MonthlyStockImport.dtsx</Name>
-      <LastWriteTime>2019-08-10T13:15:17.5903419Z</LastWriteTime>
+      <LastWriteTime>2019-09-12T17:35:53.5704444Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -18,7 +18,7 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>SalesImport.dtsx</Name>
-      <LastWriteTime>2019-08-06T09:01:48.4050432Z</LastWriteTime>
+      <LastWriteTime>2019-09-12T11:56:01.6848664Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -53,7 +53,7 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>TransferSalesData.dtsx</Name>
-      <LastWriteTime>2019-08-11T07:10:59.8763548Z</LastWriteTime>
+      <LastWriteTime>2019-09-12T14:51:40.3829797Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -84,6 +84,11 @@
     <ProjectBuildItemInfo>
       <Name>ImportPODUpdates.dtsx</Name>
       <LastWriteTime>2019-08-24T16:38:59.3001561Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Package2.dtsx</Name>
+      <LastWriteTime>2019-09-08T18:28:31.7371694Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

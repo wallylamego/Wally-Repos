@@ -77,7 +77,7 @@ namespace CicotiWebApp.Pages.SKU
                 return Page();
             }
 
-            if (HttpContext.User.IsInRole("Fleet") || (HttpContext.User.IsInRole("Admin")) || (HttpContext.User.IsInRole("WareHouse")))
+            if (HttpContext.User.IsInRole("Manager") || (HttpContext.User.IsInRole("Admin")))
             {
                 try
                 {

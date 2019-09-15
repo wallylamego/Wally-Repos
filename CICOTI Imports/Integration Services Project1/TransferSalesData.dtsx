@@ -11,8 +11,8 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="TransferSalesData"
   DTS:PackageType="5"
-  DTS:VersionBuild="16"
-  DTS:VersionGUID="{0CF45923-D4A3-4026-A609-57BD03AB4B8B}">
+  DTS:VersionBuild="17"
+  DTS:VersionGUID="{9F315060-025F-4EF4-869D-4E773D258188}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -5099,17 +5099,33 @@ where [refTable].[Code] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="310.5,42"
-          Id="Package\Import Sales Data From CICOTIDW to CICOTIDB"
-          TopLeft="70.4642857142857,362.571428571429" />
-        <NodeLayout
-          Size="263.5,42"
+          Size="264,42"
           Id="Package\Delete all Data from ActCostSalesDetail"
           TopLeft="91.75,22.5" />
+        <NodeLayout
+          Size="254,42"
+          Id="Package\DELETE FROM SalesConversionErrors"
+          TopLeft="555.464285714286,288.857142857143" />
+        <NodeLayout
+          Size="225,42"
+          Id="Package\DELETE FROM SalesDateErrors"
+          TopLeft="563.25,212" />
         <NodeLayout
           Size="242,42"
           Id="Package\DELETE FROM SalesPrincipleErrors"
           TopLeft="555.035714285714,78.2857142857143" />
+        <NodeLayout
+          Size="228,42"
+          Id="Package\DELETE FROM SalesSKULookup"
+          TopLeft="569.75,358.714285714286" />
+        <NodeLayout
+          Size="238,42"
+          Id="Package\DELETE FROM WarehouseLookUp"
+          TopLeft="557.678571428571,147.142857142857" />
+        <NodeLayout
+          Size="310,42"
+          Id="Package\Import Sales Data From CICOTIDW to CICOTIDB"
+          TopLeft="70.4642857142857,362.571428571429" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="355.25,43.5">
@@ -5144,18 +5160,6 @@ where [refTable].[Code] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="238,42"
-          Id="Package\DELETE FROM WarehouseLookUp"
-          TopLeft="557.678571428571,147.142857142857" />
-        <NodeLayout
-          Size="225,42"
-          Id="Package\DELETE FROM SalesDateErrors"
-          TopLeft="563.25,212" />
-        <NodeLayout
-          Size="254.5,42"
-          Id="Package\DELETE FROM SalesConversionErrors"
-          TopLeft="555.464285714286,288.857142857143" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="676.357142857144,120.285714285714">
@@ -5222,10 +5226,6 @@ where [refTable].[Code] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="228,42"
-          Id="Package\DELETE FROM SalesSKULookup"
-          TopLeft="569.75,358.714285714286" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
           TopLeft="683.232142857144,330.857142857143">
@@ -5279,23 +5279,23 @@ where [refTable].[Code] = ?</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="138.5,42"
-          Id="Package\Import Sales Data From CICOTIDW to CICOTIDB\Lookup Date"
-          TopLeft="326,437.5" />
+          Size="224,42"
+          Id="Package\Import Sales Data From CICOTIDW to CICOTIDB\SalesSKULookUp_ImportErrors"
+          TopLeft="635.5,333" />
         <NodeLayout
-          Size="147,42"
-          Id="Package\Import Sales Data From CICOTIDW to CICOTIDB\Lookup SKUID"
-          TopLeft="293.5,267" />
+          Size="150,42"
+          Id="Package\Import Sales Data From CICOTIDW to CICOTIDB\OLE DB Source"
+          TopLeft="193,17" />
         <NodeLayout
-          Size="249,42"
-          Id="Package\Import Sales Data From CICOTIDW to CICOTIDB\SalesConversionErrors_ImportErrors"
-          TopLeft="482,181" />
-        <NodeLayout
-          Size="139.5,42"
+          Size="140,42"
           Id="Package\Import Sales Data From CICOTIDW to CICOTIDB\LookUp Date"
           TopLeft="612.5,477.5" />
         <NodeLayout
-          Size="202.5,42"
+          Size="233,42"
+          Id="Package\Import Sales Data From CICOTIDW to CICOTIDB\WarehouseLookUp_ImportErrors"
+          TopLeft="645,398.5" />
+        <NodeLayout
+          Size="202,42"
           Id="Package\Import Sales Data From CICOTIDW to CICOTIDB\Loses Spaces in SKU Code"
           TopLeft="436.666666666667,35" />
         <NodeLayout
@@ -5303,17 +5303,13 @@ where [refTable].[Code] = ?</property>
           Id="Package\Import Sales Data From CICOTIDW to CICOTIDB\Data Conversion"
           TopLeft="245.5,105.5" />
         <NodeLayout
-          Size="150,42"
-          Id="Package\Import Sales Data From CICOTIDW to CICOTIDB\OLE DB Source"
-          TopLeft="193,17" />
+          Size="249,42"
+          Id="Package\Import Sales Data From CICOTIDW to CICOTIDB\SalesConversionErrors_ImportErrors"
+          TopLeft="482,181" />
         <NodeLayout
           Size="237,42"
           Id="Package\Import Sales Data From CICOTIDW to CICOTIDB\SalesPrincipleErrors_ImportErrors"
           TopLeft="634.5,258.5" />
-        <NodeLayout
-          Size="219.5,42"
-          Id="Package\Import Sales Data From CICOTIDW to CICOTIDB\ActCostSalesDetail_CICOTIDB"
-          TopLeft="324.5,536.5" />
         <NodeLayout
           Size="238,42"
           Id="Package\Import Sales Data From CICOTIDW to CICOTIDB\Lookup Branch And WarehouseID"
@@ -5323,13 +5319,17 @@ where [refTable].[Code] = ?</property>
           Id="Package\Import Sales Data From CICOTIDW to CICOTIDB\Lookup PrincipalID"
           TopLeft="230.833333333333,187.666666666667" />
         <NodeLayout
-          Size="223.5,42"
-          Id="Package\Import Sales Data From CICOTIDW to CICOTIDB\SalesSKULookUp_ImportErrors"
-          TopLeft="635.5,333" />
+          Size="138,42"
+          Id="Package\Import Sales Data From CICOTIDW to CICOTIDB\Lookup Date"
+          TopLeft="326,437.5" />
         <NodeLayout
-          Size="233,42"
-          Id="Package\Import Sales Data From CICOTIDW to CICOTIDB\WarehouseLookUp_ImportErrors"
-          TopLeft="645,398.5" />
+          Size="220,42"
+          Id="Package\Import Sales Data From CICOTIDW to CICOTIDB\ActCostSalesDetail_CICOTIDB"
+          TopLeft="324.5,536.5" />
+        <NodeLayout
+          Size="147,42"
+          Id="Package\Import Sales Data From CICOTIDW to CICOTIDB\Lookup SKUID"
+          TopLeft="293.5,267" />
         <EdgeLayout
           Id="Package\Import Sales Data From CICOTIDW to CICOTIDB.Paths[Lookup Match Output2]"
           TopLeft="415.5,389.5">
@@ -5542,7 +5542,7 @@ where [refTable].[Code] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="132.675279947917,14.7550471063257,91.7327734375,11.609375"
+              BoundingBox="132.675279947916,14.7550471063257,91.7327734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -5682,7 +5682,7 @@ where [refTable].[Code] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="63.0802799479167,18.6040609137056,132.1727734375,11.43359375"
+              BoundingBox="63.0802799479165,18.6040609137056,132.1727734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -5760,66 +5760,7 @@ where [refTable].[Code] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Import Sales Data From CICOTIDW to CICOTIDB\Lookup Date">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[ActCostDimDate]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Import Sales Data From CICOTIDW to CICOTIDB\Lookup SKUID">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[SKUs]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Import Sales Data From CICOTIDW to CICOTIDB\SalesConversionErrors_ImportErrors">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Import Sales Data From CICOTIDW to CICOTIDB\LookUp Date">
+    design-time-name="Package\Import Sales Data From CICOTIDW to CICOTIDB\SalesSKULookUp_ImportErrors">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -5845,7 +5786,7 @@ where [refTable].[Code] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Import Sales Data From CICOTIDW to CICOTIDB\SalesPrincipleErrors_ImportErrors">
+    design-time-name="Package\Import Sales Data From CICOTIDW to CICOTIDB\LookUp Date">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -5858,7 +5799,33 @@ where [refTable].[Code] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Import Sales Data From CICOTIDW to CICOTIDB\ActCostSalesDetail_CICOTIDB">
+    design-time-name="Package\Import Sales Data From CICOTIDW to CICOTIDB\WarehouseLookUp_ImportErrors">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import Sales Data From CICOTIDW to CICOTIDB\SalesConversionErrors_ImportErrors">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import Sales Data From CICOTIDW to CICOTIDB\SalesPrincipleErrors_ImportErrors">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -5899,12 +5866,35 @@ where [refTable].[Code] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
         <Value
           type="q3:string">[dbo].[Principle]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import Sales Data From CICOTIDW to CICOTIDB\Lookup Date">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[ActCostDimDate]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
@@ -5917,7 +5907,7 @@ where [refTable].[Code] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Import Sales Data From CICOTIDW to CICOTIDB\SalesSKULookUp_ImportErrors">
+    design-time-name="Package\Import Sales Data From CICOTIDW to CICOTIDB\ActCostSalesDetail_CICOTIDB">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -5930,15 +5920,25 @@ where [refTable].[Code] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Import Sales Data From CICOTIDW to CICOTIDB\WarehouseLookUp_ImportErrors">
+    design-time-name="Package\Import Sales Data From CICOTIDW to CICOTIDB\Lookup SKUID">
     <Properties>
       <Property>
-        <Name>DataSourceViewID</Name>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[SKUs]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q2:string">Table</Value>
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

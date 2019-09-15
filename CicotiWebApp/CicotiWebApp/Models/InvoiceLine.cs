@@ -12,6 +12,8 @@ namespace CicotiWebApp.Models
         public int InvoiceID { get; set; }
         public double Qty { get; set; }
         public double Amt { get; set; }
+        public double? Weight { get; set; }
+        public double? CubicMetres { get; set; }
 
         public Invoice Invoice { get; set; }
         public SKU SKU { get; set; }

@@ -66,7 +66,9 @@ namespace CicotiWebApp.Pages.Invoice
                    AccountName = i.CustomerAccount.AccountDescription,
                    i.InvoiceProductType.ProductType,
                    StatusName = i.Status.Name,
-                   i.StatusID
+                   i.StatusID,
+                   i.Weight,
+                   i.CubicMetres
                }
                );
 

@@ -78,6 +78,12 @@
     <Content Update="Pages\Reports\DeliveryStatusPivot.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Pages\Reports\OutstandingProofOfDelivery.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\Reports\UndeliveredReport.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Pages\Users\UserListing.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

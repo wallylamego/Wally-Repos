@@ -75,7 +75,7 @@ using CicotiWebApp.Data;
             WriteLiteral("\r\n<h2>ExchangeRate Listing</h2>\r\n\r\n<p>\r\n    ");
             EndContext();
             BeginContext(470, 35, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "069e085e1049430fa90b04e00376b377", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e4231fce7492402698f050ab6fcc9345", async() => {
                 BeginContext(491, 10, true);
                 WriteLiteral("Create New");
                 EndContext();
