@@ -91,6 +91,8 @@
                                             @if (User.Identity.IsAuthenticated && (User.IsInRole("Admin") || User.IsInRole("Manager")))
                                             {
                                                 <li><a asp-page="/SKU/Index">SKUs</a></li>
+                                                <li><a asp-page="/Brand/Index">Brand</a></li>
+                                                <li><a asp-page="/SkuUOMLink/Index">UOM Links</a></li>
                                             }
                                         </ul>
                                     </li>

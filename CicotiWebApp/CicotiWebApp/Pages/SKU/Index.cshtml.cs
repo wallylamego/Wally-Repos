@@ -33,6 +33,7 @@ namespace CicotiWebApp.Pages.SKU
 
             //First create the View of the new model you wish to display to the user
             var SKUQuery = _context.SKUs
+                .Include(u=>u.UOM)
                .Select(s => new
                {
                    Id = s.SKUID,
@@ -42,7 +43,7 @@ namespace CicotiWebApp.Pages.SKU
                    s.CubicMetrePerPallet,
                    s.CubicMetrePerUnit,
                    s.WeightPerUnit,                   
-                   s.UOM
+                   UOM = s.UOM.Description
                 }
                );
 

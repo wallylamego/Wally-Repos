@@ -2,18 +2,18 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>CicotiImports</Name>
-    <LastWriteTime>2019-09-08T18:28:31.8125872Z</LastWriteTime>
+    <LastWriteTime>2019-09-25T12:17:38.0249896Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>MonthlyStockImport.dtsx</Name>
-      <LastWriteTime>2019-09-12T17:35:53.5704444Z</LastWriteTime>
+      <LastWriteTime>2019-09-12T17:36:54.029082Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>DebtorsImport.dtsx</Name>
-      <LastWriteTime>2019-07-15T04:31:47.9586516Z</LastWriteTime>
+      <LastWriteTime>2019-09-26T05:06:51.6430873Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -23,7 +23,7 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>NewPayrolImport.dtsx</Name>
-      <LastWriteTime>2019-07-07T08:20:01.8221516Z</LastWriteTime>
+      <LastWriteTime>2019-09-25T11:53:20.3264311Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -39,11 +39,6 @@
     <ProjectBuildItemInfo>
       <Name>CreditorsImport.dtsx</Name>
       <LastWriteTime>2019-07-15T03:06:59.2518122Z</LastWriteTime>
-      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
-    </ProjectBuildItemInfo>
-    <ProjectBuildItemInfo>
-      <Name>PackageLive.dtsx</Name>
-      <LastWriteTime>2019-08-12T08:43:53.6505588Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -73,12 +68,12 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>SalesRepsFromAzure.dtsx</Name>
-      <LastWriteTime>2019-08-12T07:21:40.8074824Z</LastWriteTime>
+      <LastWriteTime>2019-09-25T12:09:36.869712Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>SalesRepEmployeeLink.dtsx</Name>
-      <LastWriteTime>2019-08-12T08:46:34.4793233Z</LastWriteTime>
+      <LastWriteTime>2019-09-25T12:13:12.342171Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -87,8 +82,13 @@
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
-      <Name>Package2.dtsx</Name>
-      <LastWriteTime>2019-09-08T18:28:31.7371694Z</LastWriteTime>
+      <Name>EmployeeABC.dtsx</Name>
+      <LastWriteTime>2019-09-25T12:11:31.0485055Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>VehicleABC.dtsx</Name>
+      <LastWriteTime>2019-09-25T12:16:41.51007Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

@@ -11,8 +11,8 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="SalesRepEmployeeLink"
   DTS:PackageType="5"
-  DTS:VersionBuild="2"
-  DTS:VersionGUID="{578519D5-B425-4A36-88B0-218586436959}">
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{239C50D8-493A-42A4-A757-8CF69C6863BD}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAwke/W3gwskOv5J9OISRDhQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAB7+oCPCTEDmzEF8uTtprkaAAAAAASAAACgAAAAEAAAANREOwGTx6k7e2Hu8Tk+rpMgAAAAmS4jnROoXdAnvlVqPxAd85u1YL0UFKrb6mTuLhUjUzsUAAAAg66wyiTit0J/kQ/iFgB25gQvGog</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAwke/W3gwskOv5J9OISRDhQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAA2hR9Xp070cxfSnUK0yBHHAAAAAASAAACgAAAAEAAAANFxwzNx9pc+J2ii0N5BxBIgAAAA/H2WPH2MWt/+79Elldb9fJJ8FIJDoIXXsl63HGEVkJkUAAAAi1dfC811A+hmTEwX2K9Nx4G5lEU</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -384,13 +384,13 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="215.5,42"
-          Id="Package\Get Sales Rep Employee Link"
-          TopLeft="34.25,99.5" />
-        <NodeLayout
-          Size="229.5,42"
+          Size="230,42"
           Id="Package\Delete Sales Rep Employee Link"
           TopLeft="51.75,7" />
+        <NodeLayout
+          Size="216,42"
+          Id="Package\Get Sales Rep Employee Link"
+          TopLeft="34.25,99.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="166.5,49">
@@ -434,13 +434,13 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="171,42"
-          Id="Package\Get Sales Rep Employee Link\OLE DB Destination"
-          TopLeft="263.5,119" />
-        <NodeLayout
           Size="150,42"
           Id="Package\Get Sales Rep Employee Link\OLE DB Source"
           TopLeft="217,10" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Get Sales Rep Employee Link\OLE DB Destination"
+          TopLeft="263.5,119" />
         <EdgeLayout
           Id="Package\Get Sales Rep Employee Link.Paths[OLE DB Source Output]"
           TopLeft="292,52">

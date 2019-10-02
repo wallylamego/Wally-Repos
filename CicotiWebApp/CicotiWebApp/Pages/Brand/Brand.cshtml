@@ -1,0 +1,131 @@
+﻿@page  "{BrandID?}"
+
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+@functions{
+    public string GetAntiXsrfRequestToken()
+    {
+        return Xsrf.GetAndStoreTokens(Model.HttpContext).RequestToken;
+    }
+}
+@model CicotiWebApp.Pages.Brand.BrandModel
+
+@{
+    ViewData["Title"] = "Brand: Edit/Create";
+    Layout = "~/Pages/_LayoutDataTables.cshtml";
+}
+
+<h4>Add Edit Brand</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+       
+        <input type="hidden" asp-for="Brand.BrandID" id="brandID" />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Brand.Principle.PastelName" class="control-label">Principal Name</label>
+            <select asp-for="Brand.PrincipleID" id="principleID"
+                    asp-items="Model.PrincipleSL" class="form-control">
+                Invoice Status
+                <option value="">--Select Principal--</option>
+            </select>
+            <span asp-validation-for="Brand.PrincipleID" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Brand.Description" class="control-label"></label>
+            <input asp-for="Brand.Description" class="form-control" id="description" />
+            <span asp-validation-for="Brand.Description" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-default" id="savebtn" />
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ModalPartial")
+    @await Html.PartialAsync("_ModalConfirmPartial")
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script type="text/javascript">
+        var brandToSave = {};
+
+        function ajaxDriverUpdate(obj) {
+        console.log("ajaxBrandUpdate Function runs: " + JSON.stringify(obj));
+            $.ajax({
+                type: "PUT",
+                url: "/Brand/Brand?handler=UpdateBrand",
+
+                headers:
+                {
+                    "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                },
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify(obj),
+                success: function (data) {
+                    console.log(data);
+                    console.log("Brand Data successfully returned from DataBase");
+                    $("#modalHeader").text("Brand Processing Status");
+                    $("#modalMessage").text($("#brandID").val() + " was updated.");
+                    $("#myModal").modal("show");
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+
+                        $("#modalHeader").text("Brand Processing Status");
+                        $("#modalMessage").text("Brand was not updated.");
+                        $("#myModal").modal("show");
+                    }
+                });//ajax Update Section 1
+        }
+
+        function ajaxBrandInsert(obj) {
+            console.log("Brand: in Insert Ajax Call: " + JSON.stringify(obj));
+            $.ajax({
+                type: "POST",
+                url: "/Brand/Brand?handler=InsertBrand",
+                    headers:
+                        {
+                            "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                        },
+                    contentType: "application/json",
+                    dataType: "json",
+                    data: JSON.stringify(obj),
+                    success: function (data) {
+                        $("#modalHeader").text("Brand Processing Status");
+                        $("#modalMessage").text(data.brandID + " was inserted.");
+                        $("#myModal").modal("show");
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        $("#modalHeader").text("Brand Processing Status");
+                        $("#modalMessage").text("Brand Data Not Updated.");
+                        $("#myModal").modal("show");
+                    }
+                });//ajax insert
+        }
+
+        $(document).ready(function () {
+            $('#savebtn').click(function () {
+                brandToSave.brandID = $('#brandID').val();
+                brandToSave.principleID = $('#principleID').val();
+                brandToSave.description = $('#description').val();
+               
+                if ($('#brandID').val().length > 0 && $('#brandID').val() > 0) {
+                    ajaxBrandUpdate(brandToSave);
+                }
+                else {
+                    ajaxBrandInsert(brandToSave);
+                }
+            });
+
+          
+
+   });//Document Ready end.
+
+    </script>
+
+}

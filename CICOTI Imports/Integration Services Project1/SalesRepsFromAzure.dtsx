@@ -11,8 +11,8 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="SalesRepsFromAzure"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{440ACCDA-E01F-4167-8DB1-B01EA927DB86}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{35050EC9-AF36-4048-9ABB-A1C8CF8DEA02}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAwke/W3gwskOv5J9OISRDhQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAARHvJ56Te/tRfhY7Rk9ff7AAAAAASAAACgAAAAEAAAAFWl1KwrNWaHpOz6jnGYjc4gAAAADnmFSGfei5T+u7a4ZdVUdDLmV7b2SueW3VME5XzlsxIUAAAA0CZIDBFvdxV9uBxZBxNhOMgQEgs</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAwke/W3gwskOv5J9OISRDhQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABK/x+zDAchiLKD6sVfRJ5vAAAAAASAAACgAAAAEAAAAGsaUKU0oYwP9UdGAEzRMHQgAAAASModRDJdwvno7D8tlNCr6CAPp2759zn99bca8PYCWpwUAAAAr2ciX13x8xK3kNZ89bM4lqmr9S0</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -384,13 +384,13 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="170,42"
-          Id="Package\Get Sales Rep Data"
-          TopLeft="38,105.25" />
-        <NodeLayout
           Size="163,42"
           Id="Package\Delete Sales Reps"
           TopLeft="41.75,32.5" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Get Sales Rep Data"
+          TopLeft="38,105.25" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="123.125,74.5">
@@ -422,13 +422,13 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="171,42"
-          Id="Package\Get Sales Rep Data\OLE DB Destination"
-          TopLeft="114.75,83.25" />
-        <NodeLayout
           Size="150,42"
           Id="Package\Get Sales Rep Data\OLE DB Source"
           TopLeft="133.5,20.75" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Get Sales Rep Data\OLE DB Destination"
+          TopLeft="114.75,83.25" />
         <EdgeLayout
           Id="Package\Get Sales Rep Data.Paths[OLE DB Source Output]"
           TopLeft="283.5,41.75">
@@ -468,6 +468,19 @@
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Get Sales Rep Data\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Get Sales Rep Data\OLE DB Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

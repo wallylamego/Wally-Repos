@@ -84,6 +84,12 @@
     <Content Update="Pages\Reports\UndeliveredReport.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Pages\SkuUOMLink\Edit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\SkuUOMLink\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Pages\Users\UserListing.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
