@@ -77,11 +77,11 @@ namespace CicotiWebApp.Pages.StockCount
             return new JsonResult(value);
         }
 
-        public async Task<IActionResult> OnGetAsync()
+        public IActionResult OnGet()
         {
             return Page();
         }
 
-     
+
     }
 }

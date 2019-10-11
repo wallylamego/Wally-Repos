@@ -26,17 +26,17 @@ namespace CicotiWebApp.Pages.SkuUOMLink
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            //if (id == null)
+            //{
+            //    return NotFound();
+            //}
 
-            SkuUomLink = await _context.SkuUomLinks.FirstOrDefaultAsync(m => m.SkuUomLinkID == id);
+            SkuUomLink = await _context.SkuUomLinks.Include(s=>s.SKU).FirstOrDefaultAsync(m => m.SkuUomLinkID == id);
 
-            if (SkuUomLink == null)
-            {
-                return NotFound();
-            }
+            ////if (SkuUomLink == null)
+            ////{
+            ////    return NotFound();
+            ////}
             PopulatePrincipalSL();
             PopulateFromUOMSL();
             PopulateToUOMSL();
@@ -82,10 +82,10 @@ namespace CicotiWebApp.Pages.SkuUOMLink
 
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return Page();
+            //}
 
             if (HttpContext.User.IsInRole("Manager") || (HttpContext.User.IsInRole("Admin")))
             {

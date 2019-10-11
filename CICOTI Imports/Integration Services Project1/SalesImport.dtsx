@@ -11,8 +11,8 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="SalesImport"
   DTS:PackageType="5"
-  DTS:VersionBuild="12"
-  DTS:VersionGUID="{46DB1FE6-8B8D-468B-8233-84480417FFB5}">
+  DTS:VersionBuild="14"
+  DTS:VersionGUID="{D7799511-CFDF-4ADB-8919-ACCD008CA0BB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -293,13 +293,13 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">8</property>
+                          name="Expression">9</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">8</property>
+                          name="FriendlyExpression">9</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -446,13 +446,13 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">201908</property>
+                          name="Expression">201909</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">201908</property>
+                          name="FriendlyExpression">201909</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -3010,7 +3010,7 @@ where [refTable].[Pastel Principle] = ?</property>
         <NodeLayout
           Size="164,42"
           Id="Package\Import Sales Data"
-          TopLeft="88.25,41.75" />
+          TopLeft="89.25,112.75" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -3399,7 +3399,7 @@ where [refTable].[Pastel Principle] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -3409,7 +3409,7 @@ where [refTable].[Pastel Principle] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -3422,7 +3422,7 @@ where [refTable].[Pastel Principle] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -3432,7 +3432,7 @@ where [refTable].[Pastel Principle] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

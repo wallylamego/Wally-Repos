@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">OTIJHB-NB-081</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAwke/W3gwskOv5J9OISRDhQAAAAACAAAAAAADZgAAwAAAABAAAAD7nhuYOZjX3TY8Tl05ThHkAAAAAASAAACgAAAAEAAAAKnm2RTHikkpk1iunIQvrduIAAAABqYL/L+eFtOR8WfwYgLMWCZgTx4NqRlU45FGD5CAITI8tfH9NFjd6RL49EGKxy76+36Q91hA4L0FYK0YHfoFjbW5G0EYNjEI3sA4pqHBHPswq4S2SW6ooySO+v+fn+U5rqBewqEeli2QjiVE10QSZVcs3L2XfLJXpqsYfnj4kqFEBIKnjwbopBQAAAD3ba8i4E4K7NR4gQlnI+tblVpz2Q==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAwke/W3gwskOv5J9OISRDhQAAAAACAAAAAAADZgAAwAAAABAAAABVg82d6ZVRB8v0BjYmRb4DAAAAAASAAACgAAAAEAAAAMNUBWx/gjEAqcg5WWp3eXSIAAAARtiqxvIyngulj2JRpHvlt3g3vqR1VxRpTaxXTPcOESF7fnFdyqyJB2k/A9cSA+nPxzLQwbeP3sYbL/yjjkd7AGFPeiwlzq1rebdnOTO+O7JuEATIoAz3SPDkcTUMUSsUuEIB5RPLe3ofPbxGDPcqwk/aDpanZJNFz5ISBzUNEaIIdxI2C6kIdxQAAABZWHHeI//ery9psxwdXmS+q2QcOg==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -58,10 +58,10 @@
                 <SSIS:Property SSIS:Name="Name">MonthlyStockImport</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">48</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">49</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{3093CDA9-9DE0-4A68-945B-ACFA4F97DFBA}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{C1DA3382-07A2-4ECF-A261-76CF033BFF06}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -215,6 +215,8 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">
+                    </SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -483,6 +485,8 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">
+                    </SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -681,8 +685,6 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">
-                    </SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -900,10 +902,10 @@
                 <SSIS:Property SSIS:Name="Name">SalesImport</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">12</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">14</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{46DB1FE6-8B8D-468B-8233-84480417FFB5}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{D7799511-CFDF-4ADB-8919-ACCD008CA0BB}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -3184,10 +3186,10 @@
                 <SSIS:Property SSIS:Name="Name">ImportDebtorsDiscounts</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">4</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">5</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{942F1E00-CA07-419F-A61D-56018653E778}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{E66B9F7A-D7C2-41D7-9CF5-701228B47553}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>

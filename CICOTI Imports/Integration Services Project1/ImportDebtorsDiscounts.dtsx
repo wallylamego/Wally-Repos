@@ -11,8 +11,8 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="ImportDebtorsDiscounts"
   DTS:PackageType="5"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{942F1E00-CA07-419F-A61D-56018653E778}">
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{E66B9F7A-D7C2-41D7-9CF5-701228B47553}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -493,7 +493,7 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="151.5,42"
+          Size="152,42"
           Id="Package\Data Flow Task"
           TopLeft="82,31.5" />
       </GraphLayout>

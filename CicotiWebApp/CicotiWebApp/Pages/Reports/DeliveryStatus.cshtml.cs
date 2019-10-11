@@ -87,7 +87,7 @@ namespace CicotiWebApp.Pages.Reports
             return new JsonResult(value);
         }
 
-        public async Task<IActionResult>  OnGetAsync()
+        public IActionResult OnGet()
         {
             return Page();
         }

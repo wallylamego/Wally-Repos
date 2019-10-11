@@ -101,11 +101,11 @@ namespace CicotiWebApp.Pages.StockCount
                 return new JsonResult("Stock Count Item not removed.");
             }
         }
-        public async Task<IActionResult> OnGetAsync()
+        public IActionResult OnGet()
         {
             return Page();
         }
 
-     
+
     }
 }

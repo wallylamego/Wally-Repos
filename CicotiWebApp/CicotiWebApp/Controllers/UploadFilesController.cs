@@ -20,6 +20,7 @@ using CicotiWebApp.Helpers;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using CicotiWebApp.Services;
+using OfficeOpenXml;
 
 namespace WebAppFAM.Controllers
 {
@@ -32,6 +33,7 @@ namespace WebAppFAM.Controllers
         private readonly string _newPath;
         private readonly string _virtualPathFolder;
         private IConfiguration _configuration;
+
 
 
 
@@ -407,6 +409,61 @@ namespace WebAppFAM.Controllers
 
 
         #endregion
+        [Route("ImportUpload")]
+        public string ImportUpload(IFormFile reportfile)
+        {
+            string folderName = "Upload";
+            string webRootPath = _hostingEnvironment.WebRootPath;
+            string newPath = Path.Combine(webRootPath, folderName);
+            // Delete Files from Directory
+            System.IO.DirectoryInfo di = new DirectoryInfo(newPath);
+            foreach (FileInfo filesDelete in di.GetFiles())
+            {
+                filesDelete.Delete();
+            }// End Deleting files form directories
+
+            if (!Directory.Exists(newPath))// Crate New Directory if not exist as per the path
+            {
+                Directory.CreateDirectory(newPath);
+            }
+            var fiName = Guid.NewGuid().ToString() + Path.GetExtension(reportfile.FileName);
+            using (var fileStream = new FileStream(Path.Combine(newPath, fiName), FileMode.Create))
+            {
+                reportfile.CopyTo(fileStream);
+            }
+            // Get uploaded file path with root
+            string rootFolder = _hostingEnvironment.WebRootPath;
+            string fileName = @"Upload/" + fiName;
+            FileInfo file = new FileInfo(Path.Combine(rootFolder, fileName));
+
+            using (ExcelPackage package = new ExcelPackage(file))
+            {
+                ExcelWorksheet workSheet = package.Workbook.Worksheets[1];
+                int totalRows = workSheet.Dimension.Rows;
+                List<Category> reportList = new List<Category>();
+                for (int i = 2; i <= totalRows; i++)
+                {
+                    try
+                    {
+                        string Title = workSheet?.Cells[i, 1]?.Value?.ToString();
+                        string Url = workSheet?.Cells[i, 2]?.Value?.ToString();
+                        reportList.Add(new Category
+                        {
+                            Title = Title,
+                            Url = Url,
+                        });
+                    }
+                    catch (Exception Ex)
+                    {
+                        // Exception
+                    }
+                }
+                
+                context.Category.AddRange(reportList);
+                _db.SaveChanges();
+                return "Uploaded";
+            }
+        }
     }
 
 
