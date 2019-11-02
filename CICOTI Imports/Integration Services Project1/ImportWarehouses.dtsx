@@ -1,0 +1,530 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/10/2019 11:02:15 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="OTIJHB-NB-081"
+  DTS:CreatorName="OTI\WallyF"
+  DTS:DTSID="{5201D4FE-CC00-4B93-8482-0DD15D950CF8}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.0900.30"
+  DTS:LocaleID="7177"
+  DTS:ObjectName="ImportWarehouses"
+  DTS:PackageType="5"
+  DTS:VersionBuild="34"
+  DTS:VersionGUID="{E0CAD080-D8CD-4528-8620-DB9D66107B97}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[AzureDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{0599CC20-E03D-49DC-9439-46D4AB7F8F90}"
+      DTS:ObjectName="AzureDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=wallylamego.database.windows.net;User ID=wallylamego;Initial Catalog=CICOTIDB;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAwke/W3gwskOv5J9OISRDhQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABVgea5lvViZH2ETJ6o3zcWAAAAAASAAACgAAAAEAAAAMRs6PQavnbcm8N+GHgZvusgAAAAzKDe0c4mAo86CuECtg71h0APo7+YDFmYi3QnOWJqxs8UAAAAr9xpc9+0GqF1XSOOjSkNA1Llhd8</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{B0C95B01-B239-4221-8AE7-C3DF0FC8A483}"
+      DTS:ObjectName="LocalDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=OTIJHB-NB-081\SQLEXPRESS;Initial Catalog=CICOTIDB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Update Warehouse"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{05AB7689-B973-4994-8C0D-D4AF8C9D8CE5}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update Warehouse"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Update Warehouse\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[ActCostWarehouse]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Update Warehouse\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[AzureDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[AzureDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Update Warehouse\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Update Warehouse\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[WarehouseName]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="WarehouseName"
+                      externalMetadataColumnId="Package\Update Warehouse\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WarehouseName]"
+                      lineageId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Output].Columns[WarehouseName]" />
+                    <inputColumn
+                      refId="Package\Update Warehouse\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[BranchID]"
+                      cachedDataType="i4"
+                      cachedName="BranchID"
+                      externalMetadataColumnId="Package\Update Warehouse\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BranchID]"
+                      lineageId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Output].Columns[BranchID]" />
+                    <inputColumn
+                      refId="Package\Update Warehouse\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ActCostChannelID]"
+                      cachedDataType="i4"
+                      cachedName="ActCostChannelID"
+                      externalMetadataColumnId="Package\Update Warehouse\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ActCostChannelID]"
+                      lineageId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Output].Columns[ActCostChannelID]" />
+                    <inputColumn
+                      refId="Package\Update Warehouse\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[WarehouseCode]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="WarehouseCode"
+                      externalMetadataColumnId="Package\Update Warehouse\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WarehouseCode]"
+                      lineageId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Output].Columns[WarehouseCode]" />
+                    <inputColumn
+                      refId="Package\Update Warehouse\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ActCostWarehouseTypeID]"
+                      cachedDataType="i4"
+                      cachedName="ActCostWarehouseTypeID"
+                      externalMetadataColumnId="Package\Update Warehouse\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ActCostWarehouseTypeID]"
+                      lineageId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Output].Columns[ActCostWarehouseTypeID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Update Warehouse\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ActCostWarehouseID]"
+                      dataType="i4"
+                      name="ActCostWarehouseID" />
+                    <externalMetadataColumn
+                      refId="Package\Update Warehouse\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WarehouseName]"
+                      dataType="nText"
+                      name="WarehouseName" />
+                    <externalMetadataColumn
+                      refId="Package\Update Warehouse\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BranchID]"
+                      dataType="i4"
+                      name="BranchID" />
+                    <externalMetadataColumn
+                      refId="Package\Update Warehouse\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ActCostChannelID]"
+                      dataType="i4"
+                      name="ActCostChannelID" />
+                    <externalMetadataColumn
+                      refId="Package\Update Warehouse\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WarehouseCode]"
+                      dataType="nText"
+                      name="WarehouseCode" />
+                    <externalMetadataColumn
+                      refId="Package\Update Warehouse\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ActCostWarehouseTypeID]"
+                      dataType="i4"
+                      name="ActCostWarehouseTypeID" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Update Warehouse\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Update Warehouse\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update Warehouse\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Update Warehouse\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Update Warehouse\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Update Warehouse\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Update Warehouse\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[ActCostWarehouse]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Update Warehouse\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Output].Columns[ActCostWarehouseID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ActCostWarehouseID]"
+                      lineageId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Output].Columns[ActCostWarehouseID]"
+                      name="ActCostWarehouseID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Output].Columns[WarehouseName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[WarehouseName]"
+                      length="200"
+                      lineageId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Output].Columns[WarehouseName]"
+                      name="WarehouseName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Output].Columns[BranchID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BranchID]"
+                      lineageId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Output].Columns[BranchID]"
+                      name="BranchID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Output].Columns[ActCostChannelID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ActCostChannelID]"
+                      lineageId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Output].Columns[ActCostChannelID]"
+                      name="ActCostChannelID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Output].Columns[WarehouseCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[WarehouseCode]"
+                      length="200"
+                      lineageId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Output].Columns[WarehouseCode]"
+                      name="WarehouseCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Output].Columns[ActCostWarehouseTypeID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ActCostWarehouseTypeID]"
+                      lineageId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Output].Columns[ActCostWarehouseTypeID]"
+                      name="ActCostWarehouseTypeID"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ActCostWarehouseID]"
+                      dataType="i4"
+                      name="ActCostWarehouseID" />
+                    <externalMetadataColumn
+                      refId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[WarehouseName]"
+                      dataType="wstr"
+                      length="200"
+                      name="WarehouseName" />
+                    <externalMetadataColumn
+                      refId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BranchID]"
+                      dataType="i4"
+                      name="BranchID" />
+                    <externalMetadataColumn
+                      refId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ActCostChannelID]"
+                      dataType="i4"
+                      name="ActCostChannelID" />
+                    <externalMetadataColumn
+                      refId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[WarehouseCode]"
+                      dataType="wstr"
+                      length="200"
+                      name="WarehouseCode" />
+                    <externalMetadataColumn
+                      refId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ActCostWarehouseTypeID]"
+                      dataType="i4"
+                      name="ActCostWarehouseTypeID" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ActCostWarehouseID]"
+                      dataType="i4"
+                      lineageId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ActCostWarehouseID]"
+                      name="ActCostWarehouseID" />
+                    <outputColumn
+                      refId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[WarehouseName]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[WarehouseName]"
+                      name="WarehouseName" />
+                    <outputColumn
+                      refId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BranchID]"
+                      dataType="i4"
+                      lineageId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BranchID]"
+                      name="BranchID" />
+                    <outputColumn
+                      refId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ActCostChannelID]"
+                      dataType="i4"
+                      lineageId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ActCostChannelID]"
+                      name="ActCostChannelID" />
+                    <outputColumn
+                      refId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[WarehouseCode]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[WarehouseCode]"
+                      name="WarehouseCode" />
+                    <outputColumn
+                      refId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ActCostWarehouseTypeID]"
+                      dataType="i4"
+                      lineageId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ActCostWarehouseTypeID]"
+                      name="ActCostWarehouseTypeID" />
+                    <outputColumn
+                      refId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Update Warehouse.Paths[OLE DB Source Output]"
+              endId="Package\Update Warehouse\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Update Warehouse\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="169,42"
+          Id="Package\Update Warehouse"
+          TopLeft="56,117.25" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Update Warehouse">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Update Warehouse\OLE DB Source"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Update Warehouse\OLE DB Destination"
+          TopLeft="36.5,97.5" />
+        <EdgeLayout
+          Id="Package\Update Warehouse.Paths[OLE DB Source Output]"
+          TopLeft="80.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="41.5,50"
+              Start="0,0"
+              End="41.5,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21"
+                    Point2="0,25"
+                    Point3="4,25" />
+                  <mssgle:LineSegment
+                    End="37.5,25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="37.5,25"
+                    Point2="41.5,25"
+                    Point3="41.5,29" />
+                  <mssgle:LineSegment
+                    End="41.5,42.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Update Warehouse\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Update Warehouse\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

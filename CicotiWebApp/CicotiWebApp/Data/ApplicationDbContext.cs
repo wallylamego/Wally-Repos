@@ -46,7 +46,8 @@ namespace CicotiWebApp.Data
         public DbSet<CustomerAccount> Accounts { get; set; }
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<InvoiceLine> InvoiceLine { get; set; }
-        public DbSet<Warehouse> Warehouse { get; set; }
+        public DbSet<ActCostWarehouse> ActCostWarehouses { get; set; }
+        public DbSet<ActCostWarehouseType> ActCostWarehouseType { get; set; }
         public DbSet<InvoiceProductType> InvoiceProductType { get; set; }
         public DbSet<InvoiceStatus> InvoiceStatus { get; set;}
         public DbSet<SubContractor> SubContractor { get; set; }
@@ -100,6 +101,9 @@ namespace CicotiWebApp.Data
 
         public DbSet<FuelPrice> FuelPrice { get; set; }
         public DbSet<VehicleKm> VehicleKms { get; set;}
+
+        public DbSet<Price> Prices { get; set; }
+        public DbSet<PriceType> PriceTypes { get; set; }
 
         public DbSet<Currency> Currency { get; set; }
         public DbSet<ExchangeRate> ExchangeRates { get; set; }

@@ -33,7 +33,7 @@ namespace CicotiWebApp.Pages.Loads
         {
             string sFileName = report.FileName;
             ExcelImportExport excelExport = new ExcelImportExport(sFileName,
-                _hostingEnvironment);
+                _hostingEnvironment,_context);
             MemoryStream memory = new MemoryStream();
             if (report.ReportName == "VwLoadSummary")
             {

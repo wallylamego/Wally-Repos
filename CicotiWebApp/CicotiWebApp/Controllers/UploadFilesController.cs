@@ -21,6 +21,7 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using CicotiWebApp.Services;
 using OfficeOpenXml;
+using System.Collections.Generic;
 
 namespace WebAppFAM.Controllers
 {
@@ -31,7 +32,7 @@ namespace WebAppFAM.Controllers
         private readonly CicotiWebApp.Data.ApplicationDbContext _context;
         private IHostingEnvironment _hostingEnvironment;
         private readonly string _newPath;
-        private readonly string _virtualPathFolder;
+       // private readonly string _virtualPathFolder;
         private IConfiguration _configuration;
 
 
@@ -46,7 +47,7 @@ namespace WebAppFAM.Controllers
             string folderName = "Upload";
             string webRootPath = _hostingEnvironment.WebRootPath;
             _newPath = Path.Combine(webRootPath, folderName);
-            _virtualPathFolder = "~/Upload/";
+           // _virtualPathFolder = "~/Upload/";
             if (!Directory.Exists(_newPath))
             {
                 Directory.CreateDirectory(_newPath);
@@ -302,7 +303,7 @@ namespace WebAppFAM.Controllers
             //return NewFile;
 
             ExcelImportExport excelExport = new ExcelImportExport(filename,
-               _hostingEnvironment);
+               _hostingEnvironment,_context);
             MemoryStream memory = new MemoryStream();
             try
             {
@@ -409,10 +410,15 @@ namespace WebAppFAM.Controllers
 
 
         #endregion
+
+        [Route("")]
         [Route("ImportUpload")]
+        [HttpPost]
+        //[DisableFormValueModelBinding]
+        //[ValidateAntiForgeryToken]
         public string ImportUpload(IFormFile reportfile)
         {
-            string folderName = "Upload";
+            string folderName = "UploadPrices";
             string webRootPath = _hostingEnvironment.WebRootPath;
             string newPath = Path.Combine(webRootPath, folderName);
             // Delete Files from Directory
@@ -433,24 +439,38 @@ namespace WebAppFAM.Controllers
             }
             // Get uploaded file path with root
             string rootFolder = _hostingEnvironment.WebRootPath;
-            string fileName = @"Upload/" + fiName;
+            string fileName = @"UploadPrices/" + fiName;
             FileInfo file = new FileInfo(Path.Combine(rootFolder, fileName));
 
             using (ExcelPackage package = new ExcelPackage(file))
             {
                 ExcelWorksheet workSheet = package.Workbook.Worksheets[1];
                 int totalRows = workSheet.Dimension.Rows;
-                List<Category> reportList = new List<Category>();
+                List<CicotiWebApp.Models.Price> reportList = new List<CicotiWebApp.Models.Price>();
                 for (int i = 2; i <= totalRows; i++)
                 {
                     try
                     {
-                        string Title = workSheet?.Cells[i, 1]?.Value?.ToString();
-                        string Url = workSheet?.Cells[i, 2]?.Value?.ToString();
-                        reportList.Add(new Category
+                        //string Title = workSheet?.Cells[i, 1]?.Value?.ToString();
+                        //string Url = workSheet?.Cells[i, 2]?.Value?.ToString();
+                        int SKUID = int.Parse(workSheet?.Cells[i, 1]?.Value?.ToString());
+                        int PriceTypeID = int.Parse(workSheet?.Cells[i, 2]?.Value?.ToString());
+                        double PriceInclVat = double.Parse(workSheet?.Cells[i, 3]?.Value?.ToString());
+                        double PriceExlcVat = double.Parse(workSheet?.Cells[i, 4]?.Value?.ToString());
+                        int RegionID = int.Parse(workSheet?.Cells[i, 5]?.Value?.ToString());
+                        int BranchID = int.Parse(workSheet?.Cells[i, 6]?.Value?.ToString());
+                        DateTime PriceDate = DateTime.Parse(workSheet?.Cells[i, 7]?.Value?.ToString());
+                        reportList.Add(new CicotiWebApp.Models.Price
                         {
-                            Title = Title,
-                            Url = Url,
+                            SKUID = SKUID
+                            ,PriceTypeID= PriceTypeID
+                            ,PriceInclVat = PriceInclVat
+                            ,PriceExlcVat = PriceExlcVat
+                            ,RegionID = RegionID
+                            ,BranchID= BranchID
+                            ,PriceDate = PriceDate
+                            //  SKUID = Title,
+                            //  Url = Url,
                         });
                     }
                     catch (Exception Ex)
@@ -459,8 +479,9 @@ namespace WebAppFAM.Controllers
                     }
                 }
                 
-                context.Category.AddRange(reportList);
-                _db.SaveChanges();
+                _context.Prices.AddRange(reportList);
+                _context.SaveChanges();
+                
                 return "Uploaded";
             }
         }

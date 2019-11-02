@@ -24,7 +24,7 @@ namespace CicotiWebApp.Pages.StockCount
         public UOM UOM { get; set; }
         public SelectList UOMSL { get; set; }
         public SelectList QualitySL { get; set; }
-        public StockCountItem StockCountItem { get; set; }
+        public CicotiWebApp.Models.StockCountItem StockCountItem { get; set; }
 
         public void PopulateUOMSL(object selectedUOM = null)
         {
@@ -120,7 +120,7 @@ namespace CicotiWebApp.Pages.StockCount
                 return new JsonResult("SKU not removed.");
             }
         }
-        public async Task<IActionResult> OnGetAsync()
+        public IActionResult OnGet()
         {
             PopulateUOMSL();
             PopulateQualitySL();

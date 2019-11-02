@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
+using OfficeOpenXml;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -21,17 +23,26 @@ namespace CicotiWebApp.Services
         private readonly string _sWebRootFolder;
         private readonly string _sFileName;
         private FileStream _fs;
+        private readonly CicotiWebApp.Data.ApplicationDbContext _context;
 
-        public ExcelImportExport(String sfileName, IHostingEnvironment hostingEnvironment)
+        public ExcelImportExport(String sfileName, IHostingEnvironment hostingEnvironment,
+            CicotiWebApp.Data.ApplicationDbContext context)
         {
             _hostingEnvironment = hostingEnvironment;
             _sWebRootFolder = _hostingEnvironment.WebRootPath;
             _sFileName = sfileName;
+            _context = context;
             workbook = new XSSFWorkbook();
             excelSheet = workbook.CreateSheet("Export");
         }
+        public ExcelImportExport(IHostingEnvironment hostingEnvironment,
+            CicotiWebApp.Data.ApplicationDbContext context)
+        {
+            _hostingEnvironment = hostingEnvironment;
+            _sWebRootFolder = _hostingEnvironment.WebRootPath;
+            _context = context;
+        }
 
-        
         public async Task<MemoryStream> DownloadAsync(string filename)
         {
             var memory = new MemoryStream();
@@ -140,6 +151,81 @@ namespace CicotiWebApp.Services
             }
             return table;
         }
+
+        [Route("ImportUpload")]
+        public string ImportUpload(IFormFile reportfile)
+        {
+            string folderName = "Upload";
+            string webRootPath = _hostingEnvironment.WebRootPath;
+            string newPath = Path.Combine(webRootPath, folderName);
+            // Delete Files from Directory
+            System.IO.DirectoryInfo di = new DirectoryInfo(newPath);
+            foreach (FileInfo filesDelete in di.GetFiles())
+            {
+                filesDelete.Delete();
+            }// End Deleting files form directories
+
+            if (!Directory.Exists(newPath))// Crate New Directory if not exist as per the path
+            {
+                Directory.CreateDirectory(newPath);
+            }
+            var fiName = Guid.NewGuid().ToString() + Path.GetExtension(reportfile.FileName);
+            using (var fileStream = new FileStream(Path.Combine(newPath, fiName), FileMode.Create))
+            {
+                reportfile.CopyTo(fileStream);
+            }
+            // Get uploaded file path with root
+            string rootFolder = _hostingEnvironment.WebRootPath;
+            string fileName = @"Upload/" + fiName;
+            FileInfo file = new FileInfo(Path.Combine(rootFolder, fileName));
+
+            using (ExcelPackage package = new ExcelPackage(file))
+            {
+                ExcelWorksheet workSheet = package.Workbook.Worksheets[0];
+                int totalRows = workSheet.Dimension.Rows;
+                List<CicotiWebApp.Models.Price> reportList = new List<CicotiWebApp.Models.Price>();
+                for (int i = 2; i <= totalRows; i++)
+                {
+                    try
+                    {
+                        //string Title = workSheet?.Cells[i, 1]?.Value?.ToString();
+                        //string Url = workSheet?.Cells[i, 2]?.Value?.ToString();
+                        int SKUID = int.Parse(workSheet?.Cells[i, 1]?.Value?.ToString());
+                        int PriceTypeID = int.Parse(workSheet?.Cells[i, 2]?.Value?.ToString());
+                        double PriceInclVat = double.Parse(workSheet?.Cells[i, 3]?.Value?.ToString());
+                        double PriceExlcVat = double.Parse(workSheet?.Cells[i, 4]?.Value?.ToString());
+                        int RegionID = int.Parse(workSheet?.Cells[i, 5]?.Value?.ToString());
+                        int BranchID = int.Parse(workSheet?.Cells[i, 6]?.Value?.ToString());
+                        DateTime PriceDate = DateTime.Parse(workSheet?.Cells[i, 7]?.Value?.ToString());
+                        reportList.Add(new CicotiWebApp.Models.Price
+                        {
+                            SKUID = SKUID,
+                            PriceTypeID = PriceTypeID,
+                            PriceInclVat = PriceInclVat,
+                            PriceExlcVat = PriceExlcVat,
+                            RegionID = RegionID,
+                            BranchID = BranchID,
+                            PriceDate = PriceDate
+                            //  SKUID = Title,
+                            //  Url = Url,
+                        });
+                    }
+                    catch (Exception Ex)
+                    {
+                        // Exception
+                    }
+                }
+
+                _context.Prices.AddRange(reportList);
+                _context.SaveChanges();
+
+                return "Uploaded";
+            }
+        }
+
+
+
+
 
     }
 }

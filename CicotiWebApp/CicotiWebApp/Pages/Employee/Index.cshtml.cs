@@ -126,7 +126,7 @@ namespace CicotiWebApp.Pages.Employee
             string URL = string.Format("{0}://{1}/{2}", Request.Scheme, Request.Host, sFileName);
             //  FileInfo file = new FileInfo(Path.Combine(sWebRootFolder, sFileName));
             //  var memory = new MemoryStream();
-            ExcelImportExport excelExport = new ExcelImportExport(sFileName, _hostingEnvironment);
+            ExcelImportExport excelExport = new ExcelImportExport(sFileName, _hostingEnvironment,_context);
             List<VwEmployeeViewSalesRepCode> EmployeeList =  _context.VwEmployeeViewSalesRepCode.ToList();
             MemoryStream memory = await excelExport.CreateExcelFileAsync(EmployeeList);
             return File(memory, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", sFileName);

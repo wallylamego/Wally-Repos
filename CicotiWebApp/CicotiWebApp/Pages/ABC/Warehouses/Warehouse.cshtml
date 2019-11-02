@@ -1,0 +1,160 @@
+﻿@page  "{WarehouseID?}"
+
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+@functions{
+    public string GetAntiXsrfRequestToken()
+    {
+        return Xsrf.GetAndStoreTokens(Model.HttpContext).RequestToken;
+    }
+}
+@model CicotiWebApp.Pages.ABC.Warehouses.WarehouseModel
+
+@{
+    ViewData["Title"] = "ABC: Warehouse";
+    Layout = "~/Pages/_LayoutDataTables.cshtml";
+}
+
+<h4>Add Edit Warehouse</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group" id="divActCostWarehouseID">
+            <label asp-for="Warehouse.ActCostWarehouseID" class="control-label">Warehouse ID</label>
+            <input asp-for="Warehouse.ActCostWarehouseID" class="form-control" id="actCostWarehouseID" />
+            <span asp-validation-for="Warehouse.ActCostWarehouseID" class="text-danger"></span>
+        </div>
+        <div class="form-group" id="divWarehouseName">
+            <label asp-for="Warehouse.WarehouseName" class="control-label"></label>
+            <input asp-for="Warehouse.WarehouseName" class="form-control" id="warehouseName" />
+            <span asp-validation-for="Warehouse.WarehouseName" class="text-danger"></span>
+        </div>
+        <div class="form-group" id="divWarehouseCode">
+            <label asp-for="Warehouse.WarehouseCode" class="control-label">Warehouse Code</label>
+            <input asp-for="Warehouse.WarehouseCode" class="form-control" id="warehouseCode" />
+            <span asp-validation-for="Warehouse.WarehouseCode" class="text-danger"></span>
+        </div>
+        <div class="form-group" id="divBranch">
+            <label asp-for="Warehouse.Branch.BranchName" class="control-label">Branch Name</label>
+            <select asp-for="Warehouse.BranchID" id="branchID"
+                    asp-items="Model.BranchSL" class="form-control">
+                <option value="">--Select Branch--</option>
+            </select>
+            <span asp-validation-for="Warehouse.BranchID" class="text-danger"></span>
+        </div>
+        
+        <div class="form-group" id="divChannel">
+            <label asp-for="Warehouse.ActCostChannelID" class="control-label">Channel</label>
+            <select asp-for="Warehouse.ActCostChannelID" id="actCostChannelID"
+                    asp-items="Model.ChannelSL" class="form-control">
+                <option value="">--Select Channel--</option>
+            </select>
+            <span asp-validation-for="Warehouse.ActCostChannelID" class="text-danger"></span>
+        </div>
+        
+        <div class="form-group" id="divWarehouseType">
+            <label asp-for="Warehouse.ActCostWarehouseTypeID" class="control-label">Warehouse Type</label>
+            <select asp-for="Warehouse.ActCostWarehouseTypeID" id="actCostWarehouseTypeID"
+                    asp-items="Model.WarehouseTypeSL" class="form-control">
+                <option value="">--Select Warehouse Type--</option>
+            </select>
+            <span asp-validation-for="Warehouse.ActCostWarehouseTypeID" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-default" id="savebtn" />
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-page="WarehouseTable">Back to List</a>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ModalPartial")
+    @await Html.PartialAsync("_ModalConfirmPartial")
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script type="text/javascript">
+        var WarehouseToSave = {};
+        
+        function ajaxWarehouseUpdate(obj) {
+        console.log("ajaxWarehouseUpdate Function runs: " + JSON.stringify(obj));
+            $.ajax({
+                type: "PUT",
+                url: "/ABC/Warehouses/Warehouse?handler=UpdateWarehouse",
+                headers:
+                {
+                    "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                },
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify(obj),
+                success: function (data) {
+                    console.log(data);
+                    console.log("Warehouse successfully returned from DataBase");
+                    $("#modalHeader").text("Warehouse Processing Status");
+                    $("#modalMessage").text($("#actCostWarehouseID").val() + " was updated.");
+                    $("#myModal").modal("show");
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+
+                        $("#modalHeader").text("Warehouse Processing Status");
+                        $("#modalMessage").text("Warehouse was not updated.");
+                        $("#myModal").modal("show");
+                    }
+                });//ajax Update Section 1
+        }
+
+        function ajaxWarehouseInsert(obj) {
+            console.log("Warehouse: in Insert Ajax Call: " + JSON.stringify(obj));
+            $.ajax({
+                type: "POST",
+                url: "/ABC/Warehouses/Warehouse?handler=InsertWarehouse",
+                    headers:
+                        {
+                            "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                        },
+                    contentType: "application/json",
+                    dataType: "json",
+                    data: JSON.stringify(obj),
+                    success: function (data) {
+                        $("#modalHeader").text("Warehouse Processing Status");
+                        $("#modalMessage").text(data.actCostWarehouseID + " was inserted.");
+                        $('#actCostWarehouseID').val(data.actCostWarehouseID);
+                        $("#myModal").modal("show");
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        $("#modalHeader").text("Warehouse Processing Status");
+                        $("#modalMessage").text("Warehouse Data Not Updated.");
+                        $("#myModal").modal("show");
+                    }
+                });//ajax insert
+        }
+
+        $(document).ready(function () {
+            $('#savebtn').click(function () {
+                WarehouseToSave.actCostWarehouseID = $('#actCostWarehouseID').val();
+                WarehouseToSave.warehouseCode = $('#warehouseCode').val();
+                WarehouseToSave.branchID = $('#branchID').val();
+                WarehouseToSave.warehouseName = $('#warehouseName').val();
+                WarehouseToSave.actCostChannelID = $('#actCostChannelID').val();
+                WarehouseToSave.actCostWarehouseTypeID = $('#actCostWarehouseTypeID').val();
+
+                if ($('#actCostWarehouseID').val().length > 0 && $('#actCostWarehouseID').val() > 0) {
+                    ajaxWarehouseUpdate(WarehouseToSave);
+                }
+                else {
+                    WarehouseToSave.actCostWarehouseID = 0;
+                    ajaxWarehouseInsert(WarehouseToSave);
+                }
+            });
+
+
+   });//Document Ready end.
+
+    </script>
+
+}

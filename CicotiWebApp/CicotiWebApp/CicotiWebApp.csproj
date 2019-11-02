@@ -62,6 +62,12 @@
     <Content Update="Pages\ABC\AccountMovement\AccountMovTable.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Pages\ABC\Warehouses\Warehouse.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\ABC\Warehouses\WarehouseTable.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Pages\ABC\AllocationPerAccount\AllocationPerAccount.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
@@ -84,6 +90,12 @@
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Pages\Reports\UndeliveredReport.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\Price\Edit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\Price\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Pages\SkuUOMLink\Edit.cshtml">

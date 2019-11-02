@@ -12,8 +12,10 @@ namespace CicotiWebApp.Models
         public string WarehouseName { get; set; }
         public int BranchID { get; set; }
         public int ActCostChannelID { get; set; }
+        public int ActCostWarehouseTypeID { get; set; }
 
         public Branch Branch { get; set; }
         public ActCostChannel ActCostChannel { get;set;}
+        public ActCostWarehouseType ActCostWarehouseType { get; set; }
     }
 }

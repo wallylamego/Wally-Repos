@@ -11,8 +11,8 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="ImportDebtorsDiscounts"
   DTS:PackageType="5"
-  DTS:VersionBuild="5"
-  DTS:VersionGUID="{E66B9F7A-D7C2-41D7-9CF5-701228B47553}">
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{197A192C-F974-4F76-89C0-D548ACD565C2}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>

@@ -11,8 +11,8 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="NewPayrolImport"
   DTS:PackageType="5"
-  DTS:VersionBuild="5"
-  DTS:VersionGUID="{F6B3BC61-1053-4B62-BA00-54F4656A75F7}">
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{5ADE880A-C713-484D-8170-5C038BCB8854}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -730,7 +730,7 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="152,42"
+          Size="151,42"
           Id="Package\Data Flow Task"
           TopLeft="36.5,14.75" />
       </GraphLayout>
