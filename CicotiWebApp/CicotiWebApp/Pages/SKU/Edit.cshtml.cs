@@ -40,6 +40,7 @@ namespace CicotiWebApp.Pages.SKU
             PopulatePrincipalSL();
             PopulateUOMSL();
             PopulateBrandSL();
+            PopulateVatSL();
             return Page();
         }
         public SelectList UOMSL { get; set; }
@@ -68,6 +69,15 @@ namespace CicotiWebApp.Pages.SKU
                                  select v;
             BrandSL = new SelectList(BrandQuery.AsNoTracking(),
                         "BrandID", "Description", selectedBrand);
+        }
+        public SelectList VatSL { get; set; }
+        public void PopulateVatSL(object selectedVat = null)
+        {
+            var VatQuery = from v in _context.Vat
+                             orderby v.VatStatus
+                             select v;
+            VatSL = new SelectList(VatQuery.AsNoTracking(),
+                        "VatID", "VatStatus", selectedVat);
         }
 
         public async Task<IActionResult> OnPostAsync()

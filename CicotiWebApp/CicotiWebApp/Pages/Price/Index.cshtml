@@ -38,6 +38,9 @@
         <thead>
             <tr>
                 <th>PriceID</th>
+                <th>Date</th>
+                <th>Unit of Sale</th>
+                <th>Vat Exempt</th>
                 <th>SKU Code</th>
                 <th>SKU Description</th>
                 <th>PriceType</th>
@@ -57,11 +60,7 @@
 @section Scripts {
 
     <script type="text/javascript">
-        //$('#btnUpload').click(function () {
-
-        //    ajaxUploadPrice();
-        //    return;
-        //});
+        
         function ajaxUploadPrice(obj)
         {
             console.log("Report: Upload Price Ajax Call: ");
@@ -142,64 +141,85 @@
                         "searchable": true
                     },
                     {
-                        /*SKU Code is visible and is not searchable*/
+                        /*Date is visible and is not searchable*/
                         "targets": [1],
                         "visible": true,
                         "searchable": true,
                         "orderable": true
                     },
                     {
-                        /*SKU Description is visible and is not searchable*/
+                        /*Selling Unit is visible and is not searchable*/
                         "targets": [2],
                         "visible": true,
                         "searchable": true,
                         "orderable": true
                     },
                     {
-                        /*priceType  is visible and is  searchable*/
+                        /*Vat Excempt is visible and is not searchable*/
                         "targets": [3],
                         "visible": true,
                         "searchable": true,
                         "orderable": true
                     },
                     {
-                        /*Price Incl. Vat is visible and is not searchable*/
+                        /*SKU Code is visible and is not searchable*/
                         "targets": [4],
                         "visible": true,
                         "searchable": true,
                         "orderable": true
                     },
                     {
-                        /*Price Excl. Vat visible and is not searchable*/
+                        /*SKU Description is visible and is not searchable*/
                         "targets": [5],
                         "visible": true,
                         "searchable": true,
                         "orderable": true
                     },
                     {
-                        /*Region  is visible and is  searchable*/
+                        /*priceType  is visible and is  searchable*/
                         "targets": [6],
                         "visible": true,
                         "searchable": true,
                         "orderable": true
                     },
                     {
-                        /*Branch  is visible and is  searchable*/
+                        /*Price Incl. Vat is visible and is not searchable*/
                         "targets": [7],
                         "visible": true,
                         "searchable": true,
                         "orderable": true
                     },
                     {
-                        /*Edit button  is  visible and is not searchable*/
+                        /*Price Excl. Vat visible and is not searchable*/
                         "targets": [8],
+                        "visible": true,
+                        "searchable": true,
+                        "orderable": true
+                    },
+                    {
+                        /*Region  is visible and is  searchable*/
+                        "targets": [9],
+                        "visible": true,
+                        "searchable": true,
+                        "orderable": true
+                    },
+                    {
+                        /*Branch  is visible and is  searchable*/
+                        "targets": [10],
+                        "visible": true,
+                        "searchable": true,
+                        "orderable": true
+                    },
+                    {
+                        /*Edit button  is  visible and is not searchable*/
+                        "targets": [11],
                         "visible": true,
                         "searchable": false,
                         "orderable": false
                     },
                     {
                         /*Delete button  is  visible and is not searchable*/
-                        "targets": [9],
+                        "targets": [12],
                         "visible": true,
                         "searchable": false,
                         "orderable": false
@@ -207,6 +227,9 @@
                 ],
                 "columns": [
                     { "data": "id", "name": "id", "autoWidth": true },
+                    { "data": "sellDate", "name": "sellDate", "autoWidth": true },
+                    { "data": "unitOfSale", "name": "unitOfSale", "autoWidth": true },
+                    { "data": "vatStatus", "name": "vatStatus", "autoWidth": true },
                     { "data": "code", "name": "code", "autoWidth": true },
                     { "data": "skuName", "name": "skuName", "autoWidth": true },
                     { "data": "priceType", "name": "priceType", "autoWidth": true },

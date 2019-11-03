@@ -46,8 +46,8 @@ namespace CicotiWebApp.Data
         public DbSet<CustomerAccount> Accounts { get; set; }
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<InvoiceLine> InvoiceLine { get; set; }
-        public DbSet<ActCostWarehouse> ActCostWarehouses { get; set; }
-        public DbSet<ActCostWarehouseType> ActCostWarehouseType { get; set; }
+        public DbSet<ActCostWarehouse> ActCostWarehouse { get; set; }
+        public DbSet<ActCostWarehouseType> ActCostWarehouseTypes { get; set; }
         public DbSet<InvoiceProductType> InvoiceProductType { get; set; }
         public DbSet<InvoiceStatus> InvoiceStatus { get; set;}
         public DbSet<SubContractor> SubContractor { get; set; }
@@ -56,13 +56,14 @@ namespace CicotiWebApp.Data
         public DbSet<VehicleType> VehicleTypes { get; set;}
         public DbSet<Driver> Drivers { get; set;}
         public DbSet<Load> Loads { get; set; }
+        public DbSet<Vat> Vat { get; set; }
         public DbSet<LoadStatus> LoadStatus { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<SKU> SKUs { get; set;}
         public DbSet<SkuUomLink> SkuUomLinks { get; set; }
         public DbSet<Brand> Brand { get; set; }
         public DbSet<ActCostChannel> ActCostChannel { get; set;}
-        public DbSet<ActCostWarehouse> ActCostWarehouse {get; set;}
+        public DbSet<ActCostWarehouse> ActCostWarehouses {get; set;}
 
         public DbSet<InvoiceStatusRole> InvoiceStatusRoles { get; set; }
 

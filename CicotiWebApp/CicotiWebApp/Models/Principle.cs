@@ -19,6 +19,7 @@ namespace CicotiWebApp.Models
         public int SortOrder { get; set; }
         public Boolean Active { get; set; }
         public int ? MainPrincipleID { get; set; }
+        public double ? GPPercentage { get; set; }
 
         [ForeignKey(nameof(MainPrincipleID))]
         public Principle MainPrinciple { get; set; }

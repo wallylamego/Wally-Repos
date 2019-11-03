@@ -24,6 +24,9 @@ namespace CicotiWebApp.Models
         [DisplayName("UOM")]
         public int? UOMID { get; set; }
 
+        [DisplayName("Vat Status")]
+        public int VatID { get; set; }
+
         [DisplayName("Units Per Pallet")]
         public double UnitsPerPallets { get; set; }
         [DisplayName("Cubic Metres Per Pallet")]
@@ -33,10 +36,16 @@ namespace CicotiWebApp.Models
         [DisplayName("Weight in Kgs Per Unit")]
         public double WeightPerUnit { get; set; }
 
+        public string PrincipalABC { get; set; }
+        public string SiloABC { get; set; }
+        public string CompanyABC { get; set; }
+
+
         public Brand Brand { get; set; }
 
         public String Comments { get; set; }
         public Principle Principle { get; set; }
         public UOM UOM { get; set; }
+        public Vat Vat { get; set; }
     }
 }

@@ -1,0 +1,72 @@
+﻿@page "{id?}"
+@model CicotiWebApp.Pages.ABC.Principal.EditModel
+
+@{
+    ViewData["Title"] = "Principal: Edit";
+    Layout = "~/Pages/_LayoutDataTables.cshtml";
+}
+
+<h2>Edit</h2>
+
+<h4>Principal</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Principal.PrincipleID" class="control-label"></label>
+                <input asp-for="Principal.PrincipleID" class="form-control" />
+                <span asp-validation-for="Principal.PrincipleID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Principal.PrincipalName" class="control-label"></label>
+                <input asp-for="Principal.PrincipalName" class="form-control" />
+                <span asp-validation-for="Principal.PrincipalName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Principal.PastelName" class="control-label"></label>
+                <input asp-for="Principal.PastelName" class="form-control" />
+                <span asp-validation-for="Principal.PastelName" class="text-danger"></span>
+            </div>
+
+            <div id="divUOM" class="form-group">
+                <label asp-for="Principal.MainPrincipleID" class="control-label">Main Principal</label>
+                <select asp-for="Principal.MainPrincipleID" id="mainPrincipleID"
+                        asp-items="Model.PrincipalSL" class="form-control">
+                    <option value="">--Select Main Principal--</option>
+                </select>
+                <span asp-validation-for="Principal.MainPrincipleID" class="text-danger"></span>
+            </div>
+            <div id="divUOM" class="form-group">
+                <label asp-for="Principal.SiloID" class="control-label">Main Principal</label>
+                <select asp-for="Principal.SiloID" id="mainPrincipleID"
+                        asp-items="Model.SiloSL" class="form-control">
+                    <option value="">--Select Silo--</option>
+                </select>
+                <span asp-validation-for="Principal.SiloID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Principal.GPPercentage" class="control-label"></label>
+                <input asp-for="Principal.GPPercentage" class="form-control" />
+                <span asp-validation-for="Principal.GPPercentage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Principal.SortOrder" class="control-label"></label>
+                <input asp-for="Principal.SortOrder" class="form-control" />
+                <span asp-validation-for="Principal.SortOrder" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

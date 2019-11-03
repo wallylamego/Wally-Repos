@@ -80,6 +80,14 @@
                 <span asp-validation-for="SKU.Comments" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="SKU.VatID" class="control-label">Vat</label>
+                <select asp-for="SKU.VatID" id="principleID"
+                        asp-items="Model.VatSL" class="form-control">
+                    <option value="">--Select Vat--</option>
+                </select>
+                <span asp-validation-for="SKU.VatID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </form>

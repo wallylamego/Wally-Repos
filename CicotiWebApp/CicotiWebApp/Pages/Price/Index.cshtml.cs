@@ -38,9 +38,11 @@ namespace CicotiWebApp.Pages.Price
             //First create the View of the new model you wish to display to the user
             var PriceQuery = _context.Prices
                 .Include(u=>u.SKU)
+                .Include(u=>u.SKU.UOM)
                 .Include(f=>f.PriceType)
                 .Include(b=>b.Branch)
                 .Include(r=>r.Region)
+                .Include(v=>v.SKU.Vat)
                .Select(p => new
                {
                    Id = p.PriceID,
@@ -50,7 +52,10 @@ namespace CicotiWebApp.Pages.Price
                    p.PriceInclVat,
                    p.PriceExlcVat,
                    Branch = p.Branch.BranchName,
-                   Region = p.Region.RegionName
+                   Region = p.Region.RegionName,
+                   p.SKU.Vat.VatStatus,
+                   SellDate = p.PriceDate,
+                   UnitOfSale = p.SKU.UOM.Description
                }
                );
 

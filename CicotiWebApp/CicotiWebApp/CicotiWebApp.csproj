@@ -98,6 +98,12 @@
     <Content Update="Pages\Price\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Pages\ABC\Principal\Edit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\ABC\Principal\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Pages\SkuUOMLink\Edit.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

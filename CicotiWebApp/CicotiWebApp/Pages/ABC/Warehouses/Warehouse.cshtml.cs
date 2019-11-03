@@ -37,16 +37,16 @@ namespace CicotiWebApp.Pages.ABC.Warehouses
         }
         public void PopulateChannelSL(object selectedChannel = null)
         {
-            var ChannelQuery = from s in _context.ActCostWarehouse
-                                      orderby s.WarehouseName
+            var ChannelQuery = from s in _context.ActCostChannel
+                                      orderby s.ChannelName
                                       select s;
             ChannelSL = new SelectList(ChannelQuery.AsNoTracking(),
-                        "ActCostWarehouseID", "WarehouseName", selectedChannel);
+                        "ActCostChannelID", "ChannelName", selectedChannel);
         }
         
         public void PopulateWarehouseTypeSL(object selectedWarehouseType = null)
         {
-            var WarehouseTypeQuery = from s in _context.ActCostWarehouseType
+            var WarehouseTypeQuery = from s in _context.ActCostWarehouseTypes
                                       orderby s.Description
                                       select s;
             WarehouseTypeSL = new SelectList(WarehouseTypeQuery.AsNoTracking(),
