@@ -141,7 +141,12 @@
                     { "data": "principalName", "name": "principalName", "autoWidth": true },
                     { "data": "pastelName", "name": "pastelName", "autoWidth": true },
                     { "data": "mainPrincipal", "name": "mainPrincipal", "autoWidth": true },
-                    { "data": "gp", "name": "gp", "autoWidth": true },
+                    {
+                        "render": function (data, type, full, meta) {
+                            return FormatToDecimalPercentage(full.gp);
+                        }
+                    },
+                    //{ "data": "gp", "name": "gp", "autoWidth": true },
                     { "data": "siloName", "name": "siloName", "autoWidth": true },
                     { "data": "sortOrder", "name": "sortOrder", "autoWidth": true },
                     {

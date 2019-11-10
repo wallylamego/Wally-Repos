@@ -17,3 +17,13 @@ function FormatToDecimal(inputString) {
     //minimumFractionDigits
     return newStr2;
 }
+function FormatToDecimalPercentage(inputString) {
+    var newStr1 = parseFloat(inputString) *100;
+    newStr2 = newStr1.toLocaleString(
+        undefined, // leave undefined to use the browser's locale,
+        // or use a string like 'en-US' to override it.
+        { 'minimumFractionDigits': 2, 'maximumFractionDigits': 2 });
+    //minimumFractionDigits
+
+    return newStr2 + ' %';
+}

@@ -26,17 +26,10 @@ namespace CicotiWebApp.Pages.ABC.Principal
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
             Principal = await _context.Principle.FirstOrDefaultAsync(m => m.PrincipleID == id);
 
-            if (Principal == null)
-            {
-                return NotFound();
-            }
+           
             PopulatePrincipalSL();
             PopulateSiloSL();
            
