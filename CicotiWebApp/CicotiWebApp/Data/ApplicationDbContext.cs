@@ -67,6 +67,8 @@ namespace CicotiWebApp.Data
 
         public DbSet<InvoiceStatusRole> InvoiceStatusRoles { get; set; }
 
+        public DbSet<CustomerAccountLocationLink> CustomerAccountLocationLink { get; set; }
+
         public DbSet<Destination> Destinations { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<Province> Provinces { get; set; }

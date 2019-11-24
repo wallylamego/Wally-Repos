@@ -11,8 +11,8 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="KmImport"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{2A523160-5F44-4C1A-93B3-2F5346ED18A5}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{B315220A-5EF0-4125-B2CA-F91CCB4E5BCF}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -513,7 +513,7 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="151.5,42"
+          Size="151,42"
           Id="Package\Data Flow Task"
           TopLeft="5.5,5.5" />
       </GraphLayout>

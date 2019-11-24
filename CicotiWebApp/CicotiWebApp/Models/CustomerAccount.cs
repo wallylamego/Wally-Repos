@@ -11,5 +11,7 @@ namespace CicotiWebApp.Models
         public string AccountNumber { get; set; }
         public string AccountDescription { get; set; }
         public string Terms { get; set; }
+        public string Address { get; set; }
+     
     }
 }

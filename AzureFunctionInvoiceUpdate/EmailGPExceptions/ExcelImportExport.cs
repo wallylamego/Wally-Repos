@@ -4,12 +4,13 @@ using System.Data;
 using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
+using Microsoft.Azure.WebJobs.Host;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 using OfficeOpenXml;
-
+using SendGrid.Helpers.Mail;
 
 namespace EmailGPExceptions
 {
@@ -17,163 +18,127 @@ namespace EmailGPExceptions
     {
         readonly IWorkbook workbook;
         readonly ISheet excelSheet;
-     //   private readonly IHostingEnvironment _hostingEnvironment;
-        private readonly string _sWebRootFolder;
+   
         private readonly string _sFileName;
-        private FileStream _fs;
-    //  private readonly CicotiWebApp.Data.ApplicationDbContext _context;
+    
 
         public ExcelImportExport(String sfileName
-            //, IHostingEnvironment hostingEnvironment,
-            //CicotiWebApp.Data.ApplicationDbContext context
+            
             )
         {
-            //_hostingEnvironment = hostingEnvironment;
-            //_sWebRootFolder = _hostingEnvironment.WebRootPath;
+            
             _sFileName = sfileName;
-            //_context = context;
+            
             workbook = new XSSFWorkbook();
             excelSheet = workbook.CreateSheet("Export");
         }
         public ExcelImportExport(
-            //IHostingEnvironment hostingEnvironment,
-            //CicotiWebApp.Data.ApplicationDbContext context
+            
             )
         {
-            //_hostingEnvironment = hostingEnvironment;
-            //_sWebRootFolder = _hostingEnvironment.WebRootPath;
-            //_context = context;
+           
+            workbook = new XSSFWorkbook();
+            excelSheet = workbook.CreateSheet("Export");
         }
 
-        #region StreamingUpload to Azure Storage Account
 
-        private async Task<bool> UploadToBlob(string filename, Stream stream = null, string storageConnectionString)
+
+        public async Task<bool> SaveFileExcelToAzureStorageAsync(List<GPException> ReportListing, string storageConnectionString, string fileName, TraceWriter log, string containerString)
         {
-            CloudStorageAccount storageAccount = null;
-            CloudBlobContainer cloudBlobContainer = null;
 
-            // Check whether the connection string can be parsed.
+            DataTable dt = ToDataTable(ReportListing);
 
-            if (CloudStorageAccount.TryParse(storageConnectionString, out storageAccount))
+            int columnNo = 0;
+            int rowNo = 0;
+            IRow row = excelSheet.CreateRow(rowNo);
+
+            //First Create the Headers
+            foreach (DataColumn column in dt.Columns)
             {
-                try
-                {
-
-                    // Create the CloudBlobClient that represents the Blob storage endpoint for the storage account.
-
-                    CloudBlobClient cloudBlobClient = storageAccount.CreateCloudBlobClient();
-                    // Create a container called 'uploadblob' and append a GUID value to it to make the name unique. 
-                    cloudBlobContainer = cloudBlobClient.GetContainerReference("fam");
-
-                    //  await cloudBlobContainer.CreateAsync();
-                    // Set the permissions so the blobs are public. 
-
-                    //BlobContainerPermissions permissions = new BlobContainerPermissions
-                    //{
-                    //    PublicAccess = BlobContainerPublicAccessType.Blob
-                    //};
-
-                    //await cloudBlobContainer.SetPermissionsAsync(permissions);
-
-
-                    // Get a reference to the blob address, then upload the file to the blob.
-
-                    CloudBlockBlob cloudBlockBlob = cloudBlobContainer.GetBlockBlobReference(filename);
-
-                    // OPTION B: pass in memory stream directly
-
-                    await cloudBlockBlob.UploadFromStreamAsync(stream);
-
-                    return true;
-
-                }
-
-                catch (StorageException ex)
-
-                {
-
-                    return false;
-
-                }
-
-                finally
-
-                {
-
-                    // OPTIONAL: Clean up resources, e.g. blob container
-
-                    //if (cloudBlobContainer != null)
-
-                    //{
-
-                    //    await cloudBlobContainer.DeleteIfExistsAsync();
-
-                    //}
-
-                }
-
+                row.CreateCell(columnNo).SetCellValue(column.ColumnName);
+                columnNo += 1;
             }
-            else
+
+            foreach (DataRow dr in dt.Rows)
             {
+                rowNo += 1;
+                row = excelSheet.CreateRow(rowNo);
+                columnNo = 0;
+                foreach (DataColumn dc in dt.Columns)
+                {
+                    row.CreateCell(columnNo).SetCellValue(dr[dc].ToString());
+                    columnNo += 1;
+                }
+            }
+
+            try
+            {
+                MemoryStream ms = new MemoryStream();
+                using (MemoryStream tempStream = new MemoryStream())
+                {
+                    workbook.Write(tempStream);
+                    var byteArray = tempStream.ToArray();
+                    ms.Write(byteArray, 0, byteArray.Length);
+                }
+
+                CloudStorageAccount storageAccount = CloudStorageAccount.Parse(storageConnectionString);
+                CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+                CloudBlobContainer container = blobClient.GetContainerReference(containerString);
+                await container.CreateIfNotExistsAsync();
+                CloudBlockBlob blockBlob = container.GetBlockBlobReference(fileName);
+                ms.Position = 0;
+                blockBlob.UploadFromStreamAsync(ms).Wait();
+                log.Info("File Uploaded");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                log.Info("File Not Uploaded" + ex.Message.ToString());
                 return false;
             }
 
-
-
         }
-        
-        #endregion StreamingUpload to Azure Storage Account
 
-        public async Task<MemoryStream> DownloadAsync(string filename)
+
+        public void AttachEmailtoMessage(String storageConnectionString, String ContainerRefName, string fileName, SendGridMessage msg)
         {
-            var memory = new MemoryStream();
-            using (var stream = new FileStream(Path.Combine(_sWebRootFolder, _sFileName), FileMode.Open))
-            {
-                await stream.CopyToAsync(memory);
-            }
-            memory.Position = 0;
-            return memory;
+            // Code for adding sender, recipient etc...
+            var storageAccount = CloudStorageAccount.Parse(storageConnectionString);
+            var blobClient = storageAccount.CreateCloudBlobClient();
+            var container = blobClient.GetContainerReference(ContainerRefName);
+            var blob = container.GetBlockBlobReference(fileName);
+            var ms = new MemoryStream();
+            blob.DownloadToStreamAsync(ms).Wait();
+
+            var blobBytes = GetBytesFromStream(ms);
+
+            ms.Position = 0;
+            msg.AddAttachmentAsync(fileName, ms).Wait();
+           
+
+          //  msg.AddAttachment(fileName, Convert.ToBase64String(blobBytes));
+           
+            // msg.AddAttachment(ms, "originalfilename.png");
+
         }
 
-        public async Task<MemoryStream> CreateExcelFileAsync<T>(List<T> list)
+        private static byte[] GetBytesFromStream(Stream inputStream)
         {
-            var memory = new MemoryStream();
-
-            using (_fs = new FileStream(Path.Combine(_sWebRootFolder, _sFileName), FileMode.Create, FileAccess.Write))
+            byte[] result;
+            using (var ms = new MemoryStream())
             {
-                DataTable dt = ToDataTable(list);
-
-                int columnNo = 0;
-                int rowNo = 0;
-                IRow row = excelSheet.CreateRow(rowNo);
-
-                //First Create the Headers
-                foreach (DataColumn column in dt.Columns)
-                {
-                    row.CreateCell(columnNo).SetCellValue(column.ColumnName);
-                    columnNo += 1;
-                }
-
-                foreach (DataRow dr in dt.Rows)
-                {
-                    rowNo += 1;
-                    row = excelSheet.CreateRow(rowNo);
-                    columnNo = 0;
-                    foreach (DataColumn dc in dt.Columns)
-                    {
-                        row.CreateCell(columnNo).SetCellValue(dr[dc].ToString());
-                        columnNo += 1;
-                    }
-                }
-                workbook.Write(_fs);
+                inputStream.CopyTo(ms);
+                result = ms.ToArray();
             }
-            using (var stream = new FileStream(Path.Combine(_sWebRootFolder, _sFileName), FileMode.Open))
-            {
-                await stream.CopyToAsync(memory);
-            }
-            memory.Position = 0;
-            return memory;
+            return result;
         }
+
+
+
+
+
+
+
 
         public static DataTable CreateDataTableForPropertiesOfType<T>()
         {
@@ -233,7 +198,7 @@ namespace EmailGPExceptions
             return table;
         }
 
-       
+        
 
 
 

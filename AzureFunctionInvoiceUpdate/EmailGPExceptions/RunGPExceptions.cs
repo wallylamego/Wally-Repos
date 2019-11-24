@@ -8,6 +8,7 @@ using SendGrid.Helpers.Mail;
 using System.Data;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 
 namespace EmailGPExceptions
 {
@@ -18,7 +19,11 @@ namespace EmailGPExceptions
                 "[Account],[ucARCallFrequency],[ucARRep],[ucARSegment],[ulARType],[ItemCode],[itemgroup],[ItemDescription],"+
                 "[Branch],[Warehousecode],[ActualQuantity],[ActualSalesValue],[Profit],[Cost],[ProfitPerc],[RequiredGP]," +
                 "[ActualPrice],[PriceVariance],[PriceComment],[AccountMobilePrice],[BranchMobilePrice],"+
-                "[ValueChainPrice],[DiffActAMP],[DiffActBMP],[DiffActVCP] FROM [dbo].[VwGPVariances]";
+                "[ValueChainPrice],[DiffActAMP],[DiffActBMP],[DiffActVCP], [RequiredGPValue], [LostGPValue], [Region], [WarehouseType], [Channel] FROM [dbo].[VwGPVariances]";
+
+        public static string FileName = "GPExceptions.xlsx";
+        public static string ContainerName = "excelcontainer";
+
 
         [FunctionName("fnctEmailGPExceptions")]
         public static async Task RunAsync([TimerTrigger("0 */180 * * * *")]TimerInfo myTimer, TraceWriter log)
@@ -54,7 +59,7 @@ namespace EmailGPExceptions
                     var rows = objCmd.ExecuteNonQueryAsync();
 
                     // This should always be 1 
-                    log.Info($"{rows} rows were updated in control card");
+                    log.Info("sp_GrossProfitExceptionUpdate stored procedure updated");
                 }
 
                 // Close the object 
@@ -64,31 +69,32 @@ namespace EmailGPExceptions
             List<GPException> GPExceptionList = new List<GPException>();
             GPExceptionList = ExcuteObject<GPException>(GPExceptionSQLString, 
                 false).ToList();
-            //do something with the result - people
+            
 
             var countExceptions = GPExceptionList.Count();
             log.Info("There are: " + countExceptions.ToString() + "Exceptions");
 
+            ExcelImportExport ExcelExport = new ExcelImportExport();
+
+            ExcelExport.SaveFileExcelToAzureStorageAsync(GPExceptionList, storageString, FileName, log, ContainerName).Wait();
+            log.Info("GP Exception File created in Azure Storage Area.");
             var client = new SendGridClient(apiKey);
-          //  var msg = MailHelper.CreateSingleEmailToMultipleRecipients(from, tos, subject, "", htmlContent, false);
+            //  var msg = MailHelper.CreateSingleEmailToMultipleRecipients(from, tos, subject, "", htmlContent, false);
+
             var msg = new SendGridMessage()
             {
                 From = new EmailAddress("azure_c05013700011f601571a8f26f8fb4397@azure.com", "GP Exception Team"),
                 Subject = "GP Exceptions",
                 PlainTextContent = "Hi Please find the GP Exceptions. There are " + countExceptions.ToString() + "Exceptions.",
-                HtmlContent = "<strong>Hello, Email!</strong>"
-                
+                HtmlContent = "<strong>" + "Hi Please find the GP Exceptions.There are " + countExceptions.ToString() + "Exceptions." + "</strong>"
+
             };
             msg.AddTo(new EmailAddress("w.fernandes@otisa.co.za", "Test User"));
-        //    msg.AddTo(new EmailAddress("wallylamego@hotmail.com", "Test User"));
-
+            ExcelExport.AttachEmailtoMessage(storageString, ContainerName, FileName, msg);
+            
             var response = await client.SendEmailAsync(msg);
 
-            response.Body.ToString();
             log.Info("Response from email server: " + response.StatusCode.ToString());
-            log.Info("Response from email server: Body " + response.Body.ToString());
-            log.Info("Response from email server: Body " + response.Headers.ToString());
-
         }
         public static DataTable Select(string storedProcedureorCommandText, bool isStoredProcedure = true)
         {

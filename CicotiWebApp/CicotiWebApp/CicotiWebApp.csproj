@@ -83,6 +83,12 @@
     <Content Update="Pages\Loads\LoadRpt.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Pages\Customer\Edit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\Customer\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Pages\Reports\DeliveryStatusPivot.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

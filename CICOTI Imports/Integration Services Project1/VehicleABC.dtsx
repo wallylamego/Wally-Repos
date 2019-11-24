@@ -11,8 +11,8 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="VehicleABC"
   DTS:PackageType="5"
-  DTS:VersionBuild="29"
-  DTS:VersionGUID="{355351A7-F0C5-4DAD-8121-642E2EB8F5D8}">
+  DTS:VersionBuild="30"
+  DTS:VersionGUID="{4AAA69D4-1232-448A-AF76-1EF876C36375}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAwke/W3gwskOv5J9OISRDhQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADFW8cLpYklWgUlDwVkuni0AAAAAASAAACgAAAAEAAAAEHFs+Y/onObHEJt0p8bsqMgAAAAZ/zU9hlSRORBqkC6ibloaoo0nsxthTbF/biPoXJJxVkUAAAAtGuAY6FRTLitF4ach+I5d+F4IxE</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA2wuCsGh1z0ebyYzg66gJcwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACOvjbySnjIJBf4lSluL3u+AAAAAASAAACgAAAAEAAAADPOEwujclc0EcQJNGRUiP8gAAAACuj2siP7eX56558/QtOCiJgCX+TyWvtkDH5Ql2xjCsEUAAAAjSqEsiLWO2dtlxw8ybngAf0TjLY</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>

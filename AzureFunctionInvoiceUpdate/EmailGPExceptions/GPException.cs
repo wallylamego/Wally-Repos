@@ -7,12 +7,7 @@ namespace EmailGPExceptions
 {
     public class GPException
     {
-        public int ? ID { get; set; }
-        public string FirstName { get; set; }
-        public string  LastName { get; set; }
-        public char Sex { get; set; }
-        public DateTime ? DateofBirth { get; set; }
-
+       
         public string Reference{ get; set; }
         public DateTime? TxDate { get; set; }
         public string Code { get; set; }
@@ -49,14 +44,24 @@ namespace EmailGPExceptions
         public double DiffActAMP { get; set; }
         public double DiffActBMP { get; set; }
         public double DiffActVCP { get; set; }
+        public double RequiredGPValue { get; set; }
+        public double LostGPValue { get; set; }
+        public string Region { get; set; }
+        public string WarehouseType { get; set; }
+        public string Channel { get; set; }
 
-    public GPException(DataRow row)
+        public GPException(DataRow row)
         {
             this.Reference = row["Reference"].ToString();
             this.TxDate = Convert.ToDateTime(row["TxDate"]);
             this.Code = row["Code"].ToString();
             this.Name = row["Name"].ToString();
             this.WarehouseName = row["WarehouseName"].ToString();
+            this.Branch = row["Branch"].ToString();
+            this.Warehousecode = row["Warehousecode"].ToString();
+            this.Region = row["Region"].ToString();
+            this.WarehouseType = row["WarehouseType"].ToString();
+            this.Channel = row["Channel"].ToString();
             this.ClientGroup = row["ClientGroup"].ToString();
             this.ClientGroupName = row["ClientGroupName"].ToString();
             this.AreaCode = row["AreaCode"].ToString();
@@ -71,14 +76,15 @@ namespace EmailGPExceptions
             this.ItemCode = row["ItemCode"].ToString();
             this.itemgroup = row["itemgroup"].ToString();
             this.ItemDescription = row["ItemDescription"].ToString();
-            this.Branch = row["Branch"].ToString();
-            this.Warehousecode = row["Warehousecode"].ToString();
+           
             this.ActualQuantity = Convert.ToDouble(row["ActualQuantity"]);
             this.ActualSalesValue = Convert.ToDouble(row["ActualSalesValue"]);
             this.Profit = Convert.ToDouble(row["Profit"]);
             this.Cost = Convert.ToDouble(row["Cost"]);
             this.ProfitPerc = Convert.ToDouble(row["ProfitPerc"]);
             this.RequiredGP = Convert.ToDouble(row["RequiredGP"]);
+            this.RequiredGPValue = Convert.ToDouble(row["RequiredGPValue"]);
+            this.LostGPValue = Convert.ToDouble(row["LostGPValue"]);
             this.ActualPrice = Convert.ToDouble(row["ActualPrice"]);
             this.PriceVariance = Convert.ToDouble(row["PriceVariance"]);
             this.PriceComment = row["PriceComment"].ToString();
@@ -88,13 +94,7 @@ namespace EmailGPExceptions
             this.DiffActAMP = Convert.ToDouble(row["DiffActAMP"]);
             this.DiffActBMP = Convert.ToDouble(row["DiffActBMP"]);
             this.DiffActVCP = Convert.ToDouble(row["DiffActVCP"]);
-
-       //     this.ID = Convert.ToInt32(row["ID"]);
-       //     this.FirstName = row["FirstName"].ToString();
-       //     this.LastName = row["LastName"].ToString();
-       //     this.Sex = Convert.ToChar(row["Sex"]);
-       //     this.DateofBirth =  Convert.ToDateTime(row["DateofBirth"]);
-
+            
         }
     }
 }
