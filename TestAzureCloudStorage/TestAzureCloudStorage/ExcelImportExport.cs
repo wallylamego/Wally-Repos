@@ -233,6 +233,17 @@ namespace TestAzureCloudStorage
                 columnNo += 1;
             }
 
+            var newDateFormat = workbook.CreateDataFormat();
+            var newDecimalFormat = workbook.CreateDataFormat();
+            var DateStyle = workbook.CreateCellStyle();
+            var DecimalStyle = workbook.CreateCellStyle();
+            //   style.BorderBottom = BorderStyle.Thin;
+            //   style.BorderLeft = BorderStyle.Thin;
+            //   style.BorderTop = BorderStyle.Thin;
+            //   style.BorderRight = BorderStyle.Thin;
+            DateStyle.DataFormat = newDateFormat.GetFormat("dd/MM/yyyy");
+            DecimalStyle.DataFormat = newDecimalFormat.GetFormat("[>=10000000]##\\,##\\,##\\,##0;[>=100000] ##\\,##\\,##0;##,##0.00");
+
             foreach (DataRow dr in dt.Rows)
             {
                 rowNo += 1;
@@ -240,10 +251,28 @@ namespace TestAzureCloudStorage
                 columnNo = 0;
                 foreach (DataColumn dc in dt.Columns)
                 {
-                    row.CreateCell(columnNo).SetCellValue(dr[dc].ToString());
+                    ICell cell = row.CreateCell(columnNo);
+                    switch (Type.GetTypeCode(dr[dc].GetType()))
+                    {
+                        case TypeCode.DateTime:
+                           
+                            cell.SetCellValue((DateTime)dr[dc]);
+                            cell.CellStyle = DateStyle;
+                            break;
+                        case TypeCode.Double:
+                          
+                            cell.SetCellValue((Double)dr[dc]);
+                            cell.CellStyle = DecimalStyle;
+                            break;
+                        default:
+                            row.CreateCell(columnNo).SetCellValue(dr[dc].ToString());
+                            break;
+                    }
+                    
                     columnNo += 1;
                 }
             }
+
 
             try
             {

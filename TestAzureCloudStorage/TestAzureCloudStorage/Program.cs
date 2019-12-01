@@ -16,7 +16,7 @@ namespace TestAzureCloudStorage
                 "[Account],[ucARCallFrequency],[ucARRep],[ucARSegment],[ulARType],[ItemCode],[itemgroup],[ItemDescription]," +
                 "[Branch],[Warehousecode],[ActualQuantity],[ActualSalesValue],[Profit],[Cost],[ProfitPerc],[RequiredGP]," +
                 "[ActualPrice],[PriceVariance],[PriceComment],[AccountMobilePrice],[BranchMobilePrice]," +
-                "[ValueChainPrice],[DiffActAMP],[DiffActBMP],[DiffActVCP] FROM [dbo].[VwGPVariances]";
+                "[ValueChainPrice],[DiffActAMP],[DiffActBMP],[DiffActVCP],[RequiredGPValue], [LostGPValue], [Region], [WarehouseType], [Channel],[PrincipalABC] FROM [dbo].[VwGPVariances]";
         public static string connectionString = "Data Source = wallylamego.database.windows.net; Initial Catalog = CICOTIDB; User ID = wallylamego; Password=!Star09012012;Connect Timeout = 30; Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         static void  Main(string[] args)
@@ -58,7 +58,7 @@ namespace TestAzureCloudStorage
             Console.Write("There are: " + countExceptions.ToString() + "Exceptions");
 
             ExcelImportExport ExcelExport = new ExcelImportExport();
-             ExcelExport.SaveFileExcelToAzureStorageAsync(GPExceptionList, storageString, "GPExceptions").Wait();
+             ExcelExport.SaveFileExcelToAzureStorageAsync(GPExceptionList, storageString, "GPExceptionsConsoleAppV7.xlsx").Wait();
            
             // Expo
             //MemoryStream MemoryStream = await ExcelExport.CreateExcelFileAsync(GPExceptionList, "GPExceptions");

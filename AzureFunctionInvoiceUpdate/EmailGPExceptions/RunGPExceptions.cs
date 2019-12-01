@@ -19,7 +19,7 @@ namespace EmailGPExceptions
                 "[Account],[ucARCallFrequency],[ucARRep],[ucARSegment],[ulARType],[ItemCode],[itemgroup],[ItemDescription],"+
                 "[Branch],[Warehousecode],[ActualQuantity],[ActualSalesValue],[Profit],[Cost],[ProfitPerc],[RequiredGP]," +
                 "[ActualPrice],[PriceVariance],[PriceComment],[AccountMobilePrice],[BranchMobilePrice],"+
-                "[ValueChainPrice],[DiffActAMP],[DiffActBMP],[DiffActVCP], [RequiredGPValue], [LostGPValue], [Region], [WarehouseType], [Channel] FROM [dbo].[VwGPVariances]";
+                "[ValueChainPrice],[DiffActAMP],[DiffActBMP],[DiffActVCP], [RequiredGPValue], [LostGPValue], [Region], [WarehouseType], [Channel],[PrincipalABC] FROM [dbo].[VwGPVariances]";
 
         public static string FileName = "GPExceptions.xlsx";
         public static string ContainerName = "excelcontainer";

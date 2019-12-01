@@ -49,6 +49,7 @@ namespace EmailGPExceptions
         public string Region { get; set; }
         public string WarehouseType { get; set; }
         public string Channel { get; set; }
+        public string PrincipalABC { get; set; }
 
         public GPException(DataRow row)
         {
@@ -76,7 +77,8 @@ namespace EmailGPExceptions
             this.ItemCode = row["ItemCode"].ToString();
             this.itemgroup = row["itemgroup"].ToString();
             this.ItemDescription = row["ItemDescription"].ToString();
-           
+            this.PrincipalABC = row["PrincipalABC"].ToString();
+
             this.ActualQuantity = Convert.ToDouble(row["ActualQuantity"]);
             this.ActualSalesValue = Convert.ToDouble(row["ActualSalesValue"]);
             this.Profit = Convert.ToDouble(row["Profit"]);

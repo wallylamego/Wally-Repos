@@ -10,7 +10,7 @@ namespace AzureFunctionInvoiceUpdate
     public static class RunInvoiceUpdate
     {
         [FunctionName("fnctInvoiceUpdate")]
-        public static void Run([TimerTrigger("0 */20 * * * *")]TimerInfo myTimer, TraceWriter log)
+        public static void Run([TimerTrigger("0 */10 * * * *")]TimerInfo myTimer, TraceWriter log)
         {
             //var strConn = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             //var strConn = ConfigurationManager.AppSettings["Connection"];
@@ -37,6 +37,7 @@ namespace AzureFunctionInvoiceUpdate
             //}
 
             log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
+            log.Info("In New Module");
             // Grab connection string 
 
             using (SqlConnection objConn = new SqlConnection(connectionString))
@@ -54,7 +55,7 @@ namespace AzureFunctionInvoiceUpdate
                     var rows = objCmd.ExecuteNonQueryAsync();
 
                     // This should always be 1 
-                    log.Info($"{rows} rows were updated in control card");
+                    log.Info($"{rows} rows were updated in this Version - date 29-11-2019 1804");
                 }
 
                 // Close the object 

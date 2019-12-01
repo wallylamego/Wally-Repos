@@ -8,12 +8,7 @@ namespace TestAzureCloudStorage
 {
     public class GPException
     {
-        public int? ID { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public char Sex { get; set; }
-        public DateTime? DateofBirth { get; set; }
-
+        
         public string Reference { get; set; }
         public DateTime? TxDate { get; set; }
         public string Code { get; set; }
